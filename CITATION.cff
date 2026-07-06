@@ -5,10 +5,12 @@ type: software
 authors:
   - family-names: "Alhan"
     given-names: "Basri Kerem"
-    # email/orcid: add before archiving if desired
+    email: "basrikerem@gmail.com"
+    orcid: "https://orcid.org/0009-0007-8920-9239"
   - family-names: "Khabat"
     given-names: "Kenessary"
-    # email/orcid: add before archiving if desired
+    email: "khabatkenessary@gmail.com"
+    orcid: "https://orcid.org/0009-0009-6830-7192"
 version: "1.0.0"
 date-released: "2026-07-06"
 license: MIT

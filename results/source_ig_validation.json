@@ -1,0 +1,53 @@
+{
+  "noise": {
+    "label": "noise",
+    "columns": [
+      "ctrl_noise"
+    ],
+    "leakage": {
+      "max_abs_corr": 0.0013,
+      "passes": true
+    },
+    "ig_aug_vs_base": {
+      "val": -0.0366,
+      "test": 0.0184
+    },
+    "n_new_cols_all_nan": 0
+  },
+  "leaky": {
+    "label": "leaky",
+    "columns": [
+      "ctrl_leaky"
+    ],
+    "leakage": {
+      "max_abs_corr": 1.0,
+      "passes": false
+    },
+    "ig_aug_vs_base": {
+      "val": 1.29,
+      "test": -2.5925
+    },
+    "n_new_cols_all_nan": 0
+  },
+  "informative": {
+    "label": "informative(etas_rate held-out)",
+    "columns": [
+      "ctrl_info"
+    ],
+    "leakage": {
+      "max_abs_corr": 0.2071,
+      "passes": true
+    },
+    "ig_aug_vs_base": {
+      "val": 0.019,
+      "test": 0.0738
+    },
+    "n_new_cols_all_nan": 0
+  },
+  "harness_validation": {
+    "noise_no_gain": true,
+    "leaky_caught": true,
+    "informative_gain": true,
+    "all_pass": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "base_mc": 3.0,
+  "b_op": 1.2,
+  "K_backtest": 500,
+  "n_rows": 318159,
+  "n_windows": 261,
+  "features_19": [
+    "cnt30",
+    "cnt90",
+    "cnt365",
+    "nbr3_cnt30",
+    "nbr3_cnt365",
+    "nbr5_cnt30",
+    "nbr5_cnt365",
+    "days_since_m35_25km",
+    "days_since_m45_25km",
+    "maxmag365_25km",
+    "mean_depth90",
+    "rate_ratio",
+    "b_pos_50km_730d",
+    "b_pos_is_fallback",
+    "dist_fault_km",
+    "dcfs_perm",
+    "dcfs_decay25",
+    "strain_inv",
+    "etas_rate"
+  ],
+  "cascade_cols": [
+    "lam35_sim",
+    "lam45_sim",
+    "Psim3.5",
+    "Psim5.0",
+    "Psim5.5",
+    "Psim6.0"
+  ],
+  "count35_total": 4104,
+  "count45_total": 165,
+  "lam35_sim_mean": 0.011940306576271613,
+  "runtime_s": 126.7
+}

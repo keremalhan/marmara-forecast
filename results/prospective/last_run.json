@@ -1,0 +1,11 @@
+{
+  "run_utc": "2026-07-06T10:43:54.735811+00:00",
+  "catalog_refresh": {
+    "advanced": true,
+    "note": "refresh: month 202607: 93 in-box rows parsed\nrefresh: no new events (catalog already current)\n"
+  },
+  "issued": false,
+  "catalog_end": "2026-07-06 04:00:00",
+  "content_hash": "4e8e29c1e78865ee",
+  "newly_scored": 0
+}

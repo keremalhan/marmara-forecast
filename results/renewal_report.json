@@ -1,0 +1,98 @@
+{
+  "now_year": 2026.51,
+  "bpt_aperiodicity": 0.5,
+  "historical_M7_record": [
+    {
+      "year": 1509,
+      "M_approx": 7.2,
+      "segment": "Central Marmara/Cinarcik"
+    },
+    {
+      "year": 1719,
+      "M_approx": 7.4,
+      "segment": "Izmit"
+    },
+    {
+      "year": 1754,
+      "M_approx": 6.9,
+      "segment": "Cinarcik (east)"
+    },
+    {
+      "year": 1766.4,
+      "M_approx": 7.1,
+      "segment": "Cinarcik-Princes Islands"
+    },
+    {
+      "year": 1766.6,
+      "M_approx": 7.4,
+      "segment": "Ganos (west)"
+    },
+    {
+      "year": 1894,
+      "M_approx": 7.0,
+      "segment": "Princes Islands/Yalova"
+    },
+    {
+      "year": 1912,
+      "M_approx": 7.3,
+      "segment": "Ganos/Murefte"
+    },
+    {
+      "year": 1999,
+      "M_approx": 7.6,
+      "segment": "Izmit"
+    }
+  ],
+  "historical_note": "Magnitudes approximate (Ambraseys 2002; Parsons 2004).",
+  "segments": {
+    "Izmit": {
+      "last_rupture": 1999,
+      "mean_recurrence_yr": 250,
+      "elapsed_yr": 27.5,
+      "P_30day": 4.1219236520254966e-09,
+      "P_30yr": 0.001095793246912163,
+      "midpoint": [
+        30.1,
+        40.72
+      ]
+    },
+    "PrincesIslands": {
+      "last_rupture": 1894,
+      "mean_recurrence_yr": 250,
+      "elapsed_yr": 132.5,
+      "P_30day": 0.000342434039064939,
+      "P_30yr": 0.137434691652392,
+      "midpoint": [
+        29.05,
+        40.75
+      ]
+    },
+    "CentralMarmara": {
+      "last_rupture": 1766.4,
+      "mean_recurrence_yr": 250,
+      "elapsed_yr": 260.1,
+      "P_30day": 0.0006576638791306329,
+      "P_30yr": 0.2177141728058172,
+      "midpoint": [
+        28.2,
+        40.85
+      ]
+    },
+    "Ganos": {
+      "last_rupture": 1912,
+      "mean_recurrence_yr": 280,
+      "elapsed_yr": 114.5,
+      "P_30day": 0.00017045092693803061,
+      "P_30yr": 0.08122019690439455,
+      "midpoint": [
+        27.2,
+        40.62
+      ]
+    }
+  },
+  "sanity_anchor": {
+    "combined_Princes_Central_30yr": 0.325,
+    "Parsons_2004_ballpark": "0.30-0.50",
+    "within_order_of_magnitude": true
+  }
+}

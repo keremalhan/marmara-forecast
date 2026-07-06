@@ -1,0 +1,1442 @@
+[
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.9,
+        "dn/dt": -0.0167,
+        "de/dt": -0.02214,
+        "du/dt": -0.00024,
+        "snd": 0.00018,
+        "sed": 0.00015,
+        "sud": 0.00065,
+        "rne": 0.18145,
+        "rnu": -0.00385,
+        "reu": 0.08208,
+        "first_epoch": "2008-08-10 00:00:00",
+        "last_epoch": "2022-12-30 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.9,
+        "dn/dt": -0.02272,
+        "de/dt": -0.00149,
+        "du/dt": -0.00026,
+        "snd": 0.00018,
+        "sed": 0.00015,
+        "sud": 0.00065,
+        "rne": 0.18145,
+        "rnu": -0.00385,
+        "reu": 0.08208,
+        "first_epoch": "2008-08-10 00:00:00",
+        "last_epoch": "2022-12-30 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.9,
+        "dn/dt": -0.02158,
+        "de/dt": -0.01884,
+        "du/dt": -0.00026,
+        "snd": 0.00018,
+        "sed": 0.00015,
+        "sud": 0.00065,
+        "rne": 0.18145,
+        "rnu": -0.00385,
+        "reu": 0.08208,
+        "first_epoch": "2008-08-10 00:00:00",
+        "last_epoch": "2022-12-30 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.9,
+        "dn/dt": -0.0033,
+        "de/dt": 0.0026,
+        "du/dt": -0.0002,
+        "snd": 0.00018,
+        "sed": 0.00015,
+        "sud": 0.00065,
+        "rne": 0.18145,
+        "rnu": -0.00385,
+        "reu": 0.08208,
+        "first_epoch": "2008-08-10 00:00:00",
+        "last_epoch": "2022-12-30 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.93,
+        "dn/dt": -0.01533,
+        "de/dt": -0.02139,
+        "du/dt": 0.00226,
+        "snd": 0.00139,
+        "sed": 0.00127,
+        "sud": 0.0014,
+        "rne": 0.09576,
+        "rnu": -0.02927,
+        "reu": -0.12001,
+        "first_epoch": "2019-02-24 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.93,
+        "dn/dt": -0.02134,
+        "de/dt": -0.00074,
+        "du/dt": 0.00223,
+        "snd": 0.00139,
+        "sed": 0.00127,
+        "sud": 0.0014,
+        "rne": 0.09576,
+        "rnu": -0.02927,
+        "reu": -0.12001,
+        "first_epoch": "2019-02-24 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.93,
+        "dn/dt": -0.0202,
+        "de/dt": -0.01809,
+        "du/dt": 0.00224,
+        "snd": 0.00139,
+        "sed": 0.00127,
+        "sud": 0.0014,
+        "rne": 0.09576,
+        "rnu": -0.02927,
+        "reu": -0.12001,
+        "first_epoch": "2019-02-24 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "IZMI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/IZMI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=IZMI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 38.39481,
+        "ref_elong": 27.08182,
+        "ref_up": 74.93,
+        "dn/dt": -0.00192,
+        "de/dt": 0.00335,
+        "du/dt": 0.0023,
+        "snd": 0.00139,
+        "sed": 0.00127,
+        "sud": 0.0014,
+        "rne": 0.09576,
+        "rnu": -0.02927,
+        "reu": -0.12001,
+        "first_epoch": "2019-02-24 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78673,
+        "ref_elong": 29.45068,
+        "ref_up": 221.83,
+        "dn/dt": -0.00148,
+        "de/dt": -0.00478,
+        "du/dt": -0.00114,
+        "snd": 0.00012,
+        "sed": 0.00012,
+        "sud": 0.00035,
+        "rne": 0.01371,
+        "rnu": 0.01913,
+        "reu": -0.0207,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78673,
+        "ref_elong": 29.45068,
+        "ref_up": 221.83,
+        "dn/dt": -0.00753,
+        "de/dt": 0.01505,
+        "du/dt": -0.00117,
+        "snd": 0.00012,
+        "sed": 0.00012,
+        "sud": 0.00035,
+        "rne": 0.01371,
+        "rnu": 0.01913,
+        "reu": -0.0207,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78673,
+        "ref_elong": 29.45068,
+        "ref_up": 221.83,
+        "dn/dt": -0.00651,
+        "de/dt": -0.00151,
+        "du/dt": -0.00116,
+        "snd": 0.00012,
+        "sed": 0.00012,
+        "sud": 0.00035,
+        "rne": 0.01371,
+        "rnu": 0.01913,
+        "reu": -0.0207,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78673,
+        "ref_elong": 29.45068,
+        "ref_up": 221.83,
+        "dn/dt": 0.0115,
+        "de/dt": 0.02001,
+        "du/dt": -0.0011,
+        "snd": 0.00012,
+        "sed": 0.00012,
+        "sud": 0.00035,
+        "rne": 0.01371,
+        "rnu": 0.01913,
+        "reu": -0.0207,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78672,
+        "ref_elong": 29.45068,
+        "ref_up": 220.34,
+        "dn/dt": -0.00098,
+        "de/dt": -0.00859,
+        "du/dt": -0.00098,
+        "snd": 4e-05,
+        "sed": 3e-05,
+        "sud": 4e-05,
+        "rne": 0.15318,
+        "rnu": 0.05523,
+        "reu": -0.179,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78672,
+        "ref_elong": 29.45068,
+        "ref_up": 220.34,
+        "dn/dt": -0.00702,
+        "de/dt": 0.01124,
+        "du/dt": -0.001,
+        "snd": 4e-05,
+        "sed": 3e-05,
+        "sud": 4e-05,
+        "rne": 0.15318,
+        "rnu": 0.05523,
+        "reu": -0.179,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78672,
+        "ref_elong": 29.45068,
+        "ref_up": 220.34,
+        "dn/dt": -0.00601,
+        "de/dt": -0.00533,
+        "du/dt": -0.001,
+        "snd": 4e-05,
+        "sed": 3e-05,
+        "sud": 4e-05,
+        "rne": 0.15318,
+        "rnu": 0.05523,
+        "reu": -0.179,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "TUBI00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/TUBI00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=TUBI00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.78672,
+        "ref_elong": 29.45068,
+        "ref_up": 220.34,
+        "dn/dt": 0.01201,
+        "de/dt": 0.0162,
+        "du/dt": -0.00093,
+        "snd": 4e-05,
+        "sed": 3e-05,
+        "sud": 4e-05,
+        "rne": 0.15318,
+        "rnu": 0.05523,
+        "reu": -0.179,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "YLDZ00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/YLDZ00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=YLDZ00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.02324,
+        "ref_elong": 28.88874,
+        "ref_up": 126.93,
+        "dn/dt": -0.00138,
+        "de/dt": -0.00126,
+        "du/dt": -5e-05,
+        "snd": 0.00038,
+        "sed": 0.00034,
+        "sud": 0.00038,
+        "rne": 0.09183,
+        "rnu": 0.00824,
+        "reu": -0.10567,
+        "first_epoch": "2014-11-30 00:00:00",
+        "last_epoch": "2020-06-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "YLDZ00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/YLDZ00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=YLDZ00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.02324,
+        "ref_elong": 28.88874,
+        "ref_up": 126.93,
+        "dn/dt": -0.00742,
+        "de/dt": 0.01854,
+        "du/dt": -7e-05,
+        "snd": 0.00038,
+        "sed": 0.00034,
+        "sud": 0.00038,
+        "rne": 0.09183,
+        "rnu": 0.00824,
+        "reu": -0.10567,
+        "first_epoch": "2014-11-30 00:00:00",
+        "last_epoch": "2020-06-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "YLDZ00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/YLDZ00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=YLDZ00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.02324,
+        "ref_elong": 28.88874,
+        "ref_up": 126.93,
+        "dn/dt": -0.00637,
+        "de/dt": 0.00205,
+        "du/dt": -6e-05,
+        "snd": 0.00038,
+        "sed": 0.00034,
+        "sud": 0.00038,
+        "rne": 0.09183,
+        "rnu": 0.00824,
+        "reu": -0.10567,
+        "first_epoch": "2014-11-30 00:00:00",
+        "last_epoch": "2020-06-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "YLDZ00TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/YLDZ00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=YLDZ00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.02324,
+        "ref_elong": 28.88874,
+        "ref_up": 126.93,
+        "dn/dt": 0.01171,
+        "de/dt": 0.02342,
+        "du/dt": -0.0,
+        "snd": 0.00038,
+        "sed": 0.00034,
+        "sud": 0.00038,
+        "rne": 0.09183,
+        "rnu": 0.00824,
+        "reu": -0.10567,
+        "first_epoch": "2014-11-30 00:00:00",
+        "last_epoch": "2020-06-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00165,
+        "de/dt": -0.00046,
+        "du/dt": -4e-05,
+        "snd": 0.00013,
+        "sed": 0.00012,
+        "sud": 0.00033,
+        "rne": 0.07247,
+        "rnu": 0.00898,
+        "reu": -0.01928,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00768,
+        "de/dt": 0.01931,
+        "du/dt": -6e-05,
+        "snd": 0.00013,
+        "sed": 0.00012,
+        "sud": 0.00033,
+        "rne": 0.07247,
+        "rnu": 0.00898,
+        "reu": -0.01928,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": 0.01141,
+        "de/dt": 0.02422,
+        "du/dt": 0.0,
+        "snd": 0.00013,
+        "sed": 0.00012,
+        "sud": 0.00033,
+        "rne": 0.07247,
+        "rnu": 0.00898,
+        "reu": -0.01928,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00038,
+        "de/dt": -0.00281,
+        "du/dt": -0.00024,
+        "snd": 3e-05,
+        "sed": 2e-05,
+        "sud": 3e-05,
+        "rne": 0.21032,
+        "rnu": 0.0693,
+        "reu": -0.24335,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00642,
+        "de/dt": 0.01696,
+        "du/dt": -0.00026,
+        "snd": 3e-05,
+        "sed": 2e-05,
+        "sud": 3e-05,
+        "rne": 0.21032,
+        "rnu": 0.0693,
+        "reu": -0.24335,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": 0.01268,
+        "de/dt": 0.02187,
+        "du/dt": -0.0002,
+        "snd": 3e-05,
+        "sed": 2e-05,
+        "sud": 3e-05,
+        "rne": 0.21032,
+        "rnu": 0.0693,
+        "reu": -0.24335,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "UGA-CNRS",
+    "DOI": "10.17178/GNSS.products.EPOS.2019",
+    "ReferenceFrame": "IGb14",
+    "Software": "MIDAS",
+    "ReleaseVersion": "2024.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/UGA_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2000-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.23,
+        "dn/dt": -0.0013,
+        "de/dt": -0.00043,
+        "du/dt": 0.00031,
+        "snd": 0.00015,
+        "sed": 0.00014,
+        "sud": 0.00042,
+        "rne": 0.03559,
+        "rnu": 0.01271,
+        "reu": -0.02854,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2024-03-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "UGA-CNRS",
+    "DOI": "10.17178/GNSS.products.EPOS.2019",
+    "ReferenceFrame": "IGb14",
+    "Software": "MIDAS",
+    "ReleaseVersion": "2024.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/UGA_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2000-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.23,
+        "dn/dt": 0.01176,
+        "de/dt": 0.02425,
+        "du/dt": 0.00035,
+        "snd": 0.00015,
+        "sed": 0.00014,
+        "sud": 0.00042,
+        "rne": 0.03559,
+        "rnu": 0.01271,
+        "reu": -0.02854,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2024-03-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00539,
+        "de/dt": 0.0005,
+        "du/dt": -0.00026,
+        "snd": 3e-05,
+        "sed": 2e-05,
+        "sud": 3e-05,
+        "rne": 0.21032,
+        "rnu": 0.0693,
+        "reu": -0.24335,
+        "first_epoch": "2008-10-12 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "UGA-CNRS",
+    "DOI": "10.17178/GNSS.products.EPOS.2019",
+    "ReferenceFrame": "IGb14",
+    "Software": "MIDAS",
+    "ReleaseVersion": "2024.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/UGA_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2000-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.23,
+        "dn/dt": -0.00734,
+        "de/dt": 0.01933,
+        "du/dt": 0.00029,
+        "snd": 0.00015,
+        "sed": 0.00014,
+        "sud": 0.00042,
+        "rne": 0.03559,
+        "rnu": 0.01271,
+        "reu": -0.02854,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2024-03-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "UGA-CNRS",
+    "DOI": "10.17178/GNSS.products.EPOS.2019",
+    "ReferenceFrame": "IGb14",
+    "Software": "MIDAS",
+    "ReleaseVersion": "2024.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/UGA_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2000-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.23,
+        "dn/dt": -0.0063,
+        "de/dt": 0.00287,
+        "du/dt": 0.00029,
+        "snd": 0.00015,
+        "sed": 0.00014,
+        "sud": 0.00042,
+        "rne": 0.03559,
+        "rnu": 0.01271,
+        "reu": -0.02854,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2024-03-21 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "INGV",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/INGV_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "ISTA00TUR",
+      "isEPOS": true,
+      "MOID": "https://gnss-metadata.eu/MOID/ISTA00TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=ISTA00TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 41.10445,
+        "ref_elong": 29.01934,
+        "ref_up": 147.24,
+        "dn/dt": -0.00665,
+        "de/dt": 0.00285,
+        "du/dt": -6e-05,
+        "snd": 0.00013,
+        "sed": 0.00012,
+        "sud": 0.00033,
+        "rne": 0.07247,
+        "rnu": 0.00898,
+        "reu": -0.01928,
+        "first_epoch": "2000-01-01 00:00:00",
+        "last_epoch": "2022-12-31 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "ROB-EUREF",
+    "DOI": "10.24414/ROB-EUREF-C2235",
+    "ReferenceFrame": "IGb14",
+    "Software": "CATREF/Hector",
+    "ReleaseVersion": "2235.0",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/ROB-EUREF.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.77,
+        "dn/dt": 0.00518,
+        "de/dt": 0.00071,
+        "du/dt": 0.00205,
+        "snd": 0.00024,
+        "sed": 0.00019,
+        "sud": 0.00108,
+        "rne": 0.26087,
+        "rnu": 0.01143,
+        "reu": 0.07558,
+        "first_epoch": "2019-01-13 00:00:00",
+        "last_epoch": "2022-11-12 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "ROB-EUREF",
+    "DOI": "10.24414/ROB-EUREF-C2235",
+    "ReferenceFrame": "IGb14",
+    "Software": "CATREF/Hector",
+    "ReleaseVersion": "2235.0",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/ROB-EUREF.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.77,
+        "dn/dt": -0.0008,
+        "de/dt": 0.01967,
+        "du/dt": 0.00203,
+        "snd": 0.00024,
+        "sed": 0.00019,
+        "sud": 0.00108,
+        "rne": 0.26087,
+        "rnu": 0.01143,
+        "reu": 0.07558,
+        "first_epoch": "2019-01-13 00:00:00",
+        "last_epoch": "2022-11-12 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "ROB-EUREF",
+    "DOI": "10.24414/ROB-EUREF-C2235",
+    "ReferenceFrame": "IGb14",
+    "Software": "CATREF/Hector",
+    "ReleaseVersion": "2235.0",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/ROB-EUREF.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.77,
+        "dn/dt": -0.00058,
+        "de/dt": 0.00313,
+        "du/dt": 0.00203,
+        "snd": 0.00024,
+        "sed": 0.00019,
+        "sud": 0.00108,
+        "rne": 0.26087,
+        "rnu": 0.01143,
+        "reu": 0.07558,
+        "first_epoch": "2019-01-13 00:00:00",
+        "last_epoch": "2022-11-12 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "ROB-EUREF",
+    "DOI": "10.24414/ROB-EUREF-C2235",
+    "ReferenceFrame": "IGb14",
+    "Software": "CATREF/Hector",
+    "ReleaseVersion": "2235.0",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/ROB-EUREF.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.77,
+        "dn/dt": 0.01536,
+        "de/dt": 0.02733,
+        "du/dt": 0.00209,
+        "snd": 0.00024,
+        "sed": 0.00019,
+        "sud": 0.00108,
+        "rne": 0.26087,
+        "rnu": 0.01143,
+        "reu": 0.07558,
+        "first_epoch": "2019-01-13 00:00:00",
+        "last_epoch": "2022-11-12 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.78,
+        "dn/dt": 0.00505,
+        "de/dt": 0.00124,
+        "du/dt": 0.00036,
+        "snd": 5e-05,
+        "sed": 4e-05,
+        "sud": 5e-05,
+        "rne": 0.13488,
+        "rnu": 0.09064,
+        "reu": -0.15966,
+        "first_epoch": "2009-01-11 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.78,
+        "dn/dt": -0.00093,
+        "de/dt": 0.0202,
+        "du/dt": 0.00034,
+        "snd": 5e-05,
+        "sed": 4e-05,
+        "sud": 5e-05,
+        "rne": 0.13488,
+        "rnu": 0.09064,
+        "reu": -0.15966,
+        "first_epoch": "2009-01-11 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.78,
+        "dn/dt": -0.00071,
+        "de/dt": 0.00367,
+        "du/dt": 0.00034,
+        "snd": 5e-05,
+        "sed": 4e-05,
+        "sud": 5e-05,
+        "rne": 0.13488,
+        "rnu": 0.09064,
+        "reu": -0.15966,
+        "first_epoch": "2009-01-11 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  },
+  {
+    "Title": "EPOS-GNSS Velocities",
+    "AnalysisCentre": "SGO-EPND",
+    "DOI": "unknown",
+    "ReferenceFrame": "IGS14",
+    "Software": "Midas",
+    "ReleaseVersion": "2023.1",
+    "Method_URL": "https://gnssproducts.epos.ubi.pt/methods/SGO_TS.pdf",
+    "JSON_Version": "1.0",
+    "Unit": "meters",
+    "Station_metadata": {
+      "StationID": "KRS100TUR",
+      "isEPOS": false,
+      "MOID": "https://gnss-metadata.eu/MOID/KRS100TUR",
+      "DGW": "https://gnssdata-epos.oca.eu/#/metadata/marker=KRS100TUR"
+    },
+    "results": [
+      {
+        "ref_epoch": "2010-01-01 00:00:00",
+        "ref_nlat": 40.58845,
+        "ref_elong": 43.09345,
+        "ref_up": 1811.78,
+        "dn/dt": 0.01523,
+        "de/dt": 0.02786,
+        "du/dt": 0.00039,
+        "snd": 5e-05,
+        "sed": 4e-05,
+        "sud": 5e-05,
+        "rne": 0.13488,
+        "rnu": 0.09064,
+        "reu": -0.15966,
+        "first_epoch": "2009-01-11 00:00:00",
+        "last_epoch": "2022-03-13 00:00:00"
+      }
+    ]
+  }
+]

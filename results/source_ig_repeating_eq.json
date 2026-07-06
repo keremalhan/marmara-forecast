@@ -1,0 +1,13 @@
+{
+  "source": "repeating_eq",
+  "data_spec": {
+    "requires": "data/external/marmara_repeaters.csv",
+    "fetch": "sources/fetch_data.py repeaters  (from published supplementary tables)",
+    "format": "CSV [datetime, lat, lon, family_id]",
+    "provenance": "Schmittbuhl et al. 2016 GRL; Bohnhoff et al. 2017 (Main Marmara Fault repeaters / creep).",
+    "why": "Repeater recurrence is a direct aseismic-creep observable; a locked patch that stops creeping (repeaters slow) is a physical loading signal."
+  },
+  "available": false,
+  "reason": "missing data/external/marmara_repeaters.csv",
+  "status": "SKIPPED \u2014 data not present; drop it in and re-run (no fabrication)"
+}

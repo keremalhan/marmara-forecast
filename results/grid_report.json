@@ -1,0 +1,50 @@
+{
+  "n_cells": 1219,
+  "n_windows": 261,
+  "n_rows": 318159,
+  "mc": 3.65,
+  "window_range": [
+    "2005-01-01",
+    "2026-05-11"
+  ],
+  "catalog_end": "2026-07-06 04:00:00",
+  "y35_positive_rate": 0.0090583638998111,
+  "y45_positive_rate": 0.00043688847400199274,
+  "features": [
+    "cnt30",
+    "cnt90",
+    "cnt365",
+    "nbr3_cnt30",
+    "nbr3_cnt365",
+    "nbr5_cnt30",
+    "nbr5_cnt365",
+    "days_since_m35_25km",
+    "days_since_m45_25km",
+    "maxmag365_25km",
+    "mean_depth90",
+    "rate_ratio",
+    "b_pos_50km_730d",
+    "b_pos_is_fallback",
+    "dist_fault_km",
+    "dcfs_perm",
+    "dcfs_decay25",
+    "strain_inv",
+    "etas_rate"
+  ],
+  "seismicity_features": [
+    "cnt30",
+    "cnt90",
+    "cnt365",
+    "nbr3_cnt30",
+    "nbr3_cnt365",
+    "nbr5_cnt30",
+    "nbr5_cnt365",
+    "days_since_m35_25km",
+    "days_since_m45_25km",
+    "maxmag365_25km",
+    "rate_ratio",
+    "b_pos_50km_730d",
+    "b_pos_is_fallback",
+    "etas_rate"
+  ]
+}

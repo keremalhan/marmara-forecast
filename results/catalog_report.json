@@ -1,0 +1,24 @@
+{
+  "n_raw": 103410,
+  "n_after_dedup_widebox": 103388,
+  "n_model_box": 31329,
+  "n_dropped_dedup": 22,
+  "mc": 3.65,
+  "mc_mode_bin_center": 3.450000000000001,
+  "mc_estimation_events_2003_2021": 23481,
+  "mc_caveat": "Mixed-catalog max-curvature: the 0.1-bin mag_w mode is inflated to 3.450000000000001 by the ~15k Md events piling near mag_w 3.45 (Md->Mw offset is steeper than ML->Mw). The dominant modern ML population completes near mag_w 2.717 (raw ML mode 1.7500000000000007), so y35=3.5 remains above ML-population completeness; Mc=3.65 is used consistently as the feature-counting threshold for events and all baselines (fair), and y45=4.5 is far above it.",
+  "ml_population_mode_raw": 1.7500000000000007,
+  "ml_population_mode_magw": 2.717,
+  "date_range": [
+    "2003-01-04 01:48:28",
+    "2026-07-06 04:00:00"
+  ],
+  "n_preliminary_model": 445,
+  "counts_model_box": {
+    "ge_3.5": 5021,
+    "ge_4.5": 192,
+    "ge_5.5": 12,
+    "ge_6.0": 1,
+    "ge_mc(3.65)": 2332
+  }
+}

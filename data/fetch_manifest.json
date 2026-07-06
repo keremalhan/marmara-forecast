@@ -1,0 +1,1029 @@
+{
+ "created_utc": "2026-07-05T22:12:17Z",
+ "task": "KOERI event catalog, box lat 39.0-42.5 / lon 25.0-31.5, 2003-01-01 -> 2026-07-05, min mag 1.0",
+ "output_files": {
+  "koeri_events.csv": "final merged catalog (103,391 rows; UTF-8; datetime_utc ISO 8601, no tz suffix, values are true UTC)",
+  "fetch_manifest.json": "this file",
+  "raw/": "all raw HTTP responses (zeqdb chunk HTML, monthly XML, AFAD JSON, probe pages, K&K 2016 PDF)",
+  "fetch_zeqdb.py / build_catalog.py": "fetch + build scripts (reproducible)",
+  "zeqdb_chunk_log.json / build_stats.json": "per-query log and build/verification stats"
+ },
+ "sources": {
+  "zeqdb_reviewed": {
+   "endpoint": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp (GET; params bYear,bMont,bDay,eYear,eMont,eDay,EnMin,EnMax,BoyMin,BoyMax,MAGMin,MAGMax,DerMin,DerMax,Tip,ofName; discovered from form JS getPOSTparameters() at /sismo/zeqdb/)",
+   "query_params_fixed": {
+    "EnMin": "39.0",
+    "EnMax": "42.5",
+    "BoyMin": "25.0",
+    "BoyMax": "31.5",
+    "MAGMin": "1.0",
+    "MAGMax": "9.0",
+    "DerMin": "0",
+    "DerMax": "500",
+    "Tip": "Hepsi"
+   },
+   "chunking": "half-year chunks 2003-2025 + 2026 to date; recursive auto-split when found>=4000 (zeqdb row cap never observed; max accepted chunk 3846 rows); date filter inclusive both ends; no gaps/overlaps (verified tiling 2003-01-01..2026-07-05)",
+   "queries_made": 77,
+   "queries_accepted": 62,
+   "queries_failed": 0,
+   "count_mismatches": 0,
+   "rows_fetched_total": 112713,
+   "tip_distribution": {
+    "Ke": 100959,
+    "Sm": 11754
+   },
+   "filter_applied": "kept Tip=='Ke' (earthquake) only; dropped 11,754 'Sm' (suspected explosion/quarry blast) rows",
+   "duplicate_event_codes_dropped": 3,
+   "rows_used": 100956,
+   "coverage_utc": [
+    "2003-01-02 01:57:15",
+    "2026-03-31 18:34:41"
+   ],
+   "reviewed_catalog_end": "2026-03-31T18:34:41Z — full-year-2026 query returns nothing after this; reviewed coverage ends end of March 2026 (~3-month delay as expected)",
+   "encoding": "cp1254",
+   "per_query_log": [
+    {
+     "chunk": "2003-01-01_2003-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2003&bMont=01&bDay=01&eYear=2003&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2003-01-01_2003-06-30.txt",
+     "http": 200,
+     "found": 533,
+     "parsed": 533,
+     "date_min": "2003.01.02",
+     "date_max": "2003.06.30",
+     "raw_file": "zeqdb_2003-01-01_2003-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2003-07-01_2003-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2003&bMont=07&bDay=01&eYear=2003&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2003-07-01_2003-12-31.txt",
+     "http": 200,
+     "found": 567,
+     "parsed": 567,
+     "date_min": "2003.07.01",
+     "date_max": "2003.12.31",
+     "raw_file": "zeqdb_2003-07-01_2003-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2004-01-01_2004-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2004&bMont=01&bDay=01&eYear=2004&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2004-01-01_2004-06-30.txt",
+     "http": 200,
+     "found": 751,
+     "parsed": 751,
+     "date_min": "2004.01.01",
+     "date_max": "2004.06.30",
+     "raw_file": "zeqdb_2004-01-01_2004-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2004-07-01_2004-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2004&bMont=07&bDay=01&eYear=2004&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2004-07-01_2004-12-31.txt",
+     "http": 200,
+     "found": 931,
+     "parsed": 931,
+     "date_min": "2004.07.01",
+     "date_max": "2004.12.31",
+     "raw_file": "zeqdb_2004-07-01_2004-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2005-01-01_2005-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2005&bMont=01&bDay=01&eYear=2005&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2005-01-01_2005-06-30.txt",
+     "http": 200,
+     "found": 903,
+     "parsed": 903,
+     "date_min": "2005.01.01",
+     "date_max": "2005.06.30",
+     "raw_file": "zeqdb_2005-01-01_2005-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2005-07-01_2005-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2005&bMont=07&bDay=01&eYear=2005&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2005-07-01_2005-12-31.txt",
+     "http": 200,
+     "found": 827,
+     "parsed": 827,
+     "date_min": "2005.07.01",
+     "date_max": "2005.12.31",
+     "raw_file": "zeqdb_2005-07-01_2005-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2006-01-01_2006-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2006&bMont=01&bDay=01&eYear=2006&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2006-01-01_2006-06-30.txt",
+     "http": 200,
+     "found": 491,
+     "parsed": 491,
+     "date_min": "2006.01.01",
+     "date_max": "2006.06.30",
+     "raw_file": "zeqdb_2006-01-01_2006-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2006-07-01_2006-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2006&bMont=07&bDay=01&eYear=2006&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2006-07-01_2006-12-31.txt",
+     "http": 200,
+     "found": 479,
+     "parsed": 479,
+     "date_min": "2006.07.03",
+     "date_max": "2006.12.31",
+     "raw_file": "zeqdb_2006-07-01_2006-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2007-01-01_2007-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2007&bMont=01&bDay=01&eYear=2007&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2007-01-01_2007-06-30.txt",
+     "http": 200,
+     "found": 453,
+     "parsed": 453,
+     "date_min": "2007.01.01",
+     "date_max": "2007.06.30",
+     "raw_file": "zeqdb_2007-01-01_2007-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2007-07-01_2007-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2007&bMont=07&bDay=01&eYear=2007&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2007-07-01_2007-12-31.txt",
+     "http": 200,
+     "found": 501,
+     "parsed": 501,
+     "date_min": "2007.07.02",
+     "date_max": "2007.12.31",
+     "raw_file": "zeqdb_2007-07-01_2007-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2008-01-01_2008-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2008&bMont=01&bDay=01&eYear=2008&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2008-01-01_2008-06-30.txt",
+     "http": 200,
+     "found": 671,
+     "parsed": 671,
+     "date_min": "2008.01.01",
+     "date_max": "2008.06.30",
+     "raw_file": "zeqdb_2008-01-01_2008-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2008-07-01_2008-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2008&bMont=07&bDay=01&eYear=2008&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2008-07-01_2008-12-31.txt",
+     "http": 200,
+     "found": 854,
+     "parsed": 854,
+     "date_min": "2008.07.01",
+     "date_max": "2008.12.31",
+     "raw_file": "zeqdb_2008-07-01_2008-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2009-01-01_2009-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2009&bMont=01&bDay=01&eYear=2009&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2009-01-01_2009-06-30.txt",
+     "http": 200,
+     "found": 1555,
+     "parsed": 1555,
+     "date_min": "2009.01.01",
+     "date_max": "2009.06.30",
+     "raw_file": "zeqdb_2009-01-01_2009-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2009-07-01_2009-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2009&bMont=07&bDay=01&eYear=2009&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2009-07-01_2009-12-31.txt",
+     "http": 200,
+     "found": 767,
+     "parsed": 767,
+     "date_min": "2009.07.01",
+     "date_max": "2009.12.31",
+     "raw_file": "zeqdb_2009-07-01_2009-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2010-01-01_2010-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2010&bMont=01&bDay=01&eYear=2010&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2010-01-01_2010-06-30.txt",
+     "http": 200,
+     "found": 1215,
+     "parsed": 1215,
+     "date_min": "2010.01.01",
+     "date_max": "2010.06.30",
+     "raw_file": "zeqdb_2010-01-01_2010-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2010-07-01_2010-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2010&bMont=07&bDay=01&eYear=2010&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2010-07-01_2010-12-31.txt",
+     "http": 200,
+     "found": 1221,
+     "parsed": 1221,
+     "date_min": "2010.07.01",
+     "date_max": "2010.12.31",
+     "raw_file": "zeqdb_2010-07-01_2010-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2011-01-01_2011-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2011&bMont=01&bDay=01&eYear=2011&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2011-01-01_2011-06-30.txt",
+     "http": 200,
+     "found": 3270,
+     "parsed": 3270,
+     "date_min": "2011.01.01",
+     "date_max": "2011.06.30",
+     "raw_file": "zeqdb_2011-01-01_2011-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2011-07-01_2011-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2011&bMont=07&bDay=01&eYear=2011&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2011-07-01_2011-12-31.txt",
+     "http": 200,
+     "found": 1891,
+     "parsed": 1891,
+     "date_min": "2011.07.01",
+     "date_max": "2011.12.31",
+     "raw_file": "zeqdb_2011-07-01_2011-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2012-01-01_2012-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2012&bMont=01&bDay=01&eYear=2012&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2012-01-01_2012-06-30.txt",
+     "http": 200,
+     "found": 3359,
+     "parsed": 3359,
+     "date_min": "2012.01.01",
+     "date_max": "2012.06.30",
+     "raw_file": "zeqdb_2012-01-01_2012-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2012-07-01_2012-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2012&bMont=07&bDay=01&eYear=2012&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2012-07-01_2012-12-31.txt",
+     "http": 200,
+     "found": 1870,
+     "parsed": 1870,
+     "date_min": "2012.07.01",
+     "date_max": "2012.12.31",
+     "raw_file": "zeqdb_2012-07-01_2012-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2013-01-01_2013-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2013&bMont=01&bDay=01&eYear=2013&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2013-01-01_2013-06-30.txt",
+     "http": 200,
+     "found": 2341,
+     "parsed": 2341,
+     "date_min": "2013.01.01",
+     "date_max": "2013.06.30",
+     "raw_file": "zeqdb_2013-01-01_2013-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2013-07-01_2013-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2013&bMont=07&bDay=01&eYear=2013&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2013-07-01_2013-12-31.txt",
+     "http": 200,
+     "found": 1974,
+     "parsed": 1974,
+     "date_min": "2013.07.01",
+     "date_max": "2013.12.31",
+     "raw_file": "zeqdb_2013-07-01_2013-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2014-01-01_2014-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2014&bMont=01&bDay=01&eYear=2014&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2014-01-01_2014-06-30.txt",
+     "http": 200,
+     "found": 3026,
+     "parsed": 3026,
+     "date_min": "2014.01.01",
+     "date_max": "2014.06.30",
+     "raw_file": "zeqdb_2014-01-01_2014-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2014-07-01_2014-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2014&bMont=07&bDay=01&eYear=2014&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2014-07-01_2014-12-31.txt",
+     "http": 200,
+     "found": 2384,
+     "parsed": 2384,
+     "date_min": "2014.07.01",
+     "date_max": "2014.12.31",
+     "raw_file": "zeqdb_2014-07-01_2014-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2015-01-01_2015-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2015&bMont=01&bDay=01&eYear=2015&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2015-01-01_2015-06-30.txt",
+     "http": 200,
+     "found": 2169,
+     "parsed": 2169,
+     "date_min": "2015.01.01",
+     "date_max": "2015.06.30",
+     "raw_file": "zeqdb_2015-01-01_2015-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2015-07-01_2015-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2015&bMont=07&bDay=01&eYear=2015&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2015-07-01_2015-12-31.txt",
+     "http": 200,
+     "found": 2663,
+     "parsed": 2663,
+     "date_min": "2015.07.01",
+     "date_max": "2015.12.31",
+     "raw_file": "zeqdb_2015-07-01_2015-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2016-01-01_2016-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2016&bMont=01&bDay=01&eYear=2016&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2016-01-01_2016-06-30.txt",
+     "http": 200,
+     "found": 1788,
+     "parsed": 1788,
+     "date_min": "2016.01.01",
+     "date_max": "2016.06.30",
+     "raw_file": "zeqdb_2016-01-01_2016-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2016-07-01_2016-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2016&bMont=07&bDay=01&eYear=2016&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2016-07-01_2016-12-31.txt",
+     "http": 200,
+     "found": 1824,
+     "parsed": 1824,
+     "date_min": "2016.07.01",
+     "date_max": "2016.12.31",
+     "raw_file": "zeqdb_2016-07-01_2016-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2017-01-01_2017-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=01&bDay=01&eYear=2017&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-01-01_2017-06-30.txt",
+     "http": 200,
+     "found": 7027,
+     "parsed": 7027,
+     "date_min": "2017.01.01",
+     "date_max": "2017.06.30",
+     "raw_file": "zeqdb_2017-01-01_2017-06-30.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2017-01-01_2017-04-01",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=01&bDay=01&eYear=2017&eMont=04&eDay=01&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-01-01_2017-04-01.txt",
+     "http": 200,
+     "found": 5448,
+     "parsed": 5448,
+     "date_min": "2017.01.01",
+     "date_max": "2017.04.01",
+     "raw_file": "zeqdb_2017-01-01_2017-04-01.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2017-01-01_2017-02-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=01&bDay=01&eYear=2017&eMont=02&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-01-01_2017-02-15.txt",
+     "http": 200,
+     "found": 2675,
+     "parsed": 2675,
+     "date_min": "2017.01.01",
+     "date_max": "2017.02.15",
+     "raw_file": "zeqdb_2017-01-01_2017-02-15.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2017-02-16_2017-04-01",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=02&bDay=16&eYear=2017&eMont=04&eDay=01&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-02-16_2017-04-01.txt",
+     "http": 200,
+     "found": 2773,
+     "parsed": 2773,
+     "date_min": "2017.02.16",
+     "date_max": "2017.04.01",
+     "raw_file": "zeqdb_2017-02-16_2017-04-01.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2017-04-02_2017-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=04&bDay=02&eYear=2017&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-04-02_2017-06-30.txt",
+     "http": 200,
+     "found": 1579,
+     "parsed": 1579,
+     "date_min": "2017.04.02",
+     "date_max": "2017.06.30",
+     "raw_file": "zeqdb_2017-04-02_2017-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2017-07-01_2017-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2017&bMont=07&bDay=01&eYear=2017&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2017-07-01_2017-12-31.txt",
+     "http": 200,
+     "found": 1731,
+     "parsed": 1731,
+     "date_min": "2017.07.01",
+     "date_max": "2017.12.31",
+     "raw_file": "zeqdb_2017-07-01_2017-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2018-01-01_2018-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2018&bMont=01&bDay=01&eYear=2018&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2018-01-01_2018-06-30.txt",
+     "http": 200,
+     "found": 1455,
+     "parsed": 1455,
+     "date_min": "2018.01.01",
+     "date_max": "2018.06.30",
+     "raw_file": "zeqdb_2018-01-01_2018-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2018-07-01_2018-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2018&bMont=07&bDay=01&eYear=2018&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2018-07-01_2018-12-31.txt",
+     "http": 200,
+     "found": 1536,
+     "parsed": 1536,
+     "date_min": "2018.07.01",
+     "date_max": "2018.12.31",
+     "raw_file": "zeqdb_2018-07-01_2018-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2019-01-01_2019-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2019&bMont=01&bDay=01&eYear=2019&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2019-01-01_2019-06-30.txt",
+     "http": 200,
+     "found": 1778,
+     "parsed": 1778,
+     "date_min": "2019.01.01",
+     "date_max": "2019.06.30",
+     "raw_file": "zeqdb_2019-01-01_2019-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2019-07-01_2019-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2019&bMont=07&bDay=01&eYear=2019&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2019-07-01_2019-12-31.txt",
+     "http": 200,
+     "found": 2210,
+     "parsed": 2210,
+     "date_min": "2019.07.01",
+     "date_max": "2019.12.31",
+     "raw_file": "zeqdb_2019-07-01_2019-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2020-01-01_2020-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=01&bDay=01&eYear=2020&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-01-01_2020-06-30.txt",
+     "http": 200,
+     "found": 5425,
+     "parsed": 5425,
+     "date_min": "2020.01.01",
+     "date_max": "2020.06.30",
+     "raw_file": "zeqdb_2020-01-01_2020-06-30.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2020-01-01_2020-03-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=01&bDay=01&eYear=2020&eMont=03&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-01-01_2020-03-31.txt",
+     "http": 200,
+     "found": 4465,
+     "parsed": 4465,
+     "date_min": "2020.01.01",
+     "date_max": "2020.03.31",
+     "raw_file": "zeqdb_2020-01-01_2020-03-31.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2020-01-01_2020-02-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=01&bDay=01&eYear=2020&eMont=02&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-01-01_2020-02-15.txt",
+     "http": 200,
+     "found": 2980,
+     "parsed": 2980,
+     "date_min": "2020.01.01",
+     "date_max": "2020.02.15",
+     "raw_file": "zeqdb_2020-01-01_2020-02-15.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2020-02-16_2020-03-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=02&bDay=16&eYear=2020&eMont=03&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-02-16_2020-03-31.txt",
+     "http": 200,
+     "found": 1485,
+     "parsed": 1485,
+     "date_min": "2020.02.16",
+     "date_max": "2020.03.31",
+     "raw_file": "zeqdb_2020-02-16_2020-03-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2020-04-01_2020-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=04&bDay=01&eYear=2020&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-04-01_2020-06-30.txt",
+     "http": 200,
+     "found": 960,
+     "parsed": 960,
+     "date_min": "2020.04.01",
+     "date_max": "2020.06.30",
+     "raw_file": "zeqdb_2020-04-01_2020-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2020-07-01_2020-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2020&bMont=07&bDay=01&eYear=2020&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2020-07-01_2020-12-31.txt",
+     "http": 200,
+     "found": 1618,
+     "parsed": 1618,
+     "date_min": "2020.07.01",
+     "date_max": "2020.12.31",
+     "raw_file": "zeqdb_2020-07-01_2020-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2021-01-01_2021-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2021&bMont=01&bDay=01&eYear=2021&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2021-01-01_2021-06-30.txt",
+     "http": 200,
+     "found": 1663,
+     "parsed": 1663,
+     "date_min": "2021.01.01",
+     "date_max": "2021.06.30",
+     "raw_file": "zeqdb_2021-01-01_2021-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2021-07-01_2021-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2021&bMont=07&bDay=01&eYear=2021&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2021-07-01_2021-12-31.txt",
+     "http": 200,
+     "found": 1093,
+     "parsed": 1093,
+     "date_min": "2021.07.01",
+     "date_max": "2021.12.31",
+     "raw_file": "zeqdb_2021-07-01_2021-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2022-01-01_2022-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2022&bMont=01&bDay=01&eYear=2022&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2022-01-01_2022-06-30.txt",
+     "http": 200,
+     "found": 1423,
+     "parsed": 1423,
+     "date_min": "2022.01.01",
+     "date_max": "2022.06.30",
+     "raw_file": "zeqdb_2022-01-01_2022-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2022-07-01_2022-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2022&bMont=07&bDay=01&eYear=2022&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2022-07-01_2022-12-31.txt",
+     "http": 200,
+     "found": 2186,
+     "parsed": 2186,
+     "date_min": "2022.07.01",
+     "date_max": "2022.12.31",
+     "raw_file": "zeqdb_2022-07-01_2022-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2023-01-01_2023-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2023&bMont=01&bDay=01&eYear=2023&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2023-01-01_2023-06-30.txt",
+     "http": 200,
+     "found": 2934,
+     "parsed": 2934,
+     "date_min": "2023.01.01",
+     "date_max": "2023.06.30",
+     "raw_file": "zeqdb_2023-01-01_2023-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2023-07-01_2023-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2023&bMont=07&bDay=01&eYear=2023&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2023-07-01_2023-12-31.txt",
+     "http": 200,
+     "found": 1712,
+     "parsed": 1712,
+     "date_min": "2023.07.01",
+     "date_max": "2023.12.31",
+     "raw_file": "zeqdb_2023-07-01_2023-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2024-01-01_2024-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2024&bMont=01&bDay=01&eYear=2024&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2024-01-01_2024-06-30.txt",
+     "http": 200,
+     "found": 1976,
+     "parsed": 1976,
+     "date_min": "2024.01.01",
+     "date_max": "2024.06.30",
+     "raw_file": "zeqdb_2024-01-01_2024-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2024-07-01_2024-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2024&bMont=07&bDay=01&eYear=2024&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2024-07-01_2024-12-31.txt",
+     "http": 200,
+     "found": 1826,
+     "parsed": 1826,
+     "date_min": "2024.07.01",
+     "date_max": "2024.12.31",
+     "raw_file": "zeqdb_2024-07-01_2024-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-01-01_2025-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=01&bDay=01&eYear=2025&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-01-01_2025-06-30.txt",
+     "http": 200,
+     "found": 4297,
+     "parsed": 4297,
+     "date_min": "2025.01.01",
+     "date_max": "2025.06.30",
+     "raw_file": "zeqdb_2025-01-01_2025-06-30.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-01-01_2025-04-01",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=01&bDay=01&eYear=2025&eMont=04&eDay=01&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-01-01_2025-04-01.txt",
+     "http": 200,
+     "found": 827,
+     "parsed": 827,
+     "date_min": "2025.01.01",
+     "date_max": "2025.04.01",
+     "raw_file": "zeqdb_2025-01-01_2025-04-01.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-04-02_2025-06-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=04&bDay=02&eYear=2025&eMont=06&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-04-02_2025-06-30.txt",
+     "http": 200,
+     "found": 3470,
+     "parsed": 3470,
+     "date_min": "2025.04.02",
+     "date_max": "2025.06.30",
+     "raw_file": "zeqdb_2025-04-02_2025-06-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-07-01_2025-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=07&bDay=01&eYear=2025&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-07-01_2025-12-31.txt",
+     "http": 200,
+     "found": 25034,
+     "parsed": 25034,
+     "date_min": "2025.07.01",
+     "date_max": "2025.12.31",
+     "raw_file": "zeqdb_2025-07-01_2025-12-31.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-07-01_2025-09-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=07&bDay=01&eYear=2025&eMont=09&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-07-01_2025-09-30.txt",
+     "http": 200,
+     "found": 12755,
+     "parsed": 12755,
+     "date_min": "2025.07.01",
+     "date_max": "2025.09.30",
+     "raw_file": "zeqdb_2025-07-01_2025-09-30.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-07-01_2025-08-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=07&bDay=01&eYear=2025&eMont=08&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-07-01_2025-08-15.txt",
+     "http": 200,
+     "found": 3846,
+     "parsed": 3846,
+     "date_min": "2025.07.01",
+     "date_max": "2025.08.15",
+     "raw_file": "zeqdb_2025-07-01_2025-08-15.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-08-16_2025-09-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=08&bDay=16&eYear=2025&eMont=09&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-08-16_2025-09-30.txt",
+     "http": 200,
+     "found": 8909,
+     "parsed": 8909,
+     "date_min": "2025.08.16",
+     "date_max": "2025.09.30",
+     "raw_file": "zeqdb_2025-08-16_2025-09-30.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-08-16_2025-09-07",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=08&bDay=16&eYear=2025&eMont=09&eDay=07&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-08-16_2025-09-07.txt",
+     "http": 200,
+     "found": 5680,
+     "parsed": 5680,
+     "date_min": "2025.08.16",
+     "date_max": "2025.09.07",
+     "raw_file": "zeqdb_2025-08-16_2025-09-07.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-08-16_2025-08-27",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=08&bDay=16&eYear=2025&eMont=08&eDay=27&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-08-16_2025-08-27.txt",
+     "http": 200,
+     "found": 3627,
+     "parsed": 3627,
+     "date_min": "2025.08.16",
+     "date_max": "2025.08.27",
+     "raw_file": "zeqdb_2025-08-16_2025-08-27.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-08-28_2025-09-07",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=08&bDay=28&eYear=2025&eMont=09&eDay=07&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-08-28_2025-09-07.txt",
+     "http": 200,
+     "found": 2053,
+     "parsed": 2053,
+     "date_min": "2025.08.28",
+     "date_max": "2025.09.07",
+     "raw_file": "zeqdb_2025-08-28_2025-09-07.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-09-08_2025-09-30",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=09&bDay=08&eYear=2025&eMont=09&eDay=30&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-09-08_2025-09-30.txt",
+     "http": 200,
+     "found": 3229,
+     "parsed": 3229,
+     "date_min": "2025.09.08",
+     "date_max": "2025.09.30",
+     "raw_file": "zeqdb_2025-09-08_2025-09-30.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-10-01_2025-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=10&bDay=01&eYear=2025&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-10-01_2025-12-31.txt",
+     "http": 200,
+     "found": 12279,
+     "parsed": 12279,
+     "date_min": "2025.10.01",
+     "date_max": "2025.12.31",
+     "raw_file": "zeqdb_2025-10-01_2025-12-31.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-10-01_2025-11-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=10&bDay=01&eYear=2025&eMont=11&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-10-01_2025-11-15.txt",
+     "http": 200,
+     "found": 8218,
+     "parsed": 8218,
+     "date_min": "2025.10.01",
+     "date_max": "2025.11.15",
+     "raw_file": "zeqdb_2025-10-01_2025-11-15.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-10-01_2025-10-23",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=10&bDay=01&eYear=2025&eMont=10&eDay=23&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-10-01_2025-10-23.txt",
+     "http": 200,
+     "found": 2259,
+     "parsed": 2259,
+     "date_min": "2025.10.01",
+     "date_max": "2025.10.23",
+     "raw_file": "zeqdb_2025-10-01_2025-10-23.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-10-24_2025-11-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=10&bDay=24&eYear=2025&eMont=11&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-10-24_2025-11-15.txt",
+     "http": 200,
+     "found": 5959,
+     "parsed": 5959,
+     "date_min": "2025.10.24",
+     "date_max": "2025.11.15",
+     "raw_file": "zeqdb_2025-10-24_2025-11-15.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-10-24_2025-11-04",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=10&bDay=24&eYear=2025&eMont=11&eDay=04&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-10-24_2025-11-04.txt",
+     "http": 200,
+     "found": 3395,
+     "parsed": 3395,
+     "date_min": "2025.10.24",
+     "date_max": "2025.11.04",
+     "raw_file": "zeqdb_2025-10-24_2025-11-04.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-11-05_2025-11-15",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=11&bDay=05&eYear=2025&eMont=11&eDay=15&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-11-05_2025-11-15.txt",
+     "http": 200,
+     "found": 2564,
+     "parsed": 2564,
+     "date_min": "2025.11.05",
+     "date_max": "2025.11.15",
+     "raw_file": "zeqdb_2025-11-05_2025-11-15.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-11-16_2025-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=11&bDay=16&eYear=2025&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-11-16_2025-12-31.txt",
+     "http": 200,
+     "found": 4061,
+     "parsed": 4061,
+     "date_min": "2025.11.16",
+     "date_max": "2025.12.31",
+     "raw_file": "zeqdb_2025-11-16_2025-12-31.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2025-11-16_2025-12-08",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=11&bDay=16&eYear=2025&eMont=12&eDay=08&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-11-16_2025-12-08.txt",
+     "http": 200,
+     "found": 2376,
+     "parsed": 2376,
+     "date_min": "2025.11.16",
+     "date_max": "2025.12.08",
+     "raw_file": "zeqdb_2025-11-16_2025-12-08.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2025-12-09_2025-12-31",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2025&bMont=12&bDay=09&eYear=2025&eMont=12&eDay=31&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2025-12-09_2025-12-31.txt",
+     "http": 200,
+     "found": 1685,
+     "parsed": 1685,
+     "date_min": "2025.12.09",
+     "date_max": "2025.12.31",
+     "raw_file": "zeqdb_2025-12-09_2025-12-31.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2026-01-01_2026-07-05",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2026&bMont=01&bDay=01&eYear=2026&eMont=07&eDay=05&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2026-01-01_2026-07-05.txt",
+     "http": 200,
+     "found": 4511,
+     "parsed": 4511,
+     "date_min": "2026.01.01",
+     "date_max": "2026.03.31",
+     "raw_file": "zeqdb_2026-01-01_2026-07-05.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2026-01-01_2026-04-03",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2026&bMont=01&bDay=01&eYear=2026&eMont=04&eDay=03&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2026-01-01_2026-04-03.txt",
+     "http": 200,
+     "found": 4511,
+     "parsed": 4511,
+     "date_min": "2026.01.01",
+     "date_max": "2026.03.31",
+     "raw_file": "zeqdb_2026-01-01_2026-04-03.html",
+     "status": "split (cap-suspect)"
+    },
+    {
+     "chunk": "2026-01-01_2026-02-16",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2026&bMont=01&bDay=01&eYear=2026&eMont=02&eDay=16&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2026-01-01_2026-02-16.txt",
+     "http": 200,
+     "found": 2824,
+     "parsed": 2824,
+     "date_min": "2026.01.01",
+     "date_max": "2026.02.16",
+     "raw_file": "zeqdb_2026-01-01_2026-02-16.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2026-02-17_2026-04-03",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2026&bMont=02&bDay=17&eYear=2026&eMont=04&eDay=03&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2026-02-17_2026-04-03.txt",
+     "http": 200,
+     "found": 1687,
+     "parsed": 1687,
+     "date_min": "2026.02.17",
+     "date_max": "2026.03.31",
+     "raw_file": "zeqdb_2026-02-17_2026-04-03.html",
+     "status": "ok"
+    },
+    {
+     "chunk": "2026-04-04_2026-07-05",
+     "url": "http://www.koeri.boun.edu.tr/sismo/zeqdb/submitRecSearchT.asp?bYear=2026&bMont=04&bDay=04&eYear=2026&eMont=07&eDay=05&EnMin=39.0&EnMax=42.5&BoyMin=25.0&BoyMax=31.5&MAGMin=1.0&MAGMax=9.0&DerMin=0&DerMax=500&Tip=Hepsi&ofName=2026-04-04_2026-07-05.txt",
+     "http": 200,
+     "found": 0,
+     "parsed": 0,
+     "date_min": null,
+     "date_max": null,
+     "raw_file": "zeqdb_2026-04-04_2026-07-05.html",
+     "status": "ok"
+    }
+   ]
+  },
+  "monthly_preliminary": {
+   "endpoint": "http://udim.koeri.boun.edu.tr/zeqmap/xmlt/{YYYYMM}.xml ('Aylar' archive behind udim zeqmap; discovered from seldate select + selectMonth() JS in hgmmap.asp; the sismo/2 'liste halinde' page and scripts/lst*.asp all serve only the last-500-event live list)",
+   "files": {
+    "monthly_202603.xml": {
+     "all_turkey": 3383,
+     "in_box_mag1plus": 1083
+    },
+    "monthly_202604.xml": {
+     "all_turkey": 3035,
+     "in_box_mag1plus": 1085
+    },
+    "monthly_202605.xml": {
+     "all_turkey": 2653,
+     "in_box_mag1plus": 644
+    },
+    "monthly_202606.xml": {
+     "all_turkey": 2570,
+     "in_box_mag1plus": 633
+    },
+    "monthly_202607.xml": {
+     "all_turkey": 281,
+     "in_box_mag1plus": 74
+    }
+   },
+   "note": "XML fields: name(local datetime), lokasyon, lat, lng, mag(single untyped rapid magnitude, usually ML), Depth. No typed MD/ML/Mw columns exist in this archive -> mag_type='xM-unknown' for these rows.",
+   "months_used_for_catalog": [
+    "202603 (seam only; contributed 0 rows)",
+    "202604",
+    "202605",
+    "202606",
+    "202607"
+   ],
+   "verification_only": [
+    "202510 (2025-10-02 anchor timezone check)"
+   ],
+   "seam": "monthly rows kept only where datetime_utc > zeqdb end (2026-03-31T18:34:41); 0 events found in seam window 18:34-24:00 UTC Mar 31",
+   "internal_dupes_dropped": 1,
+   "cross_source_dupes_dropped": 0,
+   "rows_used": 2435,
+   "coverage_utc": [
+    "2026-04-01 00:18:21",
+    "2026-07-05 10:58:40"
+   ],
+   "mag_filter": "mag>=1.0 applied for consistency with zeqdb query"
+  },
+  "afad_crosscheck_not_merged": {
+   "endpoint": "https://deprem.afad.gov.tr/apiv2/event/filter?start=2025-05-01 00:00:00&end=2026-07-05 23:59:59&minmag=4.0&minlat=39.0&maxlat=42.5&minlon=25.0&maxlon=31.5&limit=2000 (302-redirects to servisnet.afad.gov.tr apigateway; follow with -L)",
+   "raw_file": "raw/afad_M4_20250501_20260705.json",
+   "events": 117,
+   "result": "0 AFAD M>=4 events missing from KOERI set (match: +/-30s, +/-0.5deg); 11 matched events where AFAD mag>=4 but KOERI mag_pref<4 (scale differences, mostly Sindirgi aftershocks)"
+  },
+  "existing_dump_crosscheck_read_only": {
+   "file": "unfiltered_koeri.csv (local historical dump, not distributed)",
+   "result": "M>=2.0 in-box totals 2003->2025-05-08: dump 38,574 vs new 42,406 (ratio 1.10). Yearly ratios 0.91-1.13 for 2010-2025; 1.3-1.8 for 2003-2009 (reviewed zeqdb more complete than the dump's preliminary-era rows for early years). No systematic loss."
+  }
+ },
+ "timezone_determination": {
+  "zeqdb": "UTC (GMT). Evidence: 2025-04-23 M6.2 Marmara listed 09:49:09 (known UTC 09:49); 2019-09-26 Silivri listed 10:59:24 (known UTC 10:59); 2014-05-24 Gokceada M6.8 listed 09:25:01 (known UTC 09:25; local summer time would be 12:25 -> proves UTC also pre-2016, no DST handling needed). Times used as-is.",
+  "monthly_xml": "Turkey local time UTC+3. Evidence: 2025-10-02 anchor (11:55 UTC) appears as 2025.10.02 14:55:03 in monthly_202510.xml; hgmmap.asp UI labels lists 'Yerel saat'; empirical cross-match of 352 March-2026 events monthly-vs-zeqdb gives median |residual| 0.0 s after converting local->UTC via zoneinfo Europe/Istanbul. Converted to UTC.",
+  "live_lst0.asp": "Turkey local time (newest event 15:05 local while fetch time was ~12:56 UTC). Not used in catalog (last-500 only); saved as probe.",
+  "afad_api": "UTC. Evidence: same 2025-10-02 anchor returned as 2025-10-02T11:55:03.",
+  "pre2016_dst_note": "Irrelevant for zeqdb (UTC throughout, verified with 2014 summer anchor); monthly XMLs only used for 2026 where Turkey is fixed UTC+3; conversion done with zoneinfo('Europe/Istanbul') which would handle DST anyway."
+ },
+ "column_notes": {
+  "datetime_utc": "ISO 8601 (YYYY-MM-DDTHH:MM:SS), true UTC, fractional seconds truncated",
+  "mag_pref": "zeqdb xM (largest available magnitude) or monthly single mag",
+  "mag_type": "typed column equal to xM, tie-break priority Mw>ML>Md>Ms>Mb; 'xM-unknown' when no typed column matches (all monthly rows)",
+  "md/ml/mw/ms/mb": "zeqdb typed magnitudes; 0.0 treated as absent (empty)",
+  "event_code": "zeqdb 'Deprem Kodu' (extra column, kept per instruction; empty for monthly rows)"
+ },
+ "verification": {
+  "anchor_2025-04-23_M6.2": {
+   "found": true,
+   "datetime_utc": "2025-04-23 09:49:09",
+   "mag_pref": 6.2,
+   "mag_type": "Mw",
+   "lat": 40.8355,
+   "lon": 28.2307,
+   "source": "zeqdb_reviewed"
+  },
+  "anchor_2019-09-26_M5.8": {
+   "found": true,
+   "datetime_utc": "2019-09-26 10:59:24",
+   "mag_pref": 5.7,
+   "mag_type": "Mw",
+   "lat": 40.8802,
+   "lon": 28.216,
+   "source": "zeqdb_reviewed"
+  },
+  "anchor_2025-10-02_Mw5.0": {
+   "found": true,
+   "datetime_utc": "2025-10-02 11:55:03",
+   "mag_pref": 5.3,
+   "mag_type": "ML",
+   "lat": 40.7913,
+   "lon": 27.9395,
+   "source": "zeqdb_reviewed"
+  },
+  "oldbox_M2_count_vs_reference": {
+   "count": 17432,
+   "reference": 15932,
+   "ratio": 1.094
+  },
+  "update_window_2025-05-08_to_2026-07-05": {
+   "M>=3": 1547,
+   "M>=4": 124,
+   "M>=4.5": 32,
+   "M>=5": 8,
+   "M>=6": 2
+  },
+  "residual_near_dup_pairs": "23 pairs within +/-10s and +/-0.1deg remain; all are distinct zeqdb events with distinct event codes during swarms (e.g. Simav, Midilli) — genuine separate earthquakes, not removed",
+  "final_rows": 103391,
+  "final_by_source": {
+   "zeqdb_reviewed": 100956,
+   "monthly_preliminary": 2435
+  }
+ },
+ "caveats": [
+  "monthly_preliminary rows (2026-04-01 onward, 2,435 rows) carry a single untyped rapid magnitude (usually ML) and will be revised when KOERI's reviewed catalog extends past 2026-03-31; refetch zeqdb for 2026-04..07 in ~2-3 months and replace those rows",
+  "quarry blasts: zeqdb 'Sm' rows dropped, but the preliminary monthly lists carry no blast flag ('YAPAY SARSINTI ANALİZİ YAPILMAMIŞTIR' on live list) — some daytime low-mag 2026-04..07 events may be blasts",
+  "MAGMin=1.0 in queries: events with xM<1.0 (or unassigned mag) are excluded by construction",
+  "politeness: all fetches sequential, >=1.5-2s spacing, retries with exponential backoff; no failures"
+ ],
+ "kadirioglu_kartal_2016": {
+  "citation": "Kadirioglu, F.T., Kartal, R.F. (2016). The new empirical magnitude conversion relations using an improved earthquake catalogue for Turkey and its near vicinity (1900-2012). Turkish Journal of Earth Sciences 25(4), 300-310. doi:10.3906/yer-1511-7",
+  "pdf": "raw/kadirioglu_kartal_2016_TJES.pdf (via Wayback of journals.tubitak.gov.tr)",
+  "basis": "489 events with Mw from Harvard GCMT; OLS preferred for mb/Md/ML, orthogonal regression preferred for Ms",
+  "equations_verbatim": {
+   "Ms_to_Mw_OR_2a": "Mw = 0.5716 (+/-0.024927) MS + 2.4980 (+/-0.117197), 3.4 <= MS <= 5.4",
+   "Ms_to_Mw_OR_2b": "Mw = 0.8126 (+/-0.034602) MS + 1.1723 (+/-0.208173), MS >= 5.5",
+   "mb_to_Mw_OLS_3a": "Mw = 1.0319 (+/-0.025) mb + 0.0223 (+/-0.130), 3.9 <= mb <= 6.8 (R2=0.7734)",
+   "Md_to_Mw_OLS_3b": "Mw = 0.7947 (+/-0.033) Md + 1.3420 (+/-0.163), 3.5 <= Md <= 7.4 (R2=0.7329)",
+   "ML_to_Mw_OLS_3c": "Mw = 0.8095 (+/-0.031) ML + 1.3003 (+/-0.154), 3.3 <= ML <= 6.6 (R2=0.6244)"
+  }
+ }
+}

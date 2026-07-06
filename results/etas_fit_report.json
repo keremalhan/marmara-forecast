@@ -1,0 +1,59 @@
+{
+  "base_mc": 3.0,
+  "n_events_fit": 14031,
+  "n_dropped_by_stai": 0,
+  "b_positive": 1.542417674410537,
+  "b_aki": 1.0185696913880833,
+  "diagnostic_fit_cap_0.999_branching": 0.999,
+  "re_pinned_at_raised_cap": true,
+  "operational_cap": 0.95,
+  "operational_branching_untrunc": 0.9499999999999998,
+  "operational_branching_mmax7.6": 0.9499552123776772,
+  "mu_total": 0.7027303069616911,
+  "k": 0.5792057357944799,
+  "alpha": 1.3862037966163911,
+  "c": 0.021883481418978924,
+  "p": 1.0656371348150495,
+  "d": 3.3703749156568477,
+  "q": 1.8733128470612295,
+  "gamma": 0.058331847214809135,
+  "b_ensemble_for_cascade": [
+    1.542417674410537,
+    1.0185696913880833
+  ],
+  "converged": true,
+  "note": "STAI dropped 0 events: at base Mc=3.0 the post-M5.5 Mc(t)>3.0 window is sub-hour, so STAI is a near-no-op (Hainzl's un-pinning needs a LOW base Mc). Raising the cap to 0.999 did NOT un-pin \u2014 the MLE went straight to the new cap (n=0.9990), the documented degenerate near-critical mode. Per blueprint we KEEP the 0.95 cap for stable simulation. alpha at cap 0.999 ~= 1.38 vs operational 1.39. b-ensemble for cascade: b_pos=1.542, b_aki=1.019.",
+  "operational_b_for_cascade": 1.2,
+  "b_calibration": {
+    "0.9": {
+      "slope": 0.5355977390340714,
+      "pred_total": 2432.58,
+      "real_total": 1262.0
+    },
+    "1.0": {
+      "slope": 0.7067066605745969,
+      "pred_total": 1844.4033333333332,
+      "real_total": 1262.0
+    },
+    "1.05": {
+      "slope": 0.7908731894679994,
+      "pred_total": 1650.7566666666664,
+      "real_total": 1262.0
+    },
+    "1.1": {
+      "slope": 0.8746468958882424,
+      "pred_total": 1492.0333333333333,
+      "real_total": 1262.0
+    },
+    "1.2": {
+      "slope": 1.0442252291886207,
+      "pred_total": 1248.0366666666666,
+      "real_total": 1262.0
+    },
+    "1.542": {
+      "slope": 1.7196041169060727,
+      "pred_total": 755.2666666666667,
+      "real_total": 1262.0
+    }
+  }
+}

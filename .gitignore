@@ -1,0 +1,15 @@
+# macOS / exFAT artifacts
+.DS_Store
+._*
+# python
+__pycache__/
+*.pyc
+.venv/
+.tmp/
+# scratch run logs (keep the committed evidence, not live logs)
+*.log
+results/prospective/launchd.out
+results/prospective/launchd.err
+data/raw/
+# manuscript kept local, not published in this repo
+paper/

@@ -1,0 +1,257 @@
+{
+  "battery": {
+    "products": [
+      {
+        "product": "y35 30d (hybrid)",
+        "hybrid_w": 0.7,
+        "before": {
+          "testable": true,
+          "npos": 277,
+          "n": 62169,
+          "slope": 1.067,
+          "intercept": 0.0001,
+          "calibrated": true,
+          "verdict": "calibrated",
+          "aggregate": {
+            "expected_pos": 256.26,
+            "observed_pos": 277,
+            "obs_over_exp": 1.081
+          },
+          "bins": [
+            [
+              0.0,
+              0.0001,
+              19638
+            ],
+            [
+              0.0008,
+              0.0007,
+              11966
+            ],
+            [
+              0.0016,
+              0.0021,
+              10106
+            ],
+            [
+              0.0026,
+              0.0025,
+              3227
+            ],
+            [
+              0.0038,
+              0.0042,
+              6872
+            ],
+            [
+              0.0189,
+              0.0202,
+              10360
+            ]
+          ]
+        },
+        "fix": "none",
+        "after": null
+      },
+      {
+        "product": "y45 30d (hybrid)",
+        "hybrid_w": 0.8,
+        "before": {
+          "testable": true,
+          "npos": 35,
+          "n": 62169,
+          "slope": 0.785,
+          "intercept": 0.0001,
+          "calibrated": false,
+          "verdict": "overfit(slope<0.8)",
+          "aggregate": {
+            "expected_pos": 33.1,
+            "observed_pos": 35,
+            "obs_over_exp": 1.058
+          },
+          "bins": [
+            [
+              0.0,
+              0.0001,
+              42940
+            ],
+            [
+              0.0004,
+              0.0009,
+              5377
+            ],
+            [
+              0.0022,
+              0.0019,
+              13852
+            ]
+          ]
+        },
+        "fix": "isotonic_on_val",
+        "after": {
+          "testable": true,
+          "npos": 35,
+          "n": 62169,
+          "slope": 0.785,
+          "intercept": 0.0001,
+          "calibrated": false,
+          "verdict": "overfit(slope<0.8)",
+          "aggregate": {
+            "expected_pos": 33.1,
+            "observed_pos": 35,
+            "obs_over_exp": 1.058
+          },
+          "bins": [
+            [
+              0.0,
+              0.0001,
+              42940
+            ],
+            [
+              0.0004,
+              0.0009,
+              5377
+            ],
+            [
+              0.0022,
+              0.0019,
+              13852
+            ]
+          ]
+        },
+        "note": "isotonic did not fully calibrate; next levers (global scale / shrink w) would apply \u2014 reported, not silently tuned."
+      },
+      {
+        "product": "P(M>=5.0) 30d (cascade)",
+        "hybrid_w": null,
+        "before": {
+          "testable": false,
+          "npos": 10,
+          "n": 62169,
+          "reason": "pred too sparse for 10-bin reliability",
+          "aggregate": {
+            "expected_pos": 10.19,
+            "observed_pos": 10,
+            "obs_over_exp": 0.981
+          }
+        },
+        "fix": "none",
+        "after": null
+      },
+      {
+        "product": "P(M>=5.5) 30d (cascade)",
+        "hybrid_w": null,
+        "before": {
+          "testable": false,
+          "npos": 3,
+          "n": 62169,
+          "reason": "pred too sparse for 10-bin reliability",
+          "aggregate": {
+            "expected_pos": 2.59,
+            "observed_pos": 3,
+            "obs_over_exp": 1.157
+          }
+        },
+        "fix": "none",
+        "after": null
+      },
+      {
+        "product": "P(M>=6.0) 30d (cascade)",
+        "hybrid_w": null,
+        "before": {
+          "testable": false,
+          "npos": 1,
+          "n": 62169,
+          "reason": "pred too sparse for 10-bin reliability",
+          "aggregate": {
+            "expected_pos": 0.7,
+            "observed_pos": 1,
+            "obs_over_exp": 1.433
+          }
+        },
+        "fix": "none",
+        "after": null
+      }
+    ],
+    "eval_windows": "2022-01-01 .. 2026-03 (val+test)",
+    "fit_discipline": "fixes fit on 2022-2023 val only; never on 2024+ test"
+  },
+  "m62": {
+    "epicenter_cell": [
+      12,
+      26
+    ],
+    "base_M6_30d": 0.003489585844334342,
+    "a_30d_forecasts": {
+      "2025-04-01": {
+        "epicenter_P6_cell": 0.0,
+        "regional_P6": 0.012423140897509843,
+        "epicenter_lam6": 0.0,
+        "pct_by_lam6": 0.0,
+        "pct_by_lam45_seismicity": 98.76948318293684,
+        "gain6_vs_uniform": 0.0,
+        "gain45_vs_uniform": 6.445601666399615
+      },
+      "2025-04-22": {
+        "epicenter_P6_cell": 0.0,
+        "regional_P6": 0.011682226786031702,
+        "epicenter_lam6": 0.0,
+        "pct_by_lam6": 0.0,
+        "pct_by_lam45_seismicity": 99.42575881870386,
+        "gain6_vs_uniform": 0.0,
+        "gain45_vs_uniform": 8.236486486486486
+      }
+    },
+    "b_sequence_replay": {
+      "snapshot": "2025-04-23 09:23:05",
+      "n_events_in_sequence": 3,
+      "ftls_color": "UNKNOWN",
+      "ftls_reason": "only 3 events, need >=~60 for b-value",
+      "bigger_one_ahead": 0.01329161375808694,
+      "bigger_ahead_reason": null,
+      "cascade_24h_lam6_cell": 0.000125,
+      "cascade_24h_exp6_regional": 0.000625,
+      "quiet_24h_lam6_cell": 0.0,
+      "quiet_24h_exp6_regional": 0.0005,
+      "elevation_cell": null,
+      "elevation_regional": 1.25
+    },
+    "c_pass": {
+      "epicenter_top_decile_by_lam6": false,
+      "epicenter_top_decile_by_seismicity": true,
+      "gain6_gt_2x_uniform": false,
+      "post_foreshock_24h_ge_10x_quiet": false,
+      "all_pass": false
+    },
+    "d_secondary": {
+      "Oct2_M5": {
+        "snapshot": "2025-10-02 12:05:03",
+        "ftls_color": "UNKNOWN",
+        "b_ratio": null,
+        "cascade_24h_P5.5_cell": 0.004,
+        "cascade_24h_P6_regional": 0.0019991875937498405
+      },
+      "Sindirgi_Aug10": {
+        "snapshot": "2025-08-10 17:03:46",
+        "ftls_color": "UNKNOWN",
+        "b_ratio": null,
+        "cascade_24h_P5.5_cell": 0.0,
+        "cascade_24h_P6_regional": 0.004744564390421813
+      }
+    }
+  },
+  "underfit": {
+    "cascade": {
+      "vs_poisson": 0.8841,
+      "vs_fault_prox": 0.6943,
+      "vs_smoothed": 0.4467,
+      "all_positive": true
+    },
+    "hybrid": {
+      "vs_poisson": 1.3723,
+      "vs_fault_prox": 1.1824,
+      "vs_smoothed": 0.9349,
+      "all_positive": true
+    }
+  }
+}

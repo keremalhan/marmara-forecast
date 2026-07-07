@@ -138,6 +138,22 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
               for nm in preds if nm != "hybrid"}
         out["splits"][split] = {"n": int(len(idx)), "n_pos": int(ys.sum()),
                                 "scores": scored, "ig_hybrid_vs": ig}
+
+    # --- persist per-row predictions (val+test) for the Phase-0 block bootstrap.
+    # Purely additive: does NOT affect evaluation.{json,md}. Each predictor stored
+    # here is the SAME probability array scored above, so bootstrap.py operates on
+    # the exact predictions behind the headline numbers (single source of truth;
+    # a modern_etas column would be picked up automatically once added in Phase 1).
+    sel = np.where(va | te)[0]
+    pred_df = pd.DataFrame({
+        "window": grid["window"].to_numpy()[sel],
+        "t0": grid["t0"].to_numpy()[sel],
+        "split": np.where(va[sel], "val", "test"),
+        "y": y[sel],
+    })
+    for nm, P in preds.items():
+        pred_df[nm] = np.asarray(P)[sel]
+    pred_df.to_parquet(OUT / f"predictions_{ycol}.parquet", index=False)
     return out
 
 

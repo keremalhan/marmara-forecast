@@ -1,0 +1,40 @@
+{
+  "policy": "The test split is scored once per FINAL model configuration; validation alone selects hyperparameters (hybrid blend weight w, smoothed-seismicity sigma). Re-runs of an identical, deterministic (random_state=42) configuration are reproduction / artifact regeneration, NOT new model selection, and are logged here for auditability. Any future test scoring for a NEW or RE-TUNED model family must be appended with an honest purpose.",
+  "model_families": {
+    "hybrid+baselines": "HistGradientBoostingRegressor(poisson) blended with the cascade ETAS simulation; baselines = cascade, firstgen_etas, smoothed, poisson, fault_prox. w and sigma chosen on VAL only."
+  },
+  "touches": [
+    {
+      "date": "2026-07-06",
+      "runner": "marmara.train",
+      "model_family": "hybrid+baselines",
+      "targets": ["y35", "y45"],
+      "purpose": "Original published snapshot (pre-v2-session).",
+      "result": "y35 test PR-AUC cascade 0.13004 / firstgen 0.12597 / hybrid 0.11737; w=0.7."
+    },
+    {
+      "date": "2026-07-07",
+      "runner": "marmara.train",
+      "model_family": "hybrid+baselines",
+      "targets": ["y35", "y45"],
+      "purpose": "v2 environment reproduction check (pinned Python 3.13 venv rebuilt).",
+      "result": "Bit-for-bit identical to the published snapshot (deterministic HGBR)."
+    },
+    {
+      "date": "2026-07-07",
+      "runner": "marmara.train",
+      "model_family": "hybrid+baselines",
+      "targets": ["y35", "y45"],
+      "purpose": "v2/phase-0: persist per-row val+test predictions (predictions_{y35,y45}.parquet) as the single source of truth for the block bootstrap. No configuration or hyperparameter change.",
+      "result": "Identical evaluation.{json,md}; adds predictions_*.parquet only."
+    },
+    {
+      "date": "2026-07-07",
+      "runner": "marmara.bootstrap",
+      "model_family": "hybrid+baselines",
+      "targets": ["y35", "y45"],
+      "purpose": "v2/phase-0: post-hoc block-bootstrap CIs of paired differences over the ALREADY-COMPUTED test predictions. Analysis pass, not model fitting/selection.",
+      "result": "See bootstrap_ci.json / claims.json."
+    }
+  ]
+}

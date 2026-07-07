@@ -1,0 +1,932 @@
+{
+  "rule": "A beats B iff the 95% percentile bootstrap CI of the paired difference excludes 0 in A's favour for BOTH information gain (nats/event) AND PR-AUC; otherwise the pair is inseparable.",
+  "bootstrap": {
+    "B": 2000,
+    "seed": 42,
+    "mean_block": 3.0,
+    "block": "Politis-Romano stationary bootstrap over ordered window-ids (all 1219 cells per window kept together)",
+    "note": "windows tile at 30-day steps; targets non-overlapping but temporally dependent via shared feature history + aftershock clustering -> block (not iid) resampling required."
+  },
+  "claims": [
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y35",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.251968,
+        "ci95": [
+          0.03577,
+          0.474993
+        ]
+      },
+      "pr_auc": {
+        "point": -0.012676,
+        "ci95": [
+          -0.028144,
+          0.003323
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y35",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.380905,
+        "ci95": [
+          -0.533219,
+          -0.265544
+        ]
+      },
+      "pr_auc": {
+        "point": -0.008602,
+        "ci95": [
+          -0.023071,
+          0.013146
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.507278,
+        "ci95": [
+          0.316522,
+          0.77355
+        ]
+      },
+      "pr_auc": {
+        "point": 0.073346,
+        "ci95": [
+          0.032359,
+          0.124154
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y35",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.136071,
+        "ci95": [
+          0.571466,
+          1.775812
+        ]
+      },
+      "pr_auc": {
+        "point": 0.085053,
+        "ci95": [
+          0.038898,
+          0.141464
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y35",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.632873,
+        "ci95": [
+          -0.875364,
+          -0.409558
+        ]
+      },
+      "pr_auc": {
+        "point": 0.004074,
+        "ci95": [
+          -0.006751,
+          0.024789
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.25531,
+        "ci95": [
+          -0.089157,
+          0.684121
+        ]
+      },
+      "pr_auc": {
+        "point": 0.086021,
+        "ci95": [
+          0.035874,
+          0.14089
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y35",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.884103,
+        "ci95": [
+          0.435836,
+          1.380644
+        ]
+      },
+      "pr_auc": {
+        "point": 0.097729,
+        "ci95": [
+          0.044651,
+          0.156227
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.888183,
+        "ci95": [
+          0.612375,
+          1.286627
+        ]
+      },
+      "pr_auc": {
+        "point": 0.081947,
+        "ci95": [
+          0.034012,
+          0.130476
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y35",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.516976,
+        "ci95": [
+          1.014196,
+          2.150057
+        ]
+      },
+      "pr_auc": {
+        "point": 0.093655,
+        "ci95": [
+          0.040097,
+          0.15116
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y35",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.628793,
+        "ci95": [
+          -0.081037,
+          1.343385
+        ]
+      },
+      "pr_auc": {
+        "point": 0.011708,
+        "ci95": [
+          -3.2e-05,
+          0.028718
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y35",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.44568,
+        "ci95": [
+          0.190142,
+          0.824735
+        ]
+      },
+      "pr_auc": {
+        "point": 0.001751,
+        "ci95": [
+          -0.012779,
+          0.01913
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y35",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.719707,
+        "ci95": [
+          -1.131742,
+          -0.414134
+        ]
+      },
+      "pr_auc": {
+        "point": -0.006461,
+        "ci95": [
+          -0.018572,
+          0.009893
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.247388,
+        "ci95": [
+          0.908936,
+          1.728811
+        ]
+      },
+      "pr_auc": {
+        "point": 0.035031,
+        "ci95": [
+          0.01881,
+          0.063884
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.799301,
+        "ci95": [
+          0.923807,
+          2.831669
+        ]
+      },
+      "pr_auc": {
+        "point": 0.028941,
+        "ci95": [
+          0.011095,
+          0.058124
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y35",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -1.165386,
+        "ci95": [
+          -1.906901,
+          -0.678061
+        ]
+      },
+      "pr_auc": {
+        "point": -0.008212,
+        "ci95": [
+          -0.017284,
+          0.004102
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.801709,
+        "ci95": [
+          0.369787,
+          1.263468
+        ]
+      },
+      "pr_auc": {
+        "point": 0.03328,
+        "ci95": [
+          0.014077,
+          0.062267
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.353621,
+        "ci95": [
+          0.452575,
+          2.286435
+        ]
+      },
+      "pr_auc": {
+        "point": 0.02719,
+        "ci95": [
+          0.005946,
+          0.056624
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.967095,
+        "ci95": [
+          1.372243,
+          2.831426
+        ]
+      },
+      "pr_auc": {
+        "point": 0.041492,
+        "ci95": [
+          0.023027,
+          0.066916
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y35",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 2.519008,
+        "ci95": [
+          1.683999,
+          3.721602
+        ]
+      },
+      "pr_auc": {
+        "point": 0.035402,
+        "ci95": [
+          0.01607,
+          0.061923
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y35",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.551913,
+        "ci95": [
+          -0.363142,
+          1.424062
+        ]
+      },
+      "pr_auc": {
+        "point": -0.00609,
+        "ci95": [
+          -0.015808,
+          -0.00043
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 1.297252,
+        "ci95": [
+          -1.972476,
+          3.389576
+        ]
+      },
+      "pr_auc": {
+        "point": -0.032215,
+        "ci95": [
+          -0.057624,
+          0.007459
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -3.344066,
+        "ci95": [
+          -6.165148,
+          -1.759573
+        ]
+      },
+      "pr_auc": {
+        "point": -0.033708,
+        "ci95": [
+          -0.059765,
+          0.0045
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -4.241016,
+        "ci95": [
+          -6.613335,
+          -2.891374
+        ]
+      },
+      "pr_auc": {
+        "point": 0.023151,
+        "ci95": [
+          -0.00321,
+          0.107861
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 4.431339,
+        "ci95": [
+          0.149093,
+          7.498234
+        ]
+      },
+      "pr_auc": {
+        "point": 0.030158,
+        "ci95": [
+          -0.000356,
+          0.130286
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -4.641318,
+        "ci95": [
+          -6.587991,
+          -2.833477
+        ]
+      },
+      "pr_auc": {
+        "point": -0.001494,
+        "ci95": [
+          -0.00842,
+          0.005294
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -5.538268,
+        "ci95": [
+          -7.362367,
+          -3.704054
+        ]
+      },
+      "pr_auc": {
+        "point": 0.055365,
+        "ci95": [
+          -0.00325,
+          0.132807
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 3.134087,
+        "ci95": [
+          1.065029,
+          5.665591
+        ]
+      },
+      "pr_auc": {
+        "point": 0.062372,
+        "ci95": [
+          -0.000753,
+          0.154125
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.89695,
+        "ci95": [
+          -1.227053,
+          -0.417605
+        ]
+      },
+      "pr_auc": {
+        "point": 0.056859,
+        "ci95": [
+          0.000156,
+          0.136889
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y45",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 7.775404,
+        "ci95": [
+          5.370785,
+          10.066767
+        ]
+      },
+      "pr_auc": {
+        "point": 0.063866,
+        "ci95": [
+          0.002169,
+          0.158407
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y45",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 8.672354,
+        "ci95": [
+          6.249635,
+          10.953149
+        ]
+      },
+      "pr_auc": {
+        "point": 0.007007,
+        "ci95": [
+          0.001743,
+          0.024385
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y45",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 4.141083,
+        "ci95": [
+          1.400267,
+          7.834337
+        ]
+      },
+      "pr_auc": {
+        "point": 0.011871,
+        "ci95": [
+          0.00047,
+          0.081791
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.504029,
+        "ci95": [
+          -1.856217,
+          0.637376
+        ]
+      },
+      "pr_auc": {
+        "point": 0.00933,
+        "ci95": [
+          -0.011084,
+          0.08411
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -1.076446,
+        "ci95": [
+          -2.152966,
+          0.087737
+        ]
+      },
+      "pr_auc": {
+        "point": 0.011109,
+        "ci95": [
+          -0.002919,
+          0.084419
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y45",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 6.896913,
+        "ci95": [
+          3.783213,
+          10.198159
+        ]
+      },
+      "pr_auc": {
+        "point": 0.013525,
+        "ci95": [
+          0.000589,
+          0.082381
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -4.645112,
+        "ci95": [
+          -9.348372,
+          -1.427787
+        ]
+      },
+      "pr_auc": {
+        "point": -0.002541,
+        "ci95": [
+          -0.017627,
+          0.004656
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -5.217528,
+        "ci95": [
+          -9.508639,
+          -2.072819
+        ]
+      },
+      "pr_auc": {
+        "point": -0.000762,
+        "ci95": [
+          -0.008674,
+          0.003835
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 2.75583,
+        "ci95": [
+          -2.044131,
+          6.441348
+        ]
+      },
+      "pr_auc": {
+        "point": 0.001654,
+        "ci95": [
+          -0.000975,
+          0.006462
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.572417,
+        "ci95": [
+          -0.958127,
+          0.139232
+        ]
+      },
+      "pr_auc": {
+        "point": 0.001779,
+        "ci95": [
+          -0.001304,
+          0.009933
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 7.400942,
+        "ci95": [
+          4.211387,
+          11.003944
+        ]
+      },
+      "pr_auc": {
+        "point": 0.004194,
+        "ci95": [
+          -0.004612,
+          0.021846
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y45",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 7.973359,
+        "ci95": [
+          4.994804,
+          11.196205
+        ]
+      },
+      "pr_auc": {
+        "point": 0.002415,
+        "ci95": [
+          -0.00339,
+          0.013174
+        ]
+      },
+      "primary": false
+    }
+  ]
+}

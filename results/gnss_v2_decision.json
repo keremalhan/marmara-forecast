@@ -33,5 +33,11 @@
     "hybrid_pr_auc": 0.1174, "hybrid_gnss_pr_auc": 0.1189,
     "bootstrap_hybrid_vs_hybrid_gnss": {"verdict": "inseparable",
       "d_ig_ci95": [0.0095, 0.0952], "d_pr_auc_ci95": [-0.0156, 0.0174]},
-    "conclusion": "Promoting GNSS into the operational hybrid does NOT improve it: hybrid vs hybrid_gnss is INSEPARABLE (the IG CI marginally favours the NON-GNSS hybrid; PR-AUC straddles 0). So the genuine source-level GNSS information (deconfounded +0.061 test IG on the count-model) is LARGELY REDUNDANT with the seismicity/cascade signal in the full forecaster. The pre-registered rule promoted GNSS on its source-IG; the bootstrap honestly shows the operational skill gain is not statistically resolvable. This is the headline Phase-2 result: a real, adversarially-verified GNSS signal that nonetheless does not move the operational forecaster."}
+    "conclusion": "On the UNDERPOWERED y35 target, promoting GNSS into the operational hybrid does NOT resolvably help: hybrid vs hybrid_gnss is INSEPARABLE (IG CI marginally favours the non-GNSS hybrid; PR-AUC straddles 0)."},
+  "phase3_powered_update_y30_test": {
+    "hybrid_vs_hybrid_gnss": {"verdict": "B_beats_A (hybrid_gnss beats hybrid)",
+      "d_ig_ci95": [-1.932, -0.442], "d_pr_auc_ci95": [-0.066, -0.011]},
+    "hybrid_gnss_vs_cascade": "inseparable", "hybrid_gnss_vs_sv_etas": "inseparable",
+    "hybrid_gnss_vs_modern_etas": "inseparable",
+    "conclusion": "On the POWERED y30 target (592 test positives), GNSS RESOLVABLY improves the hybrid — hybrid_gnss beats hybrid (both IG and PR-AUC CIs exclude 0) and CLOSES THE GAP to the ETAS/cascade models (inseparable from cascade/sv_etas/modern_etas). So the operational value of the GNSS channel that was undetectable at y35's power IS detectable once positives are plentiful. Net honest story: the engineered GNSS channel carries genuine deformation information that is redundant-at-low-power (y35) but resolvably useful at higher power (y30)."}
 }

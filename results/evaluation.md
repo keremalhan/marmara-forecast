@@ -1,8 +1,58 @@
 # Evaluation — hybrid (cascade x ML) vs baselines
 
-y35: w=0.7; hybrid PR-AUC 0.117 vs cascade 0.130 vs first-gen-ETAS 0.126; IG(hybrid vs cascade)=+0.252, IG(hybrid vs first-gen-ETAS)=-0.381, IG vs smoothed +0.507 | y45: w=0.8; hybrid PR-AUC 0.033 vs cascade 0.066 vs first-gen-ETAS 0.067; IG(hybrid vs cascade)=+1.297, IG(hybrid vs first-gen-ETAS)=-3.344, IG vs smoothed -4.241
+All ranking claims must be read against results/claims.json (block-bootstrap verdicts); point differences below are NOT claims on their own.
 
-## y35 (thr 3.5, w=0.7, sigma 5km)
+y30: w=0.9; hybrid PR-AUC 0.146 vs cascade 0.229 vs first-gen-ETAS 0.223; IG(hybrid vs cascade)=-0.884, IG(hybrid vs first-gen-ETAS)=-1.460, IG vs smoothed -0.802 | y35: w=0.7; hybrid PR-AUC 0.117 vs cascade 0.130 vs first-gen-ETAS 0.126; IG(hybrid vs cascade)=+0.252, IG(hybrid vs first-gen-ETAS)=-0.381, IG vs smoothed +0.507 | y45: w=0.8; hybrid PR-AUC 0.033 vs cascade 0.066 vs first-gen-ETAS 0.067; IG(hybrid vs cascade)=+1.297, IG(hybrid vs first-gen-ETAS)=-3.344, IG vs smoothed -4.241
+
+## y30 (thr 3.0, w=0.9, sigma 5km) — primary (powered)
+
+### val (n=30475, pos=461)
+| predictor | PR-AUC | ROC-AUC | Brier | Molchan |
+|---|---|---|---|---|
+| hybrid | 0.1363 | 0.8644 | 0.01429 | 0.718 |
+| hybrid_gnss | 0.1316 | 0.8682 | 0.01429 | 0.725 |
+| cascade | 0.1355 | 0.8634 | 0.01504 | 0.716 |
+| sv_etas | 0.1390 | 0.8698 | 0.01493 | 0.728 |
+| modern_etas | 0.1272 | 0.8668 | 0.01418 | 0.723 |
+| firstgen_etas | 0.1529 | 0.8726 | 0.01389 | 0.734 |
+| smoothed | 0.0920 | 0.8616 | 0.01733 | 0.712 |
+| poisson | 0.1204 | 0.8600 | 0.01471 | 0.707 |
+| fault_prox | 0.0261 | 0.6753 | 0.01511 | 0.346 |
+
+IG(hybrid − baseline), nats/event:
+- vs cascade: +0.6198
+- vs poisson: +0.5123
+- vs fault_prox: +0.9693
+- vs smoothed: +0.9616
+- vs firstgen_etas: -0.1438
+- vs sv_etas: +0.5065
+- vs modern_etas: -0.0362
+- vs hybrid_gnss: +0.0301
+
+### test (n=31694, pos=592)
+| predictor | PR-AUC | ROC-AUC | Brier | Molchan |
+|---|---|---|---|---|
+| hybrid | 0.1458 | 0.8720 | 0.01962 | 0.730 |
+| hybrid_gnss | 0.1791 | 0.8760 | 0.01695 | 0.738 |
+| cascade | 0.2294 | 0.8734 | 0.01717 | 0.732 |
+| sv_etas | 0.2276 | 0.8758 | 0.01716 | 0.737 |
+| modern_etas | 0.2057 | 0.8780 | 0.01673 | 0.742 |
+| firstgen_etas | 0.2230 | 0.8800 | 0.01638 | 0.746 |
+| smoothed | 0.1247 | 0.8688 | 0.01917 | 0.724 |
+| poisson | 0.1239 | 0.8558 | 0.01761 | 0.696 |
+| fault_prox | 0.0358 | 0.6986 | 0.01831 | 0.386 |
+
+IG(hybrid − baseline), nats/event:
+- vs cascade: -0.8841
+- vs poisson: -0.8359
+- vs fault_prox: -0.4716
+- vs smoothed: -0.8024
+- vs firstgen_etas: -1.4598
+- vs sv_etas: -0.8788
+- vs modern_etas: -1.0996
+- vs hybrid_gnss: -1.1766
+
+## y35 (thr 3.5, w=0.7, sigma 5km) — powered
 
 ### val (n=30475, pos=110)
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |
@@ -50,7 +100,7 @@ IG(hybrid − baseline), nats/event:
 - vs modern_etas: -0.0732
 - vs hybrid_gnss: +0.0485
 
-## y45 (thr 4.5, w=0.8, sigma 5km)
+## y45 (thr 4.5, w=0.8, sigma 5km) — unpowered — no ranking claims
 
 ### val (n=30475, pos=13)
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |

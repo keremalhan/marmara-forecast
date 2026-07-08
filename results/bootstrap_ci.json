@@ -7,6 +7,2536 @@
     "note": "windows tile at 30-day steps; targets non-overlapping but temporally dependent via shared feature history + aftershock clustering -> block (not iid) resampling required."
   },
   "results": {
+    "y30": {
+      "test": {
+        "n": 31694,
+        "n_pos": 592,
+        "n_windows": 26,
+        "n_valid_auc_resamples": 2000,
+        "models": [
+          "hybrid",
+          "hybrid_gnss",
+          "cascade",
+          "sv_etas",
+          "modern_etas",
+          "firstgen_etas",
+          "smoothed",
+          "poisson"
+        ],
+        "full_metrics": {
+          "hybrid": {
+            "pr_auc": 0.145848,
+            "roc_auc": 0.871968,
+            "brier": 0.019618
+          },
+          "hybrid_gnss": {
+            "pr_auc": 0.179093,
+            "roc_auc": 0.875999,
+            "brier": 0.016954
+          },
+          "cascade": {
+            "pr_auc": 0.229376,
+            "roc_auc": 0.87337,
+            "brier": 0.017167
+          },
+          "sv_etas": {
+            "pr_auc": 0.227567,
+            "roc_auc": 0.875778,
+            "brier": 0.017155
+          },
+          "modern_etas": {
+            "pr_auc": 0.205659,
+            "roc_auc": 0.877986,
+            "brier": 0.016725
+          },
+          "firstgen_etas": {
+            "pr_auc": 0.222964,
+            "roc_auc": 0.879964,
+            "brier": 0.016382
+          },
+          "smoothed": {
+            "pr_auc": 0.124741,
+            "roc_auc": 0.868848,
+            "brier": 0.019167
+          },
+          "poisson": {
+            "pr_auc": 0.123872,
+            "roc_auc": 0.855768,
+            "brier": 0.017611
+          }
+        },
+        "pairs": {
+          "hybrid_vs_hybrid_gnss": {
+            "d_pr_auc": {
+              "point": -0.033245,
+              "ci95": [
+                -0.066146,
+                -0.010615
+              ],
+              "win_rate": 0.001,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.004031,
+              "ci95": [
+                -0.009102,
+                0.00043
+              ],
+              "win_rate": 0.044,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -1.176639,
+              "ci95": [
+                -1.932016,
+                -0.441616
+              ],
+              "win_rate": 0.0015,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002664,
+              "ci95": [
+                0.000919,
+                0.004373
+              ],
+              "win_rate": 0.0015,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_cascade": {
+            "d_pr_auc": {
+              "point": -0.083528,
+              "ci95": [
+                -0.106234,
+                -0.056475
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.001402,
+              "ci95": [
+                -0.007493,
+                0.004343
+              ],
+              "win_rate": 0.3315,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.884106,
+              "ci95": [
+                -1.464613,
+                -0.369612
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002451,
+              "ci95": [
+                0.001126,
+                0.003924
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": -0.081719,
+              "ci95": [
+                -0.108596,
+                -0.052082
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.00381,
+              "ci95": [
+                -0.014643,
+                0.006075
+              ],
+              "win_rate": 0.2615,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.878788,
+              "ci95": [
+                -1.510576,
+                -0.30669
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002463,
+              "ci95": [
+                0.001064,
+                0.003958
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": -0.059811,
+              "ci95": [
+                -0.089299,
+                -0.026256
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.006018,
+              "ci95": [
+                -0.014157,
+                0.002992
+              ],
+              "win_rate": 0.0945,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -1.099584,
+              "ci95": [
+                -1.757177,
+                -0.557021
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002893,
+              "ci95": [
+                0.001405,
+                0.004429
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.077116,
+              "ci95": [
+                -0.105869,
+                -0.044359
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.007996,
+              "ci95": [
+                -0.014586,
+                -0.001531
+              ],
+              "win_rate": 0.005,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -1.459793,
+              "ci95": [
+                -2.055175,
+                -0.916103
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.003235,
+              "ci95": [
+                0.00179,
+                0.004709
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.021107,
+              "ci95": [
+                0.003553,
+                0.047102
+              ],
+              "win_rate": 0.9925,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.003121,
+              "ci95": [
+                -0.005841,
+                0.011374
+              ],
+              "win_rate": 0.7645,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.802363,
+              "ci95": [
+                -1.384928,
+                -0.233838
+              ],
+              "win_rate": 0.0005,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000451,
+              "ci95": [
+                -0.001089,
+                0.002011
+              ],
+              "win_rate": 0.2945,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.021975,
+              "ci95": [
+                0.005188,
+                0.045811
+              ],
+              "win_rate": 0.996,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.0162,
+              "ci95": [
+                0.007452,
+                0.024287
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.835878,
+              "ci95": [
+                -1.471188,
+                -0.251432
+              ],
+              "win_rate": 0.001,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002007,
+              "ci95": [
+                0.000553,
+                0.003497
+              ],
+              "win_rate": 0.0015,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_cascade": {
+            "d_pr_auc": {
+              "point": -0.050283,
+              "ci95": [
+                -0.074587,
+                -0.022174
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.002629,
+              "ci95": [
+                -0.000461,
+                0.005335
+              ],
+              "win_rate": 0.9495,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.292533,
+              "ci95": [
+                -0.070631,
+                0.546279
+              ],
+              "win_rate": 0.945,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000213,
+              "ci95": [
+                -0.000762,
+                0.000487
+              ],
+              "win_rate": 0.748,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": -0.048474,
+              "ci95": [
+                -0.071032,
+                -0.024379
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.000221,
+              "ci95": [
+                -0.00683,
+                0.007331
+              ],
+              "win_rate": 0.531,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.297851,
+              "ci95": [
+                -0.035231,
+                0.527522
+              ],
+              "win_rate": 0.955,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000201,
+              "ci95": [
+                -0.000704,
+                0.000481
+              ],
+              "win_rate": 0.7445,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": -0.026566,
+              "ci95": [
+                -0.046421,
+                -0.002699
+              ],
+              "win_rate": 0.0115,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.001987,
+              "ci95": [
+                -0.008341,
+                0.004627
+              ],
+              "win_rate": 0.2795,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.077055,
+              "ci95": [
+                -0.399324,
+                0.435836
+              ],
+              "win_rate": 0.649,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000229,
+              "ci95": [
+                -0.000353,
+                0.000974
+              ],
+              "win_rate": 0.2755,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.043871,
+              "ci95": [
+                -0.061869,
+                -0.022783
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.003965,
+              "ci95": [
+                -0.007405,
+                -0.000401
+              ],
+              "win_rate": 0.016,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.283154,
+              "ci95": [
+                -0.632115,
+                -0.082989
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000572,
+              "ci95": [
+                0.000191,
+                0.001102
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_gnss_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.054352,
+              "ci95": [
+                0.03315,
+                0.080396
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.007151,
+              "ci95": [
+                0.001468,
+                0.012799
+              ],
+              "win_rate": 0.992,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.374276,
+              "ci95": [
+                0.053902,
+                0.652356
+              ],
+              "win_rate": 0.9865,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002213,
+              "ci95": [
+                -0.002643,
+                -0.001715
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "hybrid_gnss_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.05522,
+              "ci95": [
+                0.025547,
+                0.092706
+              ],
+              "win_rate": 0.999,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.020231,
+              "ci95": [
+                0.01368,
+                0.026637
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.340761,
+              "ci95": [
+                -0.003133,
+                0.580397
+              ],
+              "win_rate": 0.974,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000657,
+              "ci95": [
+                -0.001247,
+                -6.5e-05
+              ],
+              "win_rate": 0.9845,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": 0.001809,
+              "ci95": [
+                -0.006966,
+                0.009861
+              ],
+              "win_rate": 0.6445,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.002408,
+              "ci95": [
+                -0.009484,
+                0.004933
+              ],
+              "win_rate": 0.26,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.005318,
+              "ci95": [
+                -0.109146,
+                0.118214
+              ],
+              "win_rate": 0.5335,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 1.2e-05,
+              "ci95": [
+                -0.00012,
+                0.000156
+              ],
+              "win_rate": 0.426,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.023717,
+              "ci95": [
+                0.005846,
+                0.040204
+              ],
+              "win_rate": 0.9955,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.004616,
+              "ci95": [
+                -0.010654,
+                0.001765
+              ],
+              "win_rate": 0.082,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.215479,
+              "ci95": [
+                -0.476572,
+                9.9e-05
+              ],
+              "win_rate": 0.0255,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000442,
+              "ci95": [
+                0.000111,
+                0.000736
+              ],
+              "win_rate": 0.003,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": 0.006412,
+              "ci95": [
+                -0.010812,
+                0.026282
+              ],
+              "win_rate": 0.7685,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.006594,
+              "ci95": [
+                -0.010369,
+                -0.002018
+              ],
+              "win_rate": 0.002,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.575687,
+              "ci95": [
+                -0.704173,
+                -0.468319
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000785,
+              "ci95": [
+                0.000476,
+                0.00109
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.104635,
+              "ci95": [
+                0.073192,
+                0.140228
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.004523,
+              "ci95": [
+                -0.002306,
+                0.011798
+              ],
+              "win_rate": 0.9035,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.081743,
+              "ci95": [
+                -0.082407,
+                0.244352
+              ],
+              "win_rate": 0.8465,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002,
+              "ci95": [
+                -0.002493,
+                -0.001538
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.105503,
+              "ci95": [
+                0.067932,
+                0.142938
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.017602,
+              "ci95": [
+                0.010119,
+                0.025573
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.048228,
+              "ci95": [
+                -0.122976,
+                0.211832
+              ],
+              "win_rate": 0.731,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000444,
+              "ci95": [
+                -0.000869,
+                -4.7e-05
+              ],
+              "win_rate": 0.991,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.021908,
+              "ci95": [
+                0.008672,
+                0.034791
+              ],
+              "win_rate": 0.9985,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.002208,
+              "ci95": [
+                -0.008297,
+                0.004187
+              ],
+              "win_rate": 0.244,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.220796,
+              "ci95": [
+                -0.4732,
+                0.000394
+              ],
+              "win_rate": 0.026,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.00043,
+              "ci95": [
+                0.000124,
+                0.000726
+              ],
+              "win_rate": 0.002,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": 0.004603,
+              "ci95": [
+                -0.005866,
+                0.019487
+              ],
+              "win_rate": 0.791,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.004186,
+              "ci95": [
+                -0.008868,
+                0.000628
+              ],
+              "win_rate": 0.0445,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.581005,
+              "ci95": [
+                -0.68495,
+                -0.477709
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000773,
+              "ci95": [
+                0.000483,
+                0.001047
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.102826,
+              "ci95": [
+                0.071698,
+                0.134821
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.00693,
+              "ci95": [
+                0.001749,
+                0.012354
+              ],
+              "win_rate": 0.997,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.076425,
+              "ci95": [
+                -0.070689,
+                0.243477
+              ],
+              "win_rate": 0.8445,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002012,
+              "ci95": [
+                -0.002459,
+                -0.001594
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.103695,
+              "ci95": [
+                0.064822,
+                0.142941
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.020009,
+              "ci95": [
+                0.012774,
+                0.027092
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.04291,
+              "ci95": [
+                -0.107327,
+                0.191903
+              ],
+              "win_rate": 0.7305,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000456,
+              "ci95": [
+                -0.000928,
+                -2.2e-05
+              ],
+              "win_rate": 0.979,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "modern_etas_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.017305,
+              "ci95": [
+                -0.029228,
+                -0.005882
+              ],
+              "win_rate": 0.001,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.001978,
+              "ci95": [
+                -0.007626,
+                0.003393
+              ],
+              "win_rate": 0.2445,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.360208,
+              "ci95": [
+                -0.571812,
+                -0.134674
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000343,
+              "ci95": [
+                1.7e-05,
+                0.000723
+              ],
+              "win_rate": 0.019,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "modern_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.080918,
+              "ci95": [
+                0.048175,
+                0.114141
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.009139,
+              "ci95": [
+                0.001308,
+                0.016537
+              ],
+              "win_rate": 0.99,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.297221,
+              "ci95": [
+                -0.034074,
+                0.681577
+              ],
+              "win_rate": 0.9605,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002442,
+              "ci95": [
+                -0.003033,
+                -0.001823
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "modern_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.081787,
+              "ci95": [
+                0.042398,
+                0.122089
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.022218,
+              "ci95": [
+                0.013028,
+                0.030372
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.263706,
+              "ci95": [
+                -0.016882,
+                0.550026
+              ],
+              "win_rate": 0.963,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000886,
+              "ci95": [
+                -0.001464,
+                -0.000299
+              ],
+              "win_rate": 0.998,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "firstgen_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.098223,
+              "ci95": [
+                0.067131,
+                0.129196
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.011116,
+              "ci95": [
+                0.006733,
+                0.015864
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.65743,
+              "ci95": [
+                0.505287,
+                0.839988
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002785,
+              "ci95": [
+                -0.003149,
+                -0.002428
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "firstgen_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.099091,
+              "ci95": [
+                0.058362,
+                0.137436
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.024195,
+              "ci95": [
+                0.018,
+                0.030312
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.623915,
+              "ci95": [
+                0.504256,
+                0.750153
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.001229,
+              "ci95": [
+                -0.001658,
+                -0.00089
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "smoothed_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.000868,
+              "ci95": [
+                -0.014787,
+                0.017213
+              ],
+              "win_rate": 0.516,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.013079,
+              "ci95": [
+                0.009147,
+                0.016862
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.033515,
+              "ci95": [
+                -0.206189,
+                0.108933
+              ],
+              "win_rate": 0.3495,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.001556,
+              "ci95": [
+                0.00114,
+                0.001929
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          }
+        }
+      },
+      "val": {
+        "n": 30475,
+        "n_pos": 461,
+        "n_windows": 25,
+        "n_valid_auc_resamples": 2000,
+        "models": [
+          "hybrid",
+          "hybrid_gnss",
+          "cascade",
+          "sv_etas",
+          "modern_etas",
+          "firstgen_etas",
+          "smoothed",
+          "poisson"
+        ],
+        "full_metrics": {
+          "hybrid": {
+            "pr_auc": 0.136345,
+            "roc_auc": 0.864354,
+            "brier": 0.014289
+          },
+          "hybrid_gnss": {
+            "pr_auc": 0.131624,
+            "roc_auc": 0.868237,
+            "brier": 0.014287
+          },
+          "cascade": {
+            "pr_auc": 0.135537,
+            "roc_auc": 0.863448,
+            "brier": 0.015044
+          },
+          "sv_etas": {
+            "pr_auc": 0.139048,
+            "roc_auc": 0.869752,
+            "brier": 0.014934
+          },
+          "modern_etas": {
+            "pr_auc": 0.1272,
+            "roc_auc": 0.86681,
+            "brier": 0.014178
+          },
+          "firstgen_etas": {
+            "pr_auc": 0.152905,
+            "roc_auc": 0.872551,
+            "brier": 0.013892
+          },
+          "smoothed": {
+            "pr_auc": 0.092003,
+            "roc_auc": 0.861624,
+            "brier": 0.01733
+          },
+          "poisson": {
+            "pr_auc": 0.120388,
+            "roc_auc": 0.86005,
+            "brier": 0.014705
+          }
+        },
+        "pairs": {
+          "hybrid_vs_hybrid_gnss": {
+            "d_pr_auc": {
+              "point": 0.004721,
+              "ci95": [
+                -0.006071,
+                0.01215
+              ],
+              "win_rate": 0.7985,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.003883,
+              "ci95": [
+                -0.008534,
+                0.000806
+              ],
+              "win_rate": 0.053,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.03009,
+              "ci95": [
+                -0.058734,
+                0.157127
+              ],
+              "win_rate": 0.6825,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 2e-06,
+              "ci95": [
+                -0.000214,
+                0.000185
+              ],
+              "win_rate": 0.463,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_vs_cascade": {
+            "d_pr_auc": {
+              "point": 0.000808,
+              "ci95": [
+                -0.010762,
+                0.010667
+              ],
+              "win_rate": 0.534,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.000906,
+              "ci95": [
+                -0.004767,
+                0.005341
+              ],
+              "win_rate": 0.691,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.619786,
+              "ci95": [
+                0.522406,
+                0.73689
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000755,
+              "ci95": [
+                -0.00087,
+                -0.000642
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": -0.002703,
+              "ci95": [
+                -0.015458,
+                0.009876
+              ],
+              "win_rate": 0.327,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.005398,
+              "ci95": [
+                -0.012905,
+                0.001133
+              ],
+              "win_rate": 0.0585,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.506462,
+              "ci95": [
+                0.406631,
+                0.616241
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000644,
+              "ci95": [
+                -0.000784,
+                -0.000515
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.009145,
+              "ci95": [
+                -0.003836,
+                0.023919
+              ],
+              "win_rate": 0.9165,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.002456,
+              "ci95": [
+                -0.008602,
+                0.003906
+              ],
+              "win_rate": 0.2315,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.036188,
+              "ci95": [
+                -0.151493,
+                0.062858
+              ],
+              "win_rate": 0.248,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000111,
+              "ci95": [
+                -0.000123,
+                0.000332
+              ],
+              "win_rate": 0.154,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.016561,
+              "ci95": [
+                -0.028993,
+                -0.00496
+              ],
+              "win_rate": 0.003,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.008197,
+              "ci95": [
+                -0.015128,
+                -0.002322
+              ],
+              "win_rate": 0.0015,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.143838,
+              "ci95": [
+                -0.228461,
+                -0.078231
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000397,
+              "ci95": [
+                0.000151,
+                0.000634
+              ],
+              "win_rate": 0.0015,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.044342,
+              "ci95": [
+                0.021279,
+                0.070647
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.00273,
+              "ci95": [
+                -0.004649,
+                0.009962
+              ],
+              "win_rate": 0.776,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.961642,
+              "ci95": [
+                0.834999,
+                1.099781
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.00304,
+              "ci95": [
+                -0.003259,
+                -0.002828
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "hybrid_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.015957,
+              "ci95": [
+                -0.005466,
+                0.040214
+              ],
+              "win_rate": 0.924,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.004304,
+              "ci95": [
+                -0.005538,
+                0.014373
+              ],
+              "win_rate": 0.814,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.512316,
+              "ci95": [
+                0.321436,
+                0.716835
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000416,
+              "ci95": [
+                -0.000684,
+                -0.000146
+              ],
+              "win_rate": 0.999,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_cascade": {
+            "d_pr_auc": {
+              "point": -0.003913,
+              "ci95": [
+                -0.019638,
+                0.012093
+              ],
+              "win_rate": 0.345,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.00479,
+              "ci95": [
+                0.000939,
+                0.008248
+              ],
+              "win_rate": 0.991,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.589696,
+              "ci95": [
+                0.460208,
+                0.724801
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000757,
+              "ci95": [
+                -0.000964,
+                -0.000532
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": -0.007424,
+              "ci95": [
+                -0.023527,
+                0.010241
+              ],
+              "win_rate": 0.226,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.001515,
+              "ci95": [
+                -0.006049,
+                0.002762
+              ],
+              "win_rate": 0.262,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.476372,
+              "ci95": [
+                0.357936,
+                0.602629
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000647,
+              "ci95": [
+                -0.000871,
+                -0.000403
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.004423,
+              "ci95": [
+                -0.008845,
+                0.023556
+              ],
+              "win_rate": 0.748,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.001427,
+              "ci95": [
+                -0.004063,
+                0.007442
+              ],
+              "win_rate": 0.699,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.066278,
+              "ci95": [
+                -0.244015,
+                0.063078
+              ],
+              "win_rate": 0.202,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000108,
+              "ci95": [
+                -0.000165,
+                0.000425
+              ],
+              "win_rate": 0.228,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "hybrid_gnss_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.021282,
+              "ci95": [
+                -0.037592,
+                -0.003786
+              ],
+              "win_rate": 0.01,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.004314,
+              "ci95": [
+                -0.008146,
+                -0.001011
+              ],
+              "win_rate": 0.005,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.173928,
+              "ci95": [
+                -0.312924,
+                -0.084026
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000395,
+              "ci95": [
+                6.9e-05,
+                0.000723
+              ],
+              "win_rate": 0.009,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "hybrid_gnss_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.03962,
+              "ci95": [
+                0.017937,
+                0.072637
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.006613,
+              "ci95": [
+                0.00069,
+                0.012099
+              ],
+              "win_rate": 0.9835,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.931552,
+              "ci95": [
+                0.80065,
+                1.078366
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.003043,
+              "ci95": [
+                -0.003351,
+                -0.002759
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "hybrid_gnss_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.011236,
+              "ci95": [
+                -0.007826,
+                0.040502
+              ],
+              "win_rate": 0.854,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.008187,
+              "ci95": [
+                -0.000317,
+                0.017143
+              ],
+              "win_rate": 0.9685,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.482226,
+              "ci95": [
+                0.273616,
+                0.691212
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000418,
+              "ci95": [
+                -0.000756,
+                -0.000117
+              ],
+              "win_rate": 0.998,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_sv_etas": {
+            "d_pr_auc": {
+              "point": -0.003511,
+              "ci95": [
+                -0.008663,
+                0.002253
+              ],
+              "win_rate": 0.1215,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.006304,
+              "ci95": [
+                -0.010109,
+                -0.002487
+              ],
+              "win_rate": 0.001,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.113324,
+              "ci95": [
+                -0.186815,
+                -0.042212
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.00011,
+              "ci95": [
+                6e-05,
+                0.000164
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.008337,
+              "ci95": [
+                -0.003351,
+                0.024066
+              ],
+              "win_rate": 0.9,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.003363,
+              "ci95": [
+                -0.009112,
+                0.002591
+              ],
+              "win_rate": 0.145,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.655974,
+              "ci95": [
+                -0.841938,
+                -0.49713
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000866,
+              "ci95": [
+                0.000656,
+                0.001069
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "cascade_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.017369,
+              "ci95": [
+                -0.022269,
+                -0.010771
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.009103,
+              "ci95": [
+                -0.012859,
+                -0.00501
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.763624,
+              "ci95": [
+                -0.897703,
+                -0.649715
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.001152,
+              "ci95": [
+                0.000946,
+                0.001344
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "cascade_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.043533,
+              "ci95": [
+                0.023132,
+                0.06817
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.001823,
+              "ci95": [
+                -0.004527,
+                0.007991
+              ],
+              "win_rate": 0.712,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.341856,
+              "ci95": [
+                0.255978,
+                0.426237
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002286,
+              "ci95": [
+                -0.002448,
+                -0.002134
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "cascade_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.015149,
+              "ci95": [
+                -0.005292,
+                0.038303
+              ],
+              "win_rate": 0.928,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.003398,
+              "ci95": [
+                -0.005614,
+                0.012808
+              ],
+              "win_rate": 0.755,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.10747,
+              "ci95": [
+                -0.347432,
+                0.14165
+              ],
+              "win_rate": 0.184,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000339,
+              "ci95": [
+                0.000111,
+                0.000568
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_modern_etas": {
+            "d_pr_auc": {
+              "point": 0.011847,
+              "ci95": [
+                -0.001124,
+                0.028139
+              ],
+              "win_rate": 0.9635,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.002942,
+              "ci95": [
+                -0.002682,
+                0.009473
+              ],
+              "win_rate": 0.8245,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.54265,
+              "ci95": [
+                -0.719971,
+                -0.375059
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000755,
+              "ci95": [
+                0.000528,
+                0.00098
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "sv_etas_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.013858,
+              "ci95": [
+                -0.021546,
+                -0.00633
+              ],
+              "win_rate": 0.002,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.002799,
+              "ci95": [
+                -0.005753,
+                -0.000205
+              ],
+              "win_rate": 0.0155,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.650301,
+              "ci95": [
+                -0.782316,
+                -0.524946
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.001042,
+              "ci95": [
+                0.000813,
+                0.00125
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "sv_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.047044,
+              "ci95": [
+                0.025291,
+                0.072738
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.008128,
+              "ci95": [
+                0.002343,
+                0.013561
+              ],
+              "win_rate": 0.9985,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.45518,
+              "ci95": [
+                0.393313,
+                0.516427
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.002396,
+              "ci95": [
+                -0.002564,
+                -0.002236
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "sv_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.01866,
+              "ci95": [
+                -0.0038,
+                0.042085
+              ],
+              "win_rate": 0.954,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.009702,
+              "ci95": [
+                0.001164,
+                0.018879
+              ],
+              "win_rate": 0.9905,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.005854,
+              "ci95": [
+                -0.240494,
+                0.264737
+              ],
+              "win_rate": 0.5005,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000228,
+              "ci95": [
+                -1.1e-05,
+                0.000477
+              ],
+              "win_rate": 0.032,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "modern_etas_vs_firstgen_etas": {
+            "d_pr_auc": {
+              "point": -0.025705,
+              "ci95": [
+                -0.04042,
+                -0.013253
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": -0.005741,
+              "ci95": [
+                -0.012773,
+                0.000918
+              ],
+              "win_rate": 0.0525,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.10765,
+              "ci95": [
+                -0.171095,
+                -0.039584
+              ],
+              "win_rate": 0.0005,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.000286,
+              "ci95": [
+                0.00015,
+                0.000424
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          },
+          "modern_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.035197,
+              "ci95": [
+                0.016335,
+                0.058178
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.005186,
+              "ci95": [
+                -0.002201,
+                0.012017
+              ],
+              "win_rate": 0.9175,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.99783,
+              "ci95": [
+                0.79782,
+                1.210284
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.003151,
+              "ci95": [
+                -0.003452,
+                -0.00286
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "modern_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.006812,
+              "ci95": [
+                -0.013829,
+                0.030842
+              ],
+              "win_rate": 0.7225,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.00676,
+              "ci95": [
+                -0.002223,
+                0.015682
+              ],
+              "win_rate": 0.92,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.548504,
+              "ci95": [
+                0.366996,
+                0.741477
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000527,
+              "ci95": [
+                -0.000809,
+                -0.000292
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "inseparable"
+          },
+          "firstgen_etas_vs_smoothed": {
+            "d_pr_auc": {
+              "point": 0.060902,
+              "ci95": [
+                0.038772,
+                0.08536
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.010927,
+              "ci95": [
+                0.005535,
+                0.016286
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 1.10548,
+              "ci95": [
+                0.944505,
+                1.276971
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.003438,
+              "ci95": [
+                -0.003688,
+                -0.003173
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "firstgen_etas_vs_poisson": {
+            "d_pr_auc": {
+              "point": 0.032517,
+              "ci95": [
+                0.010604,
+                0.056586
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.012501,
+              "ci95": [
+                0.004033,
+                0.021677
+              ],
+              "win_rate": 0.9985,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": 0.656155,
+              "ci95": [
+                0.474974,
+                0.846055
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": -0.000813,
+              "ci95": [
+                -0.001031,
+                -0.000635
+              ],
+              "win_rate": 1.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "A_beats_B"
+          },
+          "smoothed_vs_poisson": {
+            "d_pr_auc": {
+              "point": -0.028385,
+              "ci95": [
+                -0.03832,
+                -0.019779
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_roc_auc": {
+              "point": 0.001574,
+              "ci95": [
+                -0.003216,
+                0.00653
+              ],
+              "win_rate": 0.7195,
+              "excludes_0": false,
+              "n_resamples": 2000
+            },
+            "d_ig": {
+              "point": -0.449326,
+              "ci95": [
+                -0.713747,
+                -0.190867
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "d_brier": {
+              "point": 0.002624,
+              "ci95": [
+                0.002466,
+                0.002788
+              ],
+              "win_rate": 0.0,
+              "excludes_0": true,
+              "n_resamples": 2000
+            },
+            "verdict": "B_beats_A"
+          }
+        }
+      }
+    },
     "y35": {
       "test": {
         "n": 31694,
@@ -5073,6 +7603,1294 @@
       "pair": "hybrid_vs_hybrid_gnss",
       "A": "hybrid",
       "B": "hybrid_gnss",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -1.176639,
+        "ci95": [
+          -1.932016,
+          -0.441616
+        ]
+      },
+      "pr_auc": {
+        "point": -0.033245,
+        "ci95": [
+          -0.066146,
+          -0.010615
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.884106,
+        "ci95": [
+          -1.464613,
+          -0.369612
+        ]
+      },
+      "pr_auc": {
+        "point": -0.083528,
+        "ci95": [
+          -0.106234,
+          -0.056475
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_sv_etas",
+      "A": "hybrid",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.878788,
+        "ci95": [
+          -1.510576,
+          -0.30669
+        ]
+      },
+      "pr_auc": {
+        "point": -0.081719,
+        "ci95": [
+          -0.108596,
+          -0.052082
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_modern_etas",
+      "A": "hybrid",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -1.099584,
+        "ci95": [
+          -1.757177,
+          -0.557021
+        ]
+      },
+      "pr_auc": {
+        "point": -0.059811,
+        "ci95": [
+          -0.089299,
+          -0.026256
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -1.459793,
+        "ci95": [
+          -2.055175,
+          -0.916103
+        ]
+      },
+      "pr_auc": {
+        "point": -0.077116,
+        "ci95": [
+          -0.105869,
+          -0.044359
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.802363,
+        "ci95": [
+          -1.384928,
+          -0.233838
+        ]
+      },
+      "pr_auc": {
+        "point": 0.021107,
+        "ci95": [
+          0.003553,
+          0.047102
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.835878,
+        "ci95": [
+          -1.471188,
+          -0.251432
+        ]
+      },
+      "pr_auc": {
+        "point": 0.021975,
+        "ci95": [
+          0.005188,
+          0.045811
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_cascade",
+      "A": "hybrid_gnss",
+      "B": "cascade",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.292533,
+        "ci95": [
+          -0.070631,
+          0.546279
+        ]
+      },
+      "pr_auc": {
+        "point": -0.050283,
+        "ci95": [
+          -0.074587,
+          -0.022174
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_sv_etas",
+      "A": "hybrid_gnss",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.297851,
+        "ci95": [
+          -0.035231,
+          0.527522
+        ]
+      },
+      "pr_auc": {
+        "point": -0.048474,
+        "ci95": [
+          -0.071032,
+          -0.024379
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_modern_etas",
+      "A": "hybrid_gnss",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.077055,
+        "ci95": [
+          -0.399324,
+          0.435836
+        ]
+      },
+      "pr_auc": {
+        "point": -0.026566,
+        "ci95": [
+          -0.046421,
+          -0.002699
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_firstgen_etas",
+      "A": "hybrid_gnss",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.283154,
+        "ci95": [
+          -0.632115,
+          -0.082989
+        ]
+      },
+      "pr_auc": {
+        "point": -0.043871,
+        "ci95": [
+          -0.061869,
+          -0.022783
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_smoothed",
+      "A": "hybrid_gnss",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.374276,
+        "ci95": [
+          0.053902,
+          0.652356
+        ]
+      },
+      "pr_auc": {
+        "point": 0.054352,
+        "ci95": [
+          0.03315,
+          0.080396
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_gnss_vs_poisson",
+      "A": "hybrid_gnss",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.340761,
+        "ci95": [
+          -0.003133,
+          0.580397
+        ]
+      },
+      "pr_auc": {
+        "point": 0.05522,
+        "ci95": [
+          0.025547,
+          0.092706
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_sv_etas",
+      "A": "cascade",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.005318,
+        "ci95": [
+          -0.109146,
+          0.118214
+        ]
+      },
+      "pr_auc": {
+        "point": 0.001809,
+        "ci95": [
+          -0.006966,
+          0.009861
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_modern_etas",
+      "A": "cascade",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.215479,
+        "ci95": [
+          -0.476572,
+          9.9e-05
+        ]
+      },
+      "pr_auc": {
+        "point": 0.023717,
+        "ci95": [
+          0.005846,
+          0.040204
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.575687,
+        "ci95": [
+          -0.704173,
+          -0.468319
+        ]
+      },
+      "pr_auc": {
+        "point": 0.006412,
+        "ci95": [
+          -0.010812,
+          0.026282
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.081743,
+        "ci95": [
+          -0.082407,
+          0.244352
+        ]
+      },
+      "pr_auc": {
+        "point": 0.104635,
+        "ci95": [
+          0.073192,
+          0.140228
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.048228,
+        "ci95": [
+          -0.122976,
+          0.211832
+        ]
+      },
+      "pr_auc": {
+        "point": 0.105503,
+        "ci95": [
+          0.067932,
+          0.142938
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "sv_etas_vs_modern_etas",
+      "A": "sv_etas",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.220796,
+        "ci95": [
+          -0.4732,
+          0.000394
+        ]
+      },
+      "pr_auc": {
+        "point": 0.021908,
+        "ci95": [
+          0.008672,
+          0.034791
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "sv_etas_vs_firstgen_etas",
+      "A": "sv_etas",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.581005,
+        "ci95": [
+          -0.68495,
+          -0.477709
+        ]
+      },
+      "pr_auc": {
+        "point": 0.004603,
+        "ci95": [
+          -0.005866,
+          0.019487
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "sv_etas_vs_smoothed",
+      "A": "sv_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.076425,
+        "ci95": [
+          -0.070689,
+          0.243477
+        ]
+      },
+      "pr_auc": {
+        "point": 0.102826,
+        "ci95": [
+          0.071698,
+          0.134821
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "sv_etas_vs_poisson",
+      "A": "sv_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.04291,
+        "ci95": [
+          -0.107327,
+          0.191903
+        ]
+      },
+      "pr_auc": {
+        "point": 0.103695,
+        "ci95": [
+          0.064822,
+          0.142941
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "modern_etas_vs_firstgen_etas",
+      "A": "modern_etas",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "test",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.360208,
+        "ci95": [
+          -0.571812,
+          -0.134674
+        ]
+      },
+      "pr_auc": {
+        "point": -0.017305,
+        "ci95": [
+          -0.029228,
+          -0.005882
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "modern_etas_vs_smoothed",
+      "A": "modern_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.297221,
+        "ci95": [
+          -0.034074,
+          0.681577
+        ]
+      },
+      "pr_auc": {
+        "point": 0.080918,
+        "ci95": [
+          0.048175,
+          0.114141
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "modern_etas_vs_poisson",
+      "A": "modern_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.263706,
+        "ci95": [
+          -0.016882,
+          0.550026
+        ]
+      },
+      "pr_auc": {
+        "point": 0.081787,
+        "ci95": [
+          0.042398,
+          0.122089
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.65743,
+        "ci95": [
+          0.505287,
+          0.839988
+        ]
+      },
+      "pr_auc": {
+        "point": 0.098223,
+        "ci95": [
+          0.067131,
+          0.129196
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.623915,
+        "ci95": [
+          0.504256,
+          0.750153
+        ]
+      },
+      "pr_auc": {
+        "point": 0.099091,
+        "ci95": [
+          0.058362,
+          0.137436
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y30",
+      "split": "test",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.033515,
+        "ci95": [
+          -0.206189,
+          0.108933
+        ]
+      },
+      "pr_auc": {
+        "point": 0.000868,
+        "ci95": [
+          -0.014787,
+          0.017213
+        ]
+      },
+      "primary": true
+    },
+    {
+      "pair": "hybrid_vs_hybrid_gnss",
+      "A": "hybrid",
+      "B": "hybrid_gnss",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.03009,
+        "ci95": [
+          -0.058734,
+          0.157127
+        ]
+      },
+      "pr_auc": {
+        "point": 0.004721,
+        "ci95": [
+          -0.006071,
+          0.01215
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_cascade",
+      "A": "hybrid",
+      "B": "cascade",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.619786,
+        "ci95": [
+          0.522406,
+          0.73689
+        ]
+      },
+      "pr_auc": {
+        "point": 0.000808,
+        "ci95": [
+          -0.010762,
+          0.010667
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_sv_etas",
+      "A": "hybrid",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.506462,
+        "ci95": [
+          0.406631,
+          0.616241
+        ]
+      },
+      "pr_auc": {
+        "point": -0.002703,
+        "ci95": [
+          -0.015458,
+          0.009876
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_modern_etas",
+      "A": "hybrid",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.036188,
+        "ci95": [
+          -0.151493,
+          0.062858
+        ]
+      },
+      "pr_auc": {
+        "point": 0.009145,
+        "ci95": [
+          -0.003836,
+          0.023919
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_firstgen_etas",
+      "A": "hybrid",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.143838,
+        "ci95": [
+          -0.228461,
+          -0.078231
+        ]
+      },
+      "pr_auc": {
+        "point": -0.016561,
+        "ci95": [
+          -0.028993,
+          -0.00496
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_smoothed",
+      "A": "hybrid",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.961642,
+        "ci95": [
+          0.834999,
+          1.099781
+        ]
+      },
+      "pr_auc": {
+        "point": 0.044342,
+        "ci95": [
+          0.021279,
+          0.070647
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_poisson",
+      "A": "hybrid",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.512316,
+        "ci95": [
+          0.321436,
+          0.716835
+        ]
+      },
+      "pr_auc": {
+        "point": 0.015957,
+        "ci95": [
+          -0.005466,
+          0.040214
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_cascade",
+      "A": "hybrid_gnss",
+      "B": "cascade",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.589696,
+        "ci95": [
+          0.460208,
+          0.724801
+        ]
+      },
+      "pr_auc": {
+        "point": -0.003913,
+        "ci95": [
+          -0.019638,
+          0.012093
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_sv_etas",
+      "A": "hybrid_gnss",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.476372,
+        "ci95": [
+          0.357936,
+          0.602629
+        ]
+      },
+      "pr_auc": {
+        "point": -0.007424,
+        "ci95": [
+          -0.023527,
+          0.010241
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_modern_etas",
+      "A": "hybrid_gnss",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.066278,
+        "ci95": [
+          -0.244015,
+          0.063078
+        ]
+      },
+      "pr_auc": {
+        "point": 0.004423,
+        "ci95": [
+          -0.008845,
+          0.023556
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_firstgen_etas",
+      "A": "hybrid_gnss",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.173928,
+        "ci95": [
+          -0.312924,
+          -0.084026
+        ]
+      },
+      "pr_auc": {
+        "point": -0.021282,
+        "ci95": [
+          -0.037592,
+          -0.003786
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_smoothed",
+      "A": "hybrid_gnss",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.931552,
+        "ci95": [
+          0.80065,
+          1.078366
+        ]
+      },
+      "pr_auc": {
+        "point": 0.03962,
+        "ci95": [
+          0.017937,
+          0.072637
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_gnss_vs_poisson",
+      "A": "hybrid_gnss",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.482226,
+        "ci95": [
+          0.273616,
+          0.691212
+        ]
+      },
+      "pr_auc": {
+        "point": 0.011236,
+        "ci95": [
+          -0.007826,
+          0.040502
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_sv_etas",
+      "A": "cascade",
+      "B": "sv_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.113324,
+        "ci95": [
+          -0.186815,
+          -0.042212
+        ]
+      },
+      "pr_auc": {
+        "point": -0.003511,
+        "ci95": [
+          -0.008663,
+          0.002253
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_modern_etas",
+      "A": "cascade",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.655974,
+        "ci95": [
+          -0.841938,
+          -0.49713
+        ]
+      },
+      "pr_auc": {
+        "point": 0.008337,
+        "ci95": [
+          -0.003351,
+          0.024066
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_firstgen_etas",
+      "A": "cascade",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.763624,
+        "ci95": [
+          -0.897703,
+          -0.649715
+        ]
+      },
+      "pr_auc": {
+        "point": -0.017369,
+        "ci95": [
+          -0.022269,
+          -0.010771
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_smoothed",
+      "A": "cascade",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.341856,
+        "ci95": [
+          0.255978,
+          0.426237
+        ]
+      },
+      "pr_auc": {
+        "point": 0.043533,
+        "ci95": [
+          0.023132,
+          0.06817
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "cascade_vs_poisson",
+      "A": "cascade",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.10747,
+        "ci95": [
+          -0.347432,
+          0.14165
+        ]
+      },
+      "pr_auc": {
+        "point": 0.015149,
+        "ci95": [
+          -0.005292,
+          0.038303
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "sv_etas_vs_modern_etas",
+      "A": "sv_etas",
+      "B": "modern_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": -0.54265,
+        "ci95": [
+          -0.719971,
+          -0.375059
+        ]
+      },
+      "pr_auc": {
+        "point": 0.011847,
+        "ci95": [
+          -0.001124,
+          0.028139
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "sv_etas_vs_firstgen_etas",
+      "A": "sv_etas",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.650301,
+        "ci95": [
+          -0.782316,
+          -0.524946
+        ]
+      },
+      "pr_auc": {
+        "point": -0.013858,
+        "ci95": [
+          -0.021546,
+          -0.00633
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "sv_etas_vs_smoothed",
+      "A": "sv_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.45518,
+        "ci95": [
+          0.393313,
+          0.516427
+        ]
+      },
+      "pr_auc": {
+        "point": 0.047044,
+        "ci95": [
+          0.025291,
+          0.072738
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "sv_etas_vs_poisson",
+      "A": "sv_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.005854,
+        "ci95": [
+          -0.240494,
+          0.264737
+        ]
+      },
+      "pr_auc": {
+        "point": 0.01866,
+        "ci95": [
+          -0.0038,
+          0.042085
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "modern_etas_vs_firstgen_etas",
+      "A": "modern_etas",
+      "B": "firstgen_etas",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.10765,
+        "ci95": [
+          -0.171095,
+          -0.039584
+        ]
+      },
+      "pr_auc": {
+        "point": -0.025705,
+        "ci95": [
+          -0.04042,
+          -0.013253
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "modern_etas_vs_smoothed",
+      "A": "modern_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.99783,
+        "ci95": [
+          0.79782,
+          1.210284
+        ]
+      },
+      "pr_auc": {
+        "point": 0.035197,
+        "ci95": [
+          0.016335,
+          0.058178
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "modern_etas_vs_poisson",
+      "A": "modern_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "inseparable",
+      "ig": {
+        "point": 0.548504,
+        "ci95": [
+          0.366996,
+          0.741477
+        ]
+      },
+      "pr_auc": {
+        "point": 0.006812,
+        "ci95": [
+          -0.013829,
+          0.030842
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_smoothed",
+      "A": "firstgen_etas",
+      "B": "smoothed",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 1.10548,
+        "ci95": [
+          0.944505,
+          1.276971
+        ]
+      },
+      "pr_auc": {
+        "point": 0.060902,
+        "ci95": [
+          0.038772,
+          0.08536
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "firstgen_etas_vs_poisson",
+      "A": "firstgen_etas",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "A_beats_B",
+      "ig": {
+        "point": 0.656155,
+        "ci95": [
+          0.474974,
+          0.846055
+        ]
+      },
+      "pr_auc": {
+        "point": 0.032517,
+        "ci95": [
+          0.010604,
+          0.056586
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "smoothed_vs_poisson",
+      "A": "smoothed",
+      "B": "poisson",
+      "target": "y30",
+      "split": "val",
+      "verdict": "B_beats_A",
+      "ig": {
+        "point": -0.449326,
+        "ci95": [
+          -0.713747,
+          -0.190867
+        ]
+      },
+      "pr_auc": {
+        "point": -0.028385,
+        "ci95": [
+          -0.03832,
+          -0.019779
+        ]
+      },
+      "primary": false
+    },
+    {
+      "pair": "hybrid_vs_hybrid_gnss",
+      "A": "hybrid",
+      "B": "hybrid_gnss",
       "target": "y35",
       "split": "test",
       "verdict": "inseparable",
@@ -5090,7 +8908,7 @@
           0.017389
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_cascade",
@@ -5113,7 +8931,7 @@
           0.003323
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_sv_etas",
@@ -5136,7 +8954,7 @@
           0.005903
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_modern_etas",
@@ -5159,7 +8977,7 @@
           0.029749
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_firstgen_etas",
@@ -5182,7 +9000,7 @@
           0.013146
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_smoothed",
@@ -5205,7 +9023,7 @@
           0.124154
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_poisson",
@@ -5228,7 +9046,7 @@
           0.141464
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_cascade",
@@ -5251,7 +9069,7 @@
           0.008205
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_sv_etas",
@@ -5274,7 +9092,7 @@
           0.010664
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_modern_etas",
@@ -5297,7 +9115,7 @@
           0.026039
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_firstgen_etas",
@@ -5320,7 +9138,7 @@
           0.010187
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_smoothed",
@@ -5343,7 +9161,7 @@
           0.118098
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_gnss_vs_poisson",
@@ -5366,7 +9184,7 @@
           0.138213
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "cascade_vs_sv_etas",
@@ -5389,7 +9207,7 @@
           0.009533
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "cascade_vs_modern_etas",
@@ -5412,7 +9230,7 @@
           0.044957
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "cascade_vs_firstgen_etas",
@@ -5435,7 +9253,7 @@
           0.024789
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "cascade_vs_smoothed",
@@ -5458,7 +9276,7 @@
           0.14089
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "cascade_vs_poisson",
@@ -5481,7 +9299,7 @@
           0.156227
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "sv_etas_vs_modern_etas",
@@ -5504,7 +9322,7 @@
           0.040372
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "sv_etas_vs_firstgen_etas",
@@ -5527,7 +9345,7 @@
           0.019815
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "sv_etas_vs_smoothed",
@@ -5550,7 +9368,7 @@
           0.138012
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "sv_etas_vs_poisson",
@@ -5573,7 +9391,7 @@
           0.155909
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "modern_etas_vs_firstgen_etas",
@@ -5596,7 +9414,7 @@
           -0.007146
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "modern_etas_vs_smoothed",
@@ -5619,7 +9437,7 @@
           0.112875
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "modern_etas_vs_poisson",
@@ -5642,7 +9460,7 @@
           0.132586
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "firstgen_etas_vs_smoothed",
@@ -5665,7 +9483,7 @@
           0.130476
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "firstgen_etas_vs_poisson",
@@ -5688,7 +9506,7 @@
           0.15116
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "smoothed_vs_poisson",
@@ -5711,7 +9529,7 @@
           0.028718
         ]
       },
-      "primary": true
+      "primary": false
     },
     {
       "pair": "hybrid_vs_hybrid_gnss",

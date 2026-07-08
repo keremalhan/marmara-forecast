@@ -112,6 +112,7 @@ def build_event_bundle(cat: pd.DataFrame, mc: float) -> dict:
     return {
         "all": sub(np.ones(len(t), bool)),
         "mc": sub(mag >= mc),
+        "e30": sub(mag >= 3.0),          # Phase 3: y30 target (M>=3.0)
         "e35": sub(mag >= 3.5),
         "e45": sub(mag >= 4.5),
         "e25": sub(mag >= 2.5),
@@ -277,6 +278,17 @@ def targets_at_window(EV: dict, t0d: float) -> tuple[np.ndarray, np.ndarray]:
     return y(EV["e35"]), y(EV["e45"])
 
 
+def y30_at_window(EV: dict, t0d: float) -> np.ndarray:
+    """Phase 3: M>=3.0 occurrence in [t0, t0+30) (same causal logic as
+    targets_at_window; separate fn so targets_at_window's signature is unchanged)."""
+    sub = EV["e30"]
+    lo = np.searchsorted(sub["t"], t0d, "left")
+    hi = np.searchsorted(sub["t"], t0d + HORIZON_D, "left")
+    g = np.zeros((NLAT, NLON))
+    g[sub["ir"][lo:hi], sub["ic"][lo:hi]] = 1.0
+    return g
+
+
 # ========================================================================== #
 # Generic (arbitrary-geometry) seismicity feature builder.
 # Used by Task 9 for both the model-box ETAS simulations and the wide-box real
@@ -321,7 +333,7 @@ def build_bundle(t_days, lon, lat, mag, depth, spec: GridSpec, mc: float) -> dic
                     lon=lon[m], lat=lat[m])
 
     return {"all": sub(np.ones(len(t), bool)), "mc": sub(mag >= mc),
-            "e35": sub(mag >= 3.5), "e45": sub(mag >= 4.5),
+            "e30": sub(mag >= 3.0), "e35": sub(mag >= 3.5), "e45": sub(mag >= 4.5),
             "e55": sub(mag >= 5.5), "e25": sub(mag >= 2.5)}
 
 

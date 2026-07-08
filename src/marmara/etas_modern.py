@@ -148,6 +148,7 @@ def compute():
                                cell_lon, cell_lat, area_c)
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k), "ir": ir_flat, "ic": ic_flat,
+            "lam30": lam_mc,                        # Phase 3: M>=3.0 (=mc) first-gen rate
             "lam35": lam_mc * s35, "lam45": lam_mc * s45}))
         if (i + 1) % 10 == 0:
             print(f"  modern_etas window {i+1}/{len(ks)} (k={k}) ({time.time()-t_all:.0f}s)", flush=True)

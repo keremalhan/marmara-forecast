@@ -118,13 +118,16 @@ def _load_extra_etas_preds(grid, thr):
     ETAS PARAMETERS differ). Absent parquet -> predictor silently skipped. Rows in
     train windows (not present in the val+test rate files) get lambda=0; they are
     never scored (evaluate() indexes val/test only)."""
-    lamcol = "lam35" if abs(thr - 3.5) < 1e-6 else "lam45"
+    lamcol = {3.0: "lam30", 3.5: "lam35", 4.5: "lam45"}[round(float(thr), 1)]
     key = ["window", "ir", "ic"]
     idx = pd.MultiIndex.from_frame(grid[key])
     out = {}
     for label in ("sv_etas", "modern_etas"):
         path = OUT / f"rates_{label}.parquet"
         if not path.exists():
+            continue
+        avail = pd.read_parquet(path).columns
+        if lamcol not in avail:                 # e.g. lam30 missing in an old rate file
             continue
         r = pd.read_parquet(path, columns=key + [lamcol]).set_index(key)[lamcol]
         lam = r.reindex(idx).to_numpy()
@@ -239,12 +242,18 @@ def main():
     from marmara.evaluate import train_b_value
     b_train = train_b_value(cat, mc)
 
-    report = {"meta": {"mc": mc, "b_train": b_train, "features": FEATS_HYBRID}, "targets": {}}
-    for ycol, ccol, lcol, thr in (("y35", "count35", "lam35_sim", 3.5),
+    # Phase 3: y30 (M>=3.0) is the PRIMARY powered comparison (~10x the y35 positives);
+    # y35 powered; y45 UNPOWERED (kept descriptive — no ranking claims).
+    POWER = {"y30": "primary (powered)", "y35": "powered", "y45": "unpowered — no ranking claims"}
+    report = {"meta": {"mc": mc, "b_train": b_train, "features": FEATS_HYBRID,
+                       "power": POWER}, "targets": {}}
+    for ycol, ccol, lcol, thr in (("y30", "count30", "lam30_sim", 3.0),
+                                  ("y35", "count35", "lam35_sim", 3.5),
                                   ("y45", "count45", "lam45_sim", 4.5)):
         print(f"evaluating {ycol} ...")
         report["targets"][ycol] = evaluate(grid, masks, ycol, ccol, lcol, thr,
                                             cat, mc, b_train, mc_etas)
+        report["targets"][ycol]["power"] = POWER[ycol]
 
     # headline
     def line(y):
@@ -255,30 +264,32 @@ def main():
                 f"{sc['cascade']['pr_auc']:.3f} vs first-gen-ETAS {sc['firstgen_etas']['pr_auc']:.3f}; "
                 f"IG(hybrid vs cascade)={ig['cascade']:+.3f}, IG(hybrid vs first-gen-ETAS)="
                 f"{ig['firstgen_etas']:+.3f}, IG vs smoothed {ig['smoothed']:+.3f}")
-    report["headline"] = " | ".join(line(y) for y in ("y35", "y45"))
-    # honest verdict from the numbers
+    report["headline"] = " | ".join(line(y) for y in ("y30", "y35", "y45"))
+    # honest verdict — all ranking claims must be read against bootstrap_ci/claims.json.
+    y30t = report["targets"]["y30"]["splits"]["test"]
     y35t = report["targets"]["y35"]["splits"]["test"]["scores"]
-    casc_beats_fg = y35t["cascade"]["pr_auc"] > y35t["firstgen_etas"]["pr_auc"]
-    hyb_beats_casc = report["targets"]["y35"]["splits"]["test"]["ig_hybrid_vs"]["cascade"] > 0
-    y45_over = (report["targets"]["y45"]["splits"]["test"]["scores"]["hybrid"]["brier"]
-                > report["targets"]["y45"]["splits"]["test"]["scores"]["cascade"]["brier"])
     report["verdict"] = (
-        f"y35: the cascade {'beats' if casc_beats_fg else 'does not beat'} the first-"
-        f"gen ETAS on PR-AUC ({y35t['cascade']['pr_auc']:.3f} vs {y35t['firstgen_etas']['pr_auc']:.3f}); "
-        f"the ML hybrid {'edges' if hyb_beats_casc else 'does not beat'} the cascade in IG "
-        "but the three (hybrid/cascade/first-gen ETAS) are within noise — ETAS remains "
-        "competitive (best ROC/Molchan). The cascade's decisive win is the 2x-over-first-"
-        "gen rate inside active sequences (cascade gate). "
-        f"y45 (only {report['targets']['y45']['splits']['test']['n_pos']} test positives): "
-        f"the hybrid OVERFITS on the model box ({'worse' if y45_over else 'ok'} Brier than "
-        "cascade; its large +IG is an artifact) — cascade & first-gen ETAS win; the "
-        "widebox-y45 remedy is deferred (RAM).")
+        f"PRIMARY = y30 (M>=3.0, {y30t['n_pos']} test positives — ~{y30t['n_pos']//max(report['targets']['y35']['splits']['test']['n_pos'],1)}x y35): "
+        "the powered comparison where ML-vs-ETAS separation is statistically resolvable "
+        "at all; read the ranking off claims.json (block-bootstrap verdicts). "
+        f"y35 (M>=3.5, {report['targets']['y35']['splits']['test']['n_pos']} positives): "
+        f"cascade PR-AUC {y35t['cascade']['pr_auc']:.3f} vs first-gen {y35t['firstgen_etas']['pr_auc']:.3f} — "
+        "the difference is WITHIN the bootstrap CI (inseparable; see claims.json); the "
+        "old 'cascade ranks best' headline is not supported. "
+        f"y45 (M>=4.5, only {report['targets']['y45']['splits']['test']['n_pos']} test positives): "
+        "UNPOWERED — bootstrap CIs are enormous and essentially every pair is inseparable; "
+        "NO ranking claims. The w chosen for y45 was selected on ~13 val positives (noise-fit) "
+        "and is NOT a headline result.")
     json.dump(report, open(OUT / "evaluation.json", "w"), indent=2)
 
-    L = ["# Evaluation — hybrid (cascade x ML) vs baselines", "", report["headline"], ""]
-    for y in ("y35", "y45"):
+    L = ["# Evaluation — hybrid (cascade x ML) vs baselines", "",
+         "All ranking claims must be read against results/claims.json (block-bootstrap "
+         "verdicts); point differences below are NOT claims on their own.", "",
+         report["headline"], ""]
+    for y in ("y30", "y35", "y45"):
         r = report["targets"][y]
-        L.append(f"## {y} (thr {r['threshold']}, w={r['chosen_w']:.1f}, sigma {r['smoothed_sigma_km']:g}km)")
+        L.append(f"## {y} (thr {r['threshold']}, w={r['chosen_w']:.1f}, sigma "
+                 f"{r['smoothed_sigma_km']:g}km) — {POWER[y]}")
         for sp in ("val", "test"):
             s = r["splits"][sp]
             L.append(f"\n### {sp} (n={s['n']}, pos={s['n_pos']})")

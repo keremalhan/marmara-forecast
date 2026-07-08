@@ -249,6 +249,8 @@ def cascade_forecast(params: EtasParams, history_df, t0d: float, horizon: float,
     ncells = nlon * nlat
 
     out = {"K": K, "capped_fraction": (meta.get("n_capped", 0) / K) if per_sim_cap else 0.0}
+    # M>=3.0 (=mc) total rate for the Phase-3 y30 target (all simulated events are >=mc)
+    out["lam30"] = (np.bincount(cflat, minlength=ncells) / K).reshape(nlat, nlon)
     for lvl, name in ((3.5, "lam35"), (4.5, "lam45")):
         m = mag >= lvl
         out[name] = (np.bincount(cflat[m], minlength=ncells) / K).reshape(nlat, nlon)

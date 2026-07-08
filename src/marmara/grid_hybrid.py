@@ -35,7 +35,7 @@ def load_b_op() -> float:
 
 def count_grid(EV, t0d, spec, thr):
     """Actual event count (not capped) per cell in [t0, t0+30) for mag_w>=thr."""
-    sub = EV["e35"] if thr == 3.5 else EV["e45"]
+    sub = {3.0: EV["e30"], 3.5: EV["e35"], 4.5: EV["e45"]}[thr]
     lo = np.searchsorted(sub["t"], t0d, "left")
     hi = np.searchsorted(sub["t"], t0d + G.HORIZON_D, "left")
     g = np.zeros((spec.nlat, spec.nlon))
@@ -76,12 +76,15 @@ def build(b_op: float):
                  "ir": ir_flat, "ic": ic_flat}
         for name in G.FEATURES:
             block[name] = feats[name].ravel()
+        block["lam30_sim"] = casc["lam30"].ravel()          # Phase 3: y30 (M>=3.0)
         block["lam35_sim"] = casc["lam35"].ravel()
         block["lam45_sim"] = casc["lam45"].ravel()
         for lvl in (3.5, 5.0, 5.5, 6.0):
             block[f"Psim{lvl}"] = casc[f"P{lvl}"].ravel()
+        block["count30"] = count_grid(EV, t0d, spec, 3.0).ravel()
         block["count35"] = count_grid(EV, t0d, spec, 3.5).ravel()
         block["count45"] = count_grid(EV, t0d, spec, 4.5).ravel()
+        block["y30"] = G.y30_at_window(EV, t0d).ravel()
         block["y35"] = y35.ravel()
         block["y45"] = y45.ravel()
         rows.append(pd.DataFrame(block))

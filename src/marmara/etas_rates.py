@@ -78,6 +78,7 @@ def compute(params_pkl: str, label: str, b: float = B_OP, K: int = K_BACKTEST):
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k),
             "ir": ir_flat, "ic": ic_flat,
+            "lam30": casc["lam30"].ravel(),        # Phase 3: M>=3.0 (y30 target)
             "lam35": casc["lam35"].ravel(), "lam45": casc["lam45"].ravel(),
         }))
         del casc

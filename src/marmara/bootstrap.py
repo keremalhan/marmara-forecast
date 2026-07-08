@@ -54,7 +54,7 @@ EPS = 1e-9
 # their columns to predictions_*.parquet.
 CANON = ["hybrid", "hybrid_gnss", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
          "smoothed", "poisson"]
-TARGETS = ["y35", "y45"]
+TARGETS = ["y30", "y35", "y45"]   # y30 = primary powered comparison (Phase 3)
 SPLITS = ["test", "val"]      # test is primary; val reported for completeness
 
 
@@ -263,7 +263,7 @@ def run(n_boot: int = B_DEFAULT) -> dict:
                         "verdict": v,
                         "ig": {"point": st["d_ig"]["point"], "ci95": st["d_ig"]["ci95"]},
                         "pr_auc": {"point": st["d_pr_auc"]["point"], "ci95": st["d_pr_auc"]["ci95"]},
-                        "primary": bool(target == "y35" and split == "test"),
+                        "primary": bool(target == "y30" and split == "test"),
                     })
             report["results"][target][split] = {
                 "n": int(len(df)), "n_pos": int(y.sum()), "n_windows": bs["n_win"],
@@ -345,13 +345,16 @@ def main():
     write_markdown(report, OUT / "bootstrap_ci.md")
     write_claims(report, OUT / "claims.json")
 
-    # headline: the pre-registered prediction to verify (cascade vs firstgen, y35 test)
+    # headline: y30 (primary powered comparison, Phase 3) verdicts.
     prim = [c for c in report["claims"] if c["primary"]]
-    print("\n=== y35 / test verdicts (primary) ===")
+    print("\n=== y30 / test verdicts (PRIMARY powered comparison) ===")
     for c in prim:
         print(f"  {c['pair']:34s} {c['verdict']:12s} "
               f"IG {c['ig']['ci95']}  PR {c['pr_auc']['ci95']}")
-    key = next((c for c in prim if c["pair"] == "cascade_vs_firstgen_etas"), None)
+    # Phase-0 pre-registered check still reported (cascade vs firstgen, y35 test)
+    key = next((c for c in report["claims"]
+                if c["pair"] == "cascade_vs_firstgen_etas" and c["target"] == "y35"
+                and c["split"] == "test"), None)
     if key:
         print(f"\nPRE-REGISTERED CHECK — cascade vs first-gen ETAS (y35 test): "
               f"{key['verdict']} (expected: inseparable)")

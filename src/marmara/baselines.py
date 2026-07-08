@@ -23,6 +23,8 @@ KM_LON = 111.0 * 0.1 * np.cos(np.radians(40.75))  # ~8.4
 
 
 def _ycol(thr: float) -> str:
+    if abs(thr - 3.0) < 1e-6:
+        return "y30"
     return "y35" if abs(thr - 3.5) < 1e-6 else "y45"
 
 

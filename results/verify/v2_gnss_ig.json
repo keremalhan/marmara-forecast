@@ -1,0 +1,40 @@
+{
+  "target": "y35",
+  "split": "test",
+  "aug_features": "base + gnss physical-4",
+  "ig_point_estimate": 0.09767,
+  "V2c_bootstrap": {
+    "B": 2000,
+    "seed": 42,
+    "block": "stationary over window-ids",
+    "ci95": [
+      -0.01635,
+      0.20723
+    ],
+    "excludes_0": false,
+    "verdict": "CI includes 0 -> DOWNGRADE C3 to suggestive"
+  },
+  "V2d_permutation_importance_aug5": {
+    "gnss_resid_rate_90": {
+      "mean_ig_drop": 0.00067,
+      "std": 0.00048
+    },
+    "gnss_resid_rate_365": {
+      "mean_ig_drop": 0.00746,
+      "std": 0.00557
+    },
+    "gnss_resid_max_365": {
+      "mean_ig_drop": -0.0005,
+      "std": 0.00226
+    },
+    "gnss_strain_rate_365": {
+      "mean_ig_drop": -0.03111,
+      "std": 0.01493
+    },
+    "gnss_strain_fallback": {
+      "mean_ig_drop": -0.00127,
+      "std": 0.00465
+    }
+  },
+  "V2d_verdict": "gain loads on residual-rate/strain (OK)"
+}

@@ -1,0 +1,31 @@
+{
+  "real_aug_vs_base_test_ig": 0.09767,
+  "n_perm": 30,
+  "note": "N_PERM per placebo (retrain each); resolves the null centred ~0.",
+  "time_shuffle": {
+    "n_perm": 30,
+    "mean_ig": 0.11902,
+    "p95_range": [
+      -0.02535,
+      0.74055
+    ],
+    "real_ig_exceeds_all": false,
+    "collapsed": false
+  },
+  "circular_shift": {
+    "n_perm": 30,
+    "mean_ig": 0.08759,
+    "p95_range": [
+      -0.15137,
+      0.67399
+    ],
+    "real_ig_exceeds_all": false,
+    "collapsed": false
+  },
+  "coverage_only": {
+    "test_ig": 4e-05,
+    "reproduces_gain": false,
+    "verdict": "coverage does NOT reproduce gain (OK)"
+  },
+  "verdict": "FLAG \u2014 a placebo did not behave as required; inspect"
+}

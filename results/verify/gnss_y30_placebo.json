@@ -1,0 +1,18 @@
+{
+  "real_dPR_auc": 0.03325,
+  "real_dIG": 1.17664,
+  "n_perm": 25,
+  "placebo_dPR_mean": 0.01005,
+  "placebo_dPR_p95": [
+    -0.00265,
+    0.06296
+  ],
+  "placebo_dIG_mean": 0.21404,
+  "placebo_dIG_p95": [
+    -0.12379,
+    1.24898
+  ],
+  "real_dPR_exceeds_placebo_p95": false,
+  "real_dIG_exceeds_placebo_p95": false,
+  "verdict": "SPURIOUS \u2014 the y30 benefit lies inside the placebo null; GNSS gain is not time-aligned deformation -> C3 VOID"
+}

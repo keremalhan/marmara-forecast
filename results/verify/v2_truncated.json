@@ -1,0 +1,90 @@
+{
+  "n_monthly_cutoffs": 13,
+  "all_bitforbit": true,
+  "cutoffs": [
+    {
+      "window": 232,
+      "t0": "2024-01-22",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 234,
+      "t0": "2024-03-22",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 236,
+      "t0": "2024-05-21",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 239,
+      "t0": "2024-08-19",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 241,
+      "t0": "2024-10-18",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 243,
+      "t0": "2024-12-17",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 246,
+      "t0": "2025-03-17",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 248,
+      "t0": "2025-05-16",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 250,
+      "t0": "2025-07-15",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 253,
+      "t0": "2025-10-13",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 255,
+      "t0": "2025-12-12",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 257,
+      "t0": "2026-02-10",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    },
+    {
+      "window": 260,
+      "t0": "2026-05-11",
+      "bitforbit": true,
+      "max_abs_dev": 0.0
+    }
+  ],
+  "adversarial_midmonth": {
+    "t0": "2024-06-15",
+    "bitforbit": true,
+    "max_abs_dev": 0.0
+  },
+  "verdict": "PASS \u2014 recompute_truncated bit-for-bit at all cutoffs incl. mid-month"
+}

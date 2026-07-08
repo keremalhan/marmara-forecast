@@ -1,0 +1,30 @@
+{
+  "V3a_block_resampling": {
+    "window_indices_valid": true,
+    "block_CI_width": 0.2822,
+    "row_CI_width": 0.0402,
+    "block_wider_than_row": true,
+    "verdict": "PASS \u2014 block respects within-window correlation (row-level would be fake-tight)"
+  },
+  "V3b_pairing": {
+    "delta_pr_auc_point": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "max_abs_delta": 0.0,
+    "verdict": "PASS \u2014 identical-ranking models give \u0394PR-AUC==0 every resample (pairing correct)"
+  },
+  "V3c_independent_reference": {
+    "reference_ci95": [
+      0.05647,
+      0.10623
+    ],
+    "committed_ci95": [
+      0.05647,
+      0.10623
+    ],
+    "match_within_MC_0.02": true,
+    "verdict": "PASS \u2014 independent reference reproduces the CI to MC tolerance"
+  }
+}

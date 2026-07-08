@@ -1,0 +1,33 @@
+{
+  "claim": "C5: sv-ETAS \u2248 first-gen because first-gen background already spatially variable",
+  "firstgen_mu_spatial_CoV": 1.269,
+  "sv_mu_spatial_CoV": 1.289,
+  "firstgen_nonuniform": true,
+  "sv_nonuniform": true,
+  "em_iterations_run": 8,
+  "ll_converged": true,
+  "ll_last_two": [
+    -131685.01198844519,
+    -131685.005644939
+  ],
+  "bw_final_km": 8.838093413808078,
+  "bw_floor_ok": true,
+  "background_fraction": 0.33804302027451927,
+  "background_fraction_sane": true,
+  "params_close": {
+    "mu": [
+      0.7027,
+      0.6834
+    ],
+    "alpha": [
+      1.3862,
+      1.3891
+    ],
+    "p": [
+      1.0656,
+      1.0669
+    ]
+  },
+  "verdict": "VERIFIED \u2014 first-gen background IS non-uniform (CoV 1.27); the EM converged (8 iters, LL stable), bandwidth respected the 5 km floor, background fraction sane; sv\u2248first-gen is a genuine robustness result, not EM degeneracy.",
+  "plot": "results/verify/mu_xy.png"
+}

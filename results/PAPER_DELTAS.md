@@ -44,21 +44,28 @@ which is why the powered M≥3.0 target resolves differences the M≥3.5 target 
 
 ## 4. "GNSS adds no measurable skill (null result)"
 
-**REPLACE WITH the Phase-2/3 outcome — the null was feature-engineering-limited, not
-physical.** "A trajectory-modelled (secular + step + annual/semiannual), step-
-corrected, common-mode-filtered GNSS channel (`gnss_v2`; per-component E/N, IDW over
-≤60 km stations, Delaunay strain-rate) carries **genuine** deformation information:
-source-screening IG +0.098 nats/event on test, +0.061 after a within-cell
-spatial-support placebo, with the station-availability-vs-time confound explicitly
-**rejected** (the pure availability flag has *negative* test IG). Its operational
-value is **power-dependent**: not resolvable on the underpowered M≥3.5 target
-(hybrid vs hybrid_gnss inseparable) but **resolvable on the powered M≥3.0 target**,
-where the GNSS-augmented hybrid **beats** the plain hybrid (B_beats_A) and closes the
-gap to the ETAS models. Disclose the v1 scalar's design flaws — `hypot(E,N)` before
-detrending (secular motion dominated the 'rate'), no step correction, no seasonal
-terms, nearest-station only — the reported v1 null was an artifact of those flaws.
-(GNSS resolving the offshore Main Marmara Fault only weakly remains the physical
-reason the effect is modest.)"
+**⚠ CORRECTED BY PHASE-V AUDIT — C3 is VOID. The earlier "genuine signal" draft was
+overstated and MUST NOT appear.** (See results/verify/gnss_verdict.md.)
+
+**REPLACE WITH the audited rigorous null:** "We rebuilt the GNSS channel properly
+(`gnss_v2`: per-component E/N trajectory model with secular + known steps +
+annual/semiannual terms, common-mode filtering, IDW over ≤60 km stations, and a
+Delaunay strain-rate invariant) and gated it identically. Its truncated self-test is
+bit-for-bit causal at 13 cutoffs incl. an adversarial mid-month. **It nevertheless
+yields no statistically-supported skill.** The source-screening test IG (+0.098) has a
+95% block-bootstrap CI of **[−0.016, +0.207] (includes 0)**, and it does **not
+collapse under time-shuffle or circular-shift placebos** (placebo IG means +0.119 /
++0.088 ≈ the real value) — the hallmark of noise, not time-aligned deformation. The
+apparent operational gain on the powered M≥3.0 target likewise lies **inside** its
+time-shuffle placebo null (real ΔPR-AUC +0.033 vs null [−0.003, +0.063]; real ΔIG
++1.18 vs null [−0.12, +1.25]) and is therefore spurious. It is not a
+station-availability artifact (coverage-only IG ≈ 0). **This strengthens the null to
+feature-engineering-robust and independently vindicates the v1 GNSS null** — onshore
+GNSS resolves the offshore Main Marmara Fault too weakly to add forecast skill. We
+still disclose the v1 scalar's design flaws (`hypot(E,N)` before detrending, no step
+correction, no seasonal, nearest-station only), but the corrected channel confirms,
+rather than overturns, the null. `hybrid_gnss` is reported only as a documented
+negative; the operational model uses `hybrid` (no GNSS)."
 
 ## 5. Baseline section — retire "ETAS" as a monolith
 
@@ -110,6 +117,8 @@ comparison **illustrative (n=2)** rather than a skill claim, unless it is extend
 Replace any "we beat ETAS" framing with: **"A leakage-audited ML forecaster matches —
 but does not beat — first-generation, cascade, converged, and independent third-party
 ETAS on the powered M≥3.0 target (all inseparable among the physics models; the ML
-hybrid trails them), all decisively above non-clustering baselines and CSEP number/
-magnitude-consistent; a properly engineered GNSS channel adds genuine but modest,
-power-dependent skill."**
+hybrid in fact trails them), all decisively above non-clustering baselines and CSEP
+number/magnitude-consistent; and a properly re-engineered GNSS channel yields no
+statistically-supported skill (apparent gains fail time-shuffle/circular-shift
+placebos and the IG CI includes 0), confirming rather than overturning the GNSS
+null."**

@@ -32,7 +32,7 @@ This packet is the human gate; nothing leaves the machine without sign-off.
 | **C3** GNSS v2 carries genuine deformation signal / resolvable at y30 | **VOID** | V2b placebos do not collapse + V2c CI includes 0 + y30 operational placebo spurious → `results/verify/gnss_verdict.md`. Replaced by a rigorous, feature-engineering-robust NULL that vindicates the v1 GNSS null. |
 | **C4** independent Mizrahi ETAS is competitive, not a strawman | **VERIFIED** | V1 (evaluation reproduces: modern_etas has the highest y35 ROC-AUC 0.894 / Molchan 0.785; a factual comparison) |
 | **C5** sv-ETAS ≈ first-gen because the first-gen background was already spatially variable & converged | **VERIFIED** | V4 (first-gen CoV 1.27 non-uniform; EM converged; no degeneracy) |
-| **C6** CSEP: cascade/sv number+magnitude-consistent; Mizrahi first-gen under-predicts | **VERIFIED (in-house)** — real-pyCSEP confirmation is Phase C | V1 (csep_results reproduces) |
+| **C6** CSEP: cascade/sv number+magnitude-consistent; Mizrahi first-gen under-predicts | **VERIFIED (real pyCSEP)** — genuine pyCSEP 0.8.0 N/M agree with in-house for all 3 models (Section C) | V1 + Phase C (`results/csep_v3/`, cross-check all `agree_NM:true`) |
 
 **Gate status: no item UNRESOLVED.** C3 is VOID (resolved, with the null substituted
 everywhere it appeared: PAPER_DELTAS §4, gnss_v2_decision.json, gnss_verdict.md).
@@ -68,7 +68,51 @@ promoted (GNSS void per the placebo battery; dense fails the validation criterio
 A repeater channel was designed but its catalogue is absent."*
 
 ## Section C — real pyCSEP
-_(pending — Phase C)_
+
+**Outcome: genuine pyCSEP 0.8.0 was installed and run (catalog-based N/M/S/PL) and
+CONFIRMS the in-house result exactly — the number- and magnitude-consistency verdicts
+agree for all three models. C6 is upgraded from "VERIFIED (in-house)" to "VERIFIED
+(real pyCSEP)".**
+
+Environment: pyCSEP does NOT import on the exFAT volume (its bundled `matplotlibrc` is
+corrupted byte 0xb0 by the copy-mode install). It imports and runs cleanly in a fresh
+**APFS** venv (`/Users/keremalhan/venv-csep`, py3.12, pyCSEP 0.8.0). The exFAT/APFS
+filesystem issue — not pyCSEP — was the v1 blocker.
+
+Inputs: `scripts/csep_v3_prep.py` (main env) replays `marmara.csep_eval`'s EXACT
+`default_rng(42)` sequence to expand each model's per-cell Poisson draws into
+event-level stochastic catalogues (1000/model, events at cell centres, GR magnitudes
+at bin centres), so the pyCSEP inputs are bit-identical in count/magnitude to the
+in-house ones. Driver: `scripts/csep_v3_run.py` (APFS venv) builds pyCSEP
+`CSEPCatalog`/`CatalogForecast` objects over the 1219-cell region and runs
+`catalog_evaluations.{number,magnitude,spatial,pseudolikelihood}_test`.
+
+Target M≥3.0 (y30), test period 2024-01-22..2026-03-12, 1383 observed events, 26 windows.
+
+| model | N-test (pyCSEP) | M-test (pyCSEP) | S-test | PL-test | in-house N/M agree? |
+|---|---|---|---|---|---|
+| **cascade** | **PASS** (min δ 0.030; obs 1383 vs fcast 1457) | **PASS** (γ 0.067) | FAIL (γ 0.0) | FAIL (γ 0.0) | **YES** |
+| **sv_etas** | **PASS** (min δ 0.050; obs 1383 vs fcast 1446) | **PASS** (γ 0.076) | FAIL (γ 0.0) | FAIL (γ 0.0) | **YES** |
+| **modern_etas** | **FAIL** (min δ 0.0; obs 1383 vs fcast 783 — under-counts) | **FAIL** (γ 0.0) | FAIL (γ 0.0) | FAIL (γ 0.0) | **YES** |
+
+- **N and M are the robust, citable results.** pyCSEP reproduces the in-house verdicts
+  exactly: cascade and sv_etas are number- and magnitude-consistent with observed M≥3.0
+  seismicity; the independent Mizrahi first-gen (`modern_etas`) under-predicts the count.
+- **S-test and PL-test reject every model (γ→0)** — e.g. cascade PL obs 1718 vs simulated
+  mean 165. This is the **Poisson-catalogue under-dispersion confound** (spec Phase C option
+  **b**, limitation stated): the stochastic catalogues are cell-independent draws from the
+  gridded rate, so the observed clustered seismicity's spatial/rate pseudo-likelihood is far
+  more extreme than any realisation — a property of the catalogue approximation, not evidence
+  against the spatial forecast. The preferred fix (native clustered catalogues) is left as
+  future work: emitting per-event catalogues from the cascade simulator would require touching
+  the hash-chained, V1-reproduced `grid_hybrid` reproduction path, which is protected.
+- Evidence: `results/csep_v3/{csep_v3_results.json, csep_summary.md, csep_v3_consistency.png}`;
+  inputs `results/csep_v3/inputs/`; in-house cross-check `results/csep/csep_results.json`.
+
+### What the human should eyeball
+- `results/csep_v3/csep_v3_consistency.png` — green N/M for cascade & sv_etas, red for
+  modern_etas; all S/PL red (the documented confound).
+- `results/csep_v3/csep_v3_results.json` → `cross_check_vs_inhouse` (all `agree_NM: true`).
 
 ## Section M — manuscript package
 _(pending — Phase M)_

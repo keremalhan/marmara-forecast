@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "pycsep_version": "0.8.0",
+    "target": "M>=3.0 (y30)",
+    "test_period": [
+      "2024-01-22",
+      "2026-03-12"
+    ],
+    "n_windows": 26,
+    "n_cat": 1000,
+    "seed": 42,
+    "n_observed": 1383,
+    "region_cells": 1219,
+    "environment": "APFS venv-csep (exFAT import-blocked)",
+    "tests": "GENUINE pyCSEP catalog-based number/magnitude/spatial/pseudolikelihood (Savran et al. 2020)"
+  },
+  "models": {
+    "cascade": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": true,
+        "delta1": 0.978,
+        "delta2": 0.03,
+        "test_dist_mean": 1456.619,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 0.9442,
+        "pass": true,
+        "gamma": 0.067,
+        "test_dist_mean": 0.6167,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.9884,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -6.1709,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1718.0554,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 164.7352,
+        "n_cat_used": 1000
+      }
+    },
+    "sv_etas": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": true,
+        "delta1": 0.953,
+        "delta2": 0.05,
+        "test_dist_mean": 1446.212,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 0.942,
+        "pass": true,
+        "gamma": 0.076,
+        "test_dist_mean": 0.634,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.9762,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -6.1588,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1735.3465,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 170.4862,
+        "n_cat_used": 1000
+      }
+    },
+    "modern_etas": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": false,
+        "delta1": 0.0,
+        "delta2": 1.0,
+        "test_dist_mean": 782.898,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 4.7099,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 0.7636,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.5528,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -5.0673,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 2135.4881,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 466.4585,
+        "n_cat_used": 1000
+      }
+    }
+  },
+  "cross_check_vs_inhouse": {
+    "cascade": {
+      "N_pass_pycsep": true,
+      "N_pass_inhouse": true,
+      "M_pass_pycsep": true,
+      "M_pass_inhouse": true,
+      "agree_NM": true
+    },
+    "sv_etas": {
+      "N_pass_pycsep": true,
+      "N_pass_inhouse": true,
+      "M_pass_pycsep": true,
+      "M_pass_inhouse": true,
+      "agree_NM": true
+    },
+    "modern_etas": {
+      "N_pass_pycsep": false,
+      "N_pass_inhouse": false,
+      "M_pass_pycsep": false,
+      "M_pass_inhouse": false,
+      "agree_NM": true
+    }
+  }
+}

@@ -98,9 +98,12 @@ M≥3.0 seismicity over the test period (N-test ≈1450 forecast vs 1383 observe
 M-test pass); the independent Mizrahi first-generation forecast **under-predicts** the
 count (783, fail) and its steeper b fails the M-test. (Spatial/PL tests are confounded
 by Poisson-catalogue cell-independence vs real within-cell clustering — documented;
-native-clustered S-testing is the noted refinement.) pyCSEP itself was installed but
-does not import on this exFAT volume — the identical published tests were implemented
-in-house."
+native-clustered S-testing is the noted refinement.) These are **genuine pyCSEP 0.8.0**
+numbers: pyCSEP does not import on the exFAT working volume (bundled `matplotlibrc`
+corrupted by the copy-mode install) but installs and runs cleanly in a fresh APFS venv,
+where its `catalog_evaluations` N/M/S/PL tests **reproduce the in-house verdicts exactly
+for all three models** (`results/csep_v3/`, cross-check `agree_NM: true`). The in-house
+implementation of the same published definitions is retained as a cross-check."
 
 ## 8. Synthetic discriminator — state the circularity ceiling
 

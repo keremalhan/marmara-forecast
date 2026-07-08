@@ -53,9 +53,16 @@ EPS = 1e-9
 FEATS_HYBRID = FEATURES + ["ln_lam_sim"]
 
 
-def monotonic():
+# Phase 2: GNSS v2 physical feature columns (the availability-flag gnss_strain_fallback
+# is deliberately EXCLUDED — the ablation showed it adds nothing and it is an
+# availability-vs-time proxy). Merged onto the grid in main() when present.
+GNSS_PHYS = ["gnss_resid_rate_90", "gnss_resid_rate_365",
+             "gnss_resid_max_365", "gnss_strain_rate_365"]
+
+
+def _monotonic(feats_hybrid):
     return [(-1 if f == "dist_fault_km" else 1 if f in ("etas_rate", "ln_lam_sim") else 0)
-            for f in FEATS_HYBRID]
+            for f in feats_hybrid]
 
 
 def poisson_ll(n, lam):
@@ -63,13 +70,16 @@ def poisson_ll(n, lam):
     return float(np.sum(n * np.log(lam) - lam))
 
 
-def fit_hybrid(grid, masks, count_col, lam_col, ycol):
+def fit_hybrid(grid, masks, count_col, lam_col, ycol, extra_feats=(), label="hybrid"):
     """Poisson-GBR lambda_ML + geometric blend lambda = lam_sim^(1-w)*lam_ML^w.
     w chosen by val per-event Poisson log-likelihood (using occurrence y, matching
     the IG convention). Returns the RAW blend rate (no isotonic in the eval path;
-    isotonic is fit separately below only for the saved forecast model)."""
+    isotonic is fit separately below only for the saved forecast model).
+    extra_feats appends model inputs (e.g. Phase-2 GNSS columns) — with extra_feats=()
+    this is bit-identical to the published hybrid."""
     tr, va = masks["train"], masks["val"]
-    X = grid[FEATURES].copy()
+    feats = FEATURES + list(extra_feats)
+    X = grid[feats].copy()
     X["ln_lam_sim"] = np.log(grid[lam_col].to_numpy() + EPS)
     n = grid[count_col].to_numpy().astype(float)
     y = grid[ycol].to_numpy().astype(float)
@@ -77,7 +87,8 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol):
 
     reg = HistGradientBoostingRegressor(loss="poisson", learning_rate=0.05,
                                         max_iter=400, max_depth=6,
-                                        monotonic_cst=monotonic(), random_state=42)
+                                        monotonic_cst=_monotonic(feats + ["ln_lam_sim"]),
+                                        random_state=42)
     reg.fit(X[tr], n[tr])
     lam_ml = np.clip(reg.predict(X), EPS, None)
 
@@ -95,7 +106,7 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol):
     # isotonic P calibration (for the forecast maps only; NOT used in scoring)
     iso = IsotonicRegression(out_of_bounds="clip")
     iso.fit(lambda_to_p(lam_hybrid[va]), y[va])
-    with open(MODELS / f"{count_col}_hybrid.pkl", "wb") as f:
+    with open(MODELS / f"{count_col}_{label}.pkl", "wb") as f:
         pickle.dump({"reg": reg, "w": float(w), "iso": iso}, f)
     return {"w": float(w), "lam_ml": lam_ml, "lam_hybrid": lam_hybrid}
 
@@ -120,6 +131,30 @@ def _load_extra_etas_preds(grid, thr):
         lam = np.where(np.isfinite(lam), lam, 0.0)
         out[label] = lambda_to_p(lam)
     return out
+
+
+def _gnss_grid_columns(grid):
+    """Phase 2: the gnss_v2 physical columns aligned to the grid by (window,ir,ic).
+    Uses results/gnss_v2_columns.parquet if it carries the keys; otherwise computes
+    them via the GnssV2Source and caches WITH keys. Returns None if the GNSS data is
+    not on disk (hybrid_gnss is then silently skipped — graceful degradation)."""
+    key = ["window", "ir", "ic"]
+    cache = OUT / "gnss_v2_columns.parquet"
+    if cache.exists():
+        c = pd.read_parquet(cache)
+        if all(k in c.columns for k in key) and all(col in c.columns for col in GNSS_PHYS):
+            c = c.set_index(key)
+            idx = pd.MultiIndex.from_frame(grid[key])
+            return {col: c[col].reindex(idx).to_numpy() for col in GNSS_PHYS}
+    from marmara.sources.gnss_v2 import GnssV2Source
+    src = GnssV2Source()
+    ok, _why = src.available()
+    if not ok:
+        return None
+    cells = grid[["window", "t0", "cell_lon", "cell_lat", "ir", "ic"]].copy()
+    cols = src.add_columns(cells).reset_index(drop=True)
+    pd.concat([grid[key].reset_index(drop=True), cols], axis=1).to_parquet(cache, index=False)
+    return {col: cols[col].to_numpy() for col in GNSS_PHYS}
 
 
 def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_etas):
@@ -152,6 +187,15 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
     preds = {"hybrid": P_hybrid, "cascade": P_casc, "poisson": lambda_to_p(lp),
              "fault_prox": lambda_to_p(lf), "smoothed": P_sm, "firstgen_etas": P_firstgen}
     preds.update(_load_extra_etas_preds(grid, thr))  # Phase 1: sv_etas, modern_etas (if present)
+    # Phase 2: GNSS-augmented hybrid (promoted per the pre-registered decision rule —
+    # gnss_v2 val IG +0.024 > 0.02 and test IG +0.098 > 0; genuine after the
+    # availability + spatial-support confound checks). Present only when the GNSS
+    # columns are merged onto the grid (main()); kept ALONGSIDE `hybrid` so the
+    # bootstrap can put a CI on the +GNSS delta.
+    if all(c in grid.columns for c in GNSS_PHYS):
+        fit_g = fit_hybrid(grid, masks, count_col, lam_col, ycol,
+                           extra_feats=GNSS_PHYS, label="hybrid_gnss")
+        preds["hybrid_gnss"] = lambda_to_p(fit_g["lam_hybrid"])
 
     out = {"threshold": thr, "chosen_w": fit["w"], "smoothed_sigma_km": sigma, "splits": {}}
     for split, idx in (("val", vi), ("test", ti)):
@@ -183,6 +227,11 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 def main():
     assert (OUT / "cascade_ok.json").exists(), "run cascade gate first"
     grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
+    gnss = _gnss_grid_columns(grid)                 # Phase 2: merge GNSS columns if present
+    if gnss is not None:
+        for c in GNSS_PHYS:
+            grid[c] = gnss[c]
+        print(f"merged GNSS v2 columns ({', '.join(GNSS_PHYS)}) -> hybrid_gnss enabled")
     masks = split_masks(grid)
     cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     mc = 3.0
@@ -235,8 +284,8 @@ def main():
             L.append(f"\n### {sp} (n={s['n']}, pos={s['n_pos']})")
             L.append("| predictor | PR-AUC | ROC-AUC | Brier | Molchan |")
             L.append("|---|---|---|---|---|")
-            _order = ["hybrid", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
-                      "smoothed", "poisson", "fault_prox"]
+            _order = ["hybrid", "hybrid_gnss", "cascade", "sv_etas", "modern_etas",
+                      "firstgen_etas", "smoothed", "poisson", "fault_prox"]
             for nm in [n for n in _order if n in s["scores"]]:
                 sc = s["scores"][nm]; ms = sc["molchan"]["area_skill"]
                 f = lambda v, d=4: "n/a" if v is None else f"{v:.{d}f}"

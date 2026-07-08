@@ -13,5 +13,8 @@ __pycache__/
 results/prospective/launchd.out
 results/prospective/launchd.err
 data/raw/
+# raw external fetches (GNSS .tenv3, steps, DataHoldings) — reproducible via
+# sources/fetch_data.py; the gate result in results/ records what was used.
+data/external/
 # manuscript kept local, not published in this repo
 paper/

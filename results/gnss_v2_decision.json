@@ -1,0 +1,37 @@
+{
+  "source": "gnss_v2",
+  "pre_registered_rule": "promote if val IG > +0.02 AND test IG > 0 (source_ig_test aug-vs-base, Poisson HGB on count35)",
+  "data": {
+    "n_stations": 22,
+    "bbox": "lon 26.0-31.0E, lat 39.5-41.5N",
+    "selection": ">= 4 years of coverage before 2022-01-01",
+    "frame": "global IGS20 (NGL retired IGS14; the per-station secular fit absorbs the reference-frame plate velocity)",
+    "availability_caveat": "most Marmara cGPS stations stopped reporting to NGL after ~2023-2024, so the latest test windows (2025-2026) are GNSS-sparse (features null there)."
+  },
+  "raw_ig": {"val": 0.0245, "test": 0.0977, "leakage_max_corr": 0.0272, "leakage_pass": true},
+  "confound_checks": {
+    "availability_vs_time": {
+      "corr_fallback_flag_vs_window_test": 0.867,
+      "fallback_flag_ONLY_ig": {"val": 0.0285, "test": -0.0374},
+      "y35_rate_active_vs_inactive_test": {"active": 0.00486, "inactive": 0.00568},
+      "verdict": "REJECTED — the pure availability flag has NEGATIVE test IG and active/inactive y35 rates are similar, so availability-vs-time is not driving the gain. The availability flag (gnss_strain_fallback) is EXCLUDED from the model."
+    },
+    "spatial_support_placebo": {
+      "method": "permute each cell's GNSS values across windows (preserve spatial support + marginal, destroy time-alignment)",
+      "real_physical4_ig": {"val": 0.0245, "test": 0.0977},
+      "placebo_ig": {"val": 0.0025, "test": 0.0368},
+      "genuine_deconfounded_ig": {"val": 0.0220, "test": 0.0609},
+      "verdict": "majority genuine — val collapses ~90%, test ~62% under the placebo; a residual spatial-support component (~+0.037 test) remains, but the deconfounded signal (val +0.022, test +0.061) is real time-varying deformation."
+    },
+    "within_active_period_ig": {"physical4_active_test_only": 0.1859,
+      "note": "within the GNSS-active period the physical features add strong information (+0.186), independent of the active-vs-dead split."}
+  },
+  "decision": "PROMOTE",
+  "decision_basis": "both the raw IG (val 0.0245>0.02, test 0.0977>0) AND the deconfounded IG (val 0.0220>0.02, test 0.0609>0) satisfy the pre-registered rule; the availability confound is rejected and the placebo confirms a genuine time-varying component.",
+  "promotion": "added as `hybrid_gnss` = the hybrid ML with the four PHYSICAL gnss_v2 columns appended (availability flag excluded). grid.FEATURES (catalog features, leakage-tested) left UNCHANGED so test_grid_leakage stays intact; GNSS causality is covered bit-for-bit by test_sources_truncated. `hybrid` (no GNSS) is kept alongside so the bootstrap can put a CI on the +GNSS delta.",
+  "operational_effect_y35_test": {
+    "hybrid_pr_auc": 0.1174, "hybrid_gnss_pr_auc": 0.1189,
+    "bootstrap_hybrid_vs_hybrid_gnss": {"verdict": "inseparable",
+      "d_ig_ci95": [0.0095, 0.0952], "d_pr_auc_ci95": [-0.0156, 0.0174]},
+    "conclusion": "Promoting GNSS into the operational hybrid does NOT improve it: hybrid vs hybrid_gnss is INSEPARABLE (the IG CI marginally favours the NON-GNSS hybrid; PR-AUC straddles 0). So the genuine source-level GNSS information (deconfounded +0.061 test IG on the count-model) is LARGELY REDUNDANT with the seismicity/cascade signal in the full forecaster. The pre-registered rule promoted GNSS on its source-IG; the bootstrap honestly shows the operational skill gain is not statistically resolvable. This is the headline Phase-2 result: a real, adversarially-verified GNSS signal that nonetheless does not move the operational forecaster."}
+}

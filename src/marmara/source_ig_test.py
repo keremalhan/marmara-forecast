@@ -31,13 +31,16 @@ from marmara.metrics import information_gain, lambda_to_p
 from marmara.sources.base import causal_corr_check
 from marmara.sources.dense_catalog import DenseCatalogSource
 from marmara.sources.gnss_coupling import GnssCouplingSource
+from marmara.sources.gnss_v2 import GnssV2Source
 from marmara.sources.repeating_eq import RepeatingEqSource
 from marmara.train import split_masks
 
 OUT = RESULTS
 EPS = 1e-9
 BASE = FEATURES + ["ln_lam_sim"]
-SOURCES = {s.name: s for s in (GnssCouplingSource(), RepeatingEqSource(), DenseCatalogSource())}
+# gnss_v2 (Phase 2) added; gnss_coupling (v1) kept for the audit trail — register both.
+SOURCES = {s.name: s for s in (GnssV2Source(), GnssCouplingSource(),
+                               RepeatingEqSource(), DenseCatalogSource())}
 
 
 def load_grid():

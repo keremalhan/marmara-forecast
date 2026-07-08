@@ -8,6 +8,7 @@ y35: w=0.7; hybrid PR-AUC 0.117 vs cascade 0.130 vs first-gen-ETAS 0.126; IG(hyb
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |
 |---|---|---|---|---|
 | hybrid | 0.0601 | 0.8679 | 0.00354 | 0.733 |
+| hybrid_gnss | 0.0737 | 0.8693 | 0.00352 | 0.736 |
 | cascade | 0.0584 | 0.8496 | 0.00361 | 0.696 |
 | sv_etas | 0.0600 | 0.8700 | 0.00359 | 0.737 |
 | modern_etas | 0.0527 | 0.8745 | 0.00353 | 0.746 |
@@ -24,11 +25,13 @@ IG(hybrid − baseline), nats/event:
 - vs firstgen_etas: -0.7197
 - vs sv_etas: +0.5600
 - vs modern_etas: -0.3837
+- vs hybrid_gnss: -0.0059
 
 ### test (n=31694, pos=167)
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |
 |---|---|---|---|---|
 | hybrid | 0.1174 | 0.8841 | 0.00495 | 0.761 |
+| hybrid_gnss | 0.1189 | 0.8837 | 0.00502 | 0.760 |
 | cascade | 0.1300 | 0.8771 | 0.00498 | 0.748 |
 | sv_etas | 0.1276 | 0.8818 | 0.00498 | 0.754 |
 | modern_etas | 0.1103 | 0.8945 | 0.00502 | 0.785 |
@@ -45,6 +48,7 @@ IG(hybrid − baseline), nats/event:
 - vs firstgen_etas: -0.3809
 - vs sv_etas: +0.2196
 - vs modern_etas: -0.0732
+- vs hybrid_gnss: +0.0485
 
 ## y45 (thr 4.5, w=0.8, sigma 5km)
 
@@ -52,6 +56,7 @@ IG(hybrid − baseline), nats/event:
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |
 |---|---|---|---|---|
 | hybrid | 0.0155 | 0.8731 | 0.00049 | 0.746 |
+| hybrid_gnss | 0.0021 | 0.8730 | 0.00048 | 0.746 |
 | cascade | 0.0036 | 0.7217 | 0.00043 | 0.413 |
 | sv_etas | 0.0032 | 0.7015 | 0.00043 | 0.390 |
 | modern_etas | 0.0041 | 0.9048 | 0.00043 | 0.809 |
@@ -68,11 +73,13 @@ IG(hybrid − baseline), nats/event:
 - vs firstgen_etas: -0.5040
 - vs sv_etas: +4.3146
 - vs modern_etas: +0.6232
+- vs hybrid_gnss: +0.2528
 
 ### test (n=31694, pos=22)
 | predictor | PR-AUC | ROC-AUC | Brier | Molchan |
 |---|---|---|---|---|
 | hybrid | 0.0334 | 0.8404 | 0.00121 | 0.680 |
+| hybrid_gnss | 0.0413 | 0.8294 | 0.00107 | 0.645 |
 | cascade | 0.0656 | 0.7210 | 0.00068 | 0.492 |
 | sv_etas | 0.0664 | 0.7282 | 0.00068 | 0.504 |
 | modern_etas | 0.0644 | 0.9054 | 0.00069 | 0.810 |
@@ -89,3 +96,4 @@ IG(hybrid − baseline), nats/event:
 - vs firstgen_etas: -3.3441
 - vs sv_etas: +1.1876
 - vs modern_etas: -2.6093
+- vs hybrid_gnss: +0.1655

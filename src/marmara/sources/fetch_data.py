@@ -49,6 +49,69 @@ def fetch_gnss():
     print(f"wrote {gdir/'gnss_stations.csv'} with {len(got)} stations")
 
 
+# --- Phase 2: GNSS v2 — auto-discover ALL Marmara-bbox stations from NGL's
+# DataHoldings, fetch full daily .tenv3 (global IGS20 frame; NGL retired IGS14) +
+# the master steps file. bbox and >=4y-before-2022 rule per the v2 blueprint.
+NGL_DATAHOLDINGS = "https://geodesy.unr.edu/NGLStationPages/DataHoldings.txt"
+NGL_STEPS = "https://geodesy.unr.edu/NGLStationPages/steps.txt"
+NGL_TENV3 = "https://geodesy.unr.edu/gps_timeseries/IGS20/tenv3/IGS20/{sta}.tenv3"
+V2_BBOX = dict(min_lon=26.0, max_lon=31.0, min_lat=39.5, max_lat=41.5)
+V2_MIN_YEARS_BEFORE_2022 = 4.0
+
+
+def _get(url, timeout=120):
+    with urllib.request.urlopen(url, timeout=timeout) as r:
+        return r.read()
+
+
+def fetch_gnss_v2():
+    """Build data/external/gnss_v2/: gnss_stations.csv (auto from DataHoldings),
+    every station's IGS20 .tenv3, and steps.txt. Global IGS20 frame — the per-station
+    trajectory fit removes the secular plate motion, so the frame is absorbed."""
+    gdir = DATA / "gnss_v2"; gdir.mkdir(parents=True, exist_ok=True)
+    cutoff = pd.Timestamp("2022-01-01")
+    print("fetching NGL DataHoldings ...")
+    (gdir / "DataHoldings.txt").write_bytes(_get(NGL_DATAHOLDINGS))
+    print("fetching NGL steps.txt ...")
+    (gdir / "steps.txt").write_bytes(_get(NGL_STEPS))
+
+    rows = []
+    for line in (gdir / "DataHoldings.txt").read_text().splitlines()[1:]:
+        f = line.split()
+        if len(f) < 11:
+            continue
+        try:
+            sta, lat, lon = f[0], float(f[1]), float(f[2])
+            dtbeg, dtend, numsol = pd.Timestamp(f[7]), pd.Timestamp(f[8]), int(f[10])
+        except Exception:
+            continue
+        if not (V2_BBOX["min_lat"] <= lat <= V2_BBOX["max_lat"]
+                and V2_BBOX["min_lon"] <= lon <= V2_BBOX["max_lon"]):
+            continue
+        # >=4 years of coverage BEFORE 2022-01-01
+        yrs_before = (min(dtend, cutoff) - dtbeg).days / 365.25
+        if dtbeg > cutoff or yrs_before < V2_MIN_YEARS_BEFORE_2022:
+            continue
+        rows.append({"station": sta, "lon": lon, "lat": lat,
+                     "dtbeg": dtbeg.date(), "dtend": dtend.date(), "numsol": numsol})
+    print(f"{len(rows)} stations in bbox with >= {V2_MIN_YEARS_BEFORE_2022} yr before 2022")
+
+    got = []
+    for r in rows:
+        dst = gdir / f"{r['station']}.tenv3"
+        try:
+            data = _get(NGL_TENV3.format(sta=r["station"]))
+            if len(data) < 200 or data[:15].lstrip().startswith(b"<"):
+                print(f"  {r['station']}: no IGS20 tenv3, skip"); continue
+            dst.write_bytes(data)
+            got.append(r)
+            print(f"  {r['station']}: {data.count(chr(10).encode())} epochs")
+        except Exception as e:
+            print(f"  {r['station']}: FAILED ({e})")
+    pd.DataFrame(got).to_csv(gdir / "gnss_stations.csv", index=False)
+    print(f"wrote {gdir/'gnss_stations.csv'} with {len(got)} stations + steps.txt")
+
+
 def info_repeaters():
     print("Repeating-earthquake catalog — no single-command open download; safest sources:")
     print("  * Schmittbuhl, Karabulut, Lengline, Bouchon 2016 GRL 'Long-lasting seismic")
@@ -67,7 +130,8 @@ def info_dense():
 
 def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else "gnss"
-    {"gnss": fetch_gnss, "repeaters": info_repeaters, "dense": info_dense}[arg]()
+    {"gnss": fetch_gnss, "gnss_v2": fetch_gnss_v2,
+     "repeaters": info_repeaters, "dense": info_dense}[arg]()
 
 
 if __name__ == "__main__":

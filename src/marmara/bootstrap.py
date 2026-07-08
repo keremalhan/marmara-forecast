@@ -52,7 +52,7 @@ EPS = 1e-9
 # baseline, not a claim comparator) is omitted from the pair matrix per the
 # blueprint. sv_etas / modern_etas are picked up automatically once Phase 1 adds
 # their columns to predictions_*.parquet.
-CANON = ["hybrid", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
+CANON = ["hybrid", "hybrid_gnss", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
          "smoothed", "poisson"]
 TARGETS = ["y35", "y45"]
 SPLITS = ["test", "val"]      # test is primary; val reported for completeness

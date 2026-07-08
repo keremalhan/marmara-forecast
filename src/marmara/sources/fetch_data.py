@@ -6,6 +6,7 @@ outbound https (the fetch writes into Raw_Data/external/).
 """
 from __future__ import annotations
 
+import json
 import sys
 import urllib.request
 from pathlib import Path
@@ -128,9 +129,54 @@ def info_dense():
     print("    [datetime_utc,latitude,longitude,mag].")
 
 
+# --- Phase D1: AFAD extended bulletin (Mmin 1.0) — the dense sub-Mc3 catalogue.
+AFAD_API = "https://deprem.afad.gov.tr/apiv2/event/filter"
+DENSE_BBOX = dict(min_lon=25.6, max_lon=30.9, min_lat=39.6, max_lat=41.9)  # model box
+DENSE_MMIN = 1.0
+
+
+def fetch_dense_afad(start="2008-01-01", end="2026-07-01"):
+    """Fetch the AFAD event bulletin (M>=1.0) for the model box, 2008->present, in
+    monthly chunks (safe against per-query caps), into data/external/dense/afad_raw.csv.
+    Deterministic given the same server state; the human can re-run to refresh."""
+    import urllib.parse
+    gdir = DATA / "dense"; gdir.mkdir(parents=True, exist_ok=True)
+    b = DENSE_BBOX
+    cur, stop = pd.Timestamp(start), pd.Timestamp(end)
+    rows, capped = [], []
+    while cur < stop:
+        nxt = min(cur + pd.DateOffset(months=1), stop)
+        qs = urllib.parse.urlencode({
+            "start": f"{cur:%Y-%m-%d} 00:00:00", "end": f"{nxt:%Y-%m-%d} 00:00:00",
+            "minlat": b["min_lat"], "maxlat": b["max_lat"],
+            "minlon": b["min_lon"], "maxlon": b["max_lon"],
+            "minmag": DENSE_MMIN, "format": "json"})
+        try:
+            data = json.loads(_get(f"{AFAD_API}?{qs}", timeout=90))
+        except Exception as e:
+            print(f"  {cur:%Y-%m}: FAILED ({e})"); cur = nxt; continue
+        n = len(data) if isinstance(data, list) else 0
+        if n >= 10000:                     # likely a server cap -> flag for sub-chunking
+            capped.append(str(cur.date()))
+        for e in data:
+            rows.append({"datetime_utc": e.get("date"), "latitude": e.get("latitude"),
+                         "longitude": e.get("longitude"), "mag": e.get("magnitude"),
+                         "mag_type": e.get("type"), "depth_km": e.get("depth"),
+                         "eventID": e.get("eventID")})
+        if (cur.month == 1):
+            print(f"  {cur:%Y}: running total {len(rows)}", flush=True)
+        cur = nxt
+    df = pd.DataFrame(rows).drop_duplicates("eventID")
+    for c in ("latitude", "longitude", "mag", "depth_km"):
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.to_csv(gdir / "afad_raw.csv", index=False)
+    print(f"wrote {gdir/'afad_raw.csv'}: {len(df)} unique AFAD events (M>={DENSE_MMIN}); "
+          f"capped months: {capped or 'none'}")
+
+
 def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else "gnss"
-    {"gnss": fetch_gnss, "gnss_v2": fetch_gnss_v2,
+    {"gnss": fetch_gnss, "gnss_v2": fetch_gnss_v2, "dense_afad": fetch_dense_afad,
      "repeaters": info_repeaters, "dense": info_dense}[arg]()
 
 

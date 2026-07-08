@@ -1,0 +1,34 @@
+{
+  "n_raw_afad": 36098,
+  "n_after_internal_dedup": 36052,
+  "n_blasts_removed": 466,
+  "n_final_dense": 10610,
+  "mc_by_year": {
+    "2008": 3.65,
+    "2009": 3.65,
+    "2010": 3.65,
+    "2011": 3.65,
+    "2012": 3.65,
+    "2013": 3.25,
+    "2014": 2.75,
+    "2015": 2.75,
+    "2016": 2.75,
+    "2017": 2.75,
+    "2018": 2.75,
+    "2019": 2.75,
+    "2020": 2.75,
+    "2021": 2.75,
+    "2022": 2.75,
+    "2023": 2.75,
+    "2024": 2.75,
+    "2025": 2.75,
+    "2026": 2.35
+  },
+  "date_range": [
+    "2008-01-02 21:37:56.360000",
+    "2026-06-30 19:45:06"
+  ],
+  "koeri_overlap_pm10s_15km": 8334,
+  "afad_unique_below_koeri": 2276,
+  "note": "dense = AFAD (M>=1.0) homogenized to Mw, internally deduped, daytime-shallow-small blast heuristic applied (catalog.py has no blast filter), per-year Mc completeness. Used standalone by DenseCatalogSource; KOERI overlap reported, not removed."
+}

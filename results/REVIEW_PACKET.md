@@ -48,7 +48,24 @@ Phases D / C / M may proceed.
 ---
 
 ## Section D — starving-channel outcomes
-_(pending — Phase D)_
+
+**Outcome: 2 non-catalog channels tested under the gate (gnss_v2, dense_catalog); 0
+promoted. 1 channel still-absent with fetch instructions (repeaters). EPOS is
+velocities-only (used for cross-validation, cannot be ingested).** "More data" does
+not rescue the ML — reinforcing the y30 finding that scarcity is not the binding
+constraint.
+
+| channel | data | gate result | decision | evidence |
+|---|---|---|---|---|
+| **dense_catalog** (D1) | AFAD bulletin M≥1.0, 2008–2026, model box: 36,098 events → homogenized, deduped, blast-filtered, per-year Mc → **10,610** (2,276 AFAD-unique below KOERI) | leakage-pass (corr 0.091); truncated self-test **bit-for-bit**; **val IG −0.030, test IG +0.130 (95% CI [0.045, 0.229] excludes 0)** | **NOT PROMOTED** — fails the pre-registered rule (val > +0.02 AND test > 0): val IG is negative. The test IG is significant but the **val/test sign disagreement** (likely AFAD completeness non-stationarity across the val→test boundary) makes it untrustworthy. A longer validation window or per-year-Mc-normalized features could revisit. | `results/source_ig_dense_catalog.json`, `results/dense_build_report.json`, `results/verify/d1_dense_verdict.json` |
+| **repeating_eq** (D2) | still-absent | not run | **STILL-ABSENT** — supplements are paywalled journal tables, not sandbox-fetchable. Exact DOIs/format in the fetch instructions; report as *absent, not null*. | `data/REPEATERS_FETCH_INSTRUCTIONS.md`, `results/source_ig_repeating_eq.json` (available:false) |
+| **EPOS/MIDAS velocities** (D3) | on disk (40 INGV MIDAS records) | cross-validation only | **CANNOT INGEST** (velocities-only, no daily epochs). Used to cross-validate gnss_v2's secular fits: after removing the ~24 mm/yr IGS20-vs-Eurasia frame offset, residuals are **< 1 mm/yr** at all 4 matched stations → the gnss_v2 trajectory model is sound, so C3's null is not a secular-fitting artifact. | `results/verify/d3_epos_crossval.json` |
+
+**D4:** no channel cleared the gate → no full model rerun required. Manuscript
+source-count statement: *"Two engineered non-catalog channels (GNSS deformation,
+dense sub-Mc3 microseismicity) were tested under the pre-registered gate; neither was
+promoted (GNSS void per the placebo battery; dense fails the validation criterion).
+A repeater channel was designed but its catalogue is absent."*
 
 ## Section C — real pyCSEP
 _(pending — Phase C)_

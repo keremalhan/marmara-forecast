@@ -1,13 +1,28 @@
 {
   "source": "dense_catalog",
   "data_spec": {
-    "requires": "data/external/marmara_dense_catalog.csv",
+    "requires": "/Volumes/Kerem SSD/Desktop/marmara-forecast/data/external/marmara_dense_catalog.csv",
     "fetch": "sources/fetch_data.py dense  (published DL/template catalog, Zenodo)",
     "format": "CSV [datetime_utc, latitude, longitude, mag], Mc~1.5",
     "provenance": "Deep-learning re-picked Marmara catalogs (EQTransformer/PhaseNet studies) or AFAD/KOERI extended bulletin.",
     "why": "Microseismicity below Mc3 is the single biggest missing data lever; it tracks nucleation before events reach the M3.5 target."
   },
-  "available": false,
-  "reason": "missing data/external/marmara_dense_catalog.csv",
-  "status": "SKIPPED \u2014 data not present; drop it in and re-run (no fabrication)"
+  "available": true,
+  "reason": "",
+  "label": "dense_catalog",
+  "columns": [
+    "dense_cnt30_mc15",
+    "dense_cnt365_mc15",
+    "dense_bpos_50km_730d"
+  ],
+  "leakage": {
+    "max_abs_corr": 0.0909,
+    "passes": true
+  },
+  "ig_aug_vs_base": {
+    "val": -0.0296,
+    "test": 0.1302
+  },
+  "n_new_cols_all_nan": 0,
+  "verdict": "adds information"
 }

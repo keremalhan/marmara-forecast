@@ -1,0 +1,14 @@
+# Optional Phase-4 dependency: pyCSEP — the community CSEP consistency-testing
+# toolkit. Install into a SEPARATE venv (.venv-csep); it pulls cartopy / obspy /
+# rasterio and must NOT be added to the pinned core env.
+#
+#   uv venv --python 3.12 .venv-csep
+#   COPYFILE_DISABLE=1 UV_LINK_MODE=copy VIRTUAL_ENV="$PWD/.venv-csep" \
+#       uv pip install -r requirements-csep.txt
+#
+# NOTE (this machine): on the exFAT volume the copy-mode install corrupts a bundled
+# matplotlib data file (matplotlibrc), so `import csep` fails with a UnicodeDecodeError
+# (byte 0xb0). marmara.csep_eval therefore implements the SAME Savran et al. (2020) /
+# pyCSEP catalog-based consistency tests (N / M / S / pseudo-likelihood) directly in
+# the pinned core env — community-standard statistics, no bespoke metric.
+pycsep

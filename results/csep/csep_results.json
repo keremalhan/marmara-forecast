@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "target": "M>=3.0 (y30)",
+    "test_period": [
+      "2024-01-22",
+      "2026-03-12"
+    ],
+    "n_windows": 26,
+    "N_sim": 1000,
+    "seed": 42,
+    "N_observed": 1383,
+    "tests": "catalog-based N / M / S / pseudo-likelihood (Savran et al. 2020 / pyCSEP definitions; in-house \u2014 see module docstring)"
+  },
+  "models": {
+    "cascade": {
+      "N_obs": 1383,
+      "N_forecast_mean": 1456.6,
+      "N_test": {
+        "delta1": 0.978,
+        "delta2": 0.03,
+        "pass": true
+      },
+      "S_test": {
+        "gamma": 1.0,
+        "pass": false
+      },
+      "M_test": {
+        "gamma": 0.711,
+        "pass": true
+      },
+      "PL_test": {
+        "gamma": 1.0,
+        "pass": false
+      },
+      "b_gr": 1.2
+    },
+    "sv_etas": {
+      "N_obs": 1383,
+      "N_forecast_mean": 1446.2,
+      "N_test": {
+        "delta1": 0.953,
+        "delta2": 0.05,
+        "pass": true
+      },
+      "S_test": {
+        "gamma": 1.0,
+        "pass": false
+      },
+      "M_test": {
+        "gamma": 0.627,
+        "pass": true
+      },
+      "PL_test": {
+        "gamma": 1.0,
+        "pass": false
+      },
+      "b_gr": 1.2
+    },
+    "modern_etas": {
+      "N_obs": 1383,
+      "N_forecast_mean": 782.9,
+      "N_test": {
+        "delta1": 0.0,
+        "delta2": 1.0,
+        "pass": false
+      },
+      "S_test": {
+        "gamma": 0.0,
+        "pass": false
+      },
+      "M_test": {
+        "gamma": 0.0,
+        "pass": false
+      },
+      "PL_test": {
+        "gamma": 1.0,
+        "pass": false
+      },
+      "b_gr": 1.762
+    }
+  }
+}

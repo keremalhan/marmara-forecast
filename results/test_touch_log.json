@@ -35,6 +35,22 @@
       "targets": ["y35", "y45"],
       "purpose": "v2/phase-0: post-hoc block-bootstrap CIs of paired differences over the ALREADY-COMPUTED test predictions. Analysis pass, not model fitting/selection.",
       "result": "See bootstrap_ci.json / claims.json."
+    },
+    {
+      "date": "2026-07-08",
+      "runner": "marmara.train",
+      "model_family": "hybrid+baselines + sv_etas + modern_etas",
+      "targets": ["y35", "y45"],
+      "purpose": "v2/phase-1.3: re-run evaluation with two ADDED modern-ETAS predictors — sv_etas (our converged-EM fit, cascade rates) and modern_etas (independent lmizrahi/etas inversion, first-gen intensity). Both are deterministic ETAS forecasts with NO hyperparameter selection on test; hybrid w and smoothed sigma unchanged (val-selected). Pre-existing predictors (hybrid/cascade/firstgen/smoothed/poisson/fault_prox) reproduced bit-identically.",
+      "result": "y35 test: sv_etas PR-AUC 0.1276 (in the cascade/firstgen cluster); modern_etas PR-AUC 0.1103 but HIGHEST ROC-AUC 0.8945 / Molchan 0.785 of all predictors. The independent third-party ETAS is fully competitive (not a strawman)."
+    },
+    {
+      "date": "2026-07-08",
+      "runner": "marmara.bootstrap",
+      "model_family": "hybrid+baselines + sv_etas + modern_etas",
+      "targets": ["y35", "y45"],
+      "purpose": "v2/phase-1.3: re-run block-bootstrap CIs / claims.json over the expanded 7-predictor set. Analysis pass over already-computed predictions.",
+      "result": "See bootstrap_ci.json / claims.json (updated)."
     }
   ]
 }

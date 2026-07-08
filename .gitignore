@@ -5,6 +5,8 @@
 __pycache__/
 *.pyc
 .venv/
+.venv-etas/
+.venv-csep/
 .tmp/
 # scratch run logs (keep the committed evidence, not live logs)
 *.log

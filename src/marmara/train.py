@@ -100,6 +100,28 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol):
     return {"w": float(w), "lam_ml": lam_ml, "lam_hybrid": lam_hybrid}
 
 
+def _load_extra_etas_preds(grid, thr):
+    """Phase 1: extra modern-ETAS predictors computed as cascade rates from the
+    sv-ETAS fit and the Mizrahi-inverted params (results/rates_{label}.parquet,
+    keyed by window,ir,ic; same K/seed/b as the published cascade, so only the
+    ETAS PARAMETERS differ). Absent parquet -> predictor silently skipped. Rows in
+    train windows (not present in the val+test rate files) get lambda=0; they are
+    never scored (evaluate() indexes val/test only)."""
+    lamcol = "lam35" if abs(thr - 3.5) < 1e-6 else "lam45"
+    key = ["window", "ir", "ic"]
+    idx = pd.MultiIndex.from_frame(grid[key])
+    out = {}
+    for label in ("sv_etas", "modern_etas"):
+        path = OUT / f"rates_{label}.parquet"
+        if not path.exists():
+            continue
+        r = pd.read_parquet(path, columns=key + [lamcol]).set_index(key)[lamcol]
+        lam = r.reindex(idx).to_numpy()
+        lam = np.where(np.isfinite(lam), lam, 0.0)
+        out[label] = lambda_to_p(lam)
+    return out
+
+
 def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_etas):
     fit = fit_hybrid(grid, masks, count_col, lam_col, ycol)
     y = grid[ycol].to_numpy().astype(float)
@@ -129,6 +151,7 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 
     preds = {"hybrid": P_hybrid, "cascade": P_casc, "poisson": lambda_to_p(lp),
              "fault_prox": lambda_to_p(lf), "smoothed": P_sm, "firstgen_etas": P_firstgen}
+    preds.update(_load_extra_etas_preds(grid, thr))  # Phase 1: sv_etas, modern_etas (if present)
 
     out = {"threshold": thr, "chosen_w": fit["w"], "smoothed_sigma_km": sigma, "splits": {}}
     for split, idx in (("val", vi), ("test", ti)):
@@ -212,7 +235,9 @@ def main():
             L.append(f"\n### {sp} (n={s['n']}, pos={s['n_pos']})")
             L.append("| predictor | PR-AUC | ROC-AUC | Brier | Molchan |")
             L.append("|---|---|---|---|---|")
-            for nm in ("hybrid", "cascade", "firstgen_etas", "smoothed", "poisson", "fault_prox"):
+            _order = ["hybrid", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
+                      "smoothed", "poisson", "fault_prox"]
+            for nm in [n for n in _order if n in s["scores"]]:
                 sc = s["scores"][nm]; ms = sc["molchan"]["area_skill"]
                 f = lambda v, d=4: "n/a" if v is None else f"{v:.{d}f}"
                 L.append(f"| {nm} | {f(sc['pr_auc'])} | {f(sc['roc_auc'])} | {f(sc['brier'],5)} | {f(ms,3)} |")

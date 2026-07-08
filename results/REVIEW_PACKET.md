@@ -115,4 +115,57 @@ Target M≥3.0 (y30), test period 2024-01-22..2026-03-12, 1383 observed events, 
 - `results/csep_v3/csep_v3_results.json` → `cross_check_vs_inhouse` (all `agree_NM: true`).
 
 ## Section M — manuscript package
-_(pending — Phase M)_
+
+**Outcome: a self-contained rewrite package `manuscript_v2/` (M1–M5) that updates
+`paper/paper_seismica.md` to the verified v2/v3 findings, with every ranking traced to
+`claims.json`. Two headline figures generated. No prose states a ranking the bootstrap
+referee does not license.**
+
+| item | file | content |
+|---|---|---|
+| **M1** claims map | `manuscript_v2/01_claims_map.md` | C1–C6 + full y30/y35 verdict matrix → verdict → evidence, verbatim from `claims.json`; the "significant-but-void" GNSS trap spelled out |
+| **M2** sections | `manuscript_v2/02_sections.md` | drop-in Abstract; new Methods (block bootstrap, sv-ETAS+Mizrahi, GNSS+placebo, pyCSEP); rewritten Results §4.1–4.4 |
+| **M3** narrative | `manuscript_v2/03_narrative.md` | three-act arc; foreground/soften; reviewer-proofing |
+| **M4** figures | `manuscript_v2/04_figures.md` | manifest: fig1–4 retained + fig5–8 new (all files on disk) |
+| **M5** limitations | `manuscript_v2/05_limitations.md` | drop-in §6, 10 items ordered by claim impact |
+| — index | `manuscript_v2/00_README.md` | integration map into `paper_seismica.md` + source-of-truth chain |
+
+**Key manuscript deltas from v1**
+- Primary target changed **M≥3.5 → M≥3.0** (powered; 592 vs 167 test positives).
+- New headline (**C2**): at y30 the physics models (cascade/sv-ETAS/Mizrahi/first-gen) form
+  an inseparable cluster that **beats the ML hybrid** on both axes (cascade PR-AUC 0.229 vs
+  0.146; IG deficits 0.88–1.46 nats). v1's "cascade ranks best at y35" is demoted to
+  "one of an inseparable family."
+- GNSS reported as a **null** with the placebo lesson (**C3** void) — the methodological spine.
+- Modern baselines (sv-ETAS, Mizrahi) added so the loss is not to a strawman (**C4/C5**).
+- CSEP consistency confirmed with **genuine pyCSEP** (**C6**).
+
+**New figures generated** (`scripts/figs_v2.py`): `results/figs_v2/fig5_y30_forest.png`
+(C2 forest, physics vs hybrid) and `fig6_gnss_placebo.png` (C3-void placebo nulls). Plus
+existing `results/verify/mu_xy.png` (C5) and `results/csep_v3/csep_v3_consistency.png` (C6).
+
+### What the human should eyeball
+- `manuscript_v2/00_README.md` first (integration map), then `01_claims_map.md` (the referee).
+- `results/figs_v2/fig5_y30_forest.png` — the C2 result at a glance.
+- `results/figs_v2/fig6_gnss_placebo.png` — why the GNSS "win" is void.
+
+---
+
+## FINAL GATE STATUS (v3 sign-off)
+
+| phase | status | commit |
+|---|---|---|
+| **V** verification (V1–V6) | complete — no item UNRESOLVED; C3 voided | (v3/phase-V) |
+| **D** starving channels | complete — 0 channels promoted; 1 absent | `07a4746` |
+| **C** real pyCSEP | complete — N/M agree with in-house, all 3 models | `4f81c27` |
+| **M** manuscript package | complete — `manuscript_v2/` M1–M5 + figs | (this commit) |
+
+- **Reproduction gate (every phase):** leakage self-test PASS (all feature deviations
+  0.000e+00, no corr>0.999); pytest **22 passed / 2 skipped**. exFAT AppleDouble sidecars
+  (`._*`) neutralised by `conftest.py` collect_ignore (verified with a planted probe).
+- **Protected paths untouched:** `results/prospective/` hash-chain, `prospective_monthly.sh`,
+  KOERI corrections in `catalog.py`, `test_grid_leakage.py` assertions (only additive guards).
+- **Git:** all work on branch `v3-verify`, **local commits only — no push/fetch/pull performed**
+  (per instruction: working locally). Nothing has left the machine.
+
+**This packet is the human gate. Sign off before any external release.**

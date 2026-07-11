@@ -31,15 +31,15 @@ from marmara.metrics import information_gain, lambda_to_p
 from marmara.sources.base import causal_corr_check
 from marmara.sources.dense_catalog import DenseCatalogSource
 from marmara.sources.gnss_coupling import GnssCouplingSource
-from marmara.sources.gnss_v2 import GnssV2Source
+from marmara.sources.gnss_traj import GnssTrajSource
 from marmara.sources.repeating_eq import RepeatingEqSource
 from marmara.train import split_masks
 
 OUT = RESULTS
 EPS = 1e-9
 BASE = FEATURES + ["ln_lam_sim"]
-# gnss_v2 (Phase 2) added; gnss_coupling (v1) kept for the audit trail — register both.
-SOURCES = {s.name: s for s in (GnssV2Source(), GnssCouplingSource(),
+# gnss_traj added; gnss_coupling (v1) kept for the audit trail. Register both.
+SOURCES = {s.name: s for s in (GnssTrajSource(), GnssCouplingSource(),
                                RepeatingEqSource(), DenseCatalogSource())}
 
 
@@ -83,7 +83,7 @@ def evaluate_source(name):
     ok, why = src.available()
     spec = {"source": name, "data_spec": src.data_spec, "available": ok, "reason": why}
     if not ok:
-        spec["status"] = "SKIPPED — data not present; drop it in and re-run (no fabrication)"
+        spec["status"] = "SKIPPED: data not present; drop it in and re-run (no fabrication)"
         return spec
     cells = g[["window", "t0", "cell_lon", "cell_lat", "ir", "ic"]].copy()
     new = src.add_columns(cells)
@@ -134,7 +134,7 @@ def main():
         out = evaluate_source(arg)
         json.dump(out, open(OUT / f"source_ig_{arg}.json", "w"), indent=2)
         if not out["available"]:
-            print(f"{arg}: SKIPPED — {out['reason']}\n  need: {out['data_spec'].get('fetch','')}")
+            print(f"{arg}: SKIPPED, {out['reason']}\n  need: {out['data_spec'].get('fetch','')}")
         else:
             print(f"{arg}: leakage-pass={out['leakage']['passes']} (max corr {out['leakage']['max_abs_corr']}); "
                   f"test IG {out['ig_aug_vs_base']['test']:+.4f} val IG {out['ig_aug_vs_base']['val']:+.4f} "

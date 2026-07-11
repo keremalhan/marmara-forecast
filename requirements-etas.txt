@@ -1,16 +1,13 @@
-# Optional Phase-1 dependency: the third-party modern ETAS reference
-# (lmizrahi/etas 3.0.0 — the Mizrahi/Nandan-lineage implementation behind
-# suiETAS-style models). Used ONLY to invert an independent parameter set for the
+# Optional dependency: the independent third-party ETAS reference implementation
+# (lmizrahi/etas), used only to invert an independent parameter set for the
 # `modern_etas` comparator (marmara.etas_modern integrates its kernels; the fit is
-# run once by scripts against this env).
+# run once against this environment).
 #
-# INSTALL INTO A SEPARATE VENV — do NOT install into the pinned core env: this
-# package pulls numpy>=2.5 / pandas>=3.0 / scipy>=1.18, which are incompatible with
-# the pinned requirements.txt (numpy 2.2.5 / pandas 2.2.3 / scipy 1.15.3).
+# Install into a separate virtual environment — this package pulls numpy>=2.5 /
+# pandas>=3.0 / scipy>=1.18, which conflict with the core requirements.txt pins:
 #
-#   uv venv --python 3.13 .venv-etas
-#   COPYFILE_DISABLE=1 UV_LINK_MODE=copy VIRTUAL_ENV="$PWD/.venv-etas" \
-#       uv pip install -r requirements-etas.txt
+#   python -m venv .venv-extra
+#   .venv-extra/bin/pip install -r requirements-etas.txt
 #
 # Pinned to the exact commit used to produce results/etas_mizrahi_fit.json.
 etas @ git+https://github.com/lmizrahi/etas@097f08b69a4f06f9c38d14799dedfbd4543144e3

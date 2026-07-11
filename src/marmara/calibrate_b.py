@@ -21,7 +21,7 @@ from marmara import grid as G
 from marmara.cascade import cascade_forecast
 
 OUT = RESULTS
-B_CANDIDATES = [0.9, 1.0, 1.05, 1.1, 1.2, 1.542]
+B_CANDIDATES = [0.9, 1.0, 1.05, 1.1, 1.12, 1.15, 1.18, 1.2, 1.542]
 
 
 def main():
@@ -32,8 +32,9 @@ def main():
     EV = G.build_event_bundle(cat, 3.0)
     hist = cat[["datetime_utc", "longitude", "latitude", "mag_w"]]
     starts = G.window_starts(cat["datetime_utc"].max())
-    # use reviewed windows only (t0+30 <= 2026-03-31), every 3rd for speed
-    starts = [t for t in starts if t + pd.Timedelta(days=30) <= pd.Timestamp("2026-03-31")][::3]
+    # calibrate on pre-test windows only (target fully before the test start 2024-01-01),
+    # every 3rd for speed, so the operational b never sees the test period.
+    starts = [t for t in starts if t + pd.Timedelta(days=30) <= pd.Timestamp("2024-01-01")][::3]
 
     e35 = EV["e35"]
     results = {}

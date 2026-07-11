@@ -1,0 +1,33 @@
+{
+  "label": "kumburgaz_2025",
+  "trigger_time": "2025-04-24 00:00:00",
+  "location": [
+    28.23,
+    40.84
+  ],
+  "host_segment": "CentralMarmara",
+  "ftls": {
+    "color": "RED",
+    "b_ref": 1.2208116011260606,
+    "b_seq": 0.7978045526749695,
+    "ratio": 0.6535034168573473,
+    "caveat": "Gulia-Wiemer FTLS caveat (Mizrahi/Gulia GJI 2025 Italy test): the traffic light reached ~68% hit rate but with LOW spatial coverage; treat the color as a coarse alert, NOT a calibrated probability."
+  },
+  "cascade": {
+    "7d": {
+      "P_M5.5_region": 0.11125506226998338,
+      "P_M6.0_region": 0.029625184770597945,
+      "P_M5.5_peakcell": 0.039,
+      "P_M6.0_peakcell": 0.007333333333333333
+    },
+    "30d": {
+      "P_M5.5_region": 0.22961355949034634,
+      "P_M6.0_region": 0.06756909228648278,
+      "P_M5.5_peakcell": 0.06666666666666667,
+      "P_M6.0_peakcell": 0.018666666666666668
+    }
+  },
+  "bigger_one_ahead_score": 0.00014189704326335076,
+  "renewal_prior_30d_M7": 0.0006576638791306329,
+  "science_2025_context": "Context (Science 2025, adz0072): M>5 activity has migrated eastward toward the locked Princes Islands segment, with a quiet patch near Avcilar; the Central Marmara / Kumburgaz segment is the most overdue."
+}

@@ -1,7 +1,7 @@
 {
   "source": "dense_catalog",
   "data_spec": {
-    "requires": "/Volumes/Kerem SSD/Desktop/marmara-forecast/data/external/marmara_dense_catalog.csv",
+    "requires": "data/external/marmara_dense_catalog.csv",
     "fetch": "sources/fetch_data.py dense  (published DL/template catalog, Zenodo)",
     "format": "CSV [datetime_utc, latitude, longitude, mag], Mc~1.5",
     "provenance": "Deep-learning re-picked Marmara catalogs (EQTransformer/PhaseNet studies) or AFAD/KOERI extended bulletin.",

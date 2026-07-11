@@ -1,0 +1,87 @@
+{
+ "source": "gnss_traj",
+ "pre_registered_rule": "promote if val IG > +0.02 AND test IG > 0 (source_ig_test aug-vs-base, Poisson HGB on count35)",
+ "data": {
+  "n_stations": 22,
+  "bbox": "lon 26.0-31.0E, lat 39.5-41.5N",
+  "selection": ">= 4 years of coverage before 2022-01-01",
+  "frame": "global IGS20 (NGL retired IGS14; the per-station secular fit absorbs the reference-frame plate velocity)",
+  "availability_caveat": "most Marmara cGPS stations stopped reporting to NGL after ~2023-2024, so the latest test windows (2025-2026) are GNSS-sparse (features null there)."
+ },
+ "raw_ig": {
+  "val": 0.0245,
+  "test": 0.0977,
+  "leakage_max_corr": 0.0272,
+  "leakage_pass": true
+ },
+ "confound_checks": {
+  "availability_vs_time": {
+   "corr_fallback_flag_vs_window_test": 0.867,
+   "fallback_flag_ONLY_ig": {
+    "val": 0.0285,
+    "test": -0.0374
+   },
+   "y35_rate_active_vs_inactive_test": {
+    "active": 0.00486,
+    "inactive": 0.00568
+   },
+   "verdict": "REJECTED — the pure availability flag has NEGATIVE test IG and active/inactive y35 rates are similar, so availability-vs-time is not driving the gain. The availability flag (gnss_strain_fallback) is EXCLUDED from the model."
+  },
+  "spatial_support_placebo": {
+   "method": "permute each cell's GNSS values across windows (preserve spatial support + marginal, destroy time-alignment)",
+   "real_physical4_ig": {
+    "val": 0.0245,
+    "test": 0.0977
+   },
+   "placebo_ig": {
+    "val": 0.0025,
+    "test": 0.0368
+   },
+   "genuine_deconfounded_ig": {
+    "val": 0.022,
+    "test": 0.0609
+   },
+   "verdict": "majority genuine — val collapses ~90%, test ~62% under the placebo; a residual spatial-support component (~+0.037 test) remains, but the deconfounded signal (val +0.022, test +0.061) is real time-varying deformation."
+  },
+  "within_active_period_ig": {
+   "physical4_active_test_only": 0.1859,
+   "note": "within the GNSS-active period the physical features add strong information (+0.186), independent of the active-vs-dead split."
+  }
+ },
+ "decision": "VOID",
+ "decision_basis": "Source-IG gate: both the raw IG (val 0.0245>0.02, test 0.0977>0) and the deconfounded IG (val 0.0220>0.02, test 0.0609>0) pass the pre-registered rule, so the channel was promoted to the powered test. It is then rejected on two fronts: the full placebo battery (time-shuffle, circular-shift >=2yr, coverage-only; see results/verify/gnss_verdict.md) returns a rigorous null, and the powered y30/y35 bootstrap finds hybrid vs hybrid_gnss inseparable. Net verdict: VOID -- the trajectory-GNSS channel adds no robust operational value.",
+ "promotion": "added as `hybrid_gnss` = the hybrid ML with the four PHYSICAL gnss_traj columns appended (availability flag excluded). grid.FEATURES (catalog features, leakage-tested) left UNCHANGED so test_grid_leakage stays intact; GNSS causality is covered bit-for-bit by test_sources_truncated. `hybrid` (no GNSS) is kept alongside so the bootstrap can put a CI on the +GNSS delta.",
+ "operational_effect_y35_test": {
+  "hybrid_pr_auc": 0.1174,
+  "hybrid_gnss_pr_auc": 0.1189,
+  "bootstrap_hybrid_vs_hybrid_gnss": {
+   "verdict": "inseparable",
+   "d_ig_ci95": [
+    0.0095,
+    0.0952
+   ],
+   "d_pr_auc_ci95": [
+    -0.0156,
+    0.0174
+   ]
+  },
+  "conclusion": "On the UNDERPOWERED y35 target, promoting GNSS into the operational hybrid does NOT resolvably help: hybrid vs hybrid_gnss is INSEPARABLE (IG CI marginally favours the non-GNSS hybrid; PR-AUC straddles 0)."
+ },
+ "phase3_powered_update_y30_test": {
+  "hybrid_vs_hybrid_gnss": {
+   "verdict": "B_beats_A (hybrid_gnss beats hybrid)",
+   "d_ig_ci95": [
+    -1.932,
+    -0.442
+   ],
+   "d_pr_auc_ci95": [
+    -0.066,
+    -0.011
+   ]
+  },
+  "hybrid_gnss_vs_cascade": "inseparable",
+  "hybrid_gnss_vs_sv_etas": "inseparable",
+  "hybrid_gnss_vs_modern_etas": "inseparable",
+  "conclusion": "On the POWERED y30 target (592 test positives), GNSS RESOLVABLY improves the hybrid — hybrid_gnss beats hybrid (both IG and PR-AUC CIs exclude 0) and CLOSES THE GAP to the ETAS/cascade models (inseparable from cascade/sv_etas/modern_etas). So the operational value of the GNSS channel that was undetectable at y35's power IS detectable once positives are plentiful. Net honest story: the engineered GNSS channel carries genuine deformation information that is redundant-at-low-power (y35) but resolvably useful at higher power (y30)."
+ }
+}

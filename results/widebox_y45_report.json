@@ -5,21 +5,21 @@
   "modelbox_test_cells": 31694,
   "modelbox_test_positives": 22,
   "hybrid_widebox_trained": {
-    "pr_auc": 0.022282379477110717,
-    "roc_auc": 0.8797568543479759,
-    "brier": 0.0007808171411101165,
-    "molchan": 0.7730599998852665
+    "pr_auc": 0.022333346695808734,
+    "roc_auc": 0.8544319329950172,
+    "brier": 0.0008146052512465191,
+    "molchan": 0.7211344848752561
   },
   "cascade": {
-    "pr_auc": 0.008295489876337403,
-    "roc_auc": 0.8590136972146319,
-    "brier": 0.0009139477557859066,
-    "molchan": 0.755058313302776
+    "pr_auc": 0.008926448270706993,
+    "roc_auc": 0.798729591953891,
+    "brier": 0.0009707452824768547,
+    "molchan": 0.6360796709443141
   },
-  "ig_hybrid_vs_cascade": 0.7351,
+  "ig_hybrid_vs_cascade": 1.0454,
   "modelbox_only_y45": {
-    "hybrid_pr_auc": 0.02109494449526326,
-    "hybrid_brier": 0.0010464872337589085,
-    "ig_hybrid_vs_cascade": 2.3576075768087916
+    "hybrid_pr_auc": 0.07594122771538424,
+    "hybrid_brier": 0.001016174427982415,
+    "ig_hybrid_vs_cascade": -3.7630378383412837
   }
 }

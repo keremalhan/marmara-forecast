@@ -1,4 +1,4 @@
-"""Repository paths — all relative to the repo root, no absolute paths anywhere.
+"""Repository paths: all relative to the repo root, no absolute paths anywhere.
 Override with the MARMARA_ROOT environment variable; else inferred from this file.
 """
 import os

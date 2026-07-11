@@ -106,7 +106,7 @@ def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
     """One batched cascade over K sims. Returns (sim_id, lon, lat, mag) of all
     events that occur in [t0d, t0d+horizon), pooled across sims. t0d in float days.
 
-    per_sim_cap: computational guard for long horizons — a sim that reaches this many
+    per_sim_cap: computational guard for long horizons. A sim that reaches this many
     events stops spawning (near-critical branching can explode over 365 d). If `stats`
     is given, stats['n_capped'] and stats['K'] are filled so the caller can report the
     capped fraction. simulate_window is already per-sim-correct (sim_id is inherited
@@ -257,7 +257,7 @@ def cascade_forecast(params: EtasParams, history_df, t0d: float, horizon: float,
     for lvl in X_LEVELS:
         m = mag >= lvl
         out[f"exp_count{lvl}"] = float(m.sum()) / K              # regional expected count
-        # per-cell expected count (continuous rate — rankable even where P is ~0)
+        # per-cell expected count (continuous rate, rankable even where P is ~0)
         out[f"lam{lvl}"] = (np.bincount(cflat[m], minlength=ncells) / K).reshape(nlat, nlon)
         # regional exceedance = fraction of sims with >=1 event >= lvl anywhere in box
         out[f"Preg{lvl}"] = float(np.unique(sim[m]).size) / K if m.sum() else 0.0

@@ -1,10 +1,7 @@
-"""Repo-root pytest config (v3).
+"""Repo-root pytest configuration.
 
-The project lives on an exFAT volume, where macOS scatters AppleDouble metadata
-sidecars (`._*`). Files like `src/marmara/._source_ig_test.py` match pytest's
-`*_test.py` collection glob and crash collection with
-`ModuleNotFoundError: No module named 'marmara.'`. These are NOT source files;
-exclude them from collection. This adds no path and weakens no test assertion —
-it only stops pytest from trying to import filesystem junk.
+Ignore macOS metadata sidecar files (`._*`) so pytest does not try to import them as
+test modules: on some filesystems macOS writes an `._<name>.py` next to each source
+file, and those match the `*_test.py` collection glob and crash collection.
 """
 collect_ignore_glob = ["**/._*", "._*", "*/._*"]

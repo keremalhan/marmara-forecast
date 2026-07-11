@@ -1,4 +1,4 @@
-# V2(e) — top-20 windows where gnss_v2 most raised the predicted rate (y30 test)
+# top-20 windows where gnss_traj most raised the predicted rate (y30 test)
 
 Per-window mean increase in predicted P (hybrid_gnss − hybrid) on the M≥3.0 test windows, with the observed M≥3.0 count and the largest event in each 30-day window.
 
@@ -25,4 +25,4 @@ Per-window mean increase in predicted P (hybrid_gnss − hybrid) on the M≥3.0 
 | 19 | 242 | 2024-11-17 | -0.0088 | +0.135 | 22 | 5.1 | active sequence |
 | 20 | 250 | 2025-07-15 | -0.0089 | +0.131 | 28 | 4.3 | active sequence |
 
-Top-window share of total positive mean-ΔP across test windows: 59.6% (CONCENTRATED — inspect).
+Top-window share of total positive mean-ΔP across test windows: 59.6% (CONCENTRATED, inspect).

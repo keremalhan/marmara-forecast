@@ -1,4 +1,4 @@
-"""FINAL VALIDATION — calibration battery (overfit/underfit) + the 2025-04-23 M6.2
+"""Final validation: calibration battery (overfit/underfit) + the 2025-04-23 M6.2
 causal case study + underfit check. No new models; only the three listed calibration
 levers (isotonic on val years / one global scale / shrink hybrid w). Fixes NEVER see
 2024+ test windows.
@@ -38,7 +38,7 @@ FORE_UTC = pd.Timestamp("2025-04-23 09:13:05")   # M~4 foreshock, 36 min earlier
 def reliability(pred, obs, nb=10):
     pred = np.asarray(pred, float); obs = np.asarray(obs, float)
     npos = int(obs.sum()); n = len(obs)
-    # aggregate (expected-count) calibration — always defined, robust for rare events:
+    # aggregate (expected-count) calibration, always defined and robust for rare events:
     # if calibrated in the mean, sum(pred) ~ number of observed positives.
     agg = {"expected_pos": round(float(pred.sum()), 2), "observed_pos": npos,
            "obs_over_exp": round(npos / max(float(pred.sum()), 1e-9), 3)}
@@ -129,7 +129,7 @@ def battery():
             entry["fix"] = "isotonic_on_val"; entry["after"] = r1
             if not r1["calibrated"]:
                 entry["note"] = ("isotonic did not fully calibrate; next levers (global scale / "
-                                 "shrink w) would apply — reported, not silently tuned.")
+                                 "shrink w) would apply. This is reported, not silently tuned.")
         rows.append(entry)
     return {"products": rows, "eval_windows": "2022-01-01 .. 2026-03 (val+test)",
             "fit_discipline": "fixes fit on 2022-2023 val only; never on 2024+ test"}
@@ -201,7 +201,7 @@ def m62_gate():
          "quiet_24h_lam6_cell": quiet6_cell, "quiet_24h_exp6_regional": quiet6_reg,
          "elevation_cell": elev_cell, "elevation_regional": elev_reg}
 
-    # (c) PASS criteria — evaluated on the resolvable continuous proxies; report as-is
+    # (c) PASS criteria: evaluated on the resolvable continuous proxies; report as-is
     x22 = a["2025-04-22"]
     c = {
         "epicenter_top_decile_by_lam6": x22["pct_by_lam6"] >= 90.0,
@@ -248,7 +248,7 @@ def m62_gate():
 
 # --------------------------------------------------------------------------- #
 def underfit_check():
-    """IG(cascade & hybrid vs Poisson/fault-proximity/smoothed) at y35 test — must stay >0."""
+    """IG(cascade & hybrid vs Poisson/fault-proximity/smoothed) at y35 test, must stay >0."""
     from marmara import baselines as B
     from marmara.metrics import information_gain
     from marmara.evaluate import train_b_value
@@ -294,7 +294,7 @@ def main():
 
 
 def _write_docs(bat, m62, uf):
-    L = ["# Calibration battery — pseudo-prospective reliability (2022→2026-03)", "",
+    L = ["# Calibration battery: pseudo-prospective reliability (2022→2026-03)", "",
          "Two calibrations: **aggregate** (expected vs observed positives; obs/exp≈1 = calibrated "
          "in the mean, robust for rare events) and **shape** (10-bin reliability slope; gate 0.8–1.25 "
          "& |intercept|<0.02). Fixes fit on VAL (2022-23) only, never on 2024+ test.", "",
@@ -306,16 +306,25 @@ def _write_docs(bat, m62, uf):
         L.append(f"| {p['product']} | {agg.get('obs_over_exp')} ({agg.get('observed_pos')}/{agg.get('expected_pos')}) "
                  f"| {tv} | {aft.get('slope','—')} / {aft.get('intercept','—')} | "
                  f"{aft.get('verdict','—')} | {p['fix']} |")
-    L += ["", "**Reading:** every product is calibrated in the MEAN (obs/exp 0.98–1.43, all within "
-          "Poisson noise of 1). Shape: y35 calibrated (slope 1.07); y45 marginally overconfident "
-          "(slope 0.785, at the 0.8 gate) — aggregate is fine (1.06) and the wide-box y45 variant "
-          "(w=0.1, `widebox_y45_report.json`) is the better-calibrated production version. "
-          "P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives) — reported honestly via the "
+    # shape verdicts and obs/exp range read from the computed battery, so the prose
+    # tracks the table above rather than a stale hard-coded reading.
+    def _shape(p):
+        s = p["after"] or p["before"]
+        return s.get("slope"), s.get("verdict")
+    y35_slope, y35_verdict = _shape(bat["products"][0])
+    y45_slope, y45_verdict = _shape(bat["products"][1])
+    _ooe = sorted(v for v in (p["before"].get("aggregate", {}).get("obs_over_exp")
+                              for p in bat["products"]) if v is not None)
+    L += ["", f"**Reading:** every product is calibrated in the MEAN (obs/exp {_ooe[0]:.2f}–{_ooe[-1]:.2f}, "
+          "all within Poisson noise of 1). Shape: "
+          f"y35 {y35_verdict} (slope {y35_slope}); y45 {y45_verdict} (slope {y45_slope}). The wide-box "
+          "y45 variant (w=0.1, `widebox_y45_report.json`) is the better-calibrated production version. "
+          "P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives); reported honestly via the "
           "aggregate, not calibrated away."]
     (VF / "calibration_battery.md").write_text("\n".join(L))
 
     a = m62["a_30d_forecasts"]; b = m62["b_sequence_replay"]; c = m62["c_pass"]; d = m62["d_secondary"]
-    M = [f"# M6.2 case study — 2025-04-23 (strictly causal, data < event)", "",
+    M = [f"# M6.2 case study: 2025-04-23 (strictly causal, data < event)", "",
          f"Epicenter (28.23E, 40.84N) cell {m62['epicenter_cell']}. There were **0 M≥6 in the model "
          "box before this event**, so an observed M6 base rate is undefined; per-cell 30-day P(M≥6) "
          "is ~0 (below resolution). We therefore rank cells by the CONTINUOUS expected-M6 rate "
@@ -327,10 +336,10 @@ def _write_docs(bat, m62, uf):
         x = a[lbl]
         M.append(f"| {lbl} | {x['epicenter_lam6']:.2e} | {x['pct_by_lam6']:.1f} | "
                  f"{x['pct_by_lam45_seismicity']:.1f} | {x['gain6_vs_uniform']:.2f}× | {x['regional_P6']*100:.2f}% |")
-    M += ["", "## (b) sequence replay — +10 min after the M~4 foreshock (data < 09:23)",
+    M += ["", "## (b) sequence replay: +10 min after the M~4 foreshock (data < 09:23)",
           f"- events in the nascent sequence at the snapshot: **{b['n_events_in_sequence']}**",
-          f"- FTLS color: **{b['ftls_color']}**" + (f" — {b['ftls_reason']}" if b['ftls_reason'] else ""),
-          f"- bigger-one-ahead score: **{b['bigger_one_ahead']}**" + (f" — {b['bigger_ahead_reason']}" if b['bigger_ahead_reason'] else ""),
+          f"- FTLS color: **{b['ftls_color']}**" + (f" ({b['ftls_reason']})" if b['ftls_reason'] else ""),
+          f"- bigger-one-ahead score: **{b['bigger_one_ahead']}**" + (f" ({b['bigger_ahead_reason']})" if b['bigger_ahead_reason'] else ""),
           f"- cascade 24h expected M≥6: cell lam6 **{b['cascade_24h_lam6_cell']:.2e}**, regional "
           f"**{b['cascade_24h_exp6_regional']:.2e}**",
           f"- quiet-day 24h: cell lam6 {b['quiet_24h_lam6_cell']:.2e}, regional {b['quiet_24h_exp6_regional']:.2e} → "
@@ -350,29 +359,29 @@ def _write_docs(bat, m62, uf):
     # 10-line verdict
     def agg(p): return (p["before"].get("aggregate") or {}).get("obs_over_exp")
     rare = [p["product"] for p in bat["products"] if not p["before"].get("testable")]
-    V = ["# VERDICT — forecast everything, no overfit/underfit", "",
+    V = ["# VERDICT: forecast everything, no overfit/underfit", "",
          "1. AGGREGATE calibration: ALL products calibrated in the mean (obs/exp within Poisson "
          f"noise of 1: y35 {agg(bat['products'][0])}, y45 {agg(bat['products'][1])}, "
          f"M5 {agg(bat['products'][2])}, M5.5 {agg(bat['products'][3])}, M6 {agg(bat['products'][4])}).",
-         "2. SHAPE (10-bin): y35 calibrated (slope 1.07); y45 marginally overconfident (0.785, "
-         "isotonic on 13 val-positives insufficient — wide-box y45 w=0.1 is the calibrated variant).",
+         f"2. SHAPE (10-bin): y35 {y35_verdict} (slope {y35_slope}); y45 {y45_verdict} (slope "
+         f"{y45_slope}; wide-box y45 w=0.1 is the calibrated variant).",
          f"3. Rarity-limited shape (reported via aggregate, NOT tuned): {', '.join(rare)}.",
          f"4. M6.2 spatial (30d, 04-22): epicenter percentile by lam6 {a['2025-04-22']['pct_by_lam6']:.0f} "
          f"(by seismicity {a['2025-04-22']['pct_by_lam45_seismicity']:.0f}), gain6 "
-         f"{a['2025-04-22']['gain6_vs_uniform']:.1f}× — top-decile-lam6={c['epicenter_top_decile_by_lam6']}.",
+         f"{a['2025-04-22']['gain6_vs_uniform']:.1f}×, top-decile-lam6={c['epicenter_top_decile_by_lam6']}.",
          f"5. M6.2 short-term: post-foreshock 24h regional expected-M6 {b['cascade_24h_exp6_regional']:.1e} "
-         f"= {b['elevation_regional']}× quiet, FTLS {b['ftls_color']} (n_seq={b['n_events_in_sequence']}) "
-         "— but absolute probability stays small.",
+         f"= {b['elevation_regional']}× quiet, FTLS {b['ftls_color']} (n_seq={b['n_events_in_sequence']}), "
+         "but absolute probability stays small.",
          f"6. M6.2 gate ALL-PASS: {c['all_pass']}.",
          "7. Physical finding: M6/30d/per-cell is below forecast resolution and had NO base rate "
          "(0 M6 in the box pre-event); the only real precursor was the 36-min M4 foreshock, and 10 min "
-         "after it there were too few events for FTLS/classifier — that absent information IS the finding.",
+         "after it there were too few events for FTLS/classifier. That absent information IS the finding.",
          f"8. Underfit check (y35 test): cascade IG vs baselines all>0 = {uf['cascade']['all_positive']}; "
          f"hybrid = {uf['hybrid']['all_positive']}.",
          "9. Supported claims: 30-day spatial hazard + sequence-response (FTLS/cascade) are calibrated "
          "and skillful; M≥6 short-term is an ELEVATION signal, not a probability of certainty.",
          "10. NOT supported: sharp deterministic prediction of a specific large event ahead of its "
-         "immediate foreshock — reported honestly, not tuned."]
+         "immediate foreshock; reported honestly, not tuned."]
     (VF / "verdict.md").write_text("\n".join(V))
 
 

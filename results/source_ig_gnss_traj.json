@@ -1,0 +1,30 @@
+{
+  "source": "gnss_traj",
+  "data_spec": {
+    "requires": "data/external/gnss_traj/<STATION>.tenv3 (NGL IGS20) + data/external/gnss_traj/gnss_stations.csv [station,lon,lat] + data/external/gnss_traj/steps.txt",
+    "fetch": "sources/fetch_data.py gnss_traj  (Nevada Geodetic Lab, free, no key)",
+    "format": "NGL .tenv3 whitespace: col2=decimal_year, col3=MJD, col8=east(m), col10=north(m)",
+    "provenance": "NGL https://geodesy.unr.edu/gps_timeseries/IGS20/tenv3/IGS20/ + steps.txt",
+    "why": "Trajectory-modelled, step-corrected, common-mode-filtered transient deformation \u2014 the time-varying precursor the static strain grid cannot carry."
+  },
+  "available": true,
+  "reason": "",
+  "label": "gnss_traj",
+  "columns": [
+    "gnss_resid_rate_90",
+    "gnss_resid_rate_365",
+    "gnss_resid_max_365",
+    "gnss_strain_rate_365",
+    "gnss_strain_fallback"
+  ],
+  "leakage": {
+    "max_abs_corr": 0.0272,
+    "passes": true
+  },
+  "ig_aug_vs_base": {
+    "val": 0.0245,
+    "test": 0.0977
+  },
+  "n_new_cols_all_nan": 0,
+  "verdict": "adds information"
+}

@@ -1,4 +1,4 @@
-"""Incremental monthly catalog refresh (network-dependent — runs unsandboxed under
+"""Incremental monthly catalog refresh (network-dependent, runs unsandboxed under
 launchd). Fetches KOERI monthly preliminary XML lists, appends genuinely-new events
 to koeri_events.csv, and rebuilds the catalog. Best-effort: on any failure it exits
 non-zero and leaves the existing catalog untouched, so the prospective run still
@@ -8,7 +8,7 @@ DATA SOURCE (fixed 2026-07-06): the zeqdb search endpoint became a JS/AJAX app s
 and is no longer scrapable, but the monthly preliminary lists remain plain XML at
   http://udim.koeri.boun.edu.tr/zeqmap/xmlt/YYYYMM.xml
 (entries: <earhquake name="YYYY.MM.DD HH:MM:SS" lokasyon=".." lat=".." lng=".."
-mag=".." Depth=".." />). Times are LOCAL Turkey time (UTC+3, fixed since 2016 —
+mag=".." Depth=".." />). Times are LOCAL Turkey time (UTC+3, fixed since 2016,
 empirically proven against UTC anchors in fetch_manifest.json); magnitudes are
 single untyped rapid solutions (treated as xM-unknown, like all preliminary rows).
 Monthly rows carry no KOERI event code, so novelty is decided by time+space
@@ -16,7 +16,7 @@ proximity (±10 s AND ±0.1°) against the existing catalog, plus a synthetic
 event_code for idempotence across runs.
 
 NOTE for a future operator: rows fetched this way are PRELIMINARY. Every ~2-3
-months, reviewed zeqdb data should ideally replace the preliminary tail — if the
+months, reviewed zeqdb data should ideally replace the preliminary tail, if the
 zeqdb app regains a scrapable endpoint, or via AFAD/ISC. Accumulation of the
 prospective track record only needs the catalog to ADVANCE, which this provides.
 

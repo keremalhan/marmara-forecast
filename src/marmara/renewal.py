@@ -11,7 +11,7 @@ in the Parsons-2004 ~30-50% ballpark (order-of-magnitude assertion, printed).
 
 Provides: per-cell host-segment 30-day renewal P (an ML/forecast feature) and the
 product blend P_combined(M>=6.8) = 1-(1-P_cascade)(1-P_renewal). Renewal is a
-LARGE-EVENT layer only — never blended into the y35/y45 evaluation.
+LARGE-EVENT layer only, never blended into the y35/y45 evaluation.
 
 Output: results/renewal_report.json
 Run:  "<venv>/bin/python3" -m marmara.renewal

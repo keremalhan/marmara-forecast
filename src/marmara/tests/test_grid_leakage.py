@@ -1,4 +1,4 @@
-"""Task 7 hard gate — leakage self-test for the feature grid.
+"""Task 7 hard gate: leakage self-test for the feature grid.
 
 For 20 random (cell, t0) rows spread over the period (plus the most active
 rows, to exercise b-positive / days-since), rebuild every feature from a

@@ -1,17 +1,17 @@
-"""Phase D1 — build the dense (sub-Mc3) Marmara catalogue from the AFAD bulletin
+"""build the dense (sub-Mc3) Marmara catalogue from the AFAD bulletin
 (data/external/dense/afad_raw.csv) into data/external/marmara_dense_catalog.csv
 [datetime_utc, latitude, longitude, mag], for the DenseCatalogSource.
 
 Steps (all logged to results/dense_build_report.json):
   1. homogenize AFAD magnitudes to proxy-Mw (marmara.catalog.mag_to_mw), consistent
      with the KOERI catalogue.
-  2. internal dedup (±10 s, ±0.1°, ±0.5 mag) — same thresholds as catalog.dedupe.
-  3. quarry-blast filter — catalog.py has NO blast filter, so we apply a documented,
+  2. internal dedup (±10 s, ±0.1°, ±0.5 mag), same thresholds as catalog.dedupe.
+  3. quarry-blast filter (catalog.py has NO blast filter), so we apply a documented,
      conservative heuristic: drop events that are simultaneously local-daytime
      (UTC+3 hour in [6,18)), shallow (< 5 km) and small (raw M < 2.5). Reported.
   4. per-year completeness Mc (marmara.catalog.compute_mc, max-curvature +0.2); keep
-     only events with M >= Mc(year) — the blueprint's "M >= Mc(year)" requirement.
-  5. cross-check overlap vs KOERI (±10 s, ±15 km) for transparency (NOT removed — the
+     only events with M >= Mc(year), the design.s "M >= Mc(year)" requirement.
+  5. cross-check overlap vs KOERI (±10 s, ±15 km) for transparency (NOT removed; the
      dense catalogue is used standalone by DenseCatalogSource).
 
 NEVER fabricates events. Run: "<venv>/bin/python" -m marmara.build_dense
@@ -32,7 +32,7 @@ KM_PER_DEG = 111.0
 
 def main():
     if not RAW.exists():
-        print(f"missing {RAW} — run: python -m marmara.sources.fetch_data dense_afad"); return
+        print(f"missing {RAW}; run: python -m marmara.sources.fetch_data dense_afad"); return
     d = pd.read_csv(RAW)
     d["datetime_utc"] = pd.to_datetime(d["datetime_utc"], format="mixed", errors="coerce")
     d = d.dropna(subset=["datetime_utc", "latitude", "longitude", "mag"]).reset_index(drop=True)

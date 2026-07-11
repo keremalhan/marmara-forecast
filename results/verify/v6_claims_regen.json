@@ -1,6 +1,0 @@
-{
-  "n_verdicts": 168,
-  "n_mismatches": 0,
-  "mismatches": [],
-  "verdict": "PASS \u2014 claims.json is faithfully derived from bootstrap_ci.json"
-}

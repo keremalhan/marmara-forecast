@@ -1,4 +1,4 @@
-# Repeating-earthquake catalogue — fetch instructions (Phase D2)
+# Repeating-earthquake catalogue, fetch instructions
 
 **Status: STILL-ABSENT.** `results/source_ig_repeating_eq.json` reports
 `available: false`. The `repeating_eq` source was designed but never fed data; it is
@@ -20,7 +20,7 @@ in as `data/external/marmara_repeaters.csv` with columns
    supplement for the repeater catalogue. Bohnhoff et al. 2013 (*Nature Comm.*) and
    the GONAF borehole array (gfz-potsdam) are related sources.
 
-3. **Uchida & Bürgmann (2019)** global repeater compilation (*Ann. Rev. EPS*) — filter
+3. **Uchida & Bürgmann (2019)** global repeater compilation (*Ann. Rev. EPS*), filter
    to the Marmara bbox [26–31°E, 39.5–41.5°N] if a machine-readable table is available.
 
 ## Expected format and gate
@@ -35,5 +35,5 @@ FEATURES iff val IG > +0.02 AND test IG > 0.
 
 ## Why it matters (do not overstate until fed)
 Repeater recurrence ∝ 1/creep-rate, so a repeater catalogue is a direct aseismic-creep
-observable no seismicity-rate statistic captures — potentially the most interpretable
+observable no seismicity-rate statistic captures, potentially the most interpretable
 channel. But until the data is present it is **absent, not null**; report it as such.

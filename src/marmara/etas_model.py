@@ -1,6 +1,6 @@
 """Space-time ETAS (Epidemic-Type Aftershock Sequence) model for the Marmara project.
 
-Self-contained implementation (numpy/scipy/pandas only, no network). Serves three roles:
+Self-contained implementation (numpy/scipy/pandas only, no network). Used in three roles:
   1. baseline probabilistic forecast (``fit_etas`` + ``expected_counts`` + ``prob_at_least_one``),
   2. causal expected-rate feature generator (``expected_counts`` is strictly causal),
   3. synthetic-catalog simulator for rare-event (M6+) training data (``simulate_catalogs``).
@@ -30,7 +30,7 @@ with analytic gradients, L-BFGS-B on log-transformed parameters, multiple restar
 and background-declustering iterations (unit-weight KDE -> fit -> background-
 probability-weighted KDE -> refit; KDE evaluated leave-one-out at event locations).
 The productivity scale is optimized as the branching ratio n = k*beta/(beta-alpha),
-constrained n <= 0.95 (subcritical stationary model — a deliberate, documented
+constrained n <= 0.95 (subcritical stationary model: a deliberate, documented
 constraint required for the baseline/simulator roles).
 
 Documented approximations
@@ -372,7 +372,7 @@ class EtasParams:
 # ----------------------------------------------------------------- likelihood machinery
 # The productivity scale is parameterized through the (untruncated) branching ratio
 # n = k * beta / (beta - alpha), bounded n <= 0.95. This enforces a SUBCRITICAL,
-# stationary model — required for the simulator/baseline roles — and blocks the
+# stationary model (required for the simulator/baseline roles) and blocks the
 # well-known degenerate MLE mode on real catalogs (p -> 1 with huge k: a nearly flat
 # Omori tail absorbing swarms/completeness drift, extrapolating to a supercritical
 # process).
@@ -659,7 +659,7 @@ def expected_counts(params: EtasParams, history_df: pd.DataFrame, cells_df: pd.D
 
     Strictly causal: events in ``history_df`` at or after ``t0`` are filtered out
     internally, as are events below mc. First-generation approximation (offspring of
-    the history only, no secondary triggering within the horizon — standard for short
+    the history only, no secondary triggering within the horizon, standard for short
     horizons; underestimates in very active sequences by up to ~1/(1-n)). The Omori
     kernel is integrated analytically over [t0, t0+horizon); the spatial kernel uses
     the cell-center approximation (pdf at center x cell area), with each source's

@@ -9,23 +9,23 @@
     "N_sim": 1000,
     "seed": 42,
     "N_observed": 1383,
-    "tests": "catalog-based N / M / S / pseudo-likelihood (Savran et al. 2020 / pyCSEP definitions; in-house \u2014 see module docstring)"
+    "tests": "catalog-based N / M / S / pseudo-likelihood (Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)"
   },
   "models": {
     "cascade": {
       "N_obs": 1383,
-      "N_forecast_mean": 1456.6,
+      "N_forecast_mean": 1498.1,
       "N_test": {
-        "delta1": 0.978,
-        "delta2": 0.03,
-        "pass": true
+        "delta1": 1.0,
+        "delta2": 0.0,
+        "pass": false
       },
       "S_test": {
         "gamma": 1.0,
         "pass": false
       },
       "M_test": {
-        "gamma": 0.711,
+        "gamma": 0.955,
         "pass": true
       },
       "PL_test": {
@@ -36,18 +36,18 @@
     },
     "sv_etas": {
       "N_obs": 1383,
-      "N_forecast_mean": 1446.2,
+      "N_forecast_mean": 1488.8,
       "N_test": {
-        "delta1": 0.953,
-        "delta2": 0.05,
-        "pass": true
+        "delta1": 0.997,
+        "delta2": 0.003,
+        "pass": false
       },
       "S_test": {
         "gamma": 1.0,
         "pass": false
       },
       "M_test": {
-        "gamma": 0.627,
+        "gamma": 0.915,
         "pass": true
       },
       "PL_test": {
@@ -58,7 +58,7 @@
     },
     "modern_etas": {
       "N_obs": 1383,
-      "N_forecast_mean": 782.9,
+      "N_forecast_mean": 782.4,
       "N_test": {
         "delta1": 0.0,
         "delta2": 1.0,

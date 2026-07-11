@@ -1,10 +1,10 @@
-"""Prospective monthly forecasting — the cheapest credibility there is.
+"""Prospective monthly forecasting: the cheapest credibility there is.
 
 Each run issues a 30-day forecast at the current catalog end, appends it to an
 APPEND-ONLY, sha256-hashed log BEFORE the outcome is known, and scores any past
 forecast whose 30-day window has now closed against what actually happened. Over
-months this accumulates a genuine out-of-sample (prospective) track record —
-unlike the pseudo-prospective backtests, these forecasts were logged with no
+months this accumulates a genuine out-of-sample (prospective) track record.
+Unlike the pseudo-prospective backtests, these forecasts were logged with no
 knowledge of the future.
 
 Layout (results/prospective/):
@@ -111,7 +111,7 @@ def issue_forecast():
     np.savez_compressed(dst / "grids.npz", P35=P35, P45=P45, lam35=lam35,
                         lon=LO.ravel(), lat=LA.ravel())
     fc["grids"] = str((dst / "grids.npz").relative_to(OUT))
-    # hash the PREDICTION content (stable fingerprint) — exclude issue-time metadata so
+    # hash the PREDICTION content (stable fingerprint): exclude issue-time metadata so
     # the same catalog reproduces the same hash and a logged forecast is verifiable.
     fc["content_hash"] = _hash({k: v for k, v in fc.items()
                                 if k not in ("content_hash", "issued_utc")})
@@ -174,7 +174,7 @@ def track_record():
              f"windows closed & scored: **{len(scored)}**.",
              "Each forecast was hashed and logged before its outcome was known (see forecast_log.jsonl).", ""]
     if not scored:
-        lines += ["_No 30-day windows have closed yet — the first score lands ~30 days after the "
+        lines += ["_No 30-day windows have closed yet. The first score lands ~30 days after the "
                   "first issued forecast. Credibility accrues from here._"]
         (PRO / "track_record.md").write_text("\n".join(lines))
         return
@@ -202,10 +202,10 @@ def refresh_catalog():
     """Best-effort catalog refresh. The KOERI fetcher is a network scraper (blocked in
     sandbox; runs fine under launchd). We call the operator's refresh hook if present.
     Returns (advanced: bool, note: str). On any failure we proceed with the existing
-    catalog and log the status — the run still scores closed forecasts."""
+    catalog and log the status; the run still scores closed forecasts."""
     hook = ROOT / "scripts" / "refresh_monthly.py"
     if not hook.exists():
-        return (False, "no refresh hook (scripts/refresh_monthly.py) — using existing catalog")
+        return (False, "no refresh hook (scripts/refresh_monthly.py), using existing catalog")
     import subprocess
     try:
         r = subprocess.run([sys.executable, str(hook)], capture_output=True, timeout=1800, text=True)

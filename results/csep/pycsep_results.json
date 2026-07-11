@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "pycsep_version": "0.8.0",
+    "target": "M>=3.0 (y30)",
+    "test_period": [
+      "2024-01-22",
+      "2026-03-12"
+    ],
+    "n_windows": 26,
+    "n_cat": 1000,
+    "seed": 42,
+    "n_observed": 1383,
+    "region_cells": 1219,
+    "environment": "pyCSEP toolkit",
+    "tests": "GENUINE pyCSEP catalog-based number/magnitude/spatial/pseudolikelihood (Savran et al. 2020)"
+  },
+  "models": {
+    "cascade": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": false,
+        "delta1": 1.0,
+        "delta2": 0.0,
+        "test_dist_mean": 1498.081,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 0.9386,
+        "pass": true,
+        "gamma": 0.062,
+        "test_dist_mean": 0.6092,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.9886,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -6.1703,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1715.1093,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 212.1111,
+        "n_cat_used": 1000
+      }
+    },
+    "sv_etas": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": false,
+        "delta1": 0.997,
+        "delta2": 0.003,
+        "test_dist_mean": 1488.823,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 0.9545,
+        "pass": true,
+        "gamma": 0.055,
+        "test_dist_mean": 0.6021,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.9773,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -6.1612,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1731.4336,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 215.251,
+        "n_cat_used": 1000
+      }
+    },
+    "modern_etas": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": false,
+        "delta1": 0.0,
+        "delta2": 1.0,
+        "test_dist_mean": 782.898,
+        "n_cat_used": 1000
+      },
+      "Magnitude": {
+        "observed_statistic": 4.7099,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 0.7636,
+        "n_cat_used": 1000
+      },
+      "Spatial": {
+        "observed_statistic": -4.5528,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -5.0673,
+        "n_cat_used": 1000
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 2135.4881,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 466.4585,
+        "n_cat_used": 1000
+      }
+    }
+  },
+  "cross_check_vs_inhouse": {
+    "cascade": {
+      "N_pass_pycsep": false,
+      "N_pass_inhouse": false,
+      "M_pass_pycsep": true,
+      "M_pass_inhouse": true,
+      "agree_NM": true
+    },
+    "sv_etas": {
+      "N_pass_pycsep": false,
+      "N_pass_inhouse": false,
+      "M_pass_pycsep": true,
+      "M_pass_inhouse": true,
+      "agree_NM": true
+    },
+    "modern_etas": {
+      "N_pass_pycsep": false,
+      "N_pass_inhouse": false,
+      "M_pass_pycsep": false,
+      "M_pass_inhouse": false,
+      "agree_NM": true
+    }
+  }
+}

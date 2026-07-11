@@ -13,7 +13,7 @@ Documented simplifications vs a full ETASI: productivity uses a constant base-Mc
 reference (not per-event mc_i), and the incompleteness deficit is handled by the
 likelihood-catalog filter rather than an integral detectability term. At base
 Mc=3.0 the post-mainshock Mc(t)>3.0 window is sub-hour (0.02-0.44 h for M5.5-6.2),
-so STAI drops very few events here — reported honestly.
+so STAI drops very few events here, reported honestly.
 
 Output: results/etas_params.pkl , results/etas_fit_report.json
 Run:  "<venv>/bin/python3" -m marmara.etas_fit
@@ -43,7 +43,7 @@ MODEL_BOX = dict(min_lon=25.6, max_lon=30.9, min_lat=39.6, max_lat=41.9)
 BASE_MC = 3.0
 FIT_END = pd.Timestamp("2021-12-31")
 CAP = 0.999          # raised from the historical 0.95
-FALLBACK_CAP = 0.95  # blueprint: if it re-pins at 0.999, keep 0.95 for stable sims
+FALLBACK_CAP = 0.95  # design: if it re-pins at 0.999, keep 0.95 for stable sims
 
 
 def mc_of_time(datetimes: pd.Series, mag_w: np.ndarray) -> np.ndarray:
@@ -161,7 +161,7 @@ def main():
         n999, alpha999 = 0.999, 1.375                    # observed (verified run)
     repinned = n999 >= 0.951
 
-    # 2) operational params: it re-pinned, so keep the 0.95 cap (blueprint rule)
+    # 2) operational params: it re-pinned, so keep the 0.95 cap (design rule)
     params, n_tgt, n_dropped, b_val, b_aki = fit_stai(cat, MODEL_BOX, FALLBACK_CAP)
     op_cap = FALLBACK_CAP
     n_op = branching_ratio(params)
@@ -186,9 +186,9 @@ def main():
         "note": (
             f"STAI dropped {n_dropped} events: at base Mc=3.0 the post-M5.5 Mc(t)>3.0 "
             "window is sub-hour, so STAI is a near-no-op (Hainzl's un-pinning needs a "
-            f"LOW base Mc). Raising the cap to 0.999 did NOT un-pin — the MLE went "
+            f"LOW base Mc). Raising the cap to 0.999 did NOT un-pin: the MLE went "
             f"straight to the new cap (n={n999:.4f}), the documented degenerate near-"
-            "critical mode. Per blueprint we KEEP the 0.95 cap for stable simulation. "
+            "critical mode. by design we KEEP the 0.95 cap for stable simulation. "
             f"alpha at cap 0.999 ~= {alpha999:.2f} vs operational {params.alpha:.2f}. "
             f"b-ensemble for cascade: b_pos={b_val:.3f}, b_aki={b_aki:.3f}."
         ),

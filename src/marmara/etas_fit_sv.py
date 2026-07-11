@@ -1,14 +1,14 @@
-"""Phase 1.2 — sv-ETAS: our ETAS refit with a CONVERGED spatially-variable
+"""sv-ETAS: our ETAS refit with a CONVERGED spatially-variable
 background mu(x,y) via EM stochastic declustering (Zhuang 2002).
 
 HONEST FRAMING (verify before citing). The first-generation fit (etas_fit.py)
 ALREADY estimates a spatially-variable, probabilistically-declustered weighted-KDE
 background (etas_model.BackgroundField; the published fit runs bg_iterations=2, i.e.
 one reweighting pass). So sv-ETAS does NOT introduce a variable mu where the baseline
-had a constant one — the blueprint's "constant mu -> mu(x,y)" premise does not hold
+had a constant one; the design.s "constant mu -> mu(x,y)" premise does not hold
 for this codebase. What sv-ETAS isolates instead is the effect of running the
 declustering to CONVERGENCE (<=10 EM iterations, or dLL < 0.1) with a Silverman
-bandwidth computed on the background-weighted points and floored at 5 km (blueprint
+bandwidth computed on the background-weighted points and floored at 5 km (design
 spec), versus the published 2-stage background with a 1.5 km floor.
 
 EVERYTHING ELSE IS IDENTICAL to the published fit and reuses the protected
@@ -40,14 +40,14 @@ OUT = RESULTS
 PARAMS_PKL = OUT / "etas_sv_params.pkl"
 REPORT = OUT / "etas_sv_fit_report.json"
 
-MAX_EM = 10          # blueprint: <=10 EM iterations
-DLL_TOL = 0.1        # blueprint: or dLL < 0.1
-BW_FLOOR_KM = 5.0    # blueprint: Silverman on background-weighted points, floor 5 km
+MAX_EM = 10          # design: <=10 EM iterations
+DLL_TOL = 0.1        # design: or dLL < 0.1
+BW_FLOOR_KM = 5.0    # design: Silverman on background-weighted points, floor 5 km
 BW_CEIL_KM = 12.0    # keep the published ceiling
 
 
 def silverman_bw_km(lon, lat, weights, region, floor=BW_FLOOR_KM, ceil=BW_CEIL_KM) -> float:
-    """Silverman bandwidth (km) on background-weighted points — REPLICATES
+    """Silverman bandwidth (km) on background-weighted points. REPLICATES
     etas_model.BackgroundField's internal rule exactly, but with the 5 km floor
     (the published field floors at 1.5 km). Returned bw is passed explicitly to
     from_weighted_events so the field uses this bandwidth rather than its default."""
@@ -161,7 +161,7 @@ def main():
     with open(PARAMS_PKL, "wb") as f:
         pickle.dump(params, f)
 
-    # first-gen params for a side-by-side (published fit) — read the report, not refit.
+    # first-gen params for a side-by-side (published fit): read the report instead of refitting.
     fg = json.load(open(OUT / "etas_fit_report.json"))
     report = {
         "variant": "sv_etas",
@@ -185,7 +185,7 @@ def main():
                     "iters, 5 km-floor bandwidth) vs the published 2-iteration, 1.5 km-"
                     "floor background. The first-gen fit is ALREADY spatially variable; "
                     "the delta here is background convergence + bandwidth, not "
-                    "constant->variable mu (blueprint premise corrected).",
+                    "constant->variable mu (design premise corrected).",
             "firstgen_mu_total": fg.get("mu_total"), "sv_mu_total": float(params.mu_total),
             "firstgen_alpha": fg.get("alpha"), "sv_alpha": float(params.alpha),
             "firstgen_p": fg.get("p"), "sv_p": float(params.p),

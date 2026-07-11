@@ -1,7 +1,7 @@
 {
-  "n_raw": 103410,
-  "n_after_dedup_widebox": 103388,
-  "n_model_box": 31329,
+  "n_raw": 103529,
+  "n_after_dedup_widebox": 103507,
+  "n_model_box": 31360,
   "n_dropped_dedup": 22,
   "mc": 3.65,
   "mc_mode_bin_center": 3.450000000000001,
@@ -11,14 +11,14 @@
   "ml_population_mode_magw": 2.717,
   "date_range": [
     "2003-01-04 01:48:28",
-    "2026-07-06 04:00:00"
+    "2026-07-11 12:05:26"
   ],
-  "n_preliminary_model": 445,
+  "n_preliminary_model": 476,
   "counts_model_box": {
-    "ge_3.5": 5021,
+    "ge_3.5": 5024,
     "ge_4.5": 192,
     "ge_5.5": 12,
     "ge_6.0": 1,
-    "ge_mc(3.65)": 2332
+    "ge_mc(3.65)": 2334
   }
 }

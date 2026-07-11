@@ -22,38 +22,53 @@
     1.0185696913880833
   ],
   "converged": true,
-  "note": "STAI dropped 0 events: at base Mc=3.0 the post-M5.5 Mc(t)>3.0 window is sub-hour, so STAI is a near-no-op (Hainzl's un-pinning needs a LOW base Mc). Raising the cap to 0.999 did NOT un-pin \u2014 the MLE went straight to the new cap (n=0.9990), the documented degenerate near-critical mode. Per blueprint we KEEP the 0.95 cap for stable simulation. alpha at cap 0.999 ~= 1.38 vs operational 1.39. b-ensemble for cascade: b_pos=1.542, b_aki=1.019.",
-  "operational_b_for_cascade": 1.2,
+  "note": "STAI dropped 0 events: at base Mc=3.0 the post-M5.5 Mc(t)>3.0 window is sub-hour, so STAI is a near-no-op (Hainzl's un-pinning needs a LOW base Mc). Raising the cap to 0.999 did NOT un-pin: the MLE went straight to the new cap (n=0.9990), the documented degenerate near-critical mode. by design we KEEP the 0.95 cap for stable simulation. alpha at cap 0.999 ~= 1.38 vs operational 1.39. b-ensemble for cascade: b_pos=1.542, b_aki=1.019.",
+  "operational_b_for_cascade": 1.15,
   "b_calibration": {
     "0.9": {
-      "slope": 0.5355977390340714,
-      "pred_total": 2432.58,
-      "real_total": 1262.0
+      "slope": 0.5675277899353607,
+      "pred_total": 2183.4066666666668,
+      "real_total": 1199.0
     },
     "1.0": {
-      "slope": 0.7067066605745969,
-      "pred_total": 1844.4033333333332,
-      "real_total": 1262.0
+      "slope": 0.7462418205134174,
+      "pred_total": 1656.6666666666667,
+      "real_total": 1199.0
     },
     "1.05": {
-      "slope": 0.7908731894679994,
-      "pred_total": 1650.7566666666664,
-      "real_total": 1262.0
+      "slope": 0.8332427621276197,
+      "pred_total": 1484.3033333333333,
+      "real_total": 1199.0
     },
     "1.1": {
-      "slope": 0.8746468958882424,
-      "pred_total": 1492.0333333333333,
-      "real_total": 1262.0
+      "slope": 0.9220542570643456,
+      "pred_total": 1340.79,
+      "real_total": 1199.0
+    },
+    "1.12": {
+      "slope": 0.9594382888149647,
+      "pred_total": 1290.18,
+      "real_total": 1199.0
+    },
+    "1.15": {
+      "slope": 1.0131399152192577,
+      "pred_total": 1222.5166666666669,
+      "real_total": 1199.0
+    },
+    "1.18": {
+      "slope": 1.0670596342416852,
+      "pred_total": 1159.2900000000002,
+      "real_total": 1199.0
     },
     "1.2": {
-      "slope": 1.0442252291886207,
-      "pred_total": 1248.0366666666666,
-      "real_total": 1262.0
+      "slope": 1.1019288446926776,
+      "pred_total": 1122.7866666666669,
+      "real_total": 1199.0
     },
     "1.542": {
-      "slope": 1.7196041169060727,
-      "pred_total": 755.2666666666667,
-      "real_total": 1262.0
+      "slope": 1.814108368181391,
+      "pred_total": 678.5333333333332,
+      "real_total": 1199.0
     }
   }
 }

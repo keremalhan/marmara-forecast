@@ -1,8 +1,8 @@
-"""Source 3 — the dense re-picked catalog (Mc -> ~1.5): the single biggest data lever.
+"""Source 3, the dense sub-Mc3 catalogue (Mc -> ~1.5): the single biggest data lever.
 
 The KOERI catalog completes near Mc~3. A dense, template-matched / ML-picked catalog
 (Mc~1.5) carries ~10-30x more events, giving far richer rate, b-value and clustering
-signal — the microseismicity that tracks a nucleating sequence before it reaches M3.5.
+signal, the microseismicity that tracks a nucleating sequence before it reaches M3.5.
 
 Reliable/safe/easy data (external fetch script, sources/fetch_data.py dense): a published
 enhanced Marmara catalog. Candidates: deep-learning re-picked catalogs on Zenodo

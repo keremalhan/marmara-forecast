@@ -1,10 +1,10 @@
-"""Phase 1.1 — modern_etas: gridded 30-day forecast from the INDEPENDENT
+"""modern_etas: gridded 30-day forecast from the INDEPENDENT
 third-party lmizrahi/etas 3.0.0 inversion, via first-generation INTENSITY
-INTEGRATION (the blueprint's sanctioned alternative to simulation).
+INTEGRATION (the design.s sanctioned alternative to simulation).
 
 Why intensity integration, not our cascade or their simulator:
   * The Mizrahi best fit is a TAPERED Omori with p = 1+omega = 0.81 (< 1) and
-    tau ~ 1229 d — structurally incompatible with our pure-Omori cascade
+    tau ~ 1229 d, structurally incompatible with our pure-Omori cascade
     (feeding its params into cascade.py would misrepresent it).
   * The package's ETASSimulation continues the single inversion catalogue forward
     from the fit end; it is not built for 51 leakage-clean per-window backtests
@@ -14,7 +14,7 @@ evaluated: the FIRST-GENERATION expected M>=mc count per (cell, 30-day window),
 computed analytically from the inverted params + the package's exact kernels
 (offspring of the causal history < t0 only, no secondary triggering), then
 GR-scaled to M>=thr. This makes modern_etas directly comparable to firstgen_etas
-(our first-gen ETAS) and cascade — an independent-implementation reference, not a
+(our first-gen ETAS) and cascade, an independent-implementation reference, not a
 strawman.
 
 Mizrahi kernels (etas.inversion.triggering_kernel / expected_aftershocks):
@@ -29,7 +29,7 @@ Mizrahi kernels (etas.inversion.triggering_kernel / expected_aftershocks):
 
 Ranking metrics (PR-AUC/ROC-AUC) are invariant to the global GR factor
 10^(-b*(thr-mc)); only IG/Brier see Mizrahi's absolute calibration (b, mu).
-Background: uniform at the fitted mu (per day per km^2) — a small spatially-flat
+Background: uniform at the fitted mu (per day per km^2), a small spatially-flat
 floor for M>=3 (documented; Mizrahi's spatial background KDE is not reused).
 
 Runs in the pinned MAIN env (no etas import). Reads results/etas_mizrahi_fit.json.
@@ -148,7 +148,7 @@ def compute():
                                cell_lon, cell_lat, area_c)
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k), "ir": ir_flat, "ic": ic_flat,
-            "lam30": lam_mc,                        # Phase 3: M>=3.0 (=mc) first-gen rate
+            "lam30": lam_mc,                        # M>=3.0 (=mc) first-gen rate
             "lam35": lam_mc * s35, "lam45": lam_mc * s45}))
         if (i + 1) % 10 == 0:
             print(f"  modern_etas window {i+1}/{len(ks)} (k={k}) ({time.time()-t_all:.0f}s)", flush=True)

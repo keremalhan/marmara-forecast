@@ -1,0 +1,90 @@
+{
+  "operational_b_sweep": [
+    "1.10",
+    "1.15",
+    "1.20"
+  ],
+  "honest_b": 1.15,
+  "hybrid_vs_physics": {
+    "y30": {
+      "hybrid_vs_cascade": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "B_beats_A"
+      },
+      "hybrid_vs_sv_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "B_beats_A"
+      },
+      "hybrid_vs_modern_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "B_beats_A"
+      },
+      "hybrid_vs_firstgen_etas": {
+        "1.10": "B_beats_A",
+        "1.15": "inseparable",
+        "1.20": "B_beats_A"
+      }
+    },
+    "y35": {
+      "hybrid_vs_cascade": {
+        "1.10": "B_beats_A",
+        "1.15": "inseparable",
+        "1.20": "inseparable"
+      },
+      "hybrid_vs_sv_etas": {
+        "1.10": "inseparable",
+        "1.15": "B_beats_A",
+        "1.20": "inseparable"
+      },
+      "hybrid_vs_modern_etas": {
+        "1.10": "B_beats_A",
+        "1.15": "B_beats_A",
+        "1.20": "inseparable"
+      },
+      "hybrid_vs_firstgen_etas": {
+        "1.10": "B_beats_A",
+        "1.15": "B_beats_A",
+        "1.20": "inseparable"
+      }
+    }
+  },
+  "physics_vs_physics": {
+    "y30": {
+      "cascade_vs_sv_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "inseparable"
+      },
+      "cascade_vs_firstgen_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "inseparable"
+      },
+      "modern_etas_vs_firstgen_etas": {
+        "1.10": "B_beats_A",
+        "1.15": "B_beats_A",
+        "1.20": "B_beats_A"
+      }
+    },
+    "y35": {
+      "cascade_vs_sv_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "inseparable"
+      },
+      "cascade_vs_firstgen_etas": {
+        "1.10": "inseparable",
+        "1.15": "inseparable",
+        "1.20": "inseparable"
+      },
+      "modern_etas_vs_firstgen_etas": {
+        "1.10": "B_beats_A",
+        "1.15": "B_beats_A",
+        "1.20": "B_beats_A"
+      }
+    }
+  }
+}

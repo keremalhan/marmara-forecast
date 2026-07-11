@@ -1,9 +1,9 @@
 {
   "base_mc": 3.0,
-  "b_op": 1.2,
+  "b_op": 1.15,
   "K_backtest": 500,
-  "n_rows": 318159,
-  "n_windows": 261,
+  "n_rows": 319378,
+  "n_windows": 262,
   "features_19": [
     "cnt30",
     "cnt90",
@@ -33,8 +33,8 @@
     "Psim5.5",
     "Psim6.0"
   ],
-  "count35_total": 4104,
+  "count35_total": 4111,
   "count45_total": 165,
-  "lam35_sim_mean": 0.011940306576271613,
-  "runtime_s": 127.7
+  "lam35_sim_mean": 0.013007470771311739,
+  "runtime_s": 127.4
 }

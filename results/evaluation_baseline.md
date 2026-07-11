@@ -1,10 +1,10 @@
-# V2 Evaluation — model vs 4 baselines
+# Evaluation: model vs 4 baselines
 
-**HEADLINE (y35, M>=3.5, test): the model CLEARS the required bar — it beats plain-Poisson (+1.070), fault-proximity (+0.880) and smoothed-seismicity (+0.658 nats/event in information gain).**
+**HEADLINE (y35, M>=3.5, test): the model CLEARS the required bar; it beats plain-Poisson (+1.070), fault-proximity (+0.880) and smoothed-seismicity (+0.658 nats/event in information gain).**
 
 But the physics-based **ETAS baseline is the single strongest predictor** on y35 test (model IG vs ETAS = -0.463; ETAS PR-AUC 0.125 >= model 0.101). The ML model beats the naive baselines but does not beat a properly-fit ETAS.
 
-On the rarer **y45 (M>=4.5) test (only 22 positives), the ETAS and smoothed-seismicity baselines beat the model** (IG vs smoothed -0.953, vs ETAS -0.641) — the ML model adds no skill over physical baselines at this magnitude.
+On the rarer **y45 (M>=4.5) test (only 22 positives), the ETAS and smoothed-seismicity baselines beat the model** (IG vs smoothed -0.953, vs ETAS -0.641). The ML model adds no skill over physical baselines at this magnitude.
 
 ## y35  (M>=3.5, smoothed sigma=5 km)
 
@@ -17,7 +17,7 @@ On the rarer **y45 (M>=4.5) test (only 22 positives), the ETAS and smoothed-seis
 | smoothed | 0.0206 | 0.8571 | 0.00443 | 0.712 |
 | etas | 0.0683 | 0.8885 | 0.00351 | 0.774 |
 
-**IG (model − baseline), nats/event — positive ⇒ model better:**
+**IG (model − baseline), nats/event, positive ⇒ model better:**
 - vs poisson: 2.5043
 - vs fault_prox: 1.7406
 - vs smoothed: 2.1598
@@ -37,7 +37,7 @@ Model alert budgets (precision / recall):
 | smoothed | 0.0363 | 0.8715 | 0.00571 | 0.738 |
 | etas | 0.1248 | 0.8928 | 0.00496 | 0.781 |
 
-**IG (model − baseline), nats/event — positive ⇒ model better:**
+**IG (model − baseline), nats/event, positive ⇒ model better:**
 - vs poisson: 1.0701
 - vs fault_prox: 0.8803
 - vs smoothed: 0.6578
@@ -59,7 +59,7 @@ Model alert budgets (precision / recall):
 | smoothed | 0.0036 | 0.8309 | 0.00043 | 0.662 |
 | etas | 0.0071 | 0.9052 | 0.00043 | 0.810 |
 
-**IG (model − baseline), nats/event — positive ⇒ model better:**
+**IG (model − baseline), nats/event, positive ⇒ model better:**
 - vs poisson: 8.1879
 - vs fault_prox: 1.1550
 - vs smoothed: 0.5115
@@ -79,7 +79,7 @@ Model alert budgets (precision / recall):
 | smoothed | 0.0118 | 0.8965 | 0.00069 | 0.793 |
 | etas | 0.0668 | 0.8914 | 0.00069 | 0.782 |
 
-**IG (model − baseline), nats/event — positive ⇒ model better:**
+**IG (model − baseline), nats/event, positive ⇒ model better:**
 - vs poisson: 7.6447
 - vs fault_prox: 0.2236
 - vs smoothed: -0.9530

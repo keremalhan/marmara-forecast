@@ -1,7 +1,7 @@
 # Leakage prevention
 
-Data leakage — the flow of information from the evaluation target back into the features
-or the model-selection procedure — is the single most common way that machine-learning
+Data leakage, the flow of information from the evaluation target back into the features
+or the model-selection procedure, is the single most common way that machine-learning
 studies of seismicity report skill that does not survive honest forward validation.
 Because rare large events are the quantity of interest, even a small leak is enough to
 manufacture apparent M6 skill that is really base-rate rescaling. This benchmark is
@@ -20,8 +20,10 @@ checklist for anyone evaluating an ML forecasting model.
 
 2. **Threshold tuned on the test set.** Selecting the decision threshold (or any
    hyper-parameter) on the test data leaks the answer into the report. → The threshold
-   and all hyper-parameters are chosen on a **validation slice**; the test set is touched
-   exactly once, for reporting.
+   and all hyper-parameters are chosen on a **validation slice**. The final configuration's
+   test evaluation is deterministic; test-set scores were regenerated more than once across
+   the study, but only as identical-configuration reproductions (no test-set tuning), as
+   disclosed in the manuscript's limitations.
 
 3. **Ablation that is not forward-chained.** Measuring a feature's importance over the
    whole record lets future information influence the estimate. → All ablation and
@@ -69,7 +71,7 @@ are enforced during catalogue construction (`src/marmara/catalog.py`; provenance
 ## The consequence of enforcing causality
 
 The honest cost of preventing leakage is that the headline numbers are **smaller, and in
-places negative** — the machine-learning model does not beat a properly-fit ETAS on the
+places negative**, the machine-learning model does not beat a properly-fit ETAS on the
 rarer targets, and several extension data sources add no measurable gain. Those results
 are reported as-is throughout `docs/METHODS.md` and the results artifacts. A
 benchmark you cannot lose is not a benchmark; the value here is that every number

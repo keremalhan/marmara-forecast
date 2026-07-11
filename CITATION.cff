@@ -11,8 +11,8 @@ authors:
     given-names: "Kenessary"
     email: "khabatkenessary@gmail.com"
     orcid: "https://orcid.org/0009-0009-6830-7192"
-version: "1.0.0"
-date-released: "2026-07-06"
+version: "1.1.0"
+date-released: "2026-07-11"
 license: MIT
 keywords:
   - earthquake forecasting

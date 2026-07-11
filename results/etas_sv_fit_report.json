@@ -48,7 +48,7 @@
   "operational_branching_mmax7.6": 0.9499546046719588,
   "converged": true,
   "vs_firstgen": {
-    "note": "sv-ETAS isolates a CONVERGED weighted-KDE background (<=10 EM iters, 5 km-floor bandwidth) vs the published 2-iteration, 1.5 km-floor background. The first-gen fit is ALREADY spatially variable; the delta here is background convergence + bandwidth, not constant->variable mu (blueprint premise corrected).",
+    "note": "sv-ETAS isolates a CONVERGED weighted-KDE background (<=10 EM iters, 5 km-floor bandwidth) vs the published 2-iteration, 1.5 km-floor background. The first-gen fit is ALREADY spatially variable; the delta here is background convergence + bandwidth, not constant->variable mu (design premise corrected).",
     "firstgen_mu_total": 0.7027303069616911,
     "sv_mu_total": 0.6834267070333221,
     "firstgen_alpha": 1.3862037966163911,

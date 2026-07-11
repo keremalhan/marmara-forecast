@@ -1,8 +1,8 @@
-"""Source 2 — repeating earthquakes as creepmeters on the Main Marmara Fault.
+"""Source 2: repeating earthquakes as creepmeters on the Main Marmara Fault.
 
 Repeating earthquakes rupture the same small patch; their recurrence interval is
 inversely proportional to the local aseismic CREEP rate. A published repeater catalog
-is therefore a cheap, direct creep-state observable — a real physical feature no
+is therefore a cheap, direct creep-state observable, a real physical feature no
 seismicity-rate statistic captures.
 
 Reliable/safe/easy data (external fetch script, sources/fetch_data.py repeaters): a published

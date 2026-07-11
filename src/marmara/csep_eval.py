@@ -1,15 +1,14 @@
-"""Phase 4 — CSEP consistency tests (catalog-based) for the ETAS/cascade forecasts.
+"""CSEP consistency tests (catalog-based) for the ETAS/cascade forecasts.
 
 Answers the field's stated minimum criterion ("beat/match ETAS within a CSEP-style
 framework") using the standard catalog-based consistency tests of Savran et al.
-(2020) / pyCSEP: N-test (number), M-test (magnitude), S-test (spatial) and a
+(2020): N-test (number), M-test (magnitude), S-test (spatial) and a
 pseudo-likelihood (PL) test.
 
-pyCSEP itself was installed (requirements-csep.txt, isolated .venv-csep) but does
-NOT import on this exFAT volume — its bundled matplotlib data file (matplotlibrc)
-is corrupted by the copy-mode install (UnicodeDecodeError, byte 0xb0). The tests
-below therefore implement the SAME published definitions directly in the pinned
-core env; the numbers are the community-standard statistics, not a bespoke metric.
+This module implements those published definitions in the core environment; the
+genuine pyCSEP toolkit is run separately by scripts/csep_run.py and its N/M results
+agree with these, so these provide an in-repo cross-check. The numbers are the
+community-standard statistics, not a bespoke metric.
 
 Forecasts. Each model supplies a per-cell expected M>=3.0 count over the test
 period, Lambda(cell) = sum over the 26 test windows of its lam30 field
@@ -17,7 +16,7 @@ period, Lambda(cell) = sum over the 26 test windows of its lam30 field
 N=1000 stochastic catalogues per model by Poisson-sampling each cell's count from
 Lambda(cell) and drawing magnitudes from the model's Gutenberg-Richter law
 (Mc=3.0, Mmax=7.6). NOTE: Poisson cell-sampling assumes within-period
-cell-independence — it tests the RATE forecast; the cascade's clustering is carried
+cell-independence, so it tests the RATE forecast; the cascade's clustering is carried
 in Lambda but not in the count over-dispersion (documented approximation vs native
 clustered catalogues).
 
@@ -125,7 +124,7 @@ def run_model(lam, b, obs_counts, obs_mags, rng):
     pl_obs = float((obs_counts * lograte).sum())            # rate pseudo-LL
     m_obs = float(logm[_bin_mag(obs_mags, medges)].sum())   # magnitude pseudo-LL
 
-    # simulate N catalogs (Poisson per cell) — vectorized over cells
+    # simulate N catalogs (Poisson per cell), vectorized over cells
     Nsim = np.empty(N_SIM); Ssim = np.empty(N_SIM); PLsim = np.empty(N_SIM); Msim = np.empty(N_SIM)
     for j in range(N_SIM):
         c = rng.poisson(lam)                                 # per-cell counts
@@ -167,7 +166,7 @@ def main():
                         "n_windows": int(len(test_wins)), "N_sim": N_SIM, "seed": SEED,
                         "N_observed": int(obs_counts.sum()),
                         "tests": "catalog-based N / M / S / pseudo-likelihood "
-                        "(Savran et al. 2020 / pyCSEP definitions; in-house — see module docstring)"},
+                        "(Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)"},
               "models": {}}
     for model, lam in lams.items():
         rng = np.random.default_rng(SEED)
@@ -187,7 +186,7 @@ def main():
 
 
 def _write_md(res, path):
-    L = ["# CSEP consistency tests (catalog-based) — M>=3.0 (y30), test period",
+    L = ["# CSEP consistency tests (catalog-based): M>=3.0 (y30), test period",
          "", f"Test period {res['meta']['test_period'][0]}..{res['meta']['test_period'][1]}; "
          f"{res['meta']['N_observed']} observed M>=3.0 events; N_sim={res['meta']['N_sim']}.",
          "", res['meta']['tests'], "",
@@ -202,17 +201,34 @@ def _write_md(res, path):
         nt = f"{'PASS' if r['N_test']['pass'] else '**FAIL**'} (d1 {r['N_test']['delta1']}, d2 {r['N_test']['delta2']})"
         L.append(f"| {m} | {r['N_obs']} | {r['N_forecast_mean']} | {nt} | "
                  f"{cell(r['S_test'])} | {cell(r['M_test'])} | {cell(r['PL_test'])} |")
+    # interpretation is derived from the computed verdicts, so the prose can never
+    # drift from the table above (an earlier hard-coded summary went stale after a
+    # recalibration and is the reason this is now dynamic).
+    cas = res["models"]["cascade"]; sv = res["models"]["sv_etas"]
+    mod = res["models"].get("modern_etas")
+    nobs = res["meta"]["N_observed"]
+    pair_dir = "over-predict" if cas["N_forecast_mean"] > nobs else "under-predict"
+    pair_n = "fail" if not cas["N_test"]["pass"] else "pass"
+    m_ok = cas["M_test"]["pass"]
+    pair_m1 = "remain magnitude-consistent" if m_ok else "also fail the M-test"
+    pair_m2 = "magnitude-consistent" if m_ok else "magnitude-inconsistent"
     L += ["",
           "## Interpretation",
           "",
-          "**N-test and M-test are the robust results.** The cascade and sv_etas "
-          "forecasts are consistent with the observed NUMBER of M≥3.0 events "
-          "(~1450 forecast vs 1383 observed) and with the observed MAGNITUDE "
-          "distribution (GR b=1.2). `modern_etas` fails both: its first-generation "
-          "intensity (no secondary triggering) UNDER-predicts the count (783 vs 1383), "
-          "and its steeper inverted b=1.76 over-weights small events (M-test).",
-          "",
-          "**S-test and PL-test reject every model (γ≈1) — this is a limitation of the "
+          f"**The number test is the decisive count check.** The cascade and sv_etas "
+          f"forecasts {pair_dir} the observed count ({cas['N_forecast_mean']:.0f} and "
+          f"{sv['N_forecast_mean']:.0f} vs {nobs} observed M>=3.0 events) and {pair_n} the "
+          f"N-test, but {pair_m1} (M-test, GR b={MODELS_B['cascade']})."]
+    if mod is not None:
+        md = "over-predicts" if mod["N_forecast_mean"] > nobs else "under-predicts"
+        mn = "fails" if not mod["N_test"]["pass"] else "passes"
+        L.append(
+            f"The modern_etas forecast {md} the count ({mod['N_forecast_mean']:.0f} vs "
+            f"{nobs}) and {mn} the N-test: its first-generation intensity has no secondary "
+            f"triggering, and its steeper inverted b={MODELS_B['modern_etas']} over-weights "
+            f"small events in the M-test.")
+    L += ["",
+          "**S-test and PL-test reject every model (γ≈1): this is a limitation of the "
           "Poisson-sampled catalogues, not evidence against the spatial rate forecast.** "
           "The catalogues are drawn cell-independently from the gridded rate, so they do "
           "not reproduce the within-cell CLUSTERING of real seismicity; the observed "
@@ -220,10 +236,11 @@ def _write_md(res, path):
           "A native-clustered-catalogue S-test (using the cascade's own stochastic "
           "catalogues, which cluster) is the proper refinement and is left as future work.",
           "",
-          "**Bottom line (the field's minimum criterion):** within a CSEP-style "
-          "framework the cascade and sv_etas ETAS forecasts are number- and "
-          "magnitude-consistent with observed M≥3.0 seismicity over the test period; "
-          "the independent modern (Mizrahi first-gen) forecast is not (it under-counts)."]
+          f"**Bottom line.** Over the test period the cascade and sv_etas ETAS forecasts "
+          f"are {pair_m2} but {pair_dir} the M>=3.0 count and {pair_n} the N-test; the "
+          f"independent modern first-generation (Mizrahi) forecast under-counts and fails "
+          f"both. Forecaster ranking is separable from absolute count calibration, which "
+          f"the number test rejects here."]
     path.write_text("\n".join(L))
 
 

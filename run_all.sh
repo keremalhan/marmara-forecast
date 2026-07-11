@@ -1,7 +1,7 @@
 #!/bin/bash
 # Full reproduction of the marmara-forecast pipeline and its four gates.
 # Usage:  ./run_all.sh            (uses ./.venv/bin/python if present, else python3)
-# Gates (stress, ETAS, cascade, grid-leakage) are HARD STOPS — the script aborts if any fails.
+# Gates (stress, ETAS, cascade, grid-leakage) are HARD STOPS: the script aborts if any fails.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
@@ -30,4 +30,4 @@ echo "### 12. Final validation battery (~4 min)"; "$PY" -m marmara.validation_fi
 echo "### 13. M6.2 countdown study (~3 min)"; "$PY" -m marmara.m62_countdown
 echo "### 14. Sequence-mode demo (~1 min)"; "$PY" -m marmara.sequence_mode
 echo "### 15. Prospective forecast issue/score (~1 min)"; "$PY" -m marmara.prospective run || true
-echo; echo "ALL DONE — all four gates passed. Artifacts in results/."
+echo; echo "ALL DONE. All four gates passed. Artifacts in results/."

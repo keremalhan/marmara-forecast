@@ -137,7 +137,7 @@ def sequence_report(label, trig_time, lon, lat, K=3000):
     bline = (f"- b_ref (background) = {b_ref:.2f}; b_seq (sequence) = {b_seq:.2f}; "
              f"ratio = {ratio:.2f}") if ratio is not None else \
             f"- b undetermined (b_ref={b_ref}, b_seq={b_seq})"
-    md = [f"# Sequence report — {label}", "",
+    md = [f"# Sequence report: {label}", "",
           f"**Trigger:** {trig_time.date()} at ({lon}, {lat}); host segment **{seg}**", "",
           f"## FTLS traffic light: **{color}**",
           bline,

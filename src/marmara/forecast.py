@@ -126,7 +126,7 @@ def main():
     json.dump(reg, open(FC / "forecast_summary.json", "w"), indent=2)
 
     rr = reg["regional_30d"]
-    md = [f"# Live forecast — {T0.date()}, next 30 days", "",
+    md = [f"# Live forecast: {T0.date()}, next 30 days", "",
           "Hybrid (cascade x ML) probability maps + cascade-simulation M5/M6 with a "
           "b-ensemble range, and BPT segment renewal priors.", "",
           "## Regional 30-day probabilities (cascade Monte-Carlo, b-ensemble range)",
@@ -134,7 +134,7 @@ def main():
           f"| M>=5   | {rr['P_M5_range'][0]*100:.1f}% - {rr['P_M5_range'][1]*100:.1f}% |",
           f"| M>=5.5 | {rr['P_M5.5_range'][0]*100:.2f}% - {rr['P_M5.5_range'][1]*100:.2f}% |",
           f"| M>=6   | {rr['P_M6_range'][0]*100:.2f}% - {rr['P_M6_range'][1]*100:.2f}% (central {rr['P_M6_central_b_op']*100:.2f}%) |",
-          "", "(range = b_pos 1.54 low end to b_aki 1.02 high end; central b_op 1.2)", "",
+          "", "(range = b_pos 1.54 low end to b_aki 1.02 high end; central b_op 1.15)", "",
           "## Segment renewal priors (BPT, P(M~7 in 30 d))", "| segment | elapsed yr | P(30d) |", "|---|---|---|"]
     for n, s in SEGMENTS.items():
         md.append(f"| {n} | {NOW_YEAR - s['last']:.0f} | {seg_renew[n]*100:.4f}% |")

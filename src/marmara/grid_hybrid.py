@@ -1,4 +1,4 @@
-"""Hybrid feature grid — the 19 features recomputed at base Mc=3.0 with the ETAS
+"""Hybrid feature grid: the 19 features recomputed at base Mc=3.0 with the ETAS
 params, PLUS cascade forecaster outputs (lam_sim, P_sim levels) and 30-day cell
 COUNTS (Poisson-regression targets). Same 261 windows / 1219 cells as the baseline grid.
 
@@ -76,7 +76,7 @@ def build(b_op: float):
                  "ir": ir_flat, "ic": ic_flat}
         for name in G.FEATURES:
             block[name] = feats[name].ravel()
-        block["lam30_sim"] = casc["lam30"].ravel()          # Phase 3: y30 (M>=3.0)
+        block["lam30_sim"] = casc["lam30"].ravel()          # y30 (M>=3.0)
         block["lam35_sim"] = casc["lam35"].ravel()
         block["lam45_sim"] = casc["lam45"].ravel()
         for lvl in (3.5, 5.0, 5.5, 6.0):

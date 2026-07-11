@@ -1,7 +1,7 @@
-"""Source 1 — time-variable GNSS signal (vs the static strain grid).
+"""Source 1: time-variable GNSS signal (vs the static strain grid).
 
 The static strain field is interseismic and time-invariant by design. The
-genuinely new signal is how the crust deforms THROUGH TIME — a slow-slip or locking
+genuinely new signal is how the crust deforms THROUGH TIME. A slow-slip or locking
 transient shows up as a departure of a nearby GNSS station from its long-term secular
 trend. That transient is the physically meaningful precursor a static field cannot carry.
 

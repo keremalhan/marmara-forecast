@@ -1,0 +1,167 @@
+{
+  "bulk_frame_offset_mmyr": {
+    "de": 25.18,
+    "dn": 13.16
+  },
+  "frame_offset_note": "gnss_traj is global IGS20 (~+24 mm/yr E absolute plate motion); MIDAS is a Eurasia-referenced residual \u2014 a bulk offset of ~24 mm/yr is EXPECTED and removed before flagging outliers.",
+  "note": "EPOS is velocities-only (no epochs): D3b coverage-ingestion NOT possible; this is the D3a secular cross-check. gnss_traj slopes are in the global IGS20 frame, MIDAS in IGS14 \u2014 a bulk frame offset is expected; the check is for OUTLIER stations, not absolute agreement.",
+  "n_gnss_traj": 22,
+  "n_matched_to_epos": 4,
+  "flagged_gt_3mm_yr": [],
+  "n_flagged": 0,
+  "rows": [
+    {
+      "station": "BALK",
+      "gnss_traj_de": 3.62,
+      "gnss_traj_dn": 6.52,
+      "midas": "no match"
+    },
+    {
+      "station": "BAND",
+      "gnss_traj_de": 5.23,
+      "gnss_traj_dn": 7.42,
+      "midas": "no match"
+    },
+    {
+      "station": "BILE",
+      "gnss_traj_de": 2.23,
+      "gnss_traj_dn": 9.2,
+      "midas": "no match"
+    },
+    {
+      "station": "BNDR",
+      "gnss_traj_de": 5.08,
+      "gnss_traj_dn": 9.01,
+      "midas": "no match"
+    },
+    {
+      "station": "BURS",
+      "gnss_traj_de": 2.91,
+      "gnss_traj_dn": 9.26,
+      "midas": "no match"
+    },
+    {
+      "station": "CANA",
+      "gnss_traj_de": 6.25,
+      "gnss_traj_dn": 4.03,
+      "midas": "no match"
+    },
+    {
+      "station": "ESKS",
+      "gnss_traj_de": 2.12,
+      "gnss_traj_dn": 9.21,
+      "midas": "no match"
+    },
+    {
+      "station": "HARC",
+      "gnss_traj_de": 2.73,
+      "gnss_traj_dn": 8.55,
+      "midas": "no match"
+    },
+    {
+      "station": "HEND",
+      "gnss_traj_de": 18.76,
+      "gnss_traj_dn": 10.95,
+      "midas": "no match"
+    },
+    {
+      "station": "IPSA",
+      "gnss_traj_de": 22.62,
+      "gnss_traj_dn": 11.49,
+      "midas": "no match"
+    },
+    {
+      "station": "ISTA",
+      "gnss_traj_de": 24.86,
+      "midas_de": -0.46,
+      "gnss_traj_dn": 10.63,
+      "midas_dn": -1.65,
+      "|d_de|": 25.32,
+      "|d_dn|": 12.28,
+      "resid_de_after_frame": 0.14,
+      "resid_dn_after_frame": 0.88
+    },
+    {
+      "station": "ISTN",
+      "gnss_traj_de": 23.4,
+      "midas_de": -1.26,
+      "gnss_traj_dn": 12.32,
+      "midas_dn": -1.38,
+      "|d_de|": 24.66,
+      "|d_dn|": 13.7,
+      "resid_de_after_frame": 0.52,
+      "resid_dn_after_frame": 0.54
+    },
+    {
+      "station": "IZMT",
+      "gnss_traj_de": 19.78,
+      "gnss_traj_dn": 11.24,
+      "midas": "no match"
+    },
+    {
+      "station": "KARB",
+      "gnss_traj_de": 24.62,
+      "gnss_traj_dn": 11.42,
+      "midas": "no match"
+    },
+    {
+      "station": "ORE1",
+      "gnss_traj_de": 24.2,
+      "gnss_traj_dn": 11.78,
+      "midas": "no match"
+    },
+    {
+      "station": "SARY",
+      "gnss_traj_de": 24.19,
+      "gnss_traj_dn": 11.74,
+      "midas": "no match"
+    },
+    {
+      "station": "SLEE",
+      "gnss_traj_de": 25.19,
+      "gnss_traj_dn": 9.57,
+      "midas": "no match"
+    },
+    {
+      "station": "SVRT",
+      "gnss_traj_de": 23.94,
+      "gnss_traj_dn": 8.86,
+      "midas": "no match"
+    },
+    {
+      "station": "TEKR",
+      "gnss_traj_de": 23.2,
+      "gnss_traj_dn": 9.74,
+      "midas": "no match"
+    },
+    {
+      "station": "TUBI",
+      "gnss_traj_de": 20.6,
+      "midas_de": -4.78,
+      "gnss_traj_dn": 11.42,
+      "midas_dn": -1.48,
+      "|d_de|": 25.38,
+      "|d_dn|": 12.9,
+      "resid_de_after_frame": 0.2,
+      "resid_dn_after_frame": 0.26
+    },
+    {
+      "station": "YENC",
+      "gnss_traj_de": 5.45,
+      "gnss_traj_dn": 3.82,
+      "midas": "no match"
+    },
+    {
+      "station": "YLDZ",
+      "gnss_traj_de": 23.78,
+      "midas_de": -1.26,
+      "gnss_traj_dn": 12.04,
+      "midas_dn": -1.38,
+      "|d_de|": 25.04,
+      "|d_dn|": 13.42,
+      "resid_de_after_frame": 0.14,
+      "resid_dn_after_frame": 0.26
+    }
+  ],
+  "verdict": "4 stations cross-checked; after removing the bulk frame offset, 0 outlier(s) >3 mm/yr ([]). gnss_traj secular fits agree with MIDAS in the relative (de-framed) sense \u2014 the trajectory model is sound, so C3's null is NOT a secular-fitting artifact."
+}

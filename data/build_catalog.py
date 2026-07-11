@@ -126,7 +126,7 @@ stats["monthly_raw_counts"] = m_raw_counts
 stats["monthly_rows_used"] = len(m)
 stats["monthly_coverage_used"] = [str(m.datetime_utc.min()), str(m.datetime_utc.max())]
 
-# cross-source dedupe (zeqdb preferred) — matters only at the seam
+# cross-source dedupe (zeqdb preferred); matters only at the seam
 zt = z[z.datetime_utc > z_end - timedelta(days=2)]
 cross = 0; drop_m = []
 for i, mr in m.iterrows():

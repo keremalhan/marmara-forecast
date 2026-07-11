@@ -93,7 +93,7 @@ def alert_budget(p: np.ndarray, y: np.ndarray, window: np.ndarray,
 
 
 def score_predictor(p: np.ndarray, y: np.ndarray, window: np.ndarray) -> dict:
-    """Full metric bundle for one predictor (no IG — IG is relative, computed
+    """Full metric bundle for one predictor (no IG; IG is relative, computed
     separately vs each baseline)."""
     y = np.asarray(y, float)
     p = np.clip(np.asarray(p, float), 0.0, 1.0)

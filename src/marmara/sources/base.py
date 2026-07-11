@@ -1,4 +1,4 @@
-"""Multi-source feature-extension harness — base contract.
+"""Multi-source feature-extension harness: base contract.
 
 A FeatureSource turns some external dataset into extra columns on the existing
 leakage-gated (cell, 30-day-window) grid, so its information gain can be tested
@@ -8,7 +8,7 @@ HONESTLY with the same harness that already scores the model. The contract:
     each row's window start t0. recompute_truncated() lets the harness verify this
     by rebuilding a row from a copy of the external data truncated to < t0.
   * SELF-DESCRIBING: data_spec says exactly what file/format/provenance is needed,
-    so a future session drops the data in and re-runs — no guessing.
+    so a future session drops the data in and re-runs, no guessing.
   * HONEST-ABSENT: available() returns (False, reason) when the data is not on disk;
     the harness then SKIPS the source. It never fabricates columns.
 

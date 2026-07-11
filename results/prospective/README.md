@@ -1,16 +1,16 @@
-# Prospective monthly forecasting — track record
+# Prospective monthly forecasting: track record
 
 Every month of **true out-of-sample** operation is the cheapest credibility there is.
-Each run logs a 30-day forecast — hashed, timestamped — *before* the outcome is known,
+Each run logs a 30-day forecast (hashed, timestamped) *before* the outcome is known,
 then scores past forecasts whose window has closed. Pseudo-prospective backtests can be
 gamed by hindsight; this cannot.
 
 ## What runs
 `python -m marmara.prospective run` (wrapped by `scripts/prospective_monthly.sh`):
 1. **Refresh** the catalogue (best-effort; see the feed note below).
-2. **Issue + log** a 30-day forecast at the catalogue end — regional P(M≥5/5.5/6) with the
+2. **Issue + log** a 30-day forecast at the catalogue end: regional P(M≥5/5.5/6) with the
    b-ensemble, per-segment renewal, combined M≥6.8, top cells, and the hybrid y35/y45
-   per-cell grids — appended to `forecast_log.jsonl` with a stable **sha256 content hash**
+   per-cell grids, appended to `forecast_log.jsonl` with a stable **sha256 content hash**
    (a verifiable fingerprint of the prediction). Full grids are saved under `<t0>/grids.npz`.
    Idempotent: an unchanged catalogue end is never re-logged.
 3. **Score** any forecast whose 30-day window has closed against realized events →
@@ -46,7 +46,7 @@ carry no event code) with a synthetic event code for idempotence.
   data lands. Larger thresholds (M≥4.5/5/6) are essentially immune to this.
 
 **Recommended maintenance (~every 2–3 months):** replace the preliminary tail with
-**reviewed** data — zeqdb if it regains a scrapable endpoint, else AFAD or ISC — using the
+**reviewed** data (zeqdb if it regains a scrapable endpoint, else AFAD or ISC) using the
 documented 15-column schema, then re-run `python -m marmara.catalog`. This keeps the scored
 track record on reviewed magnitudes. Accumulation itself only needs the catalogue to
 ADVANCE, which the monthly XML already provides; the reviewed backfill is a quality upgrade,

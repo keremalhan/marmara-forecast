@@ -1,20 +1,19 @@
-"""Phase 1.1 — invert the INDEPENDENT third-party lmizrahi/etas 3.0.0 model on the
-Marmara catalogue and write results/etas_mizrahi_fit.json.
+"""Invert the independent third-party lmizrahi/etas model on the Marmara catalogue and
+write results/etas_mizrahi_fit.json.
 
-RUNS UNDER .venv-etas (NOT the pinned core env) — it imports `etas`, which needs
-numpy>=2.5 / pandas>=3.0 (see requirements-etas.txt). It deliberately does NOT
-import `marmara` (incompatible pinned deps). Same catalogue slice as etas_fit.py:
-events < 2021-12-31, Mc=3.0, on the model-box polygon.
+Runs in an isolated environment with the third-party `etas` package (see
+requirements-etas.txt); it imports `etas` (which needs numpy>=2.5 / pandas>=3.0) and
+deliberately does NOT import `marmara` (incompatible pinned deps). Same catalogue slice
+as etas_fit.py: events < 2021-12-31, Mc=3.0, on the model-box polygon.
 
-  COPYFILE_DISABLE=1 UV_LINK_MODE=copy VIRTUAL_ENV="$PWD/.venv-etas" \
-      uv pip install -r requirements-etas.txt
-  MARMARA_ROOT="$PWD" .venv-etas/bin/python -m marmara.etas_mizrahi_invert
-      # or: .venv-etas/bin/python src/marmara/etas_mizrahi_invert.py
+  python -m venv .venv-extra
+  .venv-extra/bin/pip install -r requirements-etas.txt
+  MARMARA_ROOT="$PWD" .venv-extra/bin/python src/marmara/etas_mizrahi_invert.py
 
-The fitted params feed marmara.etas_modern (main env), which integrates the
-Mizrahi kernels into the gridded `modern_etas` forecast. The fit is a MLE + EM
-declustering; re-runs may differ at the 3rd decimal (optimizer tolerance). The
-committed JSON is from git commit 097f08b of the package.
+The fitted params feed marmara.etas_modern (core env), which integrates the Mizrahi
+kernels into the gridded `modern_etas` forecast. The fit is a MLE + EM declustering;
+re-runs may differ at the 3rd decimal (optimizer tolerance). The committed JSON is from
+the pinned package commit in requirements-etas.txt.
 """
 import json
 import os
@@ -22,10 +21,10 @@ import os
 import numpy as np
 import pandas as pd
 
-REPO = os.environ.get("MARMARA_ROOT", "/Volumes/Kerem SSD/Desktop/marmara-forecast")
+REPO = os.environ.get("MARMARA_ROOT") or os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 FIT_END = pd.Timestamp("2021-12-31")
 MC = 3.0
-# model box (etas_fit.MODEL_BOX) as (lat, lon) corners — the OEF entrypoint feeds
+# model box (etas_fit.MODEL_BOX) as (lat, lon) corners; the OEF entrypoint feeds
 # shape_coords in (lat, lon) order (it swaps WKT lon/lat).
 SHAPE_LATLON = [[39.6, 25.6], [39.6, 30.9], [41.9, 30.9], [41.9, 25.6], [39.6, 25.6]]
 

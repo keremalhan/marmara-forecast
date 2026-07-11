@@ -1,9 +1,9 @@
-"""Truncated self-test for registered FeatureSources (Phase 2+ leakage gate).
+"""Truncated self-test for registered FeatureSources (leakage gate).
 
 Ground rule: every FeatureSource MUST implement recompute_truncated() honestly and
 pass the truncated-catalogue self-test. For an AVAILABLE source and a window with
 start t0, recompute_truncated(cells_w, cutoff=t0) must equal add_columns(cells_w)
-BIT-FOR-BIT — truncating the external data to < t0 is a no-op precisely because
+BIT-FOR-BIT: truncating the external data to < t0 is a no-op precisely because
 every feature for window t0 uses only data with time < t0. A source whose data is
 not on disk is skipped (honest-absent), not failed.
 
@@ -37,4 +37,4 @@ def test_source_recompute_truncated_bitforbit(name):
         b = src.recompute_truncated(cw, t0).to_numpy()
         assert np.array_equal(np.nan_to_num(a), np.nan_to_num(b)), (
             f"{name} window {w} (t0={t0.date()}): recompute_truncated != add_columns "
-            f"(max|dev|={np.nanmax(np.abs(a - b)):.3e}) — causality/leakage violation")
+            f"(max|dev|={np.nanmax(np.abs(a - b)):.3e}), causality/leakage violation")

@@ -1,7 +1,7 @@
 {
   "t0": "2026-07-05",
   "K_live": 10000,
-  "b_op": 1.2,
+  "b_op": 1.15,
   "b_ensemble": [
     1.0185696913880833,
     1.542417674410537
@@ -19,7 +19,7 @@
       0.0012992202859282154,
       0.04563244823219337
     ],
-    "P_M6_central_b_op": 0.011237349131207108
+    "P_M6_central_b_op": 0.016070765043008306
   },
   "segment_renewal_30d_M7": {
     "Izmit": 4.1219236520254966e-09,
@@ -29,9 +29,9 @@
   },
   "combined_note": "combined_M6plus per cell = 1-(1-P_cascade_M6)(1-P_renewal); independence approximation, large-event layer only.",
   "top_cell": {
-    "place": "MARMARA DENIZI",
-    "lon": 28.35,
-    "lat": 40.85,
-    "P35": 0.42857142857142855
+    "place": "ARMUTLU A\u00c7IKLARI-YALOVA (MARMARA DENIZI)",
+    "lon": 28.75,
+    "lat": 40.55,
+    "P35": 0.2
   }
 }

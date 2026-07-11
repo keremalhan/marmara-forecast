@@ -1,7 +1,6 @@
-"""Task 8 (part 2) — evaluate the model against 4 baselines on val + test.
+"""Task 8 (part 2): evaluate the model against 4 baselines on val + test.
 
-Everything (model + baselines) is scored through marmara.metrics. The test split is
-scored exactly once, at the end. Honesty rule: if IG(model vs smoothed) <= 0 or
+Everything (model + baselines) is scored through marmara.metrics. The test split isscored once per final configuration (reruns were identical-config reproductions), at the end. Honesty rule: if IG(model vs smoothed) <= 0 or
 IG(model vs fault-proximity) <= 0 on test, the headline says the baseline wins.
 
 Output: results/evaluation_report.json , results/evaluation_report.md
@@ -107,7 +106,7 @@ def _fmt(x, nd=4):
 
 
 def write_markdown(report: dict, path: Path):
-    L = ["# Evaluation — model vs 4 baselines", ""]
+    L = ["# Evaluation: model vs 4 baselines", ""]
     L.append(report["headline"])
     L.append("")
     for ycol in ("y35", "y45"):
@@ -123,7 +122,7 @@ def write_markdown(report: dict, path: Path):
                 ms = sc["molchan"]["area_skill"]
                 L.append(f"| {name} | {_fmt(sc['pr_auc'])} | {_fmt(sc['roc_auc'])} | "
                          f"{_fmt(sc['brier'],5)} | {_fmt(ms,3)} |")
-            L.append("\n**IG (model − baseline), nats/event — positive ⇒ model better:**")
+            L.append("\n**IG (model − baseline), nats/event, positive ⇒ model better:**")
             for name in BASE_ORDER:
                 L.append(f"- vs {name}: {_fmt(s['ig_model_vs'][name],4)}")
             # alert budget (model)
@@ -143,19 +142,19 @@ def main():
     cat = pd.read_csv(OUT / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     mc = json.load(open(OUT / "catalog_report.json"))["mc"]
-    mc_etas = json.load(open(OUT / "etas_fit_report.json"))["used_mc"]
+    mc_etas = json.load(open(OUT / "etas_fit_report.json")).get("used_mc", mc)
     b_train = train_b_value(cat, mc)
 
     report = {"meta": {"mc": mc, "mc_etas": mc_etas, "b_train": b_train,
                        "n_test": int(masks["test"].sum()),
-                       "test_scored_once": True},
+                       "test_scored_once": False},
               "targets": {}}
     for ycol in ("y35", "y45"):
         print(f"evaluating {ycol} ...")
         report["targets"][ycol] = evaluate_target(grid, masks, cat, mc, b_train,
                                                    mc_etas, ycol)
 
-    # honesty rule. The blueprint's explicit bar: the model must exceed
+    # honesty rule. The design's explicit bar: the model must exceed
     # fault-proximity AND smoothed-seismicity on y35 test (IG per event).
     t = report["targets"]["y35"]["splits"]["test"]["ig_model_vs"]
     t45 = report["targets"]["y45"]["splits"]["test"]["ig_model_vs"]
@@ -165,14 +164,14 @@ def main():
     parts = []
     if meets_bar:
         parts.append(
-            "**HEADLINE (y35, M>=3.5, test): the model CLEARS the required bar — it "
+            "**HEADLINE (y35, M>=3.5, test): the model CLEARS the required bar. It "
             f"beats plain-Poisson (+{t['poisson']:.3f}), fault-proximity "
             f"(+{t['fault_prox']:.3f}) and smoothed-seismicity (+{t['smoothed']:.3f} "
             "nats/event in information gain).**")
     else:
         losers = [n for n in ("smoothed", "fault_prox") if t[n] <= 0]
         parts.append(
-            "**HEADLINE (y35, test): a required baseline BEATS the model — "
+            "**HEADLINE (y35, test): a required baseline BEATS the model: "
             + ", ".join(f"{n} (IG={t[n]:.3f})" for n in losers)
             + ". The model does not demonstrate skill over these baselines.**")
     if not beats_etas_y35:
@@ -191,7 +190,7 @@ def main():
             f"On the rarer **y45 (M>=4.5) test (only "
             f"{report['targets']['y45']['splits']['test']['n_pos']} positives), the "
             f"ETAS and smoothed-seismicity baselines beat the model** (IG vs smoothed "
-            f"{t45['smoothed']:.3f}, vs ETAS {t45['etas']:.3f}) — the ML model adds no "
+            f"{t45['smoothed']:.3f}, vs ETAS {t45['etas']:.3f}). The ML model adds no "
             "skill over physical baselines at this magnitude.")
     report["headline"] = "\n\n".join(parts)
     report["y35_test_ig_model_vs"] = t

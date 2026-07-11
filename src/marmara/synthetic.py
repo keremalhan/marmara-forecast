@@ -145,9 +145,12 @@ def extract_snapshots(cat, ref_b, base_mc=3.0):
 def build_dataset(sims, params, b, ref_b):
     rng = np.random.default_rng(999)
     rows = []
-    for s in sims:
+    for i, s in enumerate(sims):
         hyb = inject_characteristic(s, params, rng, b)
-        rows.extend(extract_snapshots(hyb, ref_b))
+        snaps = extract_snapshots(hyb, ref_b)
+        for r in snaps:
+            r["sim"] = i                     # source simulation, for a sim-disjoint split
+        rows.extend(snaps)
     return pd.DataFrame(rows)
 
 
@@ -155,7 +158,7 @@ def score_real_sequence(cat, t_snap, lon0, lat0, ref_b, base_mc=3.0, window_days
     """Feature vector for a real sequence snapshot at time t_snap around (lon0,lat0).
 
     window_days=None keeps all history within 50 km (legacy). Set it (e.g. 30) to make
-    the features reflect only the RECENT sequence — needed for the countdown, so the
+    the features reflect only the RECENT sequence, needed for the countdown, so the
     classifier responds to the developing sequence rather than the static local
     background; t_since_start / snap_T are then the actual elapsed time since the first
     in-window event (matching the training convention where the two are equal)."""
@@ -197,11 +200,18 @@ def main():
     print(f"  {len(df)} snapshots, {int(df['label'].sum())} positives "
           f"({df['label'].mean()*100:.1f}%)  [{time.time()-t0:.0f}s]")
 
-    # disjoint sims split via a hash of the row index blocks
-    n = len(df); idx = np.arange(n)
-    rng = np.random.default_rng(0); rng.shuffle(idx)
-    tr, va = idx[: int(0.7 * n)], idx[int(0.7 * n):int(0.85 * n)]
-    te = idx[int(0.85 * n):]
+    # simulation-disjoint split: all snapshots of a given simulated catalog (the 1/3/7-day
+    # snapshots of the same trigger are near-duplicates) stay together, so no trigger leaks
+    # across the train/test boundary.
+    sim_ids = df["sim"].to_numpy()
+    uniq = np.unique(sim_ids)
+    np.random.default_rng(0).shuffle(uniq)
+    ns = len(uniq)
+    tr_s = set(uniq[: int(0.7 * ns)]); va_s = set(uniq[int(0.7 * ns):int(0.85 * ns)])
+    te_s = set(uniq[int(0.85 * ns):])
+    tr = np.where(np.isin(sim_ids, list(tr_s)))[0]
+    va = np.where(np.isin(sim_ids, list(va_s)))[0]
+    te = np.where(np.isin(sim_ids, list(te_s)))[0]
     X = df[FEATS].to_numpy(); yv = df["label"].to_numpy()
     clf = HistGradientBoostingClassifier(class_weight="balanced", random_state=42,
                                          max_depth=4, learning_rate=0.05, max_iter=300)

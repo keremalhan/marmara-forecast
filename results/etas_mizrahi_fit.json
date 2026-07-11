@@ -6,27 +6,27 @@
   "coppersmith_multiplier": 100,
   "n_iterations": 6,
   "param_dict": {
-    "log10_mu": -5.864529564256142,
+    "log10_mu": -5.864261828686082,
     "log10_iota": null,
-    "log10_k0": -1.4299150284526265,
-    "a": 1.1858202827537612,
-    "log10_c": -2.9215427831959917,
-    "omega": -0.1926599416627248,
-    "log10_tau": 3.0895563223840656,
-    "log10_d": 0.7218201506095179,
-    "gamma": 0.0942644735915654,
-    "rho": 0.890088492723876
+    "log10_k0": -1.429617828057571,
+    "a": 1.185678271262791,
+    "log10_c": -2.92153641256142,
+    "omega": -0.19266038578731287,
+    "log10_tau": 3.0894815873805634,
+    "log10_d": 0.721922769570273,
+    "gamma": 0.094152923676551,
+    "rho": 0.8902517832630847
   },
   "beta": 4.056872205425441,
   "b_value_implied": 1.7618772126029445,
   "derived": {
-    "mu_per_day_per_km2": 1.3660620789207869e-06,
-    "c_days": 0.0011980010999531347,
-    "p_effective_1_plus_omega": 0.8073400583372752,
-    "tau_days": 1229.0125632967474,
-    "d_spatial": 5.270115709721859,
-    "rho_spatial_q": 0.890088492723876,
-    "gamma": 0.0942644735915654
+    "mu_per_day_per_km2": 1.3669044938841824e-06,
+    "c_days": 0.0011980186734741431,
+    "p_effective_1_plus_omega": 0.8073396142126872,
+    "tau_days": 1228.801088457586,
+    "d_spatial": 5.271361126642652,
+    "rho_spatial_q": 0.8902517832630847,
+    "gamma": 0.094152923676551
   },
-  "note": "Best fit is a TAPERED Omori with p=1+omega=0.81 (<1) and tau~1229 d; structurally incompatible with our pure-Omori cascade. modern_etas is evaluated via first-generation INTENSITY INTEGRATION of these exact kernels (marmara.etas_modern), directly comparable to firstgen_etas. Produced by marmara.etas_mizrahi_invert under .venv-etas."
+  "note": "Best fit is a TAPERED Omori with p=1+omega<1 and finite tau; structurally incompatible with our pure-Omori cascade. modern_etas is therefore evaluated via first-generation INTENSITY INTEGRATION of these kernels (marmara.etas_modern), comparable to firstgen_etas."
 }

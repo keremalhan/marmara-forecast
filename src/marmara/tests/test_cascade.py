@@ -1,4 +1,4 @@
-"""Gate — cascade forecaster.
+"""Gate: cascade forecaster.
 
 (a) causality: future events (>= t0) in the history change nothing.
 (b) reliability: on 50 synthetic catalogs, cascade-predicted per-cell lambda vs

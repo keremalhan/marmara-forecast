@@ -53,8 +53,8 @@ EPS = 1e-9
 FEATS_HYBRID = FEATURES + ["ln_lam_sim"]
 
 
-# Phase 2: GNSS v2 physical feature columns (the availability-flag gnss_strain_fallback
-# is deliberately EXCLUDED — the ablation showed it adds nothing and it is an
+# GNSS trajectory physical feature columns (the availability-flag gnss_strain_fallback
+# is deliberately EXCLUDED: the ablation showed it adds nothing and it is an
 # availability-vs-time proxy). Merged onto the grid in main() when present.
 GNSS_PHYS = ["gnss_resid_rate_90", "gnss_resid_rate_365",
              "gnss_resid_max_365", "gnss_strain_rate_365"]
@@ -75,7 +75,7 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol, extra_feats=(), label="hyb
     w chosen by val per-event Poisson log-likelihood (using occurrence y, matching
     the IG convention). Returns the RAW blend rate (no isotonic in the eval path;
     isotonic is fit separately below only for the saved forecast model).
-    extra_feats appends model inputs (e.g. Phase-2 GNSS columns) — with extra_feats=()
+    extra_feats appends model inputs (e.g. Phase-2 GNSS columns); with extra_feats=()
     this is bit-identical to the published hybrid."""
     tr, va = masks["train"], masks["val"]
     feats = FEATURES + list(extra_feats)
@@ -112,7 +112,7 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol, extra_feats=(), label="hyb
 
 
 def _load_extra_etas_preds(grid, thr):
-    """Phase 1: extra modern-ETAS predictors computed as cascade rates from the
+    """extra modern-ETAS predictors computed as cascade rates from the
     sv-ETAS fit and the Mizrahi-inverted params (results/rates_{label}.parquet,
     keyed by window,ir,ic; same K/seed/b as the published cascade, so only the
     ETAS PARAMETERS differ). Absent parquet -> predictor silently skipped. Rows in
@@ -137,20 +137,20 @@ def _load_extra_etas_preds(grid, thr):
 
 
 def _gnss_grid_columns(grid):
-    """Phase 2: the gnss_v2 physical columns aligned to the grid by (window,ir,ic).
-    Uses results/gnss_v2_columns.parquet if it carries the keys; otherwise computes
-    them via the GnssV2Source and caches WITH keys. Returns None if the GNSS data is
-    not on disk (hybrid_gnss is then silently skipped — graceful degradation)."""
+    """the gnss_traj physical columns aligned to the grid by (window,ir,ic).
+    Uses results/gnss_traj_columns.parquet if it carries the keys; otherwise computes
+    them via the GnssTrajSource and caches WITH keys. Returns None if the GNSS data is
+    not on disk (hybrid_gnss is then silently skipped, graceful degradation)."""
     key = ["window", "ir", "ic"]
-    cache = OUT / "gnss_v2_columns.parquet"
+    cache = OUT / "gnss_traj_columns.parquet"
     if cache.exists():
         c = pd.read_parquet(cache)
         if all(k in c.columns for k in key) and all(col in c.columns for col in GNSS_PHYS):
             c = c.set_index(key)
             idx = pd.MultiIndex.from_frame(grid[key])
             return {col: c[col].reindex(idx).to_numpy() for col in GNSS_PHYS}
-    from marmara.sources.gnss_v2 import GnssV2Source
-    src = GnssV2Source()
+    from marmara.sources.gnss_traj import GnssTrajSource
+    src = GnssTrajSource()
     ok, _why = src.available()
     if not ok:
         return None
@@ -189,9 +189,9 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 
     preds = {"hybrid": P_hybrid, "cascade": P_casc, "poisson": lambda_to_p(lp),
              "fault_prox": lambda_to_p(lf), "smoothed": P_sm, "firstgen_etas": P_firstgen}
-    preds.update(_load_extra_etas_preds(grid, thr))  # Phase 1: sv_etas, modern_etas (if present)
-    # Phase 2: GNSS-augmented hybrid (promoted per the pre-registered decision rule —
-    # gnss_v2 val IG +0.024 > 0.02 and test IG +0.098 > 0; genuine after the
+    preds.update(_load_extra_etas_preds(grid, thr))  # sv_etas, modern_etas (if present)
+    # GNSS-augmented hybrid (promoted per the pre-registered decision rule:
+    # gnss_traj val IG +0.024 > 0.02 and test IG +0.098 > 0; genuine after the
     # availability + spatial-support confound checks). Present only when the GNSS
     # columns are merged onto the grid (main()); kept ALONGSIDE `hybrid` so the
     # bootstrap can put a CI on the +GNSS delta.
@@ -213,7 +213,7 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
     # Purely additive: does NOT affect evaluation.{json,md}. Each predictor stored
     # here is the SAME probability array scored above, so bootstrap.py operates on
     # the exact predictions behind the headline numbers (single source of truth;
-    # a modern_etas column would be picked up automatically once added in Phase 1).
+    # a modern_etas column would be picked up automatically once added).
     sel = np.where(va | te)[0]
     pred_df = pd.DataFrame({
         "window": grid["window"].to_numpy()[sel],
@@ -230,11 +230,11 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 def main():
     assert (OUT / "cascade_ok.json").exists(), "run cascade gate first"
     grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
-    gnss = _gnss_grid_columns(grid)                 # Phase 2: merge GNSS columns if present
+    gnss = _gnss_grid_columns(grid)                 # merge GNSS columns if present
     if gnss is not None:
         for c in GNSS_PHYS:
             grid[c] = gnss[c]
-        print(f"merged GNSS v2 columns ({', '.join(GNSS_PHYS)}) -> hybrid_gnss enabled")
+        print(f"merged GNSS trajectory columns ({', '.join(GNSS_PHYS)}) -> hybrid_gnss enabled")
     masks = split_masks(grid)
     cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     mc = 3.0
@@ -242,9 +242,9 @@ def main():
     from marmara.evaluate import train_b_value
     b_train = train_b_value(cat, mc)
 
-    # Phase 3: y30 (M>=3.0) is the PRIMARY powered comparison (~10x the y35 positives);
-    # y35 powered; y45 UNPOWERED (kept descriptive — no ranking claims).
-    POWER = {"y30": "primary (powered)", "y35": "powered", "y45": "unpowered — no ranking claims"}
+    # y30 (M>=3.0) is the PRIMARY powered comparison (~10x the y35 positives);
+    # y35 powered; y45 UNPOWERED (kept descriptive, no ranking claims).
+    POWER = {"y30": "primary (powered)", "y35": "powered", "y45": "unpowered, no ranking claims"}
     report = {"meta": {"mc": mc, "b_train": b_train, "features": FEATS_HYBRID,
                        "power": POWER}, "targets": {}}
     for ycol, ccol, lcol, thr in (("y30", "count30", "lam30_sim", 3.0),
@@ -265,31 +265,31 @@ def main():
                 f"IG(hybrid vs cascade)={ig['cascade']:+.3f}, IG(hybrid vs first-gen-ETAS)="
                 f"{ig['firstgen_etas']:+.3f}, IG vs smoothed {ig['smoothed']:+.3f}")
     report["headline"] = " | ".join(line(y) for y in ("y30", "y35", "y45"))
-    # honest verdict — all ranking claims must be read against bootstrap_ci/claims.json.
+    # honest verdict: all ranking claims must be read against bootstrap_ci/claims.json.
     y30t = report["targets"]["y30"]["splits"]["test"]
     y35t = report["targets"]["y35"]["splits"]["test"]["scores"]
     report["verdict"] = (
-        f"PRIMARY = y30 (M>=3.0, {y30t['n_pos']} test positives — ~{y30t['n_pos']//max(report['targets']['y35']['splits']['test']['n_pos'],1)}x y35): "
+        f"PRIMARY = y30 (M>=3.0, {y30t['n_pos']} test positives, ~{y30t['n_pos']//max(report['targets']['y35']['splits']['test']['n_pos'],1)}x y35): "
         "the powered comparison where ML-vs-ETAS separation is statistically resolvable "
         "at all; read the ranking off claims.json (block-bootstrap verdicts). "
         f"y35 (M>=3.5, {report['targets']['y35']['splits']['test']['n_pos']} positives): "
-        f"cascade PR-AUC {y35t['cascade']['pr_auc']:.3f} vs first-gen {y35t['firstgen_etas']['pr_auc']:.3f} — "
-        "the difference is WITHIN the bootstrap CI (inseparable; see claims.json); the "
+        f"cascade PR-AUC {y35t['cascade']['pr_auc']:.3f} vs first-gen {y35t['firstgen_etas']['pr_auc']:.3f}. "
+        "The difference is WITHIN the bootstrap CI (inseparable; see claims.json); the "
         "old 'cascade ranks best' headline is not supported. "
         f"y45 (M>=4.5, only {report['targets']['y45']['splits']['test']['n_pos']} test positives): "
-        "UNPOWERED — bootstrap CIs are enormous and essentially every pair is inseparable; "
+        "UNPOWERED: bootstrap CIs are enormous and essentially every pair is inseparable; "
         "NO ranking claims. The w chosen for y45 was selected on ~13 val positives (noise-fit) "
         "and is NOT a headline result.")
     json.dump(report, open(OUT / "evaluation.json", "w"), indent=2)
 
-    L = ["# Evaluation — hybrid (cascade x ML) vs baselines", "",
+    L = ["# Evaluation: hybrid (cascade x ML) vs baselines", "",
          "All ranking claims must be read against results/claims.json (block-bootstrap "
          "verdicts); point differences below are NOT claims on their own.", "",
          report["headline"], ""]
     for y in ("y30", "y35", "y45"):
         r = report["targets"][y]
         L.append(f"## {y} (thr {r['threshold']}, w={r['chosen_w']:.1f}, sigma "
-                 f"{r['smoothed_sigma_km']:g}km) — {POWER[y]}")
+                 f"{r['smoothed_sigma_km']:g}km): {POWER[y]}")
         for sp in ("val", "test"):
             s = r["splits"][sp]
             L.append(f"\n### {sp} (n={s['n']}, pos={s['n_pos']})")

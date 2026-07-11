@@ -1,4 +1,4 @@
-"""Quarter (90-day) + year (365-day) forecast — cascade-only + renewal, with a
+"""Quarter (90-day) + year (365-day) forecast: cascade-only + renewal, with a
 pseudo-prospective backtest-and-scale step so the near-critical long-horizon totals
 are defensible.
 
@@ -10,7 +10,7 @@ Rules honored (per the operator spec):
  3. Validation gate: pseudo-prospective backtest at 2022/2023/2024/2025-01-01, 90d & 365d,
     predicted vs realized M>=4.5 regional counts; reliability slope must be 0.7-1.3, else
     fit ONE global scaling factor on those points, document it, re-report.
- 4. b-ensemble {1.02, b_op 1.2, 1.54} — ranges + central for M>=5.5/6, never a point.
+ 4. b-ensemble {1.02, b_op 1.15, 1.54}: ranges + central for M>=5.5/6, never a point.
  5. Output: quarterly_yearly_summary.md + P maps; state that yearly ~= long-term hazard +
     current-sequence bump (expected, not lost skill), and renewal dominates M~7 while the
     cascade dominates M<=5.5.
@@ -151,7 +151,7 @@ def main():
     def sl(H):
         pp = [p for p in bt["points"] if p["horizon_d"] == H]
         return sum(p["realized"] for p in pp) / max(sum(p["predicted"] for p in pp), 1e-9)
-    L = [f"# Quarterly & yearly forecast — {T0.date()} (Marmara model box)", "",
+    L = [f"# Quarterly & yearly forecast: {T0.date()} (Marmara model box)", "",
          f"**Backtest-and-scale (validation gate).** Pseudo-prospective at 2022/23/24/25-01-01, "
          f"90d & 365d: predicted vs realized M>=4.5 regional counts. Aggregate reliability slope "
          f"**{bt['reliability_slope']:.2f}** (90d {sl(90.0):.2f}, 365d {sl(365.0):.2f}). " +
@@ -163,7 +163,7 @@ def main():
                  f"{p['realized']} | {p['realized']/max(p['predicted'],0.01):.2f} |")
     L += ["",
           "**Honest read of the backtest:** 90d is well-calibrated. On the 365d QUIET epochs "
-          "(2022, 2023) the near-critical cascade mildly OVER-predicts (ratio ~0.7-0.8 — the "
+          "(2022, 2023) the near-critical cascade mildly OVER-predicts (ratio ~0.7-0.8, the "
           "expected long-horizon inflation), but the 2025 epoch's realized count is huge (the "
           "unforecastable Apr-2025 M6.2 sequence, ratio 2.4) and pulls the aggregate to 1.23, "
           "inside the gate. So no global scaling is triggered, but the yearly M6 central should "
@@ -171,7 +171,7 @@ def main():
           "Poisson base rate bracket the realistic floor.", "",
           "Cascade-only + renewal (the 30-day ML hybrid is not valid at these horizons). "
           "Per-sim event cap 50,000 (0% capped); Wilson 95% intervals shown; b-ensemble "
-          "{1.02, 1.2, 1.54}.", ""]
+          "{1.02, 1.15, 1.54}.", ""]
     for name, H, K in HZ:
         h = report["horizons"][name]
         L += [f"## {name.replace('_',' ')}  (K={h['K']}, capped {h['capped_fraction']*100:.2f}%)", "",
@@ -186,13 +186,13 @@ def main():
               f"(Central Marmara {h['renewal_M7_by_segment']['CentralMarmara']*100:.3f}%).",
               f"- **Combined M>=6.8 layer** 1-(1-P_cascade_M6)(1-P_renewal): **{h['combined_M6.8plus']*100:.2f}%**.", ""]
     L += ["## How to read this", "",
-          "- The **yearly number ≈ long-term hazard + a current-sequence bump** — expected "
+          "- The **yearly number ≈ long-term hazard + a current-sequence bump**, expected "
           "behavior as the Omori/triggered signal decays over the year, not lost skill.",
           "- **Renewal dominates at M~7** (characteristic ruptures, BPT clock); the **cascade "
-          "dominates at M<=5.5** (aftershock/background productivity). M6 is the crossover — "
+          "dominates at M<=5.5** (aftershock/background productivity). M6 is the crossover: "
           "read cascade and renewal together (the combined line).",
           "- Ranges come from the b-value ensemble (the dominant uncertainty); the central "
-          "uses the calibrated b_op=1.2 (the backtest confirmed no global scaling was needed). "
+          "uses the calibrated b_op (the backtest confirmed no global scaling was needed). "
           "Treat M6 as order-of-magnitude."]
     (FC / "quarterly_yearly_summary.md").write_text("\n".join(L))
 

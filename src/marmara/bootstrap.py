@@ -1,19 +1,19 @@
-"""Phase 0 — stationary block bootstrap over test windows + machine-derived claims.
+"""stationary block bootstrap over test windows + machine-derived claims.
 
 WHY BLOCK, NOT IID.  Windows tile the timeline at 30-day steps (grid.STEP_D=30,
 HORIZON_D=30): the *target* periods are non-overlapping, but consecutive 30-day
 windows are NOT independent. They share trailing feature history (cnt365,
 days-since, b-value, ETAS integral) and, more importantly, aftershock / triggered
 sequences produce correlated positives across several consecutive windows. Naive
-iid resampling of rows — or even of window-ids — understates sampling variability
+iid resampling of rows (or even of window-ids) understates sampling variability
 and yields fake-tight CIs a reviewer would (correctly) destroy.
 
 WHAT WE DO.  Two-level resampling:
-  * the resampling UNIT is a whole window-id (all 1219 cells kept together) — this
+  * the resampling UNIT is a whole window-id (all 1219 cells kept together), which
     respects the strong within-window spatial correlation;
   * window-ids are drawn by the Politis-Romano STATIONARY bootstrap over the
     ordered window sequence (geometric block length, expected 3 consecutive window
-    starts ~= 90 days ~ aftershock-cluster decorrelation) — this respects the
+    starts ~= 90 days ~ aftershock-cluster decorrelation); this respects the
     temporal correlation between neighbouring windows.
 
 For every model pair we bootstrap the PAIRED differences of PR-AUC, ROC-AUC,
@@ -21,7 +21,7 @@ IG (nats/event) and Brier (B=2000, seed=42; the SAME resample is scored for ever
 model, so differences are genuinely paired). We report the point estimate (observed
 delta on the full split), the 95% percentile CI and the win-rate.
 
-claims.json then applies the pre-registered claim rule (Phase 0.2):
+claims.json then applies the pre-registered claim rule:
   A "beats" B  iff  the 95% CI of the paired delta excludes 0 in A's favour for
   BOTH information gain AND PR-AUC.  Otherwise the pair is "inseparable".
 All later reporting must quote claims.json, never a raw point difference.
@@ -50,11 +50,11 @@ EPS = 1e-9
 
 # Canonical model ordering for the comparison. fault_prox (a deliberately naive
 # baseline, not a claim comparator) is omitted from the pair matrix per the
-# blueprint. sv_etas / modern_etas are picked up automatically once Phase 1 adds
-# their columns to predictions_*.parquet.
+# design. sv_etas / modern_etas are picked up automatically once their columns
+# are added to predictions_*.parquet.
 CANON = ["hybrid", "hybrid_gnss", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
          "smoothed", "poisson"]
-TARGETS = ["y30", "y35", "y45"]   # y30 = primary powered comparison (Phase 3)
+TARGETS = ["y30", "y35", "y45"]   # y30 = primary powered comparison
 SPLITS = ["test", "val"]      # test is primary; val reported for completeness
 
 
@@ -282,7 +282,7 @@ def run(n_boot: int = B_DEFAULT) -> dict:
 
 # --------------------------------------------------------------------------- #
 def write_markdown(report: dict, path):
-    L = ["# Phase 0 — block-bootstrap CIs (paired model differences)", ""]
+    L = ["# Block-bootstrap CIs (paired model differences)", ""]
     m = report["meta"]
     L.append(f"B={m['B']}, seed={m['seed']}, stationary block bootstrap over "
              f"window-ids (mean block {m['mean_block']} windows). {m['note']}")
@@ -294,7 +294,8 @@ def write_markdown(report: dict, path):
              "excludes 0 (A-favouring) for BOTH IG and PR-AUC.")
     for target, splits in report["results"].items():
         for split, r in splits.items():
-            tag = " *(PRIMARY — acceptance target)*" if (target == "y35" and split == "test") else ""
+            tag = (" *(PRIMARY: powered comparison)*" if (target == "y30" and split == "test")
+                   else " *(powered secondary)*" if (target == "y35" and split == "test") else "")
             L.append(f"\n## {target} / {split}{tag}  "
                      f"(n={r['n']}, positives={r['n_pos']}, windows={r['n_windows']})")
             L.append("\nFull-split metrics:")
@@ -345,7 +346,7 @@ def main():
     write_markdown(report, OUT / "bootstrap_ci.md")
     write_claims(report, OUT / "claims.json")
 
-    # headline: y30 (primary powered comparison, Phase 3) verdicts.
+    # headline: y30 (primary powered comparison) verdicts.
     prim = [c for c in report["claims"] if c["primary"]]
     print("\n=== y30 / test verdicts (PRIMARY powered comparison) ===")
     for c in prim:
@@ -356,7 +357,7 @@ def main():
                 if c["pair"] == "cascade_vs_firstgen_etas" and c["target"] == "y35"
                 and c["split"] == "test"), None)
     if key:
-        print(f"\nPRE-REGISTERED CHECK — cascade vs first-gen ETAS (y35 test): "
+        print(f"\nPRE-REGISTERED CHECK (cascade vs first-gen ETAS, y35 test): "
               f"{key['verdict']} (expected: inseparable)")
     print("\nwrote bootstrap_ci.{json,md}, claims.json")
 

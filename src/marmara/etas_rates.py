@@ -1,25 +1,25 @@
 """Per-(cell, window) 30-day cascade rates for an ARBITRARY ETAS parameter set,
 on the model-box grid, for the val+test windows train.py evaluates.
 
-Turns the sv-ETAS fit (Phase 1.2) and the Mizrahi-inverted params (Phase 1.1
-fallback: modern_params_cascade) into rankable predictors that plug into train.py
-exactly like the published `cascade` (lam35_sim) — same cascade machinery, same
-K=500, same operational b (1.2), same per-window seed (1000+k) as grid_hybrid.py.
+Turns the sv-ETAS fit and the Mizrahi-inverted params (fallback: modern_params_cascade) into rankable predictors that plug into train.py
+exactly like the published `cascade` (lam35_sim): same cascade machinery, same
+K=500, same operational b, same per-window seed (1000+k) as grid_hybrid.py.
 Only the ETAS PARAMETERS differ, so a sv_etas-vs-cascade (or modern-vs-cascade)
 comparison attributes any difference to the parameters alone.
 
 SELF-CHECK: run with the first-gen params (etas_params.pkl, label `firstgen_check`)
 and it reproduces grid_hybrid's lam35_sim/lam45_sim on the val+test windows
-(bit-close), proving the rate computation is faithful to the published cascade.
+(bit-close); this confirms the rate computation is faithful to the published cascade.
 
 Memory: one window at a time (peak ~tens of MB); safe on an 8 GB machine. No
-concurrency — run these sequentially.
+concurrency; run these sequentially.
 
 Run:  "<venv>/bin/python" -m marmara.etas_rates <params_pkl> <label>
 Output: results/rates_<label>.parquet  [window, ir, ic, lam35, lam45]
 """
 from __future__ import annotations
 
+import json
 import pickle
 import sys
 import time
@@ -33,10 +33,10 @@ from marmara.cascade import cascade_forecast
 
 OUT = RESULTS
 K_BACKTEST = 500          # matches grid_hybrid.py
-B_OP = 1.2                # operational_b_for_cascade (matches grid_hybrid.py)
+B_OP = float(json.load(open(OUT / "etas_fit_report.json"))["operational_b_for_cascade"])  # matches grid_hybrid.py
 SEED_BASE = 1000          # per-window seed = SEED_BASE + k (matches grid_hybrid.py)
 
-# splits (train.py) — recomputed here without loading the big grid.
+# splits (train.py): recomputed here without loading the big grid.
 TRAIN_END = pd.Timestamp("2022-01-01")
 VAL_END = pd.Timestamp("2024-01-01")
 TEST_TARGET_END = pd.Timestamp("2026-03-31")
@@ -78,7 +78,7 @@ def compute(params_pkl: str, label: str, b: float = B_OP, K: int = K_BACKTEST):
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k),
             "ir": ir_flat, "ic": ic_flat,
-            "lam30": casc["lam30"].ravel(),        # Phase 3: M>=3.0 (y30 target)
+            "lam30": casc["lam30"].ravel(),        # M>=3.0 (y30 target)
             "lam35": casc["lam35"].ravel(), "lam45": casc["lam45"].ravel(),
         }))
         del casc

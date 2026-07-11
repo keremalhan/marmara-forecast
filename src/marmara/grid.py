@@ -112,7 +112,7 @@ def build_event_bundle(cat: pd.DataFrame, mc: float) -> dict:
     return {
         "all": sub(np.ones(len(t), bool)),
         "mc": sub(mag >= mc),
-        "e30": sub(mag >= 3.0),          # Phase 3: y30 target (M>=3.0)
+        "e30": sub(mag >= 3.0),          # y30 target (M>=3.0)
         "e35": sub(mag >= 3.5),
         "e45": sub(mag >= 4.5),
         "e25": sub(mag >= 2.5),
@@ -279,7 +279,7 @@ def targets_at_window(EV: dict, t0d: float) -> tuple[np.ndarray, np.ndarray]:
 
 
 def y30_at_window(EV: dict, t0d: float) -> np.ndarray:
-    """Phase 3: M>=3.0 occurrence in [t0, t0+30) (same causal logic as
+    """M>=3.0 occurrence in [t0, t0+30) (same causal logic as
     targets_at_window; separate fn so targets_at_window's signature is unchanged)."""
     sub = EV["e30"]
     lo = np.searchsorted(sub["t"], t0d, "left")
@@ -415,7 +415,7 @@ def seismicity_features(EV: dict, t0d: float, t0_dt: pd.Timestamp,
 
 def build_static_context_spec(spec: GridSpec) -> dict:
     """build_static_context generalized to an arbitrary GridSpec (strain is
-    extrapolated for cells outside the model-box strain grid — documented)."""
+    extrapolated for cells outside the model-box strain grid, documented)."""
     LO, LA = np.meshgrid(spec.lon_c, spec.lat_c)
     cell_lon = LO.ravel(); cell_lat = LA.ravel()
     strike, dip, rake, dist = nearest_segment_receivers(cell_lon, cell_lat, SEG_PATH)

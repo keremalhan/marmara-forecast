@@ -1,11 +1,11 @@
 """Truncated self-test for registered FeatureSources (leakage gate).
 
-Ground rule: every FeatureSource MUST implement recompute_truncated() honestly and
+Ground rule: every FeatureSource MUST implement recompute_truncated() correctly and
 pass the truncated-catalogue self-test. For an AVAILABLE source and a window with
 start t0, recompute_truncated(cells_w, cutoff=t0) must equal add_columns(cells_w)
 BIT-FOR-BIT: truncating the external data to < t0 is a no-op precisely because
 every feature for window t0 uses only data with time < t0. A source whose data is
-not on disk is skipped (honest-absent), not failed.
+not on disk is skipped (declared-absent), not failed.
 
 pytest-native (no-arg / parametrized, assert-based). Runs in `pytest src/marmara/tests`.
 """
@@ -18,7 +18,7 @@ from marmara.source_ig_test import SOURCES
 
 
 def _grid():
-    return pd.read_parquet(RESULTS / "grid_hybrid.parquet",
+    return pd.read_parquet(RESULTS / "grid" / "grid_hybrid.parquet",
                            columns=["window", "t0", "cell_lon", "cell_lat", "ir", "ic"])
 
 

@@ -1,0 +1,542 @@
+{
+  "convention": {
+    "delta_M(s)": "ln s + (1-s) h_M  (per-positive LL change from rescaling M by s)",
+    "a(h)": "h - 1 - ln h = delta_M(1/h_M), the artifact at M's own optimum",
+    "predicted_shift": "a(h_A) - a(h_B)",
+    "measured_shift": "IG_proxy(A vs B) - IG_count(A vs B)   [count -> proxy, same sign]",
+    "note": "results/round3/t4_identity_scoring.json records measured as (count - occ) but predicted as a(h_A) - a(h_B): opposite signs, equal magnitudes. Fixed here."
+  },
+  "targets": {
+    "y30": {
+      "n_pos": 592,
+      "n_rows": 31694,
+      "models": {
+        "hybrid": {
+          "h_sum_lambda_over_npos": 1.756621,
+          "sum_lambda": 1039.9198,
+          "a_h_artifact": 0.193229,
+          "s_pipeline_val_fit": 0.581767,
+          "s_own_test_optimum_1_over_h": 0.569275,
+          "delta_at_pipeline_s": 0.192992,
+          "delta_at_own_optimum": 0.193229
+        },
+        "cascade": {
+          "h_sum_lambda_over_npos": 2.206176,
+          "sum_lambda": 1306.056,
+          "a_h_artifact": 0.414915,
+          "s_pipeline_val_fit": 0.422688,
+          "s_own_test_optimum_1_over_h": 0.453273,
+          "delta_at_pipeline_s": 0.412531,
+          "delta_at_own_optimum": 0.414915
+        },
+        "sv_etas": {
+          "h_sum_lambda_over_npos": 2.190402,
+          "sum_lambda": 1296.718,
+          "a_h_artifact": 0.406317,
+          "s_pipeline_val_fit": 0.427695,
+          "s_own_test_optimum_1_over_h": 0.456537,
+          "delta_at_pipeline_s": 0.404233,
+          "delta_at_own_optimum": 0.406317
+        },
+        "firstgen_etas": {
+          "h_sum_lambda_over_npos": 1.260664,
+          "sum_lambda": 746.3132,
+          "a_h_artifact": 0.029025,
+          "s_pipeline_val_fit": 0.717103,
+          "s_own_test_optimum_1_over_h": 0.793233,
+          "delta_at_pipeline_s": 0.024102,
+          "delta_at_own_optimum": 0.029025
+        },
+        "modern_etas": {
+          "h_sum_lambda_over_npos": 1.318588,
+          "sum_lambda": 780.6043,
+          "a_h_artifact": 0.042027,
+          "s_pipeline_val_fit": 1.003918,
+          "s_own_test_optimum_1_over_h": 0.758387,
+          "delta_at_pipeline_s": -0.001256,
+          "delta_at_own_optimum": 0.042027
+        },
+        "poisson": {
+          "h_sum_lambda_over_npos": 1.683983,
+          "sum_lambda": 996.9179,
+          "a_h_artifact": 0.162821,
+          "s_pipeline_val_fit": 0.480922,
+          "s_own_test_optimum_1_over_h": 0.59383,
+          "delta_at_pipeline_s": 0.142068,
+          "delta_at_own_optimum": 0.162821
+        },
+        "smoothed": {
+          "h_sum_lambda_over_npos": 2.512358,
+          "sum_lambda": 1487.3157,
+          "a_h_artifact": 0.591136,
+          "s_pipeline_val_fit": 0.312252,
+          "s_own_test_optimum_1_over_h": 0.398033,
+          "delta_at_pipeline_s": 0.563924,
+          "delta_at_own_optimum": 0.591136
+        }
+      },
+      "pairs": {
+        "hybrid_vs_cascade": {
+          "label": "hybrid vs cascade",
+          "h_A": 1.756621,
+          "h_B": 2.206176,
+          "a_hA": 0.193229,
+          "a_hB": 0.414915,
+          "predicted_shift_aA_minus_aB": -0.221686,
+          "ig_count": 0.28864,
+          "ig_proxy_at_pipeline_s": 0.069101,
+          "ig_proxy_at_own_optimum": 0.066953,
+          "measured_at_pipeline_s": -0.219539,
+          "measured_at_own_optimum": -0.221686,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.002147,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "cascade_vs_firstgen_etas": {
+          "label": "cascade vs first-gen",
+          "h_A": 2.206176,
+          "h_B": 1.260664,
+          "a_hA": 0.414915,
+          "a_hB": 0.029025,
+          "predicted_shift_aA_minus_aB": 0.38589,
+          "ig_count": -0.41218,
+          "ig_proxy_at_pipeline_s": -0.023752,
+          "ig_proxy_at_own_optimum": -0.02629,
+          "measured_at_pipeline_s": 0.388428,
+          "measured_at_own_optimum": 0.38589,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.002539,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "cascade_vs_modern_etas": {
+          "label": "cascade vs inversion",
+          "h_A": 2.206176,
+          "h_B": 1.318588,
+          "a_hA": 0.414915,
+          "a_hB": 0.042027,
+          "predicted_shift_aA_minus_aB": 0.372889,
+          "ig_count": -0.130281,
+          "ig_proxy_at_pipeline_s": 0.283506,
+          "ig_proxy_at_own_optimum": 0.242608,
+          "measured_at_pipeline_s": 0.413787,
+          "measured_at_own_optimum": 0.372889,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.040898,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "label": "first-gen vs inversion",
+          "h_A": 1.260664,
+          "h_B": 1.318588,
+          "a_hA": 0.029025,
+          "a_hB": 0.042027,
+          "predicted_shift_aA_minus_aB": -0.013001,
+          "ig_count": 0.281899,
+          "ig_proxy_at_pipeline_s": 0.307258,
+          "ig_proxy_at_own_optimum": 0.268898,
+          "measured_at_pipeline_s": 0.025358,
+          "measured_at_own_optimum": -0.013001,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.038359,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "cascade_vs_sv_etas": {
+          "label": "cascade vs sv-ETAS",
+          "h_A": 2.206176,
+          "h_B": 2.190402,
+          "a_hA": 0.414915,
+          "a_hB": 0.406317,
+          "predicted_shift_aA_minus_aB": 0.008598,
+          "ig_count": 0.065257,
+          "ig_proxy_at_pipeline_s": 0.073555,
+          "ig_proxy_at_own_optimum": 0.073855,
+          "measured_at_pipeline_s": 0.008298,
+          "measured_at_own_optimum": 0.008598,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.000301,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "hybrid_vs_firstgen_etas": {
+          "label": "hybrid vs first-gen",
+          "h_A": 1.756621,
+          "h_B": 1.260664,
+          "a_hA": 0.193229,
+          "a_hB": 0.029025,
+          "predicted_shift_aA_minus_aB": 0.164204,
+          "ig_count": -0.123541,
+          "ig_proxy_at_pipeline_s": 0.045349,
+          "ig_proxy_at_own_optimum": 0.040663,
+          "measured_at_pipeline_s": 0.168889,
+          "measured_at_own_optimum": 0.164204,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.004686,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        }
+      }
+    },
+    "y35": {
+      "n_pos": 167,
+      "n_rows": 31694,
+      "models": {
+        "hybrid": {
+          "h_sum_lambda_over_npos": 1.857285,
+          "sum_lambda": 310.1666,
+          "a_h_artifact": 0.238169,
+          "s_pipeline_val_fit": 0.424574,
+          "s_own_test_optimum_1_over_h": 0.53842,
+          "delta_at_pipeline_s": 0.212061,
+          "delta_at_own_optimum": 0.238169
+        },
+        "cascade": {
+          "h_sum_lambda_over_npos": 2.085138,
+          "sum_lambda": 348.218,
+          "a_h_artifact": 0.350303,
+          "s_pipeline_val_fit": 0.379143,
+          "s_own_test_optimum_1_over_h": 0.479585,
+          "delta_at_pipeline_s": 0.324731,
+          "delta_at_own_optimum": 0.350303
+        },
+        "sv_etas": {
+          "h_sum_lambda_over_npos": 2.068228,
+          "sum_lambda": 345.394,
+          "a_h_artifact": 0.341536,
+          "s_pipeline_val_fit": 0.383971,
+          "s_own_test_optimum_1_over_h": 0.483506,
+          "delta_at_pipeline_s": 0.3169,
+          "delta_at_own_optimum": 0.341536
+        },
+        "firstgen_etas": {
+          "h_sum_lambda_over_npos": 0.756826,
+          "sum_lambda": 126.3899,
+          "a_h_artifact": 0.035448,
+          "s_pipeline_val_fit": 1.010374,
+          "s_own_test_optimum_1_over_h": 1.321308,
+          "delta_at_pipeline_s": 0.002469,
+          "delta_at_own_optimum": 0.035448
+        },
+        "modern_etas": {
+          "h_sum_lambda_over_npos": 0.618348,
+          "sum_lambda": 103.2641,
+          "a_h_artifact": 0.099052,
+          "s_pipeline_val_fit": 1.821079,
+          "s_own_test_optimum_1_over_h": 1.617213,
+          "delta_at_pipeline_s": 0.091717,
+          "delta_at_own_optimum": 0.099052
+        },
+        "poisson": {
+          "h_sum_lambda_over_npos": 1.951749,
+          "sum_lambda": 325.942,
+          "a_h_artifact": 0.283023,
+          "s_pipeline_val_fit": 0.350983,
+          "s_own_test_optimum_1_over_h": 0.512361,
+          "delta_at_pipeline_s": 0.2197,
+          "delta_at_own_optimum": 0.283023
+        },
+        "smoothed": {
+          "h_sum_lambda_over_npos": 2.78502,
+          "sum_lambda": 465.0983,
+          "a_h_artifact": 0.760765,
+          "s_pipeline_val_fit": 0.234484,
+          "s_own_test_optimum_1_over_h": 0.359064,
+          "delta_at_pipeline_s": 0.681609,
+          "delta_at_own_optimum": 0.760765
+        }
+      },
+      "pairs": {
+        "hybrid_vs_cascade": {
+          "label": "hybrid vs cascade",
+          "h_A": 1.857285,
+          "h_B": 2.085138,
+          "a_hA": 0.238169,
+          "a_hB": 0.350303,
+          "predicted_shift_aA_minus_aB": -0.112134,
+          "ig_count": 0.173384,
+          "ig_proxy_at_pipeline_s": 0.060715,
+          "ig_proxy_at_own_optimum": 0.061251,
+          "measured_at_pipeline_s": -0.11267,
+          "measured_at_own_optimum": -0.112134,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.000536,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "cascade_vs_firstgen_etas": {
+          "label": "cascade vs first-gen",
+          "h_A": 2.085138,
+          "h_B": 0.756826,
+          "a_hA": 0.350303,
+          "a_hB": 0.035448,
+          "predicted_shift_aA_minus_aB": 0.314855,
+          "ig_count": -0.553383,
+          "ig_proxy_at_pipeline_s": -0.231122,
+          "ig_proxy_at_own_optimum": -0.238528,
+          "measured_at_pipeline_s": 0.322261,
+          "measured_at_own_optimum": 0.314855,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.007406,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "cascade_vs_modern_etas": {
+          "label": "cascade vs inversion",
+          "h_A": 2.085138,
+          "h_B": 0.618348,
+          "a_hA": 0.350303,
+          "a_hB": 0.099052,
+          "predicted_shift_aA_minus_aB": 0.251251,
+          "ig_count": -0.324232,
+          "ig_proxy_at_pipeline_s": -0.091218,
+          "ig_proxy_at_own_optimum": -0.072981,
+          "measured_at_pipeline_s": 0.233014,
+          "measured_at_own_optimum": 0.251251,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.018237,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "label": "first-gen vs inversion",
+          "h_A": 0.756826,
+          "h_B": 0.618348,
+          "a_hA": 0.035448,
+          "a_hB": 0.099052,
+          "predicted_shift_aA_minus_aB": -0.063604,
+          "ig_count": 0.229152,
+          "ig_proxy_at_pipeline_s": 0.139904,
+          "ig_proxy_at_own_optimum": 0.165547,
+          "measured_at_pipeline_s": -0.089248,
+          "measured_at_own_optimum": -0.063604,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.025644,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "cascade_vs_sv_etas": {
+          "label": "cascade vs sv-ETAS",
+          "h_A": 2.085138,
+          "h_B": 2.068228,
+          "a_hA": 0.350303,
+          "a_hB": 0.341536,
+          "predicted_shift_aA_minus_aB": 0.008767,
+          "ig_count": 0.001517,
+          "ig_proxy_at_pipeline_s": 0.009348,
+          "ig_proxy_at_own_optimum": 0.010285,
+          "measured_at_pipeline_s": 0.007831,
+          "measured_at_own_optimum": 0.008767,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.000937,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "hybrid_vs_firstgen_etas": {
+          "label": "hybrid vs first-gen",
+          "h_A": 1.857285,
+          "h_B": 0.756826,
+          "a_hA": 0.238169,
+          "a_hB": 0.035448,
+          "predicted_shift_aA_minus_aB": 0.202721,
+          "ig_count": -0.379999,
+          "ig_proxy_at_pipeline_s": -0.170407,
+          "ig_proxy_at_own_optimum": -0.177278,
+          "measured_at_pipeline_s": 0.209592,
+          "measured_at_own_optimum": 0.202721,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.00687,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        }
+      }
+    },
+    "y45": {
+      "n_pos": 22,
+      "n_rows": 31694,
+      "models": {
+        "hybrid": {
+          "h_sum_lambda_over_npos": 4.983437,
+          "sum_lambda": 109.6356,
+          "a_h_artifact": 2.377317,
+          "s_pipeline_val_fit": 0.994403,
+          "s_own_test_optimum_1_over_h": 0.200665,
+          "delta_at_pipeline_s": 0.022279,
+          "delta_at_own_optimum": 2.377317
+        },
+        "cascade": {
+          "h_sum_lambda_over_npos": 1.122456,
+          "sum_lambda": 24.694,
+          "a_h_artifact": 0.006937,
+          "s_pipeline_val_fit": 0.633589,
+          "s_own_test_optimum_1_over_h": 0.890904,
+          "delta_at_pipeline_s": -0.045075,
+          "delta_at_own_optimum": 0.006937
+        },
+        "sv_etas": {
+          "h_sum_lambda_over_npos": 1.098365,
+          "sum_lambda": 24.164,
+          "a_h_artifact": 0.004542,
+          "s_pipeline_val_fit": 0.652086,
+          "s_own_test_optimum_1_over_h": 0.910444,
+          "delta_at_pipeline_s": -0.045442,
+          "delta_at_own_optimum": 0.004542
+        },
+        "firstgen_etas": {
+          "h_sum_lambda_over_npos": 0.164768,
+          "sum_lambda": 3.6249,
+          "a_h_artifact": 0.967987,
+          "s_pipeline_val_fit": 4.163423,
+          "s_own_test_optimum_1_over_h": 6.069153,
+          "delta_at_pipeline_s": 0.905108,
+          "delta_at_own_optimum": 0.967987
+        },
+        "modern_etas": {
+          "h_sum_lambda_over_npos": 0.081217,
+          "sum_lambda": 1.7868,
+          "a_h_artifact": 1.591843,
+          "s_pipeline_val_fit": 12.438174,
+          "s_own_test_optimum_1_over_h": 12.312627,
+          "delta_at_pipeline_s": 1.591791,
+          "delta_at_own_optimum": 1.591843
+        },
+        "poisson": {
+          "h_sum_lambda_over_npos": 0.593765,
+          "sum_lambda": 13.0628,
+          "a_h_artifact": 0.115037,
+          "s_pipeline_val_fit": 1.034998,
+          "s_own_test_optimum_1_over_h": 1.684168,
+          "delta_at_pipeline_s": 0.013619,
+          "delta_at_own_optimum": 0.115037
+        },
+        "smoothed": {
+          "h_sum_lambda_over_npos": 0.761456,
+          "sum_lambda": 16.752,
+          "a_h_artifact": 0.033979,
+          "s_pipeline_val_fit": 0.849335,
+          "s_own_test_optimum_1_over_h": 1.313273,
+          "delta_at_pipeline_s": -0.048577,
+          "delta_at_own_optimum": 0.033979
+        }
+      },
+      "pairs": {
+        "hybrid_vs_cascade": {
+          "label": "hybrid vs cascade",
+          "h_A": 4.983437,
+          "h_B": 1.122456,
+          "a_hA": 2.377317,
+          "a_hB": 0.006937,
+          "predicted_shift_aA_minus_aB": 2.37038,
+          "ig_count": -0.085675,
+          "ig_proxy_at_pipeline_s": -0.018322,
+          "ig_proxy_at_own_optimum": 2.284705,
+          "measured_at_pipeline_s": 0.067354,
+          "measured_at_own_optimum": 2.37038,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 2.303027,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "cascade_vs_firstgen_etas": {
+          "label": "cascade vs first-gen",
+          "h_A": 1.122456,
+          "h_B": 0.164768,
+          "a_hA": 0.006937,
+          "a_hB": 0.967987,
+          "predicted_shift_aA_minus_aB": -0.96105,
+          "ig_count": -4.690028,
+          "ig_proxy_at_pipeline_s": -5.64021,
+          "ig_proxy_at_own_optimum": -5.651078,
+          "measured_at_pipeline_s": -0.950182,
+          "measured_at_own_optimum": -0.96105,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.010867,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "cascade_vs_modern_etas": {
+          "label": "cascade vs inversion",
+          "h_A": 1.122456,
+          "h_B": 0.081217,
+          "a_hA": 0.006937,
+          "a_hB": 1.591843,
+          "predicted_shift_aA_minus_aB": -1.584906,
+          "ig_count": -4.001266,
+          "ig_proxy_at_pipeline_s": -5.638132,
+          "ig_proxy_at_own_optimum": -5.586172,
+          "measured_at_pipeline_s": -1.636866,
+          "measured_at_own_optimum": -1.584906,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.05196,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "label": "first-gen vs inversion",
+          "h_A": 0.164768,
+          "h_B": 0.081217,
+          "a_hA": 0.967987,
+          "a_hB": 1.591843,
+          "predicted_shift_aA_minus_aB": -0.623856,
+          "ig_count": 0.688762,
+          "ig_proxy_at_pipeline_s": 0.002079,
+          "ig_proxy_at_own_optimum": 0.064906,
+          "measured_at_pipeline_s": -0.686683,
+          "measured_at_own_optimum": -0.623856,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.062827,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        },
+        "cascade_vs_sv_etas": {
+          "label": "cascade vs sv-ETAS",
+          "h_A": 1.122456,
+          "h_B": 1.098365,
+          "a_hA": 0.006937,
+          "a_hB": 0.004542,
+          "predicted_shift_aA_minus_aB": 0.002395,
+          "ig_count": -1.358332,
+          "ig_proxy_at_pipeline_s": -1.357964,
+          "ig_proxy_at_own_optimum": -1.355938,
+          "measured_at_pipeline_s": 0.000368,
+          "measured_at_own_optimum": 0.002395,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 0.002027,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": true
+        },
+        "hybrid_vs_firstgen_etas": {
+          "label": "hybrid vs first-gen",
+          "h_A": 4.983437,
+          "h_B": 0.164768,
+          "a_hA": 2.377317,
+          "a_hB": 0.967987,
+          "predicted_shift_aA_minus_aB": 1.40933,
+          "ig_count": -4.775703,
+          "ig_proxy_at_pipeline_s": -5.658532,
+          "ig_proxy_at_own_optimum": -3.366373,
+          "measured_at_pipeline_s": -0.882829,
+          "measured_at_own_optimum": 1.40933,
+          "abs_err_at_own_optimum": 0.0,
+          "abs_err_at_pipeline_s": 2.292159,
+          "gate_own_optimum_within_0.01": true,
+          "gate_pipeline_s_within_0.01": false
+        }
+      }
+    }
+  },
+  "gate": {
+    "y30_all_pairs_within_0.01_at_own_optimum": true,
+    "y30_all_pairs_within_0.01_at_pipeline_s": false,
+    "max_abs_err_own_optimum": 0.0,
+    "max_abs_err_pipeline_s": 0.040898
+  },
+  "firstgen_vs_inversion_handicap": {
+    "registered_dIG_from_table4": 0.28,
+    "predicted_artifact_shift": -0.013001,
+    "share_of_registered_edge_explained_by_artifact": 0.0464,
+    "reading": "the artifact accounts for only this fraction of the +0.28 registered edge, so the separation is NOT a scoring artifact; under proper scoring the IG interval straddles zero while dPR-AUC excludes it -> the separation localizes to ranking"
+  }
+}

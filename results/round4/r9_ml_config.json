@@ -1,0 +1,651 @@
+{
+  "purpose": "RUN 9 - exact ML configuration ACTUALLY fitted (source of truth = results/models/count{30,35,45}_hybrid.pkl)",
+  "environment": {
+    "sklearn_version": "1.6.1",
+    "estimator": "sklearn.ensemble.HistGradientBoostingRegressor"
+  },
+  "source_code_literals": {
+    "file": "src/marmara/train.py",
+    "fit_hybrid_call": {
+      "loss": "poisson",
+      "learning_rate": 0.05,
+      "max_iter": 400,
+      "max_depth": 6,
+      "random_state": 42
+    },
+    "note": "only these 5 + monotonic_cst are passed explicitly; every other param is the sklearn default"
+  },
+  "monotonicity_constraint": {
+    "function": "marmara.train._monotonic",
+    "rule": "-1 if f=='dist_fault_km' else +1 if f in ('etas_rate','ln_lam_sim') else 0",
+    "vector_length": 20,
+    "identical_for_all_three_targets": true,
+    "mapping": {
+      "cnt30": 0,
+      "cnt90": 0,
+      "cnt365": 0,
+      "nbr3_cnt30": 0,
+      "nbr3_cnt365": 0,
+      "nbr5_cnt30": 0,
+      "nbr5_cnt365": 0,
+      "days_since_m35_25km": 0,
+      "days_since_m45_25km": 0,
+      "maxmag365_25km": 0,
+      "mean_depth90": 0,
+      "rate_ratio": 0,
+      "b_pos_50km_730d": 0,
+      "b_pos_is_fallback": 0,
+      "dist_fault_km": -1,
+      "dcfs_perm": 0,
+      "dcfs_decay25": 0,
+      "strain_inv": 0,
+      "etas_rate": 1,
+      "ln_lam_sim": 1
+    },
+    "plus1": [
+      "etas_rate",
+      "ln_lam_sim"
+    ],
+    "minus1": [
+      "dist_fault_km"
+    ],
+    "zero": [
+      "cnt30",
+      "cnt90",
+      "cnt365",
+      "nbr3_cnt30",
+      "nbr3_cnt365",
+      "nbr5_cnt30",
+      "nbr5_cnt365",
+      "days_since_m35_25km",
+      "days_since_m45_25km",
+      "maxmag365_25km",
+      "mean_depth90",
+      "rate_ratio",
+      "b_pos_50km_730d",
+      "b_pos_is_fallback",
+      "dcfs_perm",
+      "dcfs_decay25",
+      "strain_inv"
+    ]
+  },
+  "weight_grid": {
+    "WEIGHTS": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "n": 11,
+    "definition": "np.round(np.arange(0.0,1.01,0.1),2)"
+  },
+  "w_selection_rule": {
+    "function": "marmara.train.select_w_1se",
+    "B": 2000,
+    "seed": 42,
+    "mean_block": 3.0,
+    "bootstrap": "Politis-Romano stationary block bootstrap over VALIDATION WINDOWS (marmara.bootstrap.stationary_window_indices)",
+    "statistic": "paired gap LL(w*) - LL(w) per w; SE = std of bootstrap gap",
+    "rule": "smallest w with gap_point <= gap_se (1-SE parsimony gate); naive argmax retained as diagnostic"
+  },
+  "splits": {
+    "TRAIN_END": "2022-01-01",
+    "VAL_END": "2024-01-01",
+    "TEST_TARGET_END": "2026-03-31"
+  },
+  "targets": {
+    "y30": {
+      "pickle": "results/models/count30_hybrid.pkl",
+      "reg_get_params_verbatim": {
+        "categorical_features": "from_dtype",
+        "early_stopping": "auto",
+        "interaction_cst": null,
+        "l2_regularization": 0.0,
+        "learning_rate": 0.05,
+        "loss": "poisson",
+        "max_bins": 255,
+        "max_depth": 6,
+        "max_features": 1.0,
+        "max_iter": 400,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "n_iter_no_change": 10,
+        "quantile": null,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "non_default_params": {
+        "learning_rate": {
+          "fitted": 0.05,
+          "sklearn_default": 0.1
+        },
+        "loss": {
+          "fitted": "poisson",
+          "sklearn_default": "squared_error"
+        },
+        "max_depth": {
+          "fitted": 6,
+          "sklearn_default": null
+        },
+        "max_iter": {
+          "fitted": 400,
+          "sklearn_default": 100
+        },
+        "monotonic_cst": {
+          "fitted": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "sklearn_default": null
+        },
+        "random_state": {
+          "fitted": 42,
+          "sklearn_default": null
+        }
+      },
+      "differs_from_source_code_literal": {},
+      "fitted_state": {
+        "n_iter_ trees actually fit": 147,
+        "max_iter_cap": 400,
+        "do_early_stopping_": true,
+        "early_stopping_param": "auto",
+        "n_features_in_": 20,
+        "feature_names_in_": [
+          "cnt30",
+          "cnt90",
+          "cnt365",
+          "nbr3_cnt30",
+          "nbr3_cnt365",
+          "nbr5_cnt30",
+          "nbr5_cnt365",
+          "days_since_m35_25km",
+          "days_since_m45_25km",
+          "maxmag365_25km",
+          "mean_depth90",
+          "rate_ratio",
+          "b_pos_50km_730d",
+          "b_pos_is_fallback",
+          "dist_fault_km",
+          "dcfs_perm",
+          "dcfs_decay25",
+          "strain_inv",
+          "etas_rate",
+          "ln_lam_sim"
+        ]
+      },
+      "w": {
+        "selected_w_pickle": 0.8,
+        "chosen_w_evaluation_json": 0.8,
+        "match": true,
+        "w_argmax_pickle": 0.9,
+        "w_argmax_naive_evaluation_json": 0.9,
+        "argmax_match": true
+      },
+      "w_selection_diag": {
+        "w_argmax": 0.9,
+        "w_1se": 0.8,
+        "n_val_windows": 25,
+        "ll_curve": {
+          "0.0": -2216.845,
+          "0.1": -2169.373,
+          "0.2": -2128.986,
+          "0.3": -2094.941,
+          "0.4": -2066.648,
+          "0.5": -2043.653,
+          "0.6": -2025.632,
+          "0.7": -2012.403,
+          "0.8": -2003.983,
+          "0.9": -2000.814,
+          "1.0": -2004.656
+        },
+        "gap_point_vs_argmax": {
+          "0.0": 216.031,
+          "0.1": 168.559,
+          "0.2": 128.172,
+          "0.3": 94.127,
+          "0.4": 65.834,
+          "0.5": 42.839,
+          "0.6": 24.818,
+          "0.7": 11.589,
+          "0.8": 3.169,
+          "0.9": 0.0,
+          "1.0": 3.842
+        },
+        "gap_se_vs_argmax": {
+          "0.0": 20.387,
+          "0.1": 18.551,
+          "0.2": 16.681,
+          "0.3": 14.758,
+          "0.4": 12.761,
+          "0.5": 10.664,
+          "0.6": 8.425,
+          "0.7": 5.98,
+          "0.8": 3.224,
+          "0.9": 0.0,
+          "1.0": 3.941
+        }
+      },
+      "isotonic": {
+        "class": "IsotonicRegression",
+        "out_of_bounds": "clip",
+        "note": "fit on val P=1-exp(-lam_hybrid) vs y; used for FORECAST MAPS ONLY, not in scoring"
+      },
+      "power": "primary (powered)"
+    },
+    "y35": {
+      "pickle": "results/models/count35_hybrid.pkl",
+      "reg_get_params_verbatim": {
+        "categorical_features": "from_dtype",
+        "early_stopping": "auto",
+        "interaction_cst": null,
+        "l2_regularization": 0.0,
+        "learning_rate": 0.05,
+        "loss": "poisson",
+        "max_bins": 255,
+        "max_depth": 6,
+        "max_features": 1.0,
+        "max_iter": 400,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "n_iter_no_change": 10,
+        "quantile": null,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "non_default_params": {
+        "learning_rate": {
+          "fitted": 0.05,
+          "sklearn_default": 0.1
+        },
+        "loss": {
+          "fitted": "poisson",
+          "sklearn_default": "squared_error"
+        },
+        "max_depth": {
+          "fitted": 6,
+          "sklearn_default": null
+        },
+        "max_iter": {
+          "fitted": 400,
+          "sklearn_default": 100
+        },
+        "monotonic_cst": {
+          "fitted": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "sklearn_default": null
+        },
+        "random_state": {
+          "fitted": 42,
+          "sklearn_default": null
+        }
+      },
+      "differs_from_source_code_literal": {},
+      "fitted_state": {
+        "n_iter_ trees actually fit": 10,
+        "max_iter_cap": 400,
+        "do_early_stopping_": true,
+        "early_stopping_param": "auto",
+        "n_features_in_": 20,
+        "feature_names_in_": [
+          "cnt30",
+          "cnt90",
+          "cnt365",
+          "nbr3_cnt30",
+          "nbr3_cnt365",
+          "nbr5_cnt30",
+          "nbr5_cnt365",
+          "days_since_m35_25km",
+          "days_since_m45_25km",
+          "maxmag365_25km",
+          "mean_depth90",
+          "rate_ratio",
+          "b_pos_50km_730d",
+          "b_pos_is_fallback",
+          "dist_fault_km",
+          "dcfs_perm",
+          "dcfs_decay25",
+          "strain_inv",
+          "etas_rate",
+          "ln_lam_sim"
+        ]
+      },
+      "w": {
+        "selected_w_pickle": 0.4,
+        "chosen_w_evaluation_json": 0.4,
+        "match": true,
+        "w_argmax_pickle": 0.6,
+        "w_argmax_naive_evaluation_json": 0.6,
+        "argmax_match": true
+      },
+      "w_selection_diag": {
+        "w_argmax": 0.6,
+        "w_1se": 0.4,
+        "n_val_windows": 25,
+        "ll_curve": {
+          "0.0": -697.413,
+          "0.1": -689.49,
+          "0.2": -683.028,
+          "0.3": -677.979,
+          "0.4": -674.313,
+          "0.5": -672.031,
+          "0.6": -671.209,
+          "0.7": -672.244,
+          "0.8": -677.037,
+          "0.9": -694.877,
+          "1.0": -771.553
+        },
+        "gap_point_vs_argmax": {
+          "0.0": 26.204,
+          "0.1": 18.281,
+          "0.2": 11.819,
+          "0.3": 6.77,
+          "0.4": 3.104,
+          "0.5": 0.822,
+          "0.6": 0.0,
+          "0.7": 1.035,
+          "0.8": 5.828,
+          "0.9": 23.668,
+          "1.0": 100.344
+        },
+        "gap_se_vs_argmax": {
+          "0.0": 11.086,
+          "0.1": 9.265,
+          "0.2": 7.431,
+          "0.3": 5.587,
+          "0.4": 3.733,
+          "0.5": 1.87,
+          "0.6": 0.0,
+          "0.7": 1.878,
+          "0.8": 3.764,
+          "0.9": 5.672,
+          "1.0": 7.675
+        }
+      },
+      "isotonic": {
+        "class": "IsotonicRegression",
+        "out_of_bounds": "clip",
+        "note": "fit on val P=1-exp(-lam_hybrid) vs y; used for FORECAST MAPS ONLY, not in scoring"
+      },
+      "power": "powered"
+    },
+    "y45": {
+      "pickle": "results/models/count45_hybrid.pkl",
+      "reg_get_params_verbatim": {
+        "categorical_features": "from_dtype",
+        "early_stopping": "auto",
+        "interaction_cst": null,
+        "l2_regularization": 0.0,
+        "learning_rate": 0.05,
+        "loss": "poisson",
+        "max_bins": 255,
+        "max_depth": 6,
+        "max_features": 1.0,
+        "max_iter": 400,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "n_iter_no_change": 10,
+        "quantile": null,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "non_default_params": {
+        "learning_rate": {
+          "fitted": 0.05,
+          "sklearn_default": 0.1
+        },
+        "loss": {
+          "fitted": "poisson",
+          "sklearn_default": "squared_error"
+        },
+        "max_depth": {
+          "fitted": 6,
+          "sklearn_default": null
+        },
+        "max_iter": {
+          "fitted": 400,
+          "sklearn_default": 100
+        },
+        "monotonic_cst": {
+          "fitted": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "sklearn_default": null
+        },
+        "random_state": {
+          "fitted": 42,
+          "sklearn_default": null
+        }
+      },
+      "differs_from_source_code_literal": {},
+      "fitted_state": {
+        "n_iter_ trees actually fit": 10,
+        "max_iter_cap": 400,
+        "do_early_stopping_": true,
+        "early_stopping_param": "auto",
+        "n_features_in_": 20,
+        "feature_names_in_": [
+          "cnt30",
+          "cnt90",
+          "cnt365",
+          "nbr3_cnt30",
+          "nbr3_cnt365",
+          "nbr5_cnt30",
+          "nbr5_cnt365",
+          "days_since_m35_25km",
+          "days_since_m45_25km",
+          "maxmag365_25km",
+          "mean_depth90",
+          "rate_ratio",
+          "b_pos_50km_730d",
+          "b_pos_is_fallback",
+          "dist_fault_km",
+          "dcfs_perm",
+          "dcfs_decay25",
+          "strain_inv",
+          "etas_rate",
+          "ln_lam_sim"
+        ]
+      },
+      "w": {
+        "selected_w_pickle": 0.9,
+        "chosen_w_evaluation_json": 0.9,
+        "match": true,
+        "w_argmax_pickle": 0.9,
+        "w_argmax_naive_evaluation_json": 0.9,
+        "argmax_match": true
+      },
+      "w_selection_diag": {
+        "w_argmax": 0.9,
+        "w_1se": 0.9,
+        "n_val_windows": 25,
+        "ll_curve": {
+          "0.0": -196.877,
+          "0.1": -185.052,
+          "0.2": -173.96,
+          "0.3": -163.464,
+          "0.4": -153.475,
+          "0.5": -143.952,
+          "0.6": -134.938,
+          "0.7": -126.638,
+          "0.8": -119.661,
+          "0.9": -115.712,
+          "1.0": -119.817
+        },
+        "gap_point_vs_argmax": {
+          "0.0": 81.165,
+          "0.1": 69.34,
+          "0.2": 58.248,
+          "0.3": 47.753,
+          "0.4": 37.763,
+          "0.5": 28.241,
+          "0.6": 19.226,
+          "0.7": 10.926,
+          "0.8": 3.949,
+          "0.9": 0.0,
+          "1.0": 4.106
+        },
+        "gap_se_vs_argmax": {
+          "0.0": 22.513,
+          "0.1": 20.135,
+          "0.2": 17.777,
+          "0.3": 15.444,
+          "0.4": 13.138,
+          "0.5": 10.86,
+          "0.6": 8.592,
+          "0.7": 6.262,
+          "0.8": 3.624,
+          "0.9": 0.0,
+          "1.0": 6.312
+        }
+      },
+      "isotonic": {
+        "class": "IsotonicRegression",
+        "out_of_bounds": "clip",
+        "note": "fit on val P=1-exp(-lam_hybrid) vs y; used for FORECAST MAPS ONLY, not in scoring"
+      },
+      "power": "unpowered, no ranking claims"
+    }
+  }
+}

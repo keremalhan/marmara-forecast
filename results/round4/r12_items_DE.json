@@ -1,0 +1,170 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "items": [
+      "D",
+      "E"
+    ]
+  },
+  "D_alarm_duration": {
+    "defect_corrected": "the shipped >=40x ladder used the 621-trigger (>=10x) denominator; triggers that never reached 40x were counted as decaying below it within the hour",
+    "denominator_10x": {
+      "n": 621,
+      "meaning": "triggers escalating >=10x at t+10min"
+    },
+    "denominator_40x": {
+      "n": 217,
+      "meaning": "triggers exceeding 40x at t+10min"
+    },
+    "subset_check": "the 217 are a strict subset of the 621 (gain_post >= 40 > 10)",
+    "observability": {
+      "n_missing_ladder_points": 0,
+      "all_rungs_observable": true,
+      "note": "the pre-registered 30-day follow-on observability filter makes every rung <= +30 d evaluable for every trigger; durations are interval-censored between rungs"
+    },
+    "ge40x_last_above_OLD_wrong_denominator_621": {
+      "<+1h": 403,
+      "+1h": 21,
+      "+6h": 18,
+      "+1d": 17,
+      "+3d": 19,
+      "+7d": 20,
+      "+14d": 31,
+      "+30d": 92
+    },
+    "ge40x_last_above_CORRECT_denominator_217": {
+      "<+1h": 9,
+      "+1h": 18,
+      "+6h": 17,
+      "+1d": 17,
+      "+3d": 18,
+      "+7d": 19,
+      "+14d": 30,
+      "+30d": 89
+    },
+    "ge40x_survival_CORRECT_denominator_217": {
+      "+1h": {
+        "n": 208,
+        "frac": 0.9585
+      },
+      "+6h": {
+        "n": 190,
+        "frac": 0.8756
+      },
+      "+1d": {
+        "n": 173,
+        "frac": 0.7972
+      },
+      "+3d": {
+        "n": 156,
+        "frac": 0.7189
+      },
+      "+7d": {
+        "n": 138,
+        "frac": 0.6359
+      },
+      "+14d": {
+        "n": 119,
+        "frac": 0.5484
+      },
+      "+30d": {
+        "n": 89,
+        "frac": 0.4101
+      }
+    },
+    "ge10x_last_above_denominator_621_unchanged": {
+      "<+1h": 30,
+      "+1h": 68,
+      "+6h": 71,
+      "+1d": 69,
+      "+3d": 57,
+      "+7d": 46,
+      "+14d": 47,
+      "+30d": 233
+    },
+    "ge10x_survival_denominator_621": {
+      "+1h": {
+        "n": 591,
+        "frac": 0.9517
+      },
+      "+6h": {
+        "n": 523,
+        "frac": 0.8422
+      },
+      "+1d": {
+        "n": 452,
+        "frac": 0.7279
+      },
+      "+3d": {
+        "n": 383,
+        "frac": 0.6167
+      },
+      "+7d": {
+        "n": 326,
+        "frac": 0.525
+      },
+      "+14d": {
+        "n": 280,
+        "frac": 0.4509
+      },
+      "+30d": {
+        "n": 233,
+        "frac": 0.3752
+      }
+    },
+    "headline": {
+      "old_sentence": "at >=40x, two-thirds decay within an hour",
+      "old_arithmetic": "403/621 = 64.9% (WRONG denominator: most never crossed 40x)",
+      "corrected": "9/217 = 4.1% of the triggers that DO cross 40x fall below it within the hour",
+      "still_above_30d": "89/217 = 41.0%"
+    }
+  },
+  "E_precision_intervals": {
+    "method": "Clopper-Pearson exact binomial, 95%",
+    "rows": {
+      "cell": {
+        "n_alarms": 621,
+        "n_hits": 1,
+        "precision": 0.00161,
+        "precision_ci95_clopper_pearson": [
+          4.1e-05,
+          0.008939
+        ],
+        "false_alarm_rate": 0.99839,
+        "far_ci95": [
+          0.991061,
+          0.999959
+        ]
+      },
+      "nbr25km": {
+        "n_alarms": 627,
+        "n_hits": 1,
+        "precision": 0.001595,
+        "precision_ci95_clopper_pearson": [
+          4e-05,
+          0.008854
+        ],
+        "false_alarm_rate": 0.998405,
+        "far_ci95": [
+          0.991146,
+          0.99996
+        ]
+      },
+      "cell_ge40x": {
+        "n_alarms": 217,
+        "n_hits": 0,
+        "precision": 0.0,
+        "precision_ci95_clopper_pearson": [
+          0.0,
+          0.016856
+        ],
+        "false_alarm_rate": 1.0,
+        "far_ci95": [
+          0.983144,
+          1.0
+        ]
+      }
+    }
+  }
+}

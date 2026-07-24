@@ -1,0 +1,262 @@
+{
+  "y30": {
+    "n_test": 31694,
+    "n_pos": 592,
+    "hybrid_vs_cascade": {
+      "ig": 0.2886,
+      "ig_ci": [
+        0.2025,
+        0.4333
+      ],
+      "pr_a": 0.2258,
+      "pr_b": 0.2325,
+      "dpr": -0.0067,
+      "dpr_ci": [
+        -0.0203,
+        0.0069
+      ],
+      "separable_two_axis": false
+    },
+    "scalar_global_vs_cascade": {
+      "s": 0.4227,
+      "ig": 0.4154,
+      "ig_ci": [
+        0.3242,
+        0.5245
+      ],
+      "pr_a": 0.2325,
+      "pr_b": 0.2325,
+      "dpr": 0.0,
+      "dpr_ci": [
+        0.0,
+        0.0
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": 1.439
+    },
+    "scalar_2_vs_cascade": {
+      "s_low": 0.3462,
+      "s_high": 0.4274,
+      "ig": 0.4158,
+      "ig_ci": [
+        0.3254,
+        0.5262
+      ],
+      "pr_a": 0.2325,
+      "pr_b": 0.2325,
+      "dpr": 0.0,
+      "dpr_ci": [
+        0.0,
+        0.0
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": 1.441
+    },
+    "isotonic_vs_cascade": {
+      "ig": 0.1622,
+      "ig_ci": [
+        -0.2107,
+        0.515
+      ],
+      "pr_a": 0.2094,
+      "pr_b": 0.2325,
+      "dpr": -0.0231,
+      "dpr_ci": [
+        -0.0294,
+        -0.0186
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": 0.562
+    },
+    "isotonic_vs_hybrid": {
+      "ig": -0.1264,
+      "ig_ci": [
+        -0.4534,
+        0.1442
+      ],
+      "pr_a": 0.2094,
+      "pr_b": 0.2258,
+      "dpr": -0.0164,
+      "dpr_ci": [
+        -0.0284,
+        -0.0051
+      ],
+      "separable_two_axis": false
+    },
+    "per_window_dll_hybrid_vs_cascade": {
+      "232": 5.66,
+      "233": 1.02,
+      "234": 6.1,
+      "235": 7.39,
+      "236": 4.1,
+      "237": 32.53,
+      "238": 10.8,
+      "239": 10.33,
+      "240": 6.03,
+      "241": 2.62,
+      "242": 4.4,
+      "243": 5.83,
+      "244": 1.03,
+      "245": 5.52,
+      "246": 6.6,
+      "247": 7.96,
+      "248": 2.48,
+      "249": 12.22,
+      "250": -1.94,
+      "251": 7.39,
+      "252": 5.17,
+      "253": 5.84,
+      "254": 9.46,
+      "255": 6.75,
+      "256": 3.43,
+      "257": 2.16
+    },
+    "per_window_summary": {
+      "n_windows": 26,
+      "total": 170.9,
+      "n_positive": 25,
+      "n_negative": 1,
+      "max_window": 32.5,
+      "min_window": -1.9,
+      "top_window_share_pct": 19.0
+    },
+    "val_decomposition_hybrid_vs_cascade": {
+      "total_ll": 212.86,
+      "ig_per_event": 0.4617,
+      "placement_nats": -85.37,
+      "count_nats": 298.23,
+      "placement_share_pct": -40.1,
+      "count_share_pct": 140.1
+    }
+  },
+  "y35": {
+    "n_test": 31694,
+    "n_pos": 167,
+    "hybrid_vs_cascade": {
+      "ig": 0.1734,
+      "ig_ci": [
+        0.0497,
+        0.3074
+      ],
+      "pr_a": 0.1299,
+      "pr_b": 0.1307,
+      "dpr": -0.0008,
+      "dpr_ci": [
+        -0.0067,
+        0.0052
+      ],
+      "separable_two_axis": false
+    },
+    "scalar_global_vs_cascade": {
+      "s": 0.3791,
+      "ig": 0.3422,
+      "ig_ci": [
+        0.1871,
+        0.535
+      ],
+      "pr_a": 0.1307,
+      "pr_b": 0.1307,
+      "dpr": 0.0,
+      "dpr_ci": [
+        0.0,
+        0.0
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": 1.973
+    },
+    "scalar_2_vs_cascade": {
+      "s_low": 0.6053,
+      "s_high": 0.3725,
+      "ig": 0.3296,
+      "ig_ci": [
+        0.1762,
+        0.5215
+      ],
+      "pr_a": 0.1307,
+      "pr_b": 0.1307,
+      "dpr": 0.0,
+      "dpr_ci": [
+        0.0,
+        0.0
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": 1.901
+    },
+    "isotonic_vs_cascade": {
+      "ig": -0.7698,
+      "ig_ci": [
+        -2.2761,
+        0.4006
+      ],
+      "pr_a": 0.1062,
+      "pr_b": 0.1307,
+      "dpr": -0.0245,
+      "dpr_ci": [
+        -0.0388,
+        -0.0096
+      ],
+      "separable_two_axis": false,
+      "frac_of_hybrid_edge": -4.439
+    },
+    "isotonic_vs_hybrid": {
+      "ig": -0.9432,
+      "ig_ci": [
+        -2.462,
+        0.2344
+      ],
+      "pr_a": 0.1062,
+      "pr_b": 0.1299,
+      "dpr": -0.0237,
+      "dpr_ci": [
+        -0.0408,
+        -0.0059
+      ],
+      "separable_two_axis": false
+    },
+    "per_window_dll_hybrid_vs_cascade": {
+      "232": 0.29,
+      "233": 5.83,
+      "234": 0.78,
+      "235": 0.65,
+      "236": -1.5,
+      "237": 0.25,
+      "238": 0.44,
+      "239": 0.01,
+      "240": 1.21,
+      "241": -0.4,
+      "242": -1.04,
+      "243": 0.38,
+      "244": 0.59,
+      "245": -0.51,
+      "246": 1.29,
+      "247": -1.48,
+      "248": 3.06,
+      "249": 1.47,
+      "250": 2.12,
+      "251": -0.35,
+      "252": -0.28,
+      "253": 6.81,
+      "254": 0.39,
+      "255": 7.24,
+      "256": 0.13,
+      "257": 1.58
+    },
+    "per_window_summary": {
+      "n_windows": 26,
+      "total": 29.0,
+      "n_positive": 19,
+      "n_negative": 7,
+      "max_window": 7.2,
+      "min_window": -1.5,
+      "top_window_share_pct": 25.0
+    },
+    "val_decomposition_hybrid_vs_cascade": {
+      "total_ll": 23.1,
+      "ig_per_event": 0.21,
+      "placement_nats": -7.94,
+      "count_nats": 31.04,
+      "placement_share_pct": -34.4,
+      "count_share_pct": 134.4
+    }
+  }
+}

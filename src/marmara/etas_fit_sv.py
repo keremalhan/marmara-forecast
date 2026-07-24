@@ -1,7 +1,7 @@
 """sv-ETAS: our ETAS refit with a CONVERGED spatially-variable
 background mu(x,y) via EM stochastic declustering (Zhuang 2002).
 
-HONEST FRAMING (verify before citing). The first-generation fit (etas_fit.py)
+FRAMING NOTE (verify before citing). The first-generation fit (etas_fit.py)
 ALREADY estimates a spatially-variable, probabilistically-declustered weighted-KDE
 background (etas_model.BackgroundField; the published fit runs bg_iterations=2, i.e.
 one reweighting pass). So sv-ETAS does NOT introduce a variable mu where the baseline
@@ -18,7 +18,7 @@ the same pair truncation and inits. Only the background estimator changes, so th
 sv-ETAS vs first-gen comparison attributes any difference to the background alone.
 
 Does NOT overwrite etas_fit.py (a published result). Output:
-  results/etas_sv_params.pkl , results/etas_sv_fit_report.json
+  results/etas/etas_sv_params.pkl , results/etas/etas_sv_fit_report.json
 Run:  "<venv>/bin/python" -m marmara.etas_fit_sv
 """
 from __future__ import annotations
@@ -37,8 +37,8 @@ from marmara.etas_model import (BackgroundField, EtasParams, LN10, _aki_b, _buil
                                 _theta_pack, _theta_unpack, branching_ratio)
 
 OUT = RESULTS
-PARAMS_PKL = OUT / "etas_sv_params.pkl"
-REPORT = OUT / "etas_sv_fit_report.json"
+PARAMS_PKL = OUT / "etas" / "etas_sv_params.pkl"
+REPORT = OUT / "etas" / "etas_sv_fit_report.json"
 
 MAX_EM = 10          # design: <=10 EM iterations
 DLL_TOL = 0.1        # design: or dLL < 0.1
@@ -150,7 +150,7 @@ def fit_sv(cat: pd.DataFrame, region: dict, cap: float):
 
 def main():
     OUT.mkdir(exist_ok=True)
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     cat = cat[cat["datetime_utc"] < FIT_END].copy()
 
@@ -162,7 +162,7 @@ def main():
         pickle.dump(params, f)
 
     # first-gen params for a side-by-side (published fit): read the report instead of refitting.
-    fg = json.load(open(OUT / "etas_fit_report.json"))
+    fg = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     report = {
         "variant": "sv_etas",
         "base_mc": BASE_MC, "operational_cap": FALLBACK_CAP,

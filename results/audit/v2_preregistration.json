@@ -1,0 +1,107 @@
+{
+  "committed_utc": "2026-07-12",
+  "status": "committed-before-v2-test-rescoring",
+  "protocol_document": "docs/v2_preregistration.md",
+  "protocol_sha256": "377ed43e3f63f175eed1928d0f4b69b28b3caafcf0307c9c01e16bbfd9f9105c",
+  "canonical_cascade": {
+    "fix": "surgical branching-preserving: real-history parents keep fitted k (obs mag, b-free); simulated parents damped to k_sim holding simulated sub-cascade n=0.95 at b_op",
+    "background": "stationary first-generation ETAS (mu_total + declustered KDE)",
+    "em_background": "REPORTED SENSITIVITY not canonical (results/em_background_probe.*: does not fix quiet over-prediction; residual is temporal non-stationarity)",
+    "b_op": 1.15,
+    "n_target": 0.95,
+    "K_backtest": 500,
+    "seed_base": 1000,
+    "mmax": 7.6,
+    "implementation": "cascade.py::simulate_window preserve_branching=True"
+  },
+  "table2_sweep": {
+    "b_op_grid": [
+      1.1,
+      1.15,
+      1.2
+    ],
+    "hybrids": [
+      "naive_argmax_w (diagnostic)",
+      "one_se_w (canonical)"
+    ],
+    "disclose_blind": true,
+    "rationale": "v1 b_op sweep at fixed k also swept supercriticality via cap-truncation; surgical fix pins n=0.95 at every b_op, removing the confound; v2 fragility verdict disclosed whichever way it lands"
+  },
+  "one_se_gate": {
+    "w_grid": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "se_method": "Politis-Romano stationary bootstrap, seed 42, mean_block 3.0, validation windows",
+    "rule": "smallest w within one SE of validation-Poisson-LL argmax",
+    "targets": [
+      "y30",
+      "y35",
+      "y45_widebox"
+    ],
+    "backtest_K": 500,
+    "name": "parsimony gate"
+  },
+  "completeness": {
+    "primary": "raw on-grid M>=3.0",
+    "correction": "GR-extrapolation on [3.45,4.5) anchor, footnote sensitivity",
+    "anchor": "M>=3.5"
+  },
+  "ntest_reporting": {
+    "primary": "time/space split table",
+    "narrow_total_miss_delta1": 0.018,
+    "never_report_as": "pass",
+    "finding": "two-sided misallocation: quiet/background over ~1.45x, Kumburgaz aftershock-zone under ~0.5x"
+  },
+  "mizrahi_ladder": {
+    "input_parity": "refit on homogenized mag_w catalogue",
+    "native_background": "own EM weights through sv-ETAS KDE (Gaussian, Silverman, 5km floor)",
+    "scoring": "native b AND b_op (2x2 ablation {uniform,native}x{native_b,b_op})",
+    "abstract_rule": "steel-man: claim only what survives Mizrahi's most favorable config"
+  },
+  "csep_v2": {
+    "cascade_and_sv_etas": "native clustered cascade simulations (not Poisson-sampled rates)",
+    "firstgen": "Poisson-sampled, disclosed",
+    "magnitudes": "operational b-ensemble per-member M-test (not fixed b=1.2)",
+    "engines": [
+      "genuine pyCSEP",
+      "in-house cross-check"
+    ],
+    "frozen_before": "v2 S-test (predicted to rediscover the misallocation)"
+  },
+  "claim_rule": {
+    "unchanged_from_v1": true,
+    "rule": "A beats B iff 95% percentile bootstrap CI of paired diff excludes 0 in A's favour for BOTH IG and PR-AUC; else inseparable",
+    "bootstrap": {
+      "B": 2000,
+      "seed": 42,
+      "mean_block": 3.0,
+      "block": "Politis-Romano stationary over ordered window-ids"
+    }
+  },
+  "live_products_transition": "single pipeline_transition_v2 entry appended to results/prospective/forecast_log.jsonl referencing protocol_sha256; prior entries untouched",
+  "diagnostic_artifacts_pretest": [
+    "results/ntest_attribution.*",
+    "results/ntest_residual_probe.*",
+    "results/em_background_probe.*"
+  ],
+  "amendments": [
+    {
+      "id": 1,
+      "date": "2026-07-13",
+      "document": "docs/v2_preregistration_amendment_1.md",
+      "sha256": "067a2c36f21656c09e8077bdc49b21e14676bc115a40cf8df59c821ced8482b9",
+      "summary": "canonical modern_etas comparator -> native spatially-variable background (B1 restoration); claims re-emitted; abstract separation flagged (survives y30, softens y35 under steel-man)",
+      "base_protocol_sha256": "377ed43e3f63f175eed1928d0f4b69b28b3caafcf0307c9c01e16bbfd9f9105c"
+    }
+  ]
+}

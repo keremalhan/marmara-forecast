@@ -32,7 +32,7 @@ def _cells_df(spec):
 
 
 def test_causality(params, spec):
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     t0 = pd.Timestamp("2015-06-01"); t0d = float(G._to_days(t0))
     hist = cat[["datetime_utc", "longitude", "latitude", "mag_w"]]
     clean = cascade_forecast(params, hist[cat["datetime_utc"] < t0], t0d, 30.0,
@@ -75,7 +75,7 @@ def test_reliability(params, spec, n_cats=50):
 
 def test_cascade_gt_firstgen(params, spec):
     """Day after an M6, cascade (all generations) > first-generation, matched >=mc."""
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     t0 = pd.Timestamp("2025-04-25"); t0d = float(G._to_days(t0))
     hist = cat[cat["datetime_utc"] < t0]
     h = hist[hist["mag_w"] >= params.mc]
@@ -138,7 +138,7 @@ def main():
           f"causality={a} reliability={b} cascade>firstgen={c} anisotropy={d}")
     if ok:
         import json
-        (OUT / "cascade_ok.json").write_text(json.dumps({"passed": True}))
+        (OUT / "audit" / "cascade_ok.json").write_text(json.dumps({"passed": True}))
     return 0 if ok else 1
 
 

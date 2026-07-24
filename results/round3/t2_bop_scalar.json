@@ -1,0 +1,33 @@
+{
+  "note": "s* fit on validation; scalar IG on test, per b_op",
+  "b_op": {
+    "1.10": {
+      "s_star_val": 0.4232,
+      "sumL_test": 1306.1,
+      "scalar_ig_vs_cascade": 0.4126,
+      "ig_ci": [
+        0.3221,
+        0.5192
+      ]
+    },
+    "1.20": {
+      "s_star_val": 0.4225,
+      "sumL_test": 1306.2,
+      "scalar_ig_vs_cascade": 0.4127,
+      "ig_ci": [
+        0.3222,
+        0.5196
+      ]
+    },
+    "1.15": {
+      "s_star_val": 0.4227,
+      "sumL_test": 1306.1,
+      "scalar_ig_vs_cascade": 0.4125,
+      "ig_ci": [
+        0.3215,
+        0.5202
+      ],
+      "source": "canonical predictions"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 """Task 8 (part 2): evaluate the model against 4 baselines on val + test.
 
-Everything (model + baselines) is scored through marmara.metrics. The test split isscored once per final configuration (reruns were identical-config reproductions), at the end. Honesty rule: if IG(model vs smoothed) <= 0 or
+Everything (model + baselines) is scored through marmara.metrics. The test split isscored once per final configuration (reruns were identical-config reproductions), at the end. Reporting rule: if IG(model vs smoothed) <= 0 or
 IG(model vs fault-proximity) <= 0 on test, the headline says the baseline wins.
 
 Output: results/evaluation_report.json , results/evaluation_report.md
@@ -136,13 +136,13 @@ def write_markdown(report: dict, path: Path):
 
 
 def main():
-    assert (OUT / "leakage_ok.json").exists(), "leakage self-test not green"
-    grid = pd.read_parquet(OUT / "grid.parquet")
+    assert (OUT / "audit" / "leakage_ok.json").exists(), "leakage self-test not green"
+    grid = pd.read_parquet(OUT / "grid" / "grid.parquet")
     masks = split_masks(grid)
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
-    mc = json.load(open(OUT / "catalog_report.json"))["mc"]
-    mc_etas = json.load(open(OUT / "etas_fit_report.json")).get("used_mc", mc)
+    mc = json.load(open(OUT / "catalog" / "catalog_report.json"))["mc"]
+    mc_etas = json.load(open(OUT / "etas" / "etas_fit_report.json")).get("used_mc", mc)
     b_train = train_b_value(cat, mc)
 
     report = {"meta": {"mc": mc, "mc_etas": mc_etas, "b_train": b_train,
@@ -154,7 +154,7 @@ def main():
         report["targets"][ycol] = evaluate_target(grid, masks, cat, mc, b_train,
                                                    mc_etas, ycol)
 
-    # honesty rule. The design's explicit bar: the model must exceed
+    # reporting rule. The design's explicit bar: the model must exceed
     # fault-proximity AND smoothed-seismicity on y35 test (IG per event).
     t = report["targets"]["y35"]["splits"]["test"]["ig_model_vs"]
     t45 = report["targets"]["y45"]["splits"]["test"]["ig_model_vs"]
@@ -183,7 +183,7 @@ def main():
             "The ML model beats the naive baselines but does not beat a properly-fit ETAS.")
     else:
         parts.append(f"The model also beats ETAS on y35 test (IG +{t['etas']:.3f}).")
-    # y45 honesty (rare target)
+    # y45 reporting rule (rare target)
     y45_baselines_win = (t45["smoothed"] <= 0) or (t45["etas"] <= 0)
     if y45_baselines_win:
         parts.append(

@@ -26,9 +26,9 @@ def cov(x):
 
 
 def main():
-    rep = json.load(open(OUT / "etas_sv_fit_report.json"))
-    fg = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    sv = pickle.load(open(OUT / "etas_sv_params.pkl", "rb"))
+    rep = json.load(open(OUT / "etas" / "etas_sv_fit_report.json"))
+    fg = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    sv = pickle.load(open(OUT / "etas" / "etas_sv_params.pkl", "rb"))
     mu_fg, pdf_fg = mu_field(fg)
     mu_sv, pdf_sv = mu_field(sv)
     cov_fg, cov_sv = cov(pdf_fg), cov(pdf_sv)

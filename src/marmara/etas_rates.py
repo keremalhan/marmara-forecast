@@ -33,7 +33,7 @@ from marmara.cascade import cascade_forecast
 
 OUT = RESULTS
 K_BACKTEST = 500          # matches grid_hybrid.py
-B_OP = float(json.load(open(OUT / "etas_fit_report.json"))["operational_b_for_cascade"])  # matches grid_hybrid.py
+B_OP = float(json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"])  # matches grid_hybrid.py
 SEED_BASE = 1000          # per-window seed = SEED_BASE + k (matches grid_hybrid.py)
 
 # splits (train.py): recomputed here without loading the big grid.
@@ -57,7 +57,7 @@ def valtest_window_ids(starts: list[pd.Timestamp]) -> list[int]:
 def compute(params_pkl: str, label: str, b: float = B_OP, K: int = K_BACKTEST):
     with open(params_pkl, "rb") as f:
         params = pickle.load(f)
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
     starts = G.window_starts(cat["datetime_utc"].max())
@@ -67,6 +67,8 @@ def compute(params_pkl: str, label: str, b: float = B_OP, K: int = K_BACKTEST):
     ir_flat = np.repeat(np.arange(G.NLAT), G.NLON)
     ic_flat = np.tile(np.arange(G.NLON), G.NLAT)
 
+    import os
+    _pb = os.environ.get("V2_SUPERCRITICAL") != "1"   # diagnostic: old supercritical-k when set to 1
     rows = []
     t0_all = time.time()
     for i, k in enumerate(ks):
@@ -74,7 +76,7 @@ def compute(params_pkl: str, label: str, b: float = B_OP, K: int = K_BACKTEST):
         t0d = float(G._to_days(t0_dt))
         casc = cascade_forecast(params, hist_all[cat["datetime_utc"] < t0_dt],
                                 t0d, G.HORIZON_D, spec.lon_c, spec.lat_c,
-                                K=K, seed=SEED_BASE + k, b=b)
+                                K=K, seed=SEED_BASE + k, b=b, preserve_branching=_pb)
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k),
             "ir": ir_flat, "ic": ic_flat,

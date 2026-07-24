@@ -1,0 +1,14 @@
+{
+  "n_cells": 31694,
+  "n_pos": 22,
+  "w": 0.1,
+  "widebox_hybrid_PR": 0.0218,
+  "MODEL_SPEC_cascade_PR": 0.0622,
+  "manuscript_framing_vs_WIDE_SPEC_cascade": {
+    "hybrid_PR": 0.022,
+    "wide_cascade_PR": 0.008,
+    "IG": 1.045
+  },
+  "IG_widehybrid_vs_MODEL_SPEC_cascade": 2.8162,
+  "verdict": "wide-box hybrid fixes the model-box calibration pathology, but scored against the ACTUAL (MODEL_SPEC) cascade it does not out-rank it: PR 0.0218 vs 0.0622. The '+1.045 vs cascade' was against the WIDE_SPEC cascade (rho=0.35 with the paper's cascade)."
+}

@@ -70,6 +70,42 @@ def poisson_ll(n, lam):
     return float(np.sum(n * np.log(lam) - lam))
 
 
+def select_w_1se(lam_sim, lam_ml, y, va, win, weights, B=2000, seed=42, mean_block=3.0):
+    """Parsimony gate (pre-registered, v2): choose the SMALLEST blend weight w whose
+    validation Poisson-LL is within one block-bootstrap SE of the argmax.
+
+    SE is the Politis-Romano stationary block bootstrap (same B/seed/mean_block as the
+    claims machinery) of the PAIRED gap LL(w*) - LL(w) over validation windows -- paired,
+    so the large common per-window level cancels and the SE measures only whether w* is
+    distinguishably better than w. A flat validation objective therefore drives w -> 0
+    (the hybrid collapses to its physical core, the cascade). Returns (w_selected, diag)."""
+    from marmara.bootstrap import stationary_window_indices
+    wv = win[va]
+    uw = np.unique(wv)
+    idx = np.searchsorted(uw, wv)
+    n_win = len(uw)
+    ls, lm, yv = lam_sim[va], lam_ml[va], y[va]
+    llc = np.zeros((len(weights), n_win))            # per-window LL contribution, per w
+    for i, w in enumerate(weights):
+        lam = np.clip(ls ** (1 - w) * lm ** w, EPS, None)
+        np.add.at(llc[i], idx, yv * np.log(lam) - lam)
+    point = llc.sum(axis=1)
+    istar = int(np.argmax(point))
+    rng = np.random.default_rng(seed)
+    seqs = stationary_window_indices(n_win, B, mean_block, rng)         # (B, n_win)
+    boot = llc[:, seqs].sum(axis=2)                                     # (n_w, B)
+    gap_point = point[istar] - point                                   # >= 0
+    gap_se = (boot[istar][None, :] - boot).std(axis=1)                 # paired SE of the gap
+    within = gap_point <= gap_se                                       # w* not > 1 SE better
+    isel = int(np.where(within)[0].min())                              # smallest-weight such w
+    diag = {"w_argmax": float(weights[istar]), "w_1se": float(weights[isel]),
+            "n_val_windows": int(n_win),
+            "ll_curve": {float(weights[i]): round(float(point[i]), 3) for i in range(len(weights))},
+            "gap_point_vs_argmax": {float(weights[i]): round(float(gap_point[i]), 3) for i in range(len(weights))},
+            "gap_se_vs_argmax": {float(weights[i]): round(float(gap_se[i]), 3) for i in range(len(weights))}}
+    return float(weights[isel]), diag
+
+
 def fit_hybrid(grid, masks, count_col, lam_col, ycol, extra_feats=(), label="hybrid"):
     """Poisson-GBR lambda_ML + geometric blend lambda = lam_sim^(1-w)*lam_ML^w.
     w chosen by val per-event Poisson log-likelihood (using occurrence y, matching
@@ -92,23 +128,20 @@ def fit_hybrid(grid, masks, count_col, lam_col, ycol, extra_feats=(), label="hyb
     reg.fit(X[tr], n[tr])
     lam_ml = np.clip(reg.predict(X), EPS, None)
 
-    # choose w by val per-event Poisson LL (n=y occurrence, IG convention). w=0
-    # recovers the cascade, so the chosen w cannot be worse than cascade on val.
-    best = None
-    for w in WEIGHTS:
-        lam = lam_sim ** (1 - w) * lam_ml ** w
-        ll = poisson_ll(y[va], lam[va])
-        if best is None or ll > best[0]:
-            best = (ll, w)
-    w = best[1]
+    # choose w by the pre-registered 1-SE parsimony gate on the val Poisson-LL: the
+    # smallest w within one block-bootstrap SE of the argmax (flat objective -> w->0,
+    # hybrid collapses to the cascade). w=0 recovers the cascade exactly. The naive
+    # argmax w is retained as a reported diagnostic (Table 2 continuity with v1).
+    w, wdiag = select_w_1se(lam_sim, lam_ml, y, va, grid["window"].to_numpy(), WEIGHTS)
     lam_hybrid = lam_sim ** (1 - w) * lam_ml ** w
 
     # isotonic P calibration (for the forecast maps only; NOT used in scoring)
     iso = IsotonicRegression(out_of_bounds="clip")
     iso.fit(lambda_to_p(lam_hybrid[va]), y[va])
     with open(MODELS / f"{count_col}_{label}.pkl", "wb") as f:
-        pickle.dump({"reg": reg, "w": float(w), "iso": iso}, f)
-    return {"w": float(w), "lam_ml": lam_ml, "lam_hybrid": lam_hybrid}
+        pickle.dump({"reg": reg, "w": float(w), "w_argmax": wdiag["w_argmax"], "iso": iso}, f)
+    return {"w": float(w), "w_argmax": wdiag["w_argmax"], "w_diag": wdiag,
+            "lam_ml": lam_ml, "lam_hybrid": lam_hybrid}
 
 
 def _load_extra_etas_preds(grid, thr):
@@ -138,11 +171,11 @@ def _load_extra_etas_preds(grid, thr):
 
 def _gnss_grid_columns(grid):
     """the gnss_traj physical columns aligned to the grid by (window,ir,ic).
-    Uses results/gnss_traj_columns.parquet if it carries the keys; otherwise computes
+    Uses results/channels/gnss_traj_columns.parquet if it carries the keys; otherwise computes
     them via the GnssTrajSource and caches WITH keys. Returns None if the GNSS data is
     not on disk (hybrid_gnss is then silently skipped, graceful degradation)."""
     key = ["window", "ir", "ic"]
-    cache = OUT / "gnss_traj_columns.parquet"
+    cache = OUT / "channels" / "gnss_traj_columns.parquet"
     if cache.exists():
         c = pd.read_parquet(cache)
         if all(k in c.columns for k in key) and all(col in c.columns for col in GNSS_PHYS):
@@ -169,6 +202,10 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 
     # predictors as probabilities, all from raw rates (fair, consistent footing)
     P_hybrid = lambda_to_p(fit["lam_hybrid"])
+    # naive-argmax hybrid: v1-continuity DIAGNOSTIC (canonical `hybrid` uses the 1-SE gate)
+    _wn = fit["w_argmax"]
+    P_hybrid_naive = lambda_to_p(np.clip(grid[lam_col].to_numpy(), EPS, None) ** (1 - _wn)
+                                 * fit["lam_ml"] ** _wn)
     P_casc = lambda_to_p(grid[lam_col].to_numpy())                 # ETAS-sim (cascade)
     lp = B.poisson_clim(grid, masks["train"], thr)
     lf = B.fault_prox_clim(grid, masks["train"], thr)
@@ -187,8 +224,9 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
     lam_sm[ti] = B.smoothed_seismicity(grid.iloc[ti], cat, mc, thr, sigma)
     P_sm = lambda_to_p(lam_sm)
 
-    preds = {"hybrid": P_hybrid, "cascade": P_casc, "poisson": lambda_to_p(lp),
-             "fault_prox": lambda_to_p(lf), "smoothed": P_sm, "firstgen_etas": P_firstgen}
+    preds = {"hybrid": P_hybrid, "hybrid_naive": P_hybrid_naive, "cascade": P_casc,
+             "poisson": lambda_to_p(lp), "fault_prox": lambda_to_p(lf), "smoothed": P_sm,
+             "firstgen_etas": P_firstgen}
     preds.update(_load_extra_etas_preds(grid, thr))  # sv_etas, modern_etas (if present)
     # GNSS-augmented hybrid (promoted per the pre-registered decision rule:
     # gnss_traj val IG +0.024 > 0.02 and test IG +0.098 > 0; genuine after the
@@ -200,7 +238,8 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
                            extra_feats=GNSS_PHYS, label="hybrid_gnss")
         preds["hybrid_gnss"] = lambda_to_p(fit_g["lam_hybrid"])
 
-    out = {"threshold": thr, "chosen_w": fit["w"], "smoothed_sigma_km": sigma, "splits": {}}
+    out = {"threshold": thr, "chosen_w": fit["w"], "w_argmax_naive": fit["w_argmax"],
+           "w_selection": fit["w_diag"], "smoothed_sigma_km": sigma, "splits": {}}
     for split, idx in (("val", vi), ("test", ti)):
         ys, ws = y[idx], win[idx]
         scored = {nm: score_predictor(preds[nm][idx], ys, ws) for nm in preds}
@@ -228,17 +267,17 @@ def evaluate(grid, masks, ycol, count_col, lam_col, thr, cat, mc, b_train, mc_et
 
 
 def main():
-    assert (OUT / "cascade_ok.json").exists(), "run cascade gate first"
-    grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
+    assert (OUT / "audit" / "cascade_ok.json").exists(), "run cascade gate first"
+    grid = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
     gnss = _gnss_grid_columns(grid)                 # merge GNSS columns if present
     if gnss is not None:
         for c in GNSS_PHYS:
             grid[c] = gnss[c]
         print(f"merged GNSS trajectory columns ({', '.join(GNSS_PHYS)}) -> hybrid_gnss enabled")
     masks = split_masks(grid)
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     mc = 3.0
-    mc_etas = json.load(open(OUT / "etas_fit_report.json"))["base_mc"]
+    mc_etas = json.load(open(OUT / "etas" / "etas_fit_report.json"))["base_mc"]
     from marmara.evaluate import train_b_value
     b_train = train_b_value(cat, mc)
 
@@ -265,7 +304,7 @@ def main():
                 f"IG(hybrid vs cascade)={ig['cascade']:+.3f}, IG(hybrid vs first-gen-ETAS)="
                 f"{ig['firstgen_etas']:+.3f}, IG vs smoothed {ig['smoothed']:+.3f}")
     report["headline"] = " | ".join(line(y) for y in ("y30", "y35", "y45"))
-    # honest verdict: all ranking claims must be read against bootstrap_ci/claims.json.
+    # caveat: all ranking claims must be read against bootstrap_ci/claims.json.
     y30t = report["targets"]["y30"]["splits"]["test"]
     y35t = report["targets"]["y35"]["splits"]["test"]["scores"]
     report["verdict"] = (
@@ -280,7 +319,7 @@ def main():
         "UNPOWERED: bootstrap CIs are enormous and essentially every pair is inseparable; "
         "NO ranking claims. The w chosen for y45 was selected on ~13 val positives (noise-fit) "
         "and is NOT a headline result.")
-    json.dump(report, open(OUT / "evaluation.json", "w"), indent=2)
+    json.dump(report, open(OUT / "scoring" / "evaluation.json", "w"), indent=2)
 
     L = ["# Evaluation: hybrid (cascade x ML) vs baselines", "",
          "All ranking claims must be read against results/claims.json (block-bootstrap "
@@ -305,7 +344,7 @@ def main():
             for nm, v in s["ig_hybrid_vs"].items():
                 L.append(f"- vs {nm}: {v:+.4f}")
         L.append("")
-    (OUT / "evaluation.md").write_text("\n".join(L))
+    (OUT / "scoring" / "evaluation.md").write_text("\n".join(L))
     print("\n" + report["headline"])
     print("wrote evaluation.{json,md}")
 

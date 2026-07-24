@@ -32,8 +32,8 @@ Ranking metrics (PR-AUC/ROC-AUC) are invariant to the global GR factor
 Background: uniform at the fitted mu (per day per km^2), a small spatially-flat
 floor for M>=3 (documented; Mizrahi's spatial background KDE is not reused).
 
-Runs in the pinned MAIN env (no etas import). Reads results/etas_mizrahi_fit.json.
-Output: results/rates_modern_etas.parquet [window, ir, ic, lam35, lam45]
+Runs in the pinned MAIN env (no etas import). Reads results/etas/etas_mizrahi_fit.json.
+Output: results/grid/rates_modern_etas.parquet [window, ir, ic, lam35, lam45]
 Run:  "<venv>/bin/python" -m marmara.etas_modern [--validate]
 """
 from __future__ import annotations
@@ -63,7 +63,7 @@ def _uge(a, x):
 
 
 def _load_params():
-    d = json.load(open(OUT / "etas_mizrahi_fit.json"))
+    d = json.load(open(OUT / "etas" / "etas_mizrahi_fit.json"))
     p = d["param_dict"]
     return {
         "k0": 10.0 ** p["log10_k0"], "a": p["a"],
@@ -89,12 +89,16 @@ def valtest_window_ids(starts):
     return out
 
 
-def lam_mc_window(P, t0d, hist_t, hist_lon, hist_lat, hist_mag, cell_lon, cell_lat, area_c):
+def lam_mc_window(P, t0d, hist_t, hist_lon, hist_lat, hist_mag, cell_lon, cell_lat, area_c,
+                  bg_field=None, region_area=None):
     """First-generation Mizrahi expected M>=mc count per cell for [t0, t0+30)."""
     c, omega, tau, d, gamma, rho, k0, a = (P["c"], P["omega"], P["tau"], P["d"],
                                            P["gamma"], P["rho"], P["k0"], P["a"])
     ncell = cell_lon.size
-    lam = P["mu"] * area_c * G.HORIZON_D                      # uniform background floor
+    if bg_field is not None:                                 # B(1): native spatially-variable background
+        lam = P["mu"] * region_area * G.HORIZON_D * bg_field.pdf_lonlat(cell_lon, cell_lat) * area_c
+    else:
+        lam = P["mu"] * area_c * G.HORIZON_D                  # uniform background floor
     causal = hist_t < t0d
     ht, hlon, hlat, hmag = hist_t[causal], hist_lon[causal], hist_lat[causal], hist_mag[causal]
     if ht.size == 0:
@@ -123,8 +127,25 @@ def lam_mc_window(P, t0d, hist_t, hist_lon, hist_lat, hist_mag, cell_lon, cell_l
 
 
 def compute():
+    import os
     P = _load_params()
-    cat = pd.read_csv(OUT / "catalog.csv")
+    bg_mode = os.environ.get("V2_MIZ_BG", "uniform")         # B(1): uniform | native
+    b_mode = os.environ.get("V2_MIZ_B", "native")            # B(2): native | bop
+    b_use = P["b"]
+    if b_mode == "bop":
+        b_use = float(json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"])
+    region = {"min_lon": 25.6, "max_lon": 30.9, "min_lat": 39.6, "max_lat": 41.9}
+    bg_field = region_area = None
+    if bg_mode == "native":
+        from marmara.etas_model import BackgroundField, _region_area_km2
+        w = pd.read_csv(OUT / "etas" / "mizrahi_background_weights.csv")
+        wl, wa, ww = w["longitude"].to_numpy(), w["latitude"].to_numpy(), w["bg_weight"].to_numpy()
+        bg_field = BackgroundField.from_weighted_events(wl, wa, ww, region, bw_km=None)
+        if getattr(bg_field, "bw_km", 99.0) < 5.0:           # reviewer: Silverman bandwidth, 5 km floor
+            bg_field = BackgroundField.from_weighted_events(wl, wa, ww, region, bw_km=5.0)
+        region_area = _region_area_km2(region)
+        print(f"native Mizrahi background: bw={bg_field.bw_km:.1f}km, {len(w)} weighted events", flush=True)
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     cat = cat[cat["mag_w"] >= MC - 1e-9].reset_index(drop=True)
     hist_t = ((cat["datetime_utc"] - G.REF) / pd.Timedelta(days=1)).to_numpy()
@@ -139,13 +160,13 @@ def compute():
 
     starts = G.window_starts(cat["datetime_utc"].max())
     ks = valtest_window_ids(starts)
-    s35 = 10.0 ** (-P["b"] * (3.5 - MC)); s45 = 10.0 ** (-P["b"] * (4.5 - MC))
+    s35 = 10.0 ** (-b_use * (3.5 - MC)); s45 = 10.0 ** (-b_use * (4.5 - MC))
     rows = []
     t_all = time.time()
     for i, k in enumerate(ks):
         t0d = float(G._to_days(starts[k]))
         lam_mc = lam_mc_window(P, t0d, hist_t, hist_lon, hist_lat, hist_mag,
-                               cell_lon, cell_lat, area_c)
+                               cell_lon, cell_lat, area_c, bg_field, region_area)
         rows.append(pd.DataFrame({
             "window": np.full(G.NCELLS, k), "ir": ir_flat, "ic": ic_flat,
             "lam30": lam_mc,                        # M>=3.0 (=mc) first-gen rate
@@ -153,9 +174,10 @@ def compute():
         if (i + 1) % 10 == 0:
             print(f"  modern_etas window {i+1}/{len(ks)} (k={k}) ({time.time()-t_all:.0f}s)", flush=True)
     out = pd.concat(rows, ignore_index=True)
-    out.to_parquet(OUT / "rates_modern_etas.parquet", index=False)
+    out.to_parquet(OUT / "grid" / "rates_modern_etas.parquet", index=False)
     print(f"wrote rates_modern_etas.parquet: {len(out)} rows, {len(ks)} windows, "
-          f"b_miz={P['b']:.3f}, lam35 mean {out['lam35'].mean():.5f} ({time.time()-t_all:.0f}s)")
+          f"bg={bg_mode}, b_use={b_use:.3f} (native b_miz={P['b']:.3f}), "
+          f"lam35 mean {out['lam35'].mean():.5f} ({time.time()-t_all:.0f}s)")
 
 
 def validate():

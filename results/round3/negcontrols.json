@@ -1,0 +1,121 @@
+{
+  "n_seeds": 8,
+  "n_pairs": 28,
+  "false_separations": 0,
+  "empirical_false_positive_rate": 0.0,
+  "runtime_s": 144.6,
+  "pairs": [
+    {
+      "pair": "s1000_vs_s7000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s13000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s19000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s25000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s31000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s1000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s13000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s19000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s25000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s31000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s7000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s13000_vs_s19000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s13000_vs_s25000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s13000_vs_s31000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s13000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s13000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s19000_vs_s25000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s19000_vs_s31000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s19000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s19000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s25000_vs_s31000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s25000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s25000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s31000_vs_s37000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s31000_vs_s43000",
+      "verdict": "inseparable"
+    },
+    {
+      "pair": "s37000_vs_s43000",
+      "verdict": "inseparable"
+    }
+  ]
+}

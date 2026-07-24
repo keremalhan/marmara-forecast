@@ -1,0 +1,42 @@
+{
+  "paired_hybrid_vs_two_scalar": {
+    "dIG": 0.0532,
+    "ci": [
+      0.0176,
+      0.0852
+    ],
+    "read": "excludes 0 (hybrid favour) -> irreducible dynamic remainder resolved; straddles -> two constants inseparable from ML, point-share ~half"
+  },
+  "gem_nesting_lock": {
+    "rate_weighted_mean_2scalar": 0.4278,
+    "single_scalar_optimum": 0.423,
+    "s_bg": 0.4648,
+    "s_trig": 0.4014,
+    "saturation_signature": true
+  },
+  "recombination": {
+    "active_pos": 280,
+    "quiet_pos": 312,
+    "active_pos_frac": 0.473,
+    "weighted_IG": 0.099,
+    "target_full_edge": 0.099
+  },
+  "active_edge_by_period": {
+    "pre_Kumburgaz": {
+      "n_pos": 169,
+      "dIG": 0.0635,
+      "ci": [
+        0.0274,
+        0.1006
+      ]
+    },
+    "post_Kumburgaz": {
+      "n_pos": 111,
+      "dIG": 0.1016,
+      "ci": [
+        0.0224,
+        0.2088
+      ]
+    }
+  }
+}

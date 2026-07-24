@@ -952,7 +952,7 @@
   "monthly_xml": "Turkey local time UTC+3. Evidence: 2025-10-02 anchor (11:55 UTC) appears as 2025.10.02 14:55:03 in monthly_202510.xml; hgmmap.asp UI labels lists 'Yerel saat'; empirical cross-match of 352 March-2026 events monthly-vs-zeqdb gives median |residual| 0.0 s after converting local->UTC via zoneinfo Europe/Istanbul. Converted to UTC.",
   "live_lst0.asp": "Turkey local time (newest event 15:05 local while fetch time was ~12:56 UTC). Not used in catalog (last-500 only); saved as probe.",
   "afad_api": "UTC. Evidence: same 2025-10-02 anchor returned as 2025-10-02T11:55:03.",
-  "pre2016_dst_note": "Irrelevant for zeqdb (UTC throughout, verified with 2014 summer anchor); monthly XMLs only used for 2026 where Turkey is fixed UTC+3; conversion done with zoneinfo('Europe/Istanbul') which would handle DST anyway."
+  "pre2016_dst_note": "Turkiye observed summer DST (civil UTC+2 winter / UTC+3 summer) until Sept 2016, then permanent UTC+3. A civil-local mis-read would shift pre-2016 events +2h (winter) / +3h (summer). REJECTED empirically in BOTH seasons: cross-match of 21 well-recorded pre-2016 box events against USGS/NEIC authoritative UTC (scripts/verify/tz_anchors.py -> results/tz_anchor_crosscheck.json) gives max|residual| 2.0s over 4 winter anchors (2013-01-08 M5.7, 2010-11-03 M5.3, 2009-02-17 M5.2, 2008-12-28 M5.2) and 2.7s over 17 summer anchors; the +2h/+3h signatures are absent, so zeqdb is true UTC year-round and no offset is applied. Monthly XMLs (2026 tail only, features-only) are civil time converted DST-aware via zoneinfo('Europe/Istanbul')."
  },
  "column_notes": {
   "datetime_utc": "ISO 8601 (YYYY-MM-DDTHH:MM:SS), true UTC, fractional seconds truncated",

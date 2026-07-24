@@ -1,0 +1,5 @@
+{
+  "n_stale": 0,
+  "findings": [],
+  "note": "Each finding is a v1 number/verdict the v2 recompute superseded. Per governance these are FLAGGED for the author; this gate does not rewrite the manuscript."
+}

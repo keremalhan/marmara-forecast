@@ -1,0 +1,6 @@
+{
+ "runplan": "docs/RUNPLAN_round3.md",
+ "sha256": "76a21979e97027b78b27636ec3dc0694c0a45166bffd9b012a73faf3b99bf0f7",
+ "dated": "2026-07-14",
+ "note": "round-3 batch pre-registered before execution; test scored once for validation survivors; isolation dir results/round3/"
+}

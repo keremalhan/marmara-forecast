@@ -1,0 +1,142 @@
+{
+  "identity": {
+    "N_pos_test": 592,
+    "N_events_test": 1383,
+    "sumL_cascade_test": 1306.1,
+    "s_star_test = Npos/sumL": 0.4533,
+    "inverse_multiplicity_test = Npos/Nev": 0.4281,
+    "count_calibration_ratio_test = Nev/sumL": 1.0589,
+    "decomposition s* = inv_mult * count_calib": 0.4533,
+    "handicap_col = sumL/Npos": 2.2062,
+    "PROVENANCE_s_is_validation_fit": 0.4227,
+    "validation_multiplicity = Nev_val/Npos_val": 1.5401,
+    "N_pos_val": 461,
+    "N_events_val": 710,
+    "sumL_cascade_val": 1090.6,
+    "closed_form_IG": {
+      "at_test_optimal_0.453": 0.4149,
+      "at_val_fit_0.4227": 0.4125,
+      "measured_val_scalar_on_test": 0.4154
+    }
+  },
+  "vs_inversion": {
+    "cascade_vs_inversion": {
+      "count_scored": {
+        "ig": -0.1303,
+        "ig_ci": [
+          -0.4198,
+          0.0929
+        ],
+        "dpr": 0.0261,
+        "dpr_ci": [
+          0.0098,
+          0.0408
+        ],
+        "verdict": "inseparable"
+      },
+      "occurrence_scored": {
+        "ig": 0.2835,
+        "ig_ci": [
+          0.0143,
+          0.5226
+        ],
+        "dpr": 0.0261,
+        "dpr_ci": [
+          0.0098,
+          0.0408
+        ],
+        "verdict": "separable"
+      }
+    },
+    "sv_etas_vs_inversion": {
+      "count_scored": {
+        "ig": -0.1955,
+        "ig_ci": [
+          -0.4629,
+          0.0423
+        ],
+        "dpr": 0.0239,
+        "dpr_ci": [
+          0.0118,
+          0.0353
+        ],
+        "verdict": "inseparable"
+      },
+      "occurrence_scored": {
+        "ig": 0.21,
+        "ig_ci": [
+          -0.051,
+          0.4721
+        ],
+        "dpr": 0.0239,
+        "dpr_ci": [
+          0.0118,
+          0.0353
+        ],
+        "verdict": "inseparable"
+      }
+    },
+    "hybrid_vs_inversion": {
+      "count_scored": {
+        "ig": 0.1584,
+        "ig_ci": [
+          -0.0323,
+          0.3256
+        ],
+        "dpr": 0.0193,
+        "dpr_ci": [
+          0.0074,
+          0.0322
+        ],
+        "verdict": "inseparable"
+      },
+      "occurrence_scored": {
+        "ig": 0.3526,
+        "ig_ci": [
+          0.1638,
+          0.5387
+        ],
+        "dpr": 0.0193,
+        "dpr_ci": [
+          0.0074,
+          0.0322
+        ],
+        "verdict": "separable"
+      }
+    },
+    "firstgen_etas_vs_inversion": {
+      "count_scored": {
+        "ig": 0.2819,
+        "ig_ci": [
+          0.0515,
+          0.4985
+        ],
+        "dpr": 0.0165,
+        "dpr_ci": [
+          0.005,
+          0.0285
+        ],
+        "verdict": "separable"
+      },
+      "occurrence_scored": {
+        "ig": 0.3073,
+        "ig_ci": [
+          0.0809,
+          0.5327
+        ],
+        "dpr": 0.0165,
+        "dpr_ci": [
+          0.005,
+          0.0285
+        ],
+        "verdict": "separable"
+      }
+    }
+  },
+  "score_definition": {
+    "hybrid_vs_cascade_occ_Poisson_indicator": 0.0691,
+    "hybrid_vs_cascade_occ_Bernoulli_on_p": 0.0988,
+    "mean_occupancy_test": 0.0187,
+    "note": "agree to 2nd order at low occupancy; report which one is named in the paper"
+  }
+}

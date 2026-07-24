@@ -13,9 +13,9 @@ Documented simplifications vs a full ETASI: productivity uses a constant base-Mc
 reference (not per-event mc_i), and the incompleteness deficit is handled by the
 likelihood-catalog filter rather than an integral detectability term. At base
 Mc=3.0 the post-mainshock Mc(t)>3.0 window is sub-hour (0.02-0.44 h for M5.5-6.2),
-so STAI drops very few events here, reported honestly.
+so STAI drops very few events here; the count is reported as-is.
 
-Output: results/etas_params.pkl , results/etas_fit_report.json
+Output: results/etas/etas_params.pkl , results/etas/etas_fit_report.json
 Run:  "<venv>/bin/python3" -m marmara.etas_fit
 """
 from __future__ import annotations
@@ -36,8 +36,8 @@ from marmara.etas_model import (BackgroundField, EtasParams, LN10, _aki_b, _buil
                            branching_ratio)
 
 OUT = RESULTS
-PARAMS_PKL = OUT / "etas_params.pkl"
-REPORT = OUT / "etas_fit_report.json"
+PARAMS_PKL = OUT / "etas" / "etas_params.pkl"
+REPORT = OUT / "etas" / "etas_fit_report.json"
 
 MODEL_BOX = dict(min_lon=25.6, max_lon=30.9, min_lat=39.6, max_lat=41.9)
 BASE_MC = 3.0
@@ -143,7 +143,7 @@ def fit_stai(cat: pd.DataFrame, region: dict, cap: float, bg_iterations: int = 2
 
 def main():
     OUT.mkdir(exist_ok=True)
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     cat = cat[cat["datetime_utc"] < FIT_END].copy()
 

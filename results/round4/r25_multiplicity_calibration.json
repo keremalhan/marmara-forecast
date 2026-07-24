@@ -1,0 +1,189 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "negative_controls": "cascade@seed_i vs cascade@seed_j (true diff=0)",
+ "seeds": [
+  1000,
+  4000,
+  7000,
+  10000,
+  13000,
+  16000,
+  19000,
+  22000
+ ],
+ "n_null_pairs": 28,
+ "pairs": [
+  {
+   "pair": "cascade_s1000_vs_cascade_s4000",
+   "p_ig": 0.808,
+   "p_pr": 0.707
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s7000",
+   "p_ig": 0.695,
+   "p_pr": 0.824
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s10000",
+   "p_ig": 0.367,
+   "p_pr": 0.873
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s13000",
+   "p_ig": 0.533,
+   "p_pr": 0.733
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s16000",
+   "p_ig": 0.294,
+   "p_pr": 0.068
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s19000",
+   "p_ig": 0.668,
+   "p_pr": 0.506
+  },
+  {
+   "pair": "cascade_s1000_vs_cascade_s22000",
+   "p_ig": 0.392,
+   "p_pr": 0.939
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s7000",
+   "p_ig": 0.052,
+   "p_pr": 0.528
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s10000",
+   "p_ig": 0.542,
+   "p_pr": 0.789
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s13000",
+   "p_ig": 0.554,
+   "p_pr": 0.505
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s16000",
+   "p_ig": 0.177,
+   "p_pr": 0.074
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s19000",
+   "p_ig": 0.367,
+   "p_pr": 0.194
+  },
+  {
+   "pair": "cascade_s4000_vs_cascade_s22000",
+   "p_ig": 0.461,
+   "p_pr": 0.689
+  },
+  {
+   "pair": "cascade_s7000_vs_cascade_s10000",
+   "p_ig": 0.051,
+   "p_pr": 0.677
+  },
+  {
+   "pair": "cascade_s7000_vs_cascade_s13000",
+   "p_ig": 0.074,
+   "p_pr": 0.954
+  },
+  {
+   "pair": "cascade_s7000_vs_cascade_s16000",
+   "p_ig": 0.003,
+   "p_pr": 0.173
+  },
+  {
+   "pair": "cascade_s7000_vs_cascade_s19000",
+   "p_ig": 0.884,
+   "p_pr": 0.57
+  },
+  {
+   "pair": "cascade_s7000_vs_cascade_s22000",
+   "p_ig": 0.209,
+   "p_pr": 0.899
+  },
+  {
+   "pair": "cascade_s10000_vs_cascade_s13000",
+   "p_ig": 0.884,
+   "p_pr": 0.609
+  },
+  {
+   "pair": "cascade_s10000_vs_cascade_s16000",
+   "p_ig": 0.44,
+   "p_pr": 0.095
+  },
+  {
+   "pair": "cascade_s10000_vs_cascade_s19000",
+   "p_ig": 0.175,
+   "p_pr": 0.39
+  },
+  {
+   "pair": "cascade_s10000_vs_cascade_s22000",
+   "p_ig": 0.91,
+   "p_pr": 0.81
+  },
+  {
+   "pair": "cascade_s13000_vs_cascade_s16000",
+   "p_ig": 0.381,
+   "p_pr": 0.183
+  },
+  {
+   "pair": "cascade_s13000_vs_cascade_s19000",
+   "p_ig": 0.033,
+   "p_pr": 0.638
+  },
+  {
+   "pair": "cascade_s13000_vs_cascade_s22000",
+   "p_ig": 0.941,
+   "p_pr": 0.884
+  },
+  {
+   "pair": "cascade_s16000_vs_cascade_s19000",
+   "p_ig": 0.006,
+   "p_pr": 0.274
+  },
+  {
+   "pair": "cascade_s16000_vs_cascade_s22000",
+   "p_ig": 0.572,
+   "p_pr": 0.115
+  },
+  {
+   "pair": "cascade_s19000_vs_cascade_s22000",
+   "p_ig": 0.007,
+   "p_pr": 0.597
+  }
+ ],
+ "calibration_IG": {
+  "axis": "count-scored \u0394IG",
+  "n": 28,
+  "frac_p<0.05": 0.143,
+  "frac_p>0.95": 0.0,
+  "median_p": 0.387,
+  "min_p": 0.003,
+  "anticonservative": false,
+  "verdict": "no gross pathology -> proceed"
+ },
+ "calibration_PR": {
+  "axis": "\u0394PR-AUC",
+  "n": 28,
+  "frac_p<0.05": 0.0,
+  "frac_p>0.95": 0.036,
+  "median_p": 0.603,
+  "min_p": 0.068,
+  "anticonservative": false,
+  "verdict": "conservative (BH conservative too)"
+ },
+ "runtime_s": 145.2,
+ "GATE": "PASS -> BH may run",
+ "DISPOSITION": {
+  "IG_axis": "MILDLY ANTICONSERVATIVE: 3/28 true-null pairs p<0.01 (expect ~0.3), 4/28 p<0.05 (expect 1.4), z=2.3. The block bootstrap (mean_block 3) slightly underestimates \u0394IG variance -- some seed-realizations are window-consistent by chance.",
+  "PR_axis": "CONSERVATIVE: min p 0.068, median 0.603. No anticonservatism.",
+  "consequence_for_BH": "The registered CONJUNCTIVE rule (a separation needs BOTH axes) is PROTECTED by the conservative PR axis: any two-axis verdict must also clear the conservative ranking axis, so two-axis separations are safe under BH. The EXPOSED findings are the SINGLE-AXIS occurrence-score ones (+0.053 two-scalar remainder, active-cell resolution) -- they live on the anticonservative IG-like axis with no PR axis to protect them.",
+  "required_before_BH_on_single_axis_findings": "per Amendment 8 item 7 step 5, the fix is the CONSTRUCTION: compute null-centered bootstrap p-values (recenter the replicate array at 0, test the observed statistic against it) for the +0.053 and active-cell findings, as the properly-calibrated alternative to CI-inversion on that axis.",
+  "gate_decision": "PROCEED to BH for the two-axis (conjunctive) verdicts using CI-inversion p (safe, PR-protected); for the single-axis occurrence findings use the null-centered construction. Do NOT touch families or replicate arrays."
+ }
+}

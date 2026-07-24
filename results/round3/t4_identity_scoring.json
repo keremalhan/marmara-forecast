@@ -1,0 +1,387 @@
+{
+  "identity_per_target": {
+    "y30": {
+      "n_pos": 592,
+      "models": {
+        "hybrid": {
+          "h": 1.757,
+          "artifact_h_minus_1_minus_lnh": 0.1932
+        },
+        "cascade": {
+          "h": 2.206,
+          "artifact_h_minus_1_minus_lnh": 0.4149
+        },
+        "sv_etas": {
+          "h": 2.19,
+          "artifact_h_minus_1_minus_lnh": 0.4063
+        },
+        "firstgen_etas": {
+          "h": 1.261,
+          "artifact_h_minus_1_minus_lnh": 0.029
+        },
+        "modern_etas": {
+          "h": 1.319,
+          "artifact_h_minus_1_minus_lnh": 0.042
+        },
+        "poisson": {
+          "h": 1.684,
+          "artifact_h_minus_1_minus_lnh": 0.1628
+        },
+        "smoothed": {
+          "h": 2.512,
+          "artifact_h_minus_1_minus_lnh": 0.5911
+        }
+      },
+      "pairwise_shift": {
+        "hybrid_vs_cascade": {
+          "measured_shift": 0.2195,
+          "predicted_shift": -0.2217
+        },
+        "cascade_vs_modern_etas": {
+          "measured_shift": -0.4138,
+          "predicted_shift": 0.3729
+        },
+        "cascade_vs_firstgen_etas": {
+          "measured_shift": -0.3884,
+          "predicted_shift": 0.3859
+        },
+        "cascade_vs_sv_etas": {
+          "measured_shift": -0.0083,
+          "predicted_shift": 0.0086
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "measured_shift": -0.0254,
+          "predicted_shift": -0.013
+        },
+        "hybrid_vs_firstgen_etas": {
+          "measured_shift": -0.1689,
+          "predicted_shift": 0.1642
+        }
+      }
+    },
+    "y35": {
+      "n_pos": 167,
+      "models": {
+        "hybrid": {
+          "h": 1.857,
+          "artifact_h_minus_1_minus_lnh": 0.2382
+        },
+        "cascade": {
+          "h": 2.085,
+          "artifact_h_minus_1_minus_lnh": 0.3503
+        },
+        "sv_etas": {
+          "h": 2.068,
+          "artifact_h_minus_1_minus_lnh": 0.3415
+        },
+        "firstgen_etas": {
+          "h": 0.757,
+          "artifact_h_minus_1_minus_lnh": 0.0354
+        },
+        "modern_etas": {
+          "h": 0.618,
+          "artifact_h_minus_1_minus_lnh": 0.0991
+        },
+        "poisson": {
+          "h": 1.952,
+          "artifact_h_minus_1_minus_lnh": 0.283
+        },
+        "smoothed": {
+          "h": 2.785,
+          "artifact_h_minus_1_minus_lnh": 0.7608
+        }
+      },
+      "pairwise_shift": {
+        "hybrid_vs_cascade": {
+          "measured_shift": 0.1127,
+          "predicted_shift": -0.1121
+        },
+        "cascade_vs_modern_etas": {
+          "measured_shift": -0.233,
+          "predicted_shift": 0.2512
+        },
+        "cascade_vs_firstgen_etas": {
+          "measured_shift": -0.3223,
+          "predicted_shift": 0.3149
+        },
+        "cascade_vs_sv_etas": {
+          "measured_shift": -0.0078,
+          "predicted_shift": 0.0088
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "measured_shift": 0.0892,
+          "predicted_shift": -0.0637
+        },
+        "hybrid_vs_firstgen_etas": {
+          "measured_shift": -0.2096,
+          "predicted_shift": 0.2028
+        }
+      }
+    },
+    "y45": {
+      "n_pos": 22,
+      "models": {
+        "hybrid": {
+          "h": 4.983,
+          "artifact_h_minus_1_minus_lnh": 2.3773
+        },
+        "cascade": {
+          "h": 1.122,
+          "artifact_h_minus_1_minus_lnh": 0.0069
+        },
+        "sv_etas": {
+          "h": 1.098,
+          "artifact_h_minus_1_minus_lnh": 0.0045
+        },
+        "firstgen_etas": {
+          "h": 0.165,
+          "artifact_h_minus_1_minus_lnh": 0.968
+        },
+        "modern_etas": {
+          "h": 0.081,
+          "artifact_h_minus_1_minus_lnh": 1.5918
+        },
+        "poisson": {
+          "h": 0.594,
+          "artifact_h_minus_1_minus_lnh": 0.115
+        },
+        "smoothed": {
+          "h": 0.761,
+          "artifact_h_minus_1_minus_lnh": 0.034
+        }
+      },
+      "pairwise_shift": {
+        "hybrid_vs_cascade": {
+          "measured_shift": -0.0674,
+          "predicted_shift": 2.3704
+        },
+        "cascade_vs_modern_etas": {
+          "measured_shift": 1.6369,
+          "predicted_shift": -1.5849
+        },
+        "cascade_vs_firstgen_etas": {
+          "measured_shift": 0.9502,
+          "predicted_shift": -0.9611
+        },
+        "cascade_vs_sv_etas": {
+          "measured_shift": -0.0004,
+          "predicted_shift": 0.0024
+        },
+        "firstgen_etas_vs_modern_etas": {
+          "measured_shift": 0.6867,
+          "predicted_shift": -0.6238
+        },
+        "hybrid_vs_firstgen_etas": {
+          "measured_shift": 0.8828,
+          "predicted_shift": 1.4093
+        }
+      }
+    }
+  },
+  "y30_three_scoring": {
+    "hybrid_vs_cascade": {
+      "count": {
+        "ig": 0.2886,
+        "ig_ci": [
+          0.2025,
+          0.4333
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": true
+      },
+      "occ_poisson": {
+        "ig": 0.0691,
+        "ig_ci": [
+          -0.0011,
+          0.181
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_bernoulli": {
+        "ig": 0.0988,
+        "ig_ci": [
+          0.0343,
+          0.1989
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": true
+      },
+      "dpr": -0.0067,
+      "dpr_ci": [
+        -0.0203,
+        0.0069
+      ]
+    },
+    "cascade_vs_modern_etas": {
+      "count": {
+        "ig": -0.1303,
+        "ig_ci": [
+          -0.4198,
+          0.0929
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_poisson": {
+        "ig": 0.2835,
+        "ig_ci": [
+          0.0143,
+          0.5226
+        ],
+        "verdict": "separable",
+        "ig_excludes_zero": true
+      },
+      "occ_bernoulli": {
+        "ig": 0.0512,
+        "ig_ci": [
+          -0.1133,
+          0.1983
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "dpr": 0.0261,
+      "dpr_ci": [
+        0.0098,
+        0.0408
+      ]
+    },
+    "cascade_vs_firstgen_etas": {
+      "count": {
+        "ig": -0.4122,
+        "ig_ci": [
+          -0.5602,
+          -0.3031
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": true
+      },
+      "occ_poisson": {
+        "ig": -0.0238,
+        "ig_ci": [
+          -0.1275,
+          0.049
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_bernoulli": {
+        "ig": -0.0141,
+        "ig_ci": [
+          -0.1117,
+          0.057
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "dpr": 0.0095,
+      "dpr_ci": [
+        -0.0052,
+        0.0266
+      ]
+    },
+    "cascade_vs_sv_etas": {
+      "count": {
+        "ig": 0.0653,
+        "ig_ci": [
+          -0.0333,
+          0.1923
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_poisson": {
+        "ig": 0.0736,
+        "ig_ci": [
+          -0.027,
+          0.2011
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_bernoulli": {
+        "ig": 0.0681,
+        "ig_ci": [
+          -0.0288,
+          0.1896
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "dpr": 0.0022,
+      "dpr_ci": [
+        -0.0051,
+        0.0092
+      ]
+    },
+    "firstgen_etas_vs_modern_etas": {
+      "count": {
+        "ig": 0.2819,
+        "ig_ci": [
+          0.0515,
+          0.4985
+        ],
+        "verdict": "separable",
+        "ig_excludes_zero": true
+      },
+      "occ_poisson": {
+        "ig": 0.3073,
+        "ig_ci": [
+          0.0809,
+          0.5327
+        ],
+        "verdict": "separable",
+        "ig_excludes_zero": true
+      },
+      "occ_bernoulli": {
+        "ig": 0.0652,
+        "ig_ci": [
+          -0.041,
+          0.1874
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "dpr": 0.0165,
+      "dpr_ci": [
+        0.005,
+        0.0285
+      ]
+    },
+    "hybrid_vs_firstgen_etas": {
+      "count": {
+        "ig": -0.1235,
+        "ig_ci": [
+          -0.2098,
+          -0.0516
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": true
+      },
+      "occ_poisson": {
+        "ig": 0.0453,
+        "ig_ci": [
+          -0.0054,
+          0.097
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": false
+      },
+      "occ_bernoulli": {
+        "ig": 0.0847,
+        "ig_ci": [
+          0.0324,
+          0.132
+        ],
+        "verdict": "inseparable",
+        "ig_excludes_zero": true
+      },
+      "dpr": 0.0028,
+      "dpr_ci": [
+        -0.0121,
+        0.0194
+      ]
+    }
+  }
+}

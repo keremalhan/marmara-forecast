@@ -60,13 +60,18 @@ def _hybrid_P(grid_row_feats, lam_sim, count_col):
 
 
 def issue_forecast():
-    params = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    rep = json.load(open(OUT / "etas_fit_report.json"))
+    params = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    rep = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     b_op, b_aki, b_pos = rep["operational_b_for_cascade"], rep["b_aki"], rep["b_positive"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
     catalog_end = cat["datetime_utc"].max()
-    t0 = catalog_end.normalize() + DAY            # forecast issued from the day after last event
+    # t0 is the day after the LATER of (last catalogue event, today), so the issue time always
+    # precedes t0 even when the monthly job runs late -- the one property the log exists to have.
+    # (A job running a day late previously issued t0+1, breaking strict prospectivity; see the
+    # 2026-07-05 annotation in forecast_log.jsonl.)
+    now = pd.Timestamp(datetime.now(timezone.utc)).tz_localize(None)
+    t0 = max(catalog_end.normalize(), now.normalize()) + DAY
     t0d = float(G._to_days(t0))
     target_end = t0 + 30 * DAY
     hist = cat[["datetime_utc", "longitude", "latitude", "mag_w"]]
@@ -125,7 +130,7 @@ def _read_jsonl(p):
 def log_forecast(fc):
     PRO.mkdir(parents=True, exist_ok=True)
     existing = _read_jsonl(FLOG)
-    if any(e["t0"] == fc["t0"] for e in existing):
+    if any(e.get("t0") == fc["t0"] for e in existing):
         return False                                # idempotent: already logged this t0
     with open(FLOG, "a") as f:
         f.write(json.dumps(fc, default=str) + "\n")
@@ -133,13 +138,15 @@ def log_forecast(fc):
 
 
 def score_closed():
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     catalog_end = cat["datetime_utc"].max()
     spec = G.MODEL_SPEC
     logged = _read_jsonl(FLOG)
     scored_t0 = {s["t0"] for s in _read_jsonl(SLOG)}
     newly = []
     for fc in logged:
+        if fc.get("schema") != "prospective_v1":
+            continue                                # skip non-forecast markers (e.g. pipeline_transition_v2)
         t0 = pd.Timestamp(fc["t0"]); tend = pd.Timestamp(fc["target_end"])
         if fc["t0"] in scored_t0 or tend > catalog_end:
             continue                                # not closed yet, or already scored

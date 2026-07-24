@@ -1,0 +1,91 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "C (downside propagation)"
+  },
+  "label": "ONE DOWNSIDE SCENARIO at a branching ratio the likelihood rejects relative to the operational 0.95 (2[l(0.95)-l(0.90)] = 58.5). NOT a confidence bound; the profile earned no interval.",
+  "n_downside": 0.9,
+  "n_realized": 0.9,
+  "b_op": 1.15,
+  "t0": "2026-07-05",
+  "fit_n090": {
+    "k": 0.5452373496228486,
+    "alpha": 1.399951735166807,
+    "c": 0.02247260036063298,
+    "p": 1.069660887007651,
+    "mu_total": 0.7123600927899577,
+    "branching_mmax7.6": 0.89995479491758
+  },
+  "fit_operational_n095": {
+    "k": 0.5792057357944799,
+    "alpha": 1.3862037966163911,
+    "c": 0.021883481418978924,
+    "p": 1.0656371348150495,
+    "mu_total": 0.7027303069616911,
+    "branching_mmax7.6": 0.9499552123776772
+  },
+  "horizons": {
+    "30d": {
+      "operational_n0.95": {
+        "P5.5": 0.0574,
+        "P6.0": 0.0169
+      },
+      "downside_n0.90": {
+        "P5.5": 0.059,
+        "P6.0": 0.0169
+      },
+      "effect_P5.5": {
+        "operational": 0.0574,
+        "downside": 0.059,
+        "frac_change": 0.02787
+      },
+      "effect_P6.0": {
+        "operational": 0.0169,
+        "downside": 0.0169,
+        "frac_change": 0.0
+      }
+    },
+    "90d": {
+      "operational_n0.95": {
+        "P5.5": 0.1682,
+        "P6.0": 0.0481
+      },
+      "downside_n0.90": {
+        "P5.5": 0.1674,
+        "P6.0": 0.0475
+      },
+      "effect_P5.5": {
+        "operational": 0.1682,
+        "downside": 0.1674,
+        "frac_change": -0.00476
+      },
+      "effect_P6.0": {
+        "operational": 0.0481,
+        "downside": 0.0475,
+        "frac_change": -0.01247
+      }
+    },
+    "365d": {
+      "operational_n0.95": {
+        "P5.5": 0.5213333333333333,
+        "P6.0": 0.184
+      },
+      "downside_n0.90": {
+        "P5.5": 0.526,
+        "P6.0": 0.18066666666666667
+      },
+      "effect_P5.5": {
+        "operational": 0.521333,
+        "downside": 0.526,
+        "frac_change": 0.00895
+      },
+      "effect_P6.0": {
+        "operational": 0.184,
+        "downside": 0.180667,
+        "frac_change": -0.01812
+      }
+    }
+  },
+  "runtime_s": 365.4
+}

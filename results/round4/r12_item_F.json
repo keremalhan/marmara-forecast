@@ -1,0 +1,170 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "F"
+  },
+  "design": {
+    "inner_train_end": "2021-01-01",
+    "tail": "2021 windows",
+    "candidates": [
+      10,
+      25,
+      50,
+      100,
+      147,
+      200,
+      400
+    ],
+    "early_stopping": false,
+    "note": "only the ML stage changes; cascade and first-gen are frozen physics"
+  },
+  "targets": {
+    "y30": {
+      "tail_ll_curve": {
+        "10": -5210.251,
+        "25": -4714.369,
+        "50": -2539.939,
+        "100": -2088.629,
+        "147": -2029.304,
+        "200": -1937.231,
+        "400": -2038.297
+      },
+      "selected_trees": 200,
+      "shipped_trees": 147,
+      "selected_w": 0.7,
+      "shipped_w": 0.8,
+      "w_argmax": 0.8,
+      "verdicts": {
+        "hybrid_vs_cascade": {
+          "d_ig": {
+            "point": 0.148547,
+            "ci95": [
+              0.043169,
+              0.304973
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.038361,
+            "ci95": [
+              -0.056011,
+              -0.019145
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_sv_etas": {
+          "d_ig": {
+            "point": 0.213804,
+            "ci95": [
+              0.093589,
+              0.361947
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.036193,
+            "ci95": [
+              -0.050443,
+              -0.019128
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_firstgen_etas": {
+          "d_ig": {
+            "point": -0.263633,
+            "ci95": [
+              -0.372604,
+              -0.168107
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.028817,
+            "ci95": [
+              -0.042098,
+              -0.011358
+            ]
+          },
+          "verdict": "firstgen_etas beats hybrid"
+        }
+      },
+      "max_abs_dev_vs_shipped_hybrid": 0.6465455083753244
+    },
+    "y35": {
+      "tail_ll_curve": {
+        "10": -413.973,
+        "25": -380.808,
+        "50": -356.454,
+        "100": -344.513,
+        "147": -346.924,
+        "200": -346.68,
+        "400": -359.508
+      },
+      "selected_trees": 100,
+      "shipped_trees": 10,
+      "selected_w": 0.9,
+      "shipped_w": 0.4,
+      "w_argmax": 0.9,
+      "verdicts": {
+        "hybrid_vs_cascade": {
+          "d_ig": {
+            "point": 0.214961,
+            "ci95": [
+              -0.006966,
+              0.435526
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.059427,
+            "ci95": [
+              -0.093715,
+              -0.021385
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_sv_etas": {
+          "d_ig": {
+            "point": 0.216479,
+            "ci95": [
+              -0.070771,
+              0.56343
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.05933,
+            "ci95": [
+              -0.093085,
+              -0.022122
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_firstgen_etas": {
+          "d_ig": {
+            "point": -0.338422,
+            "ci95": [
+              -0.628918,
+              -0.089542
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.05471,
+            "ci95": [
+              -0.086433,
+              -0.018551
+            ]
+          },
+          "verdict": "firstgen_etas beats hybrid"
+        }
+      },
+      "max_abs_dev_vs_shipped_hybrid": 0.959615832601148
+    }
+  },
+  "verdict_diff_vs_shipped": [
+    "y30/hybrid_vs_firstgen_etas: inseparable -> firstgen_etas beats hybrid",
+    "y35/hybrid_vs_firstgen_etas: inseparable -> firstgen_etas beats hybrid"
+  ],
+  "any_verdict_changed": true,
+  "runtime_s": 140.4
+}

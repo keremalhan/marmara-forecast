@@ -1,0 +1,975 @@
+{
+  "a_test_t0_list": {
+    "anchor_rule_verbatim": {
+      "source": "src/marmara/grid.py :: window_starts(cat_end)",
+      "code": "starts=[]; k=0\nwhile True:\n    t0 = T0_START + pd.Timedelta(days=STEP_D*k)\n    if t0 + pd.Timedelta(days=HORIZON_D) > cat_end: break\n    starts.append(t0); k += 1",
+      "anchor_date": "2005-01-01",
+      "step_days": 30.0,
+      "horizon_days": 30.0,
+      "anchor_statement": "Tiling is anchored to the FIXED calendar date 2005-01-01 (grid.T0_START); window k has t0 = 2005-01-01 + 30.0*k days. It is NOT anchored to the catalogue start, to month boundaries, or to the split dates. Step = 30 days = the horizon, so windows tile contiguously and DO NOT overlap.",
+      "last_window_rule": "The loop stops at the first k whose target end exceeds the catalogue end: the last window kept is the largest k with t0 + 30d <= cat_end. This is a GRID-CONSTRUCTION cap (catalogue-driven), separate from the split rule.",
+      "verified_all_t0_equal_anchor_plus_30k": true,
+      "grid_total_windows": 262,
+      "grid_first_t0": "2005-01-01",
+      "grid_last_t0": "2026-06-10"
+    },
+    "split_rule": {
+      "source": "src/marmara/train.py :: split_masks",
+      "TRAIN_END": "2022-01-01",
+      "VAL_END": "2024-01-01",
+      "TEST_TARGET_END": "2026-03-31",
+      "test": "(t0 >= VAL_END) & (t0 + 30d <= TEST_TARGET_END)"
+    },
+    "n_test_windows": 26,
+    "count_is_26": true,
+    "step_days_between_consecutive_test_t0": [
+      30.0
+    ],
+    "step_is_30": true,
+    "window_index_range": [
+      232,
+      257
+    ],
+    "n_test_rows": 31694,
+    "cells_per_window": 1219,
+    "windows": [
+      {
+        "n": 1,
+        "window": 232,
+        "t0": "2024-01-22",
+        "target_end": "2024-02-21"
+      },
+      {
+        "n": 2,
+        "window": 233,
+        "t0": "2024-02-21",
+        "target_end": "2024-03-22"
+      },
+      {
+        "n": 3,
+        "window": 234,
+        "t0": "2024-03-22",
+        "target_end": "2024-04-21"
+      },
+      {
+        "n": 4,
+        "window": 235,
+        "t0": "2024-04-21",
+        "target_end": "2024-05-21"
+      },
+      {
+        "n": 5,
+        "window": 236,
+        "t0": "2024-05-21",
+        "target_end": "2024-06-20"
+      },
+      {
+        "n": 6,
+        "window": 237,
+        "t0": "2024-06-20",
+        "target_end": "2024-07-20"
+      },
+      {
+        "n": 7,
+        "window": 238,
+        "t0": "2024-07-20",
+        "target_end": "2024-08-19"
+      },
+      {
+        "n": 8,
+        "window": 239,
+        "t0": "2024-08-19",
+        "target_end": "2024-09-18"
+      },
+      {
+        "n": 9,
+        "window": 240,
+        "t0": "2024-09-18",
+        "target_end": "2024-10-18"
+      },
+      {
+        "n": 10,
+        "window": 241,
+        "t0": "2024-10-18",
+        "target_end": "2024-11-17"
+      },
+      {
+        "n": 11,
+        "window": 242,
+        "t0": "2024-11-17",
+        "target_end": "2024-12-17"
+      },
+      {
+        "n": 12,
+        "window": 243,
+        "t0": "2024-12-17",
+        "target_end": "2025-01-16"
+      },
+      {
+        "n": 13,
+        "window": 244,
+        "t0": "2025-01-16",
+        "target_end": "2025-02-15"
+      },
+      {
+        "n": 14,
+        "window": 245,
+        "t0": "2025-02-15",
+        "target_end": "2025-03-17"
+      },
+      {
+        "n": 15,
+        "window": 246,
+        "t0": "2025-03-17",
+        "target_end": "2025-04-16"
+      },
+      {
+        "n": 16,
+        "window": 247,
+        "t0": "2025-04-16",
+        "target_end": "2025-05-16"
+      },
+      {
+        "n": 17,
+        "window": 248,
+        "t0": "2025-05-16",
+        "target_end": "2025-06-15"
+      },
+      {
+        "n": 18,
+        "window": 249,
+        "t0": "2025-06-15",
+        "target_end": "2025-07-15"
+      },
+      {
+        "n": 19,
+        "window": 250,
+        "t0": "2025-07-15",
+        "target_end": "2025-08-14"
+      },
+      {
+        "n": 20,
+        "window": 251,
+        "t0": "2025-08-14",
+        "target_end": "2025-09-13"
+      },
+      {
+        "n": 21,
+        "window": 252,
+        "t0": "2025-09-13",
+        "target_end": "2025-10-13"
+      },
+      {
+        "n": 22,
+        "window": 253,
+        "t0": "2025-10-13",
+        "target_end": "2025-11-12"
+      },
+      {
+        "n": 23,
+        "window": 254,
+        "t0": "2025-11-12",
+        "target_end": "2025-12-12"
+      },
+      {
+        "n": 24,
+        "window": 255,
+        "t0": "2025-12-12",
+        "target_end": "2026-01-11"
+      },
+      {
+        "n": 25,
+        "window": 256,
+        "t0": "2026-01-11",
+        "target_end": "2026-02-10"
+      },
+      {
+        "n": 26,
+        "window": 257,
+        "t0": "2026-02-10",
+        "target_end": "2026-03-12"
+      }
+    ],
+    "first_excluded_window": {
+      "window": 258,
+      "t0": "2026-03-12",
+      "target_end": "2026-04-11",
+      "why": "target_end 2026-04-11 > TEST_TARGET_END 2026-03-31 -> forecast_tail, not test"
+    }
+  },
+  "b_csep_quantile_convention": {
+    "which_delta_is_reported": "delta_1",
+    "the_0.094_is": "delta_1 of the CASCADE's pyCSEP catalog-based Number test (results/csep/pycsep_results.json -> models.cascade.Number.delta1 = 0.094; the companion delta2 = 0.908 is ALSO stored)",
+    "pycsep_definition": "pyCSEP catalog_evaluations.number_test returns .quantile = (delta_1, delta_2) with delta_1 = P(X >= x_obs) and delta_2 = P(X <= x_obs) over the simulated catalogue counts.",
+    "code_line_that_selects_it": {
+      "file": "scripts/csep_run.py",
+      "function": "pass_flag",
+      "lines": "73-75",
+      "verbatim": "if name.startswith(\"Number\"):\n    d = quantile if isinstance(quantile, (tuple, list)) else (quantile, 1 - quantile)\n    return bool(min(d[0], d[1]) > 0.025), {\"delta1\": round(float(d[0]), 4), \"delta2\": round(float(d[1]), 4)}",
+      "reading": "d[0] = r.quantile[0] = pyCSEP delta_1 is stored under the key 'delta1'; d[1] = delta_2 under 'delta2'. BOTH are persisted; the PASS flag is two-sided, min(delta1,delta2) > 0.025 at alpha=0.05. The paper quotes delta_1."
+    },
+    "N_test_convention": "delta_1 = P(X >= x_obs). 0.094 means 9.4% of the cascade's simulated catalogues had >= 1383 events, i.e. the observation sits in the UPPER tail (the forecast under-counts). Consistent with delta2 = 0.908 and forecast mean 1305.772 < 1383 observed. delta1+delta2 = 1.002 != 1 exactly because both are inclusive at x_obs.",
+    "M_S_PL_convention": {
+      "code_line": "q = quantile[0] if isinstance(quantile,(tuple,list)) else quantile ; return bool(0.025 <= q <= 0.975), {\"gamma\": round(float(q),4)}",
+      "statistic": "a single quantile score gamma stored under the key 'gamma' (NOT delta1/delta2)",
+      "definition": "gamma = fraction of simulated catalogues whose test statistic is <= the observed statistic, i.e. gamma = P(S_sim <= S_obs)",
+      "pass_rule": "two-sided, gamma in [0.025, 0.975] at alpha=0.05"
+    },
+    "values_as_stored": {
+      "cascade_N_delta1": 0.094,
+      "cascade_N_delta2": 0.908,
+      "cascade_N_test_dist_mean": 1305.772,
+      "cascade_N_pass": true,
+      "cascade_M_gamma": 0.252,
+      "cascade_S_gamma": 0.0,
+      "cascade_PL_gamma": 0.0,
+      "sv_etas_N_delta1": 0.08,
+      "sv_etas_N_delta2": 0.922,
+      "sv_etas_N_test_dist_mean": 1295.986,
+      "hybrid_N_delta1": 0.0,
+      "hybrid_N_delta2": 1.0,
+      "hybrid_N_test_dist_mean": 1041.074,
+      "hybrid_M_gamma": 0.61,
+      "hybrid_S_gamma": 0.0,
+      "hybrid_PL_gamma": 0.0,
+      "n_observed": 1383,
+      "n_cat": 500,
+      "seed": 5000,
+      "pycsep_version": "0.8.0"
+    },
+    "CORRECTION_to_the_task_premise": "The task described '0.61' as an 'S-test/pseudo-likelihood' value. It is NOT. 0.61 is the HYBRID's MAGNITUDE-test gamma (results/round3/hybrid_csep.json -> models.hybrid.Magnitude.gamma = 0.61), matching the paper: 'the hybrid stays magnitude-consistent (quantile 0.61)'. Every S-test and PL-test gamma stored for cascade, sv_etas, modern_etas and hybrid is 0.0 (all rejected). No stored artifact contains an S-test or PL quantile of 0.61.",
+    "cross_check_note": "The in-house results/csep/csep_results.json (N_sim=1000, seed=42) gives DIFFERENT cascade values (delta1=0.013, N_forecast_mean=1304.1, M gamma=0.002, all FAIL). The paper's 0.094/0.25/1,306 come from the pyCSEP run, consistent with the paper's 'computed with the community pyCSEP toolkit'. pycsep_results.json.cross_check_vs_inhouse records agree_NM=false for cascade and sv_etas."
+  },
+  "c_placement_term": {
+    "source": [
+      "results/mechanism_ig_split.json",
+      "results/mechanism_ig_split_full.json (y30 block, identical)"
+    ],
+    "script": "scripts/verify/mechanism_ig_split.py",
+    "pair": "hybrid vs cascade, y30, TEST",
+    "definition_verbatim": "placement P = sum_i y_i (ln L_h,i - ln L_c,i)   (positives only; 'ranking' mass); count C = -sum_i (lambda_h,i - lambda_c,i) (all cells; 'rate calibration'); IG = (P + C)/n_pos",
+    "n_pos": 592,
+    "placement_TOTAL_nats": -95.26,
+    "placement_NATS_PER_POSITIVE": -0.160912,
+    "count_TOTAL_nats": 266.14,
+    "count_NATS_PER_POSITIVE": 0.449561,
+    "total_ll_gain_stored": 170.87,
+    "ig_per_event_stored": 0.2886,
+    "ig_per_event_ci_stored": [
+      0.2025,
+      0.4333
+    ],
+    "placement_share_pct": -55.7,
+    "count_share_pct": 155.7,
+    "placement_share_ci_pct": [
+      -103.484,
+      -15.9931
+    ],
+    "count_share_ci_pct": [
+      115.9931,
+      203.484
+    ],
+    "how_they_relate": "placement/pos + count/pos = -0.160912 + 0.449561 = +0.288649 = the +0.29 headline (stored ig_per_event 0.2886). Shares: -55.75% + 155.76% = 100%. The ML's +0.29 is a rate TRIM (count term) that PAYS a placement penalty of 0.161 nats per positive.",
+    "NATS_CI": "NOT RECOVERABLE FROM ARTIFACTS. scripts/verify/mechanism_ig_split.py applies _ci() only to boot_ig, to 100*boot_P_share and 100*boot_C_share, and to the per-quadrant boot_quad_dll/share. It never stores a CI on the total P in nats. Rescaling the stored SHARE CI by the point total (-103.484% x 170.87 = -176.8 ; -15.9931% x 170.87 = -27.3) would be METHODOLOGICALLY WRONG (the bootstrap share and the bootstrap total are correlated; that product is not the bootstrap distribution of P). To obtain a nats CI, mechanism_ig_split.py must be re-run with an added _ci(boot_P) on the raw nats replicates (B=2000, seed=42, mean_block=3.0).",
+    "paper_status": "paper/paper_seismica.md line 641 states only 'the placement term being negative (above)'. The '(above)' cross-reference does NOT resolve: grep finds NO occurrence of the 156% / -56% split, nor of -95.26 or 266.14, anywhere in paper_seismica.md or supplement_seismica.md. The 156% [116,203] / -56% [-103,-16] figures appear ONLY in docs/round2_adversarial_changelog.md finding 1. The nats value has never been printed anywhere.",
+    "per_quadrant_placement_nats": {
+      "pre_Kumburgaz|aftershock_zone": {
+        "placement_nats": -6.19,
+        "count_nats": 17.07,
+        "n_pos": 56,
+        "placement_per_pos": -0.1105
+      },
+      "pre_Kumburgaz|background": {
+        "placement_nats": -35.62,
+        "count_nats": 142.66,
+        "n_pos": 290,
+        "placement_per_pos": -0.1228
+      },
+      "post_Kumburgaz|aftershock_zone": {
+        "placement_nats": -7.3,
+        "count_nats": 26.77,
+        "n_pos": 81,
+        "placement_per_pos": -0.0901
+      },
+      "post_Kumburgaz|background": {
+        "placement_nats": -46.16,
+        "count_nats": 79.64,
+        "n_pos": 165,
+        "placement_per_pos": -0.2798
+      }
+    },
+    "val_split_comparison": {
+      "note": "results/round3/t1_recalibration.json y30.val_decomposition_hybrid_vs_cascade",
+      "placement_nats": -85.37,
+      "count_nats": 298.23,
+      "total_ll": 212.86,
+      "ig_per_event": 0.4617,
+      "placement_share_pct": -40.1,
+      "count_share_pct": 140.1,
+      "placement_per_pos_n461": -0.185184
+    }
+  },
+  "d_arithmetic_reconciliation": {
+    "headline_IG_PR_AUC_CI": {
+      "abstract_dPR_AUC_hybrid_vs_cascade": {
+        "paper_prints": "-0.007 [-0.020, +0.007]",
+        "exact_stored": {
+          "dpr": -0.0067,
+          "ci": [
+            -0.0203,
+            0.0069
+          ]
+        },
+        "source": "results/round3/t2_occupancy.json count_scored.hybrid_vs_cascade",
+        "claim": "'adds no ranking skill (\u0394PR-AUC versus the cascade \u22120.007 [\u22120.020, +0.007])'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s4_IG_hybrid_vs_cascade_count": {
+        "paper_prints": "+0.29 [+0.20, +0.43]",
+        "exact_stored": {
+          "ig": 0.28863955891552995,
+          "ci": [
+            0.2025,
+            0.4333
+          ]
+        },
+        "source": "results/evaluation.json targets.y30.splits.test.ig_hybrid_vs.cascade (unrounded); CI results/round3/t2_occupancy.json",
+        "claim": "'the hybrid's likelihood edge over the cascade (+0.29 [+0.20, +0.43])'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "abstract_proper_score_edge": {
+        "paper_prints": "+0.10 [+0.05, +0.15]",
+        "exact_stored": {
+          "point_debiased_Kinf": 0.0951,
+          "ci_from_K5000": [
+            0.0506,
+            0.1472
+          ],
+          "K2000_ig": 0.101
+        },
+        "source": "results/round3/t6_debias.json hybrid_vs_cascade_topup",
+        "claim": "'a small edge survives (+0.10 [+0.05, +0.15] nats per positive)'",
+        "note": "MIXED SOURCE: point = K->inf extrapolation (0.0951); CI = the K=5000 CI. \u00a75 prints the same numbers as '+0.095 [+0.051, +0.147]'. Both roundings are correct; the point and the CI come from different K, which is defensible but should be stated.",
+        "verdict": "RECONCILES (with a source caveat)"
+      },
+      "s5_proper_score_edge": {
+        "paper_prints": "+0.095 / +0.183 / +0.099",
+        "exact_stored": {
+          "topup_Kinf": 0.0951,
+          "topup_K5000_ci": [
+            0.0506,
+            0.1472
+          ],
+          "capped_Kinf": 0.1833,
+          "proxy": 0.099
+        },
+        "source": "results/round3/t6_debias.json + results/round3/t7_gems.json native_edge_bracket",
+        "claim": "'+0.095 [+0.051, +0.147] ... bounded above by +0.183 ... independently estimated at +0.099'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_b_range": {
+        "paper_prints": "+0.095 to +0.109",
+        "exact_stored": {
+          "b1.15_topup_Kinf": 0.0951,
+          "b1.15_topup_K2000": 0.101,
+          "b1.10_K2000": 0.1086,
+          "b1.20_K2000": 0.1051
+        },
+        "source": "t6_debias.json (b=1.15) + round3/claims_bernoulli.json (b=1.10/1.20)",
+        "claim": "'it holds across the operational b range (+0.095 to +0.109)'",
+        "note": "FLAG - APPLES TO ORANGES: the lower endpoint 0.095 is the K->inf DEBIASED value at b=1.15, while the upper endpoint 0.109 is a K=2000 ADD-ONE value at b=1.10. A construction-consistent K=2000 range would be [+0.101, +0.109]; a construction-consistent debiased range is not stored for b=1.10/1.20. The interval is real but its endpoints are not computed the same way.",
+        "verdict": "RECONCILES ARITHMETICALLY / MIXED CONSTRUCTION - FLAG"
+      },
+      "s5_y35_null": {
+        "paper_prints": "-0.035 [-0.090, +0.028]",
+        "exact_stored": {
+          "ig": -0.035,
+          "ci": [
+            -0.0896,
+            0.028
+          ]
+        },
+        "source": "results/round3/claims_bernoulli.json y35_hybrid_vs_cascade_native_1.15",
+        "claim": "'no resolved edge remains (\u22120.035 [\u22120.090, +0.028])'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_cascade_vs_firstgen": {
+        "paper_prints": "-0.056 / -0.042 / -0.014",
+        "exact_stored": {
+          "cascade_vs_firstgen_Kinf": -0.0561,
+          "K5000_ci": [
+            -0.0965,
+            -0.0321
+          ],
+          "gem1a_ig": -0.0141,
+          "gem1a_ci": [
+            -0.1117,
+            0.057
+          ]
+        },
+        "source": "results/round3/t6_debias.json cascade_vs_firstgen + results/round3/t7_gems.json gem1a",
+        "claim": "'(\u22120.056 [\u22120.097, \u22120.032]) ... \u22120.042 of global calibration and \u22120.014 [\u22120.112, +0.057] of non-uniform structure'",
+        "note": "Decomposition arithmetic CHECKS: -0.0561 - (-0.0141) = -0.0420 = the stated -0.042; -0.042 + -0.014 = -0.056. HOWEVER the t7_gems.json 'reading' field asserts 'native -0.056 = calibration -0.124 + placement', i.e. -0.124 not -0.042. That stale in-file note CONTRADICTS the paper; the paper's arithmetic is the self-consistent one.",
+        "verdict": "RECONCILES (stale contradictory note in t7_gems.json 'reading')"
+      },
+      "s5_PR_AUC_233_vs_223": {
+        "paper_prints": "0.233 vs 0.223",
+        "exact_stored": {
+          "cascade_pr_auc": 0.23250763776341044,
+          "firstgen_etas_pr_auc": 0.22296372702542686
+        },
+        "source": "results/evaluation.json targets.y30.splits.test.scores",
+        "claim": "'buys back only ranking (PR-AUC 0.233 versus 0.223)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_static_map": {
+        "paper_prints": "+0.004 [-0.043,+0.052]; 0.225",
+        "exact_stored": {
+          "ig": 0.0044,
+          "ci": [
+            -0.0427,
+            0.0518
+          ],
+          "static_map_PR": 0.2254,
+          "hybrid_PR": 0.22576740408560986
+        },
+        "source": "results/round3/t7_gems.json gem2 + results/evaluation.json",
+        "claim": "'(+0.004 [\u22120.043, +0.052]; ranking 0.225, indistinguishable from the hybrid's)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_two_scalar": {
+        "paper_prints": "s_bg=0.47, s_trig=0.40",
+        "exact_stored": {
+          "s_bg": 0.4648,
+          "s_trig": 0.4014,
+          "ig": 0.0455,
+          "ci": [
+            -0.0047,
+            0.1418
+          ]
+        },
+        "source": "results/round3/t8_two_scalar.json (s_bg also in t9_final_checks.json gem_nesting_lock)",
+        "claim": "'fits s_bg = 0.47, s_trig = 0.40 ... gains +0.046 [\u22120.005, +0.142]'",
+        "note": "FLAG - ROUNDING ERROR: stored s_bg = 0.4648 rounds to 0.46, NOT 0.47. Independently confirmed by the paper's own rate-weighted mean: 0.416*0.4648 + 0.584*0.4014 = 0.42777 -> the stored 0.4278 / printed 0.428. Using s_bg=0.47 would give 0.4299 -> 0.430, contradicting the paper's own '0.428'. s_trig = 0.4014 -> 0.40 is correct.",
+        "verdict": "DOES NOT RECONCILE - s_bg should print 0.46"
+      },
+      "s5_rate_weighted_mean": {
+        "paper_prints": "42%; 0.428; optimum 0.423",
+        "exact_stored": {
+          "bg_frac": 0.416,
+          "rate_weighted_mean_2scalar": 0.4278,
+          "single_scalar_optimum": 0.423
+        },
+        "source": "results/round3/t8_two_scalar.json + results/round3/t9_final_checks.json",
+        "claim": "'(background is 42% of the simulated rate; the rate-weighted mean, 0.428, reproduces the single-scalar optimum)'",
+        "note": "0.416 -> '42%' rounds correctly at 0 dp (41.6%).",
+        "verdict": "RECONCILES"
+      },
+      "s5_dynamic_remainder": {
+        "paper_prints": "+0.053 [+0.018,+0.085]",
+        "exact_stored": {
+          "dIG": 0.0532,
+          "ci": [
+            0.0176,
+            0.0852
+          ]
+        },
+        "source": "results/round3/t9_final_checks.json paired_hybrid_vs_two_scalar",
+        "claim": "'+0.053 [+0.018, +0.085]'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_isotonic": {
+        "paper_prints": "+0.162 [-0.21,+0.52]",
+        "exact_stored": {
+          "ig": 0.1622,
+          "ci": [
+            -0.2107,
+            0.515
+          ]
+        },
+        "source": "results/round3/t1_recalibration.json y30.isotonic_vs_cascade",
+        "claim": "'An isotonic monotone map recovers +0.162 [\u22120.21, +0.52]'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s5_regime": {
+        "paper_prints": "as printed",
+        "exact_stored": {
+          "active": {
+            "ig": 0.0786,
+            "ci": [
+              0.0395,
+              0.1242
+            ],
+            "n_pos": 280
+          },
+          "quiet": {
+            "ig": 0.1169,
+            "ci": [
+              -0.0036,
+              0.3245
+            ],
+            "n_pos": 312
+          },
+          "pre": {
+            "dIG": 0.0635,
+            "ci": [
+              0.0274,
+              0.1006
+            ]
+          },
+          "post": {
+            "dIG": 0.1016,
+            "ci": [
+              0.0224,
+              0.2088
+            ]
+          }
+        },
+        "source": "results/round3/t8_two_scalar.json proper_score_regime_split + results/round3/t9_final_checks.json active_edge_by_period",
+        "claim": "'active +0.079 [+0.040,+0.124] over 280 positives; pre +0.064 [+0.027,+0.101]; post +0.102 [+0.022,+0.209]; quiet +0.117 [\u22120.004,+0.325], 312 positives'",
+        "note": "Recombination checks: t9 weighted_IG 0.099 == target_full_edge 0.099; 280+312 = 592 = n_pos.",
+        "verdict": "RECONCILES"
+      },
+      "s4_scalar_matches_identity": {
+        "paper_prints": "s=0.423; +0.415 [+0.32,+0.52]; <0.003",
+        "exact_stored": {
+          "s_val": 0.4227,
+          "measured_ig": 0.4154,
+          "ci": [
+            0.3242,
+            0.5245
+          ],
+          "closed_form_at_s_star": 0.4149,
+          "closed_form_at_s_val": 0.4125,
+          "forgone": 0.0024
+        },
+        "source": "results/round3/t1_recalibration.json y30.scalar_global_vs_cascade + results/round3/t3_lock.json closed_form_IG",
+        "claim": "'a single validation-fit scalar (s = 0.423) matches it to within 0.001 (measured +0.415 [+0.32, +0.52] ..., forgoing under 0.003 relative to the optimum in closed form)'",
+        "note": "'matches to within 0.001' = measured 0.4154 vs closed-form a(h) 0.4149 (diff 0.0005), NOT s vs s* (|0.453-0.423| = 0.030). Forgone = 0.4149-0.4125 = 0.0024 < 0.003. Recomputed independently: ln(0.4227)+2.206*(1-0.4227) = 0.41243; a(2.206) = 0.41482; diff 0.00239.",
+        "verdict": "RECONCILES"
+      },
+      "s4_paired_scalar_vs_hybrid": {
+        "paper_prints": "+0.124 [-0.02,+0.25]; +0.007 [-0.007,+0.020]",
+        "exact_stored": {
+          "ig": 0.1239,
+          "ig_ci": [
+            -0.02,
+            0.2449
+          ],
+          "dpr": 0.0067,
+          "dpr_ci": [
+            -0.0069,
+            0.0203
+          ]
+        },
+        "source": "results/round3/t2_occupancy.json paired_scalar_vs_hybrid",
+        "claim": "'paired \u0394IG +0.124 [\u22120.02, +0.25]; \u0394PR-AUC +0.007 [\u22120.007, +0.020], which equals the cascade\u2013hybrid ranking difference identically'",
+        "note": "Exact negation of hybrid_vs_cascade dpr -0.0067 [-0.0203, 0.0069] -> the 'identically' claim holds exactly.",
+        "verdict": "RECONCILES"
+      }
+    },
+    "occupancy_table5": {
+      "n_pos": 592,
+      "PROVENANCE_FLAG": "Table 5's four rows come from TWO DIFFERENT artifacts. cascade (906.7) and hybrid (748.3) are from results/round3/t6_debias.json totals_test / t7_gems.json O_h_topup_measured (raw MC totals). first-generation (682.0) and inversion (523.3) are from results/round3/t5_native_occupancy.json totals, a file whose own header reads 'Bernoulli log-score on NATIVE occurrence (add-one shrinkage)'. That same t5 file reports sum_P_casc_native = 963.9 and sum_P_hyb_native = 713.1 for the cascade/hybrid - i.e. NOT the 906.7/748.3 the table prints. The table caption says 'Raw native Monte-Carlo occupancy totals'; the cascade/hybrid rows are raw, but whether the firstgen/inversion rows are raw or add-one-shrunk is NOT determinable from the stored JSON alone. Every printed division is nevertheless arithmetically correct.",
+      "rows": [
+        {
+          "forecaster": "cascade",
+          "paper_prints": 907,
+          "exact_stored": 906.7,
+          "source": "t6_debias.totals_test.casc / t7_gems.O_cascade",
+          "ratio_printed": 1.53,
+          "907/592": 1.5321,
+          "906.7/592": 1.5316,
+          "verdict": "RECONCILES"
+        },
+        {
+          "forecaster": "hybrid (top-up)",
+          "paper_prints": 748,
+          "exact_stored": 748.3,
+          "source": "t6_debias.totals_test.hyb_topup / t7_gems.O_h",
+          "ratio_printed": 1.26,
+          "748/592": 1.2635,
+          "748.3/592": 1.264,
+          "verdict": "RECONCILES"
+        },
+        {
+          "forecaster": "first-generation ETAS",
+          "paper_prints": 682,
+          "exact_stored": 682.0,
+          "source": "t5_native_occupancy.totals.sum_P_firstgen",
+          "ratio_printed": 1.15,
+          "682/592": 1.152,
+          "verdict": "RECONCILES"
+        },
+        {
+          "forecaster": "independent inversion",
+          "paper_prints": 523,
+          "exact_stored": 523.3,
+          "source": "t5_native_occupancy.totals.sum_P_inversion",
+          "ratio_printed": 0.88,
+          "523/592": 0.8834,
+          "523.3/592": 0.884,
+          "verdict": "RECONCILES"
+        }
+      ],
+      "all_four_divisions_check": true,
+      "unused_alternative": {
+        "t5_sum_P_casc_native": 963.9,
+        "t5_sum_P_hyb_native": 713.1,
+        "note": "if these had been used the ratios would be 1.63x and 1.20x, not 1.53x and 1.26x"
+      }
+    },
+    "multiplicity": {
+      "catalogue_per_occupied_cell_window": {
+        "paper_prints": 2.34,
+        "exact": 2.33615,
+        "source": "1383 test events / 592 test positives; both in results/round3/t3_lock.json (N_events_test, N_pos_test) and pycsep_results.json n_observed",
+        "verdict": "RECONCILES"
+      },
+      "cascade_simulated_per_occupied_cell_window": {
+        "paper_prints": 1.44,
+        "via_MC_mean": 1.44014,
+        "via_analytic_sumLambda": 1.4405,
+        "source": "pycsep_results.json cascade.Number.test_dist_mean 1305.772 (or t3_lock.sumL_cascade_test 1306.1) / t6_debias.totals_test.casc 906.7",
+        "note": "NOT stored as a literal anywhere; it is a derived quotient. Both routes give 1.44. FLAG: the numerator is a 500-catalogue pyCSEP MC mean (seed 5000) while the denominator is a K=2000 round3 MC occupancy total - two different simulation runs, though both are the cascade at b_op=1.15 and they agree.",
+        "verdict": "RECONCILES (derived, mixed runs)"
+      },
+      "deficit_ratio": {
+        "paper_body_prints": "1.62x",
+        "paper_abstract_prints": "1.6x",
+        "exact_from_unrounded": 1.62217,
+        "exact_from_printed_2.34_over_1.44": 1.625,
+        "note": "unrounded 1.62217 -> 1.62 and -> 1.6. Body and abstract are consistent with each other and with the artifacts. (Note the printed-value quotient 2.34/1.44 = 1.625 sits on a rounding boundary, but the unrounded 1.62217 is unambiguous.)",
+        "verdict": "RECONCILES"
+      }
+    },
+    "csep_counts": {
+      "cascade_1306_vs_1383": {
+        "paper_prints": "1,306 / 1,383 / 0.094",
+        "exact_stored": {
+          "test_dist_mean": 1305.772,
+          "n_observed": 1383,
+          "delta1": 0.094
+        },
+        "source": "results/csep/pycsep_results.json models.cascade.Number",
+        "claim": "'forecast mean 1,306 versus 1,383 observed; number-test quantile 0.094'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "cascade_6pct_below": {
+        "paper_prints": "~6%",
+        "exact_stored": {
+          "exact_pct": 5.5841
+        },
+        "source": "derived from pycsep_results.json",
+        "claim": "'The forecast mean sits ~6% below the observed total'",
+        "note": "5.584% -> '~6%' only at 0 dp; 'nearly 6%' or '~5.6%' would be tighter. Not an error, but the loosest rounding in the set.",
+        "verdict": "RECONCILES (loose rounding)"
+      },
+      "sv_etas_1296_0.080": {
+        "paper_prints": "1,296 / 0.080",
+        "exact_stored": {
+          "test_dist_mean": 1295.986,
+          "delta1": 0.08
+        },
+        "source": "results/csep/pycsep_results.json models.sv_etas.Number",
+        "claim": "'as is sv-ETAS (1,296; 0.080)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "modern_etas_782_43.4pct": {
+        "paper_prints": "43.4% / 782",
+        "exact_stored": {
+          "test_dist_mean": 782.403,
+          "exact_pct": 43.4271
+        },
+        "source": "results/csep/pycsep_results.json models.modern_etas.Number",
+        "claim": "'under-counts by 43.4% (782 versus 1,383)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "hybrid_1041": {
+        "paper_prints": "1,041",
+        "exact_stored": {
+          "test_dist_mean": 1041.074,
+          "delta1": 0.0,
+          "delta2": 1.0
+        },
+        "source": "results/round3/hybrid_csep.json models.hybrid.Number",
+        "claim": "'simulated catalogues average 1,041 events ... (1,041 versus 1,383)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "M_test_0.25": {
+        "paper_prints": "0.25",
+        "exact_stored": {
+          "gamma": 0.252
+        },
+        "source": "results/csep/pycsep_results.json models.cascade.Magnitude",
+        "claim": "'magnitude-consistent (M-test quantile 0.25)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "hybrid_M_0.61": {
+        "paper_prints": "0.61",
+        "exact_stored": {
+          "gamma": 0.61
+        },
+        "source": "results/round3/hybrid_csep.json models.hybrid.Magnitude",
+        "claim": "'the hybrid stays magnitude-consistent (quantile 0.61)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      }
+    },
+    "identity_h": {
+      "abstract_h_2.2": {
+        "paper_prints": "~2.2",
+        "exact_stored": {
+          "cascade_h_y30": 2.206,
+          "t3_lock_handicap_col": 2.2062
+        },
+        "source": "results/round3/t4_identity_scoring.json y30.models.cascade.h ; results/round3/t3_lock.json identity.handicap_col",
+        "claim": "'(h \u2248 2.2)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "a_of_h": {
+        "paper_prints": "0.415",
+        "exact_stored": {
+          "stored": 0.4149,
+          "recomputed_2.206-1-ln(2.206)": 0.41482
+        },
+        "source": "results/round3/t4_identity_scoring.json y30.models.cascade.artifact_h_minus_1_minus_lnh",
+        "claim": "'a(h) = 0.415 nats per positive'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "s_star": {
+        "paper_prints": "0.453",
+        "exact_stored": {
+          "stored": 0.4533,
+          "recomputed_1/2.206": 0.45331
+        },
+        "source": "results/round3/t3_lock.json identity['s_star_test = Npos/sumL']",
+        "claim": "'The test-optimal rescale is s* = 1/h = 0.453'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "h_across_targets": {
+        "paper_prints": "2.206/2.085/1.122; 0.415/0.350/0.007",
+        "exact_stored": {
+          "h": [
+            2.206,
+            2.085,
+            1.122
+          ],
+          "a": [
+            0.4149,
+            0.3503,
+            0.0069
+          ]
+        },
+        "source": "results/round3/t4_identity_scoring.json cascade per target",
+        "claim": "'h falls from 2.206 to 2.085 to 1.122 ... 0.415 \u2192 0.350 \u2192 0.007'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "y45_outlier_h": {
+        "paper_prints": "4.98",
+        "exact_stored": {
+          "h": 4.983,
+          "a": 2.3773
+        },
+        "source": "results/round3/t4_identity_scoring.json y45.models.hybrid",
+        "claim": "'the overfit model-box y45 hybrid (h = 4.98)'",
+        "note": "",
+        "verdict": "RECONCILES"
+      },
+      "body_three_cited_pairs": {
+        "paper_prints": "0.386/0.388; 0.315/0.322; ~0",
+        "exact_stored": {
+          "y30_cascade_vs_firstgen": {
+            "predicted": 0.3859,
+            "measured": -0.3884,
+            "abs_diff": 0.0025
+          },
+          "y35_cascade_vs_firstgen": {
+            "predicted": 0.3149,
+            "measured": -0.3223,
+            "abs_diff": 0.0074
+          },
+          "y30_cascade_vs_sv_etas": {
+            "predicted": 0.0086,
+            "measured": -0.0083,
+            "abs_diff": 0.0003
+          }
+        },
+        "source": "results/round3/t4_identity_scoring.json pairwise_shift",
+        "claim": "'|0.386| predicted versus |0.388| measured for cascade-versus-first-generation at the primary target, |0.315| versus |0.322| at M\u22653.5, and \u22480 for cascade-versus-sv-ETAS'",
+        "note": "All three body-cited pairs reconcile and all are within 0.01. NOTE the stored measured_shift and predicted_shift carry OPPOSITE SIGNS throughout; the paper compares magnitudes with |.| notation, which is consistent with the artifact.",
+        "verdict": "RECONCILES"
+      },
+      "ABSTRACT_WITHIN_0.01_CLAIM": {
+        "claim": "abstract: 'predicting the measured count-to-occurrence shifts across pairs and targets to within 0.01 nats'",
+        "verdict": "DOES NOT RECONCILE AS STATED",
+        "n_pair_target_cells": 18,
+        "n_exceeding_0.01": 9,
+        "detail": "9 of the 18 stored pair x target cells exceed 0.01. Restricting to the powered targets y30+y35 (12 cells), 4 still fail - and ALL FOUR involve modern_etas (the independent inversion): cascade_vs_modern_etas y30 |diff| 0.0409 and y35 0.0182; firstgen_etas_vs_modern_etas y30 0.0124 and y35 0.0255. At y45 (unpowered) essentially everything fails, incl. hybrid_vs_cascade |diff| 2.303. The BODY's narrower claim (three named pairs) is fully supported; the ABSTRACT generalises it to 'across pairs and targets', which the stored artifact contradicts. Suggested fix: qualify the abstract to the pairs/targets actually cited, or state the tolerance that does hold.",
+        "full_table": [
+          {
+            "target": "y30",
+            "pair": "hybrid_vs_cascade",
+            "measured_shift": 0.2195,
+            "predicted_shift": -0.2217,
+            "abs_diff_of_magnitudes": 0.0022,
+            "within_0.01": true
+          },
+          {
+            "target": "y30",
+            "pair": "cascade_vs_modern_etas",
+            "measured_shift": -0.4138,
+            "predicted_shift": 0.3729,
+            "abs_diff_of_magnitudes": 0.0409,
+            "within_0.01": false
+          },
+          {
+            "target": "y30",
+            "pair": "cascade_vs_firstgen_etas",
+            "measured_shift": -0.3884,
+            "predicted_shift": 0.3859,
+            "abs_diff_of_magnitudes": 0.0025,
+            "within_0.01": true
+          },
+          {
+            "target": "y30",
+            "pair": "cascade_vs_sv_etas",
+            "measured_shift": -0.0083,
+            "predicted_shift": 0.0086,
+            "abs_diff_of_magnitudes": 0.0003,
+            "within_0.01": true
+          },
+          {
+            "target": "y30",
+            "pair": "firstgen_etas_vs_modern_etas",
+            "measured_shift": -0.0254,
+            "predicted_shift": -0.013,
+            "abs_diff_of_magnitudes": 0.0124,
+            "within_0.01": false
+          },
+          {
+            "target": "y30",
+            "pair": "hybrid_vs_firstgen_etas",
+            "measured_shift": -0.1689,
+            "predicted_shift": 0.1642,
+            "abs_diff_of_magnitudes": 0.0047,
+            "within_0.01": true
+          },
+          {
+            "target": "y35",
+            "pair": "hybrid_vs_cascade",
+            "measured_shift": 0.1127,
+            "predicted_shift": -0.1121,
+            "abs_diff_of_magnitudes": 0.0006,
+            "within_0.01": true
+          },
+          {
+            "target": "y35",
+            "pair": "cascade_vs_modern_etas",
+            "measured_shift": -0.233,
+            "predicted_shift": 0.2512,
+            "abs_diff_of_magnitudes": 0.0182,
+            "within_0.01": false
+          },
+          {
+            "target": "y35",
+            "pair": "cascade_vs_firstgen_etas",
+            "measured_shift": -0.3223,
+            "predicted_shift": 0.3149,
+            "abs_diff_of_magnitudes": 0.0074,
+            "within_0.01": true
+          },
+          {
+            "target": "y35",
+            "pair": "cascade_vs_sv_etas",
+            "measured_shift": -0.0078,
+            "predicted_shift": 0.0088,
+            "abs_diff_of_magnitudes": 0.001,
+            "within_0.01": true
+          },
+          {
+            "target": "y35",
+            "pair": "firstgen_etas_vs_modern_etas",
+            "measured_shift": 0.0892,
+            "predicted_shift": -0.0637,
+            "abs_diff_of_magnitudes": 0.0255,
+            "within_0.01": false
+          },
+          {
+            "target": "y35",
+            "pair": "hybrid_vs_firstgen_etas",
+            "measured_shift": -0.2096,
+            "predicted_shift": 0.2028,
+            "abs_diff_of_magnitudes": 0.0068,
+            "within_0.01": true
+          },
+          {
+            "target": "y45",
+            "pair": "hybrid_vs_cascade",
+            "measured_shift": -0.0674,
+            "predicted_shift": 2.3704,
+            "abs_diff_of_magnitudes": 2.303,
+            "within_0.01": false
+          },
+          {
+            "target": "y45",
+            "pair": "cascade_vs_modern_etas",
+            "measured_shift": 1.6369,
+            "predicted_shift": -1.5849,
+            "abs_diff_of_magnitudes": 0.052,
+            "within_0.01": false
+          },
+          {
+            "target": "y45",
+            "pair": "cascade_vs_firstgen_etas",
+            "measured_shift": 0.9502,
+            "predicted_shift": -0.9611,
+            "abs_diff_of_magnitudes": 0.0109,
+            "within_0.01": false
+          },
+          {
+            "target": "y45",
+            "pair": "cascade_vs_sv_etas",
+            "measured_shift": -0.0004,
+            "predicted_shift": 0.0024,
+            "abs_diff_of_magnitudes": 0.002,
+            "within_0.01": true
+          },
+          {
+            "target": "y45",
+            "pair": "firstgen_etas_vs_modern_etas",
+            "measured_shift": 0.6867,
+            "predicted_shift": -0.6238,
+            "abs_diff_of_magnitudes": 0.0629,
+            "within_0.01": false
+          },
+          {
+            "target": "y45",
+            "pair": "hybrid_vs_firstgen_etas",
+            "measured_shift": 0.8828,
+            "predicted_shift": 1.4093,
+            "abs_diff_of_magnitudes": 0.5265,
+            "within_0.01": false
+          }
+        ]
+      }
+    }
+  }
+}

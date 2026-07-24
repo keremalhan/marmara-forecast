@@ -77,7 +77,7 @@ def audit_b():
 
 def audit_c():
     # independent reference block bootstrap of y30-test cascade-vs-hybrid ΔPR-AUC.
-    p = pd.read_parquet(OUT / "predictions_y30.parquet")
+    p = pd.read_parquet(OUT / "grid" / "predictions_y30.parquet")
     p = p[p["split"] == "test"]
     win = p["window"].to_numpy(); y = p["y"].to_numpy()
     wins = np.sort(np.unique(win))
@@ -97,7 +97,7 @@ def audit_c():
     diffs = np.array(diffs)
     ref_ci = [round(float(np.percentile(diffs, 2.5)), 5), round(float(np.percentile(diffs, 97.5)), 5)]
     # committed value
-    c = json.load(open(OUT / "bootstrap_ci.json"))
+    c = json.load(open(OUT / "scoring" / "bootstrap_ci.json"))
     committed = c["results"]["y30"]["test"]["pairs"]["cascade_vs_hybrid"]["d_pr_auc"]["ci95"] \
         if "cascade_vs_hybrid" in c["results"]["y30"]["test"]["pairs"] else \
         [-x for x in reversed(c["results"]["y30"]["test"]["pairs"]["hybrid_vs_cascade"]["d_pr_auc"]["ci95"])]

@@ -13,7 +13,7 @@ Provides: per-cell host-segment 30-day renewal P (an ML/forecast feature) and th
 product blend P_combined(M>=6.8) = 1-(1-P_cascade)(1-P_renewal). Renewal is a
 LARGE-EVENT layer only, never blended into the y35/y45 evaluation.
 
-Output: results/renewal_report.json
+Output: results/etas/renewal_report.json
 Run:  "<venv>/bin/python3" -m marmara.renewal
 """
 from __future__ import annotations
@@ -118,7 +118,7 @@ def main():
             "within_order_of_magnitude": bool(parsons_ok),
         },
     }
-    json.dump(report, open(OUT / "renewal_report.json", "w"), indent=2)
+    json.dump(report, open(OUT / "etas" / "renewal_report.json", "w"), indent=2)
     print("segment 30-day / 30-yr conditional P(M~7):")
     for n, s in segs.items():
         print(f"  {n:16s} elapsed {s['elapsed_yr']:.0f}y  P30d={s['P_30day']*100:.4f}%  P30yr={s['P_30yr']*100:.1f}%")

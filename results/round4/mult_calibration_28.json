@@ -1,0 +1,20 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "designation": "POST-REVIEW multiplicity sensitivity (Amendment 8); adjudicates nothing; registered rule remains adjudicator of record.",
+ "battery": "28 same-model cascade seed-pair refits (8 seeds, C(8,2)=28), true diff=0; T0-5 extended 6->28",
+ "two_axis_flags": {
+  "count_scored": 0,
+  "bernoulli_scored": 0,
+  "of": 28,
+  "note": "conjunctive two-axis rule (IG and PR both exclude 0) flags NONE under either scoring; the PR ranking axis never separates for a null pair."
+ },
+ "single_axis_calibration": {
+  "count_IG_K500": "mildly anticonservative (3/28 p<0.01) -- structurally moot, see r26",
+  "bernoulli_IG_K2000": "clean at block 3 (0/28 p<0.01)",
+  "PR": "conservative (0/28 p<0.05)"
+ },
+ "supersedes": "results/mult_calibration.json (6-pair version); paper citation repoints here"
+}

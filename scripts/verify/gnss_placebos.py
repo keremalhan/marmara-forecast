@@ -38,8 +38,8 @@ SHIFT_MIN_WIN = 24            # >= 2 years at 30-day windows
 
 
 def load():
-    g = pd.read_parquet(OUT / "grid_hybrid.parquet")
-    gc = pd.read_parquet(OUT / "gnss_traj_columns.parquet").set_index(["window", "ir", "ic"])
+    g = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
+    gc = pd.read_parquet(OUT / "channels" / "gnss_traj_columns.parquet").set_index(["window", "ir", "ic"])
     idx = pd.MultiIndex.from_frame(g[["window", "ir", "ic"]])
     for c in GNSS4:
         g[c] = gc[c].reindex(idx).to_numpy()

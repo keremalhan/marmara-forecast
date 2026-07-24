@@ -1,0 +1,109 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "n_raw_triggers": 673,
+ "n_M6_hits": 1,
+ "primary_definition": "edge iff centre-distance < 50 km (2 x 25) and |dt| < 30 d",
+ "primary": {
+  "n_episodes": 337,
+  "n_episodes_with_M6": 1,
+  "episode_precision": 0.00297,
+  "false_alarm_ratio": 0.99703,
+  "largest_episode": 74,
+  "singletons": 233
+ },
+ "union_region_time_fraction": 0.03322,
+ "molchan_point": {
+  "tau_fraction_spacetime_alarmed": 0.03322,
+  "nu_miss_rate": 0.0,
+  "hits_captured": 1,
+  "note": "1 of 1 M6 captured"
+ },
+ "sensitivities": {
+  "r20_D14_ctr<2r": {
+   "n_episodes": 405,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00247,
+   "false_alarm_ratio": 0.99753,
+   "largest_episode": 62,
+   "singletons": 324
+  },
+  "r20_D30_ctr<2r": {
+   "n_episodes": 356,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00281,
+   "false_alarm_ratio": 0.99719,
+   "largest_episode": 74,
+   "singletons": 260
+  },
+  "r25_D14_ctr<2r": {
+   "n_episodes": 392,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00255,
+   "false_alarm_ratio": 0.99745,
+   "largest_episode": 62,
+   "singletons": 302
+  },
+  "r25_D30_ctr<2r": {
+   "n_episodes": 337,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00297,
+   "false_alarm_ratio": 0.99703,
+   "largest_episode": 74,
+   "singletons": 233
+  },
+  "r30_D14_ctr<2r": {
+   "n_episodes": 382,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00262,
+   "false_alarm_ratio": 0.99738,
+   "largest_episode": 62,
+   "singletons": 293
+  },
+  "r30_D30_ctr<2r": {
+   "n_episodes": 313,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00319,
+   "false_alarm_ratio": 0.99681,
+   "largest_episode": 77,
+   "singletons": 208
+  },
+  "r25_D30_ctr<r_strict": {
+   "n_episodes": 383,
+   "n_episodes_with_M6": 1,
+   "episode_precision": 0.00261,
+   "false_alarm_ratio": 0.99739,
+   "largest_episode": 74,
+   "singletons": 295
+  }
+ },
+ "robustness": {
+  "episode_count_min": 313,
+  "episode_count_max": 405,
+  "raw_triggers": 673,
+  "all_variants_capture_the_M6": true,
+  "all_variants_precision_le": 0.0032,
+  "reading": "episodes range across definitional choices; the M6 is captured in every variant, and episode precision stays low (one true episode among many) throughout -- the conclusion does not rest on any single definition."
+ },
+ "runtime_s": 0.5,
+ "hit_episode_detail": {
+  "trigger_idx": 582,
+  "date": "2025-04-23",
+  "mag_w": 4.54,
+  "lon": 28.24,
+  "lat": 40.84,
+  "episode_size": 62,
+  "note": "the one hit episode is the Kumburgaz mainshock-day sequence: 62 triggers collapse to 1 episode. This is exactly what deduplication should do -- without it those 62 inflate both numerator and denominator."
+ },
+ "mc_convergence": {
+  "union_fraction_NS200k": 3.256,
+  "union_fraction_NS800k": 3.303,
+  "converged": true
+ },
+ "adversarial_verified": true,
+ "boundary_note": "union region-time samples only inside the model box; edge triggers whose cylinders extend outside are partially counted (minor, conservative for the footprint).",
+ "molchan_n1_caveat": "Molchan point (tau=0.033, nu=0) rests on n=1 M6; it is illustrative, not a statistical skill estimate.",
+ "CONCLUSION": "Deduplication into episodes does NOT rescue the foreshock signal: 673 triggers -> ~337 episodes (313-405 across all definitional choices), the M6 is one episode among them (precision <=0.32%%, false-alarm ratio >=99.68%%) in every variant, and the union footprint is 3.3%% of model-box space-time. Same conclusion as the raw trigger count, now robust to the clustering objection."
+}

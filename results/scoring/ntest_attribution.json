@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "test_period": [
+      "2024-01-22",
+      "2026-03-12"
+    ],
+    "n_windows": 26,
+    "b_op": 1.15,
+    "K": 500,
+    "runtime_s": 4.1
+  },
+  "reproduction_check": {
+    "window": 232,
+    "rerun_super_lam30": 51.8,
+    "stored_super_lam30": 51.8,
+    "n_super": 1.2119
+  },
+  "branching_ratio": {
+    "fitted_b": 1.5424,
+    "n_at_fitted_b": 0.95,
+    "n_at_b_op_supercritical": 1.212,
+    "n_at_b_op_rescaled_mean": 0.95
+  },
+  "forecast_mean": {
+    "supercritical_M3.0": 1499.4,
+    "rescaled_M3.0": 1306.1,
+    "supercritical_M3.5": 399.5,
+    "rescaled_M3.5": 348.2
+  },
+  "observed": {
+    "raw_M3.0": 1383,
+    "M3.5": 361,
+    "corrected_M3.0": 1428,
+    "corrected_M3.0_band": [
+      1199,
+      1699
+    ],
+    "b_test_aki": 1.121,
+    "N_complete_3.45_4.5": 411,
+    "N_ge_3.45": 447,
+    "obs_[3.0,3.45)": 936,
+    "gr_expected_[3.0,3.45)": 980.6,
+    "deficit_[3.0,3.45)": 44.6,
+    "types_[3.0,3.45)": {
+      "ML": 919,
+      "MW": 17
+    },
+    "types_[3.45,4.5)": {
+      "ML": 402,
+      "MW": 9
+    }
+  },
+  "n_test_2x2": {
+    "M>=3.0": {
+      "supercritical_vs_raw": {
+        "forecast_mean": 1499.4,
+        "observed": 1383,
+        "delta1": 0.9989,
+        "delta2": 0.0012,
+        "pass": false
+      },
+      "supercritical_vs_corrected": {
+        "forecast_mean": 1499.4,
+        "observed": 1428,
+        "delta1": 0.969,
+        "delta2": 0.0328,
+        "pass": true
+      },
+      "rescaled_vs_raw": {
+        "forecast_mean": 1306.1,
+        "observed": 1383,
+        "delta1": 0.0179,
+        "delta2": 0.9833,
+        "pass": false
+      },
+      "rescaled_vs_corrected": {
+        "forecast_mean": 1306.1,
+        "observed": 1428,
+        "delta1": 0.0005,
+        "delta2": 0.9996,
+        "pass": false
+      }
+    },
+    "M>=3.5_anchor": {
+      "supercritical_vs_raw": {
+        "forecast_mean": 399.5,
+        "observed": 361,
+        "delta1": 0.9759,
+        "delta2": 0.0272,
+        "pass": true
+      },
+      "rescaled_vs_raw": {
+        "forecast_mean": 348.2,
+        "observed": 361,
+        "delta1": 0.2536,
+        "delta2": 0.7631,
+        "pass": true
+      }
+    }
+  }
+}

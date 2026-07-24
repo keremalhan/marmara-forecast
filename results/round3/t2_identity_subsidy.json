@@ -1,0 +1,62 @@
+{
+  "n_pos_test": 592,
+  "total_events_test_period": 1383,
+  "mean_multiplicity": 2.336,
+  "inv_multiplicity": 0.4281,
+  "scoring": "Poisson LL on binary indicator y in {0,1} (metrics.information_gain)",
+  "models": {
+    "hybrid": {
+      "sumL_test": 1039.9,
+      "sumL_over_npos_test": 1.757,
+      "s_star_val": 0.5818,
+      "closed_form_IG_of_val_scalar_on_test": 0.193
+    },
+    "cascade": {
+      "sumL_test": 1306.1,
+      "sumL_over_npos_test": 2.206,
+      "s_star_val": 0.4227,
+      "closed_form_IG_of_val_scalar_on_test": 0.4125
+    },
+    "sv_etas": {
+      "sumL_test": 1296.7,
+      "sumL_over_npos_test": 2.19,
+      "s_star_val": 0.4277,
+      "closed_form_IG_of_val_scalar_on_test": 0.4042
+    },
+    "firstgen_etas": {
+      "sumL_test": 746.3,
+      "sumL_over_npos_test": 1.261,
+      "s_star_val": 0.7171,
+      "closed_form_IG_of_val_scalar_on_test": 0.0241
+    },
+    "modern_etas": {
+      "sumL_test": 780.6,
+      "sumL_over_npos_test": 1.319,
+      "s_star_val": 1.0039,
+      "closed_form_IG_of_val_scalar_on_test": -0.0013
+    },
+    "smoothed": {
+      "sumL_test": 1487.3,
+      "sumL_over_npos_test": 2.512,
+      "s_star_val": 0.3123,
+      "closed_form_IG_of_val_scalar_on_test": 0.5639
+    },
+    "poisson": {
+      "sumL_test": 996.9,
+      "sumL_over_npos_test": 1.684,
+      "s_star_val": 0.4809,
+      "closed_form_IG_of_val_scalar_on_test": 0.1421
+    }
+  },
+  "identity_check_cascade": {
+    "s_star ~ 1/multiplicity": [
+      0.4227,
+      0.4281
+    ],
+    "sumL ~ npos*multiplicity": [
+      1306.1,
+      1383.0
+    ],
+    "closed_form_IG": 0.4125
+  }
+}

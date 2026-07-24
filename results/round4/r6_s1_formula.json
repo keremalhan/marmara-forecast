@@ -1,0 +1,79 @@
+{
+  "params": {
+    "alpha": 1.3862037966163911,
+    "mc": 3.0,
+    "mmax": 7.6,
+    "dm": 4.6,
+    "k_fitted": 0.5792057357944799,
+    "b_fitted": 1.542417674410537,
+    "n_star_mmax_truncated": 0.949955
+  },
+  "defect": "S1's displayed n1(b) omits the 1 - e^{-beta*dm} normalization denominator of the truncated GR density f(m) it states one line earlier. The CODE (etas_model.branching_ratio) and the sampler (_sample_gr) both carry it, so no published number is affected -- the defect is typographic.",
+  "per_b": [
+    {
+      "b": 1.542418,
+      "beta": 3.551548,
+      "norm_denominator_1_minus_exp_neg_beta_dm": 0.9999999196698278,
+      "n1_displayed_formula": 1.6401,
+      "n1_corrected_formula": 1.6401,
+      "n1_numerical_quadrature": 1.6401,
+      "n1_from_code_branching_ratio": 1.6401,
+      "delta_corrected_minus_displayed": 1.3174949953231874e-07,
+      "rel_delta": 8.033017867881701e-08,
+      "code_matches_corrected": true,
+      "quadrature_matches_corrected": true,
+      "rounds_to_2dp": 1.64,
+      "rounds_to_3dp": 1.64
+    },
+    {
+      "b": 1.15,
+      "beta": 2.647973,
+      "norm_denominator_1_minus_exp_neg_beta_dm": 0.9999948713861601,
+      "n1_displayed_formula": 2.092292,
+      "n1_corrected_formula": 2.092303,
+      "n1_numerical_quadrature": 2.092303,
+      "n1_from_code_branching_ratio": 2.092303,
+      "delta_corrected_minus_displayed": 1.0730611791132105e-05,
+      "rel_delta": 5.128640142835019e-06,
+      "code_matches_corrected": true,
+      "quadrature_matches_corrected": true,
+      "rounds_to_2dp": 2.09,
+      "rounds_to_3dp": 2.092
+    },
+    {
+      "b": 1.02,
+      "beta": 2.348637,
+      "norm_denominator_1_minus_exp_neg_beta_dm": 0.9999796764298906,
+      "n1_displayed_formula": 2.411155,
+      "n1_corrected_formula": 2.411204,
+      "n1_numerical_quadrature": 2.411204,
+      "n1_from_code_branching_ratio": 2.411204,
+      "delta_corrected_minus_displayed": 4.9004276968744875e-05,
+      "rel_delta": 2.032398316525674e-05,
+      "code_matches_corrected": true,
+      "quadrature_matches_corrected": true,
+      "rounds_to_2dp": 2.41,
+      "rounds_to_3dp": 2.411
+    }
+  ],
+  "K_sim_over_K": {
+    "displayed_formula": 0.783877,
+    "corrected_formula": 0.783873,
+    "difference": -3.957234351426031e-06,
+    "published_value": 0.78,
+    "corrected_rounds_to_2dp": 0.78,
+    "unchanged_at_published_precision": true
+  },
+  "K_sim_absolute": {
+    "corrected": 0.454024,
+    "displayed": 0.454026,
+    "published_value": 0.454,
+    "corrected_rounds_to_3dp": 0.454
+  },
+  "gate": {
+    "n1_b_fit_1.640_unchanged": true,
+    "n1_b_op_2.092_unchanged": true,
+    "K_sim_over_K_0.78_unchanged": true,
+    "ALL_PASS": true
+  }
+}

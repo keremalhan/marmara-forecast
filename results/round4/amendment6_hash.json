@@ -1,0 +1,19 @@
+{
+ "amendment": "docs/v2_analysis_amendment_6.md",
+ "sha256": "d6dc9516a1554f816e855afafc9adcc91a12be6ee03e66fcb355148bce713af6",
+ "dated": "2026-07-16",
+ "kind": "prospectively timestamped post-review analysis amendment",
+ "trigger": "fourth stale-lineage artifact: the b_op sweep was computed with the supercritical simulator (calibrate_b.py never re-run after the v1.2.0 fix)",
+ "scope_bounded": "shipped grid_hybrid.parquet IS preserve_branching=True (bit-exact); only the b_op VALUE is stale",
+ "diagnostics": {
+  "D1": "era-split sweep, modern-era pre-test windows (t0>=2013), prediction ~1.12-1.15",
+  "D2": "threshold-split sweep, M>=4.0 counts, prediction ~1.3"
+ },
+ "decision_rule": "if D1 argmin >= b_Aki (1.0186) it becomes the operational calibration; else rebuild at the full-window argmin (1.00) and write up the count-vs-magnitude-law tension as rate non-stationarity",
+ "pre_flight_binding": "re-score CSEP M-test and y35 test obs/exp at the chosen b BEFORE any rebuild; stop and report if it fails",
+ "withdrawn": "the multiplicity attribution (multiplicity is within-cell arrangement; the calibration objective is Sigma-lambda; orthogonal)",
+ "blast_radius": "rare-event products + magnitude-law honesty; NOT the ML-vs-ETAS verdicts (paired at common b_op)",
+ "release": "1.3.0",
+ "gates": "NONE; unconditional reporting of every sweep variant",
+ "hashed_before_execution": true
+}

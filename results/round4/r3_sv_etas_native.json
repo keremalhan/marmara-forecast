@@ -1,0 +1,188 @@
+{
+  "scoring": "native Monte-Carlo occupancy, Bernoulli log-score, add-one regularized p_hat=(occ*K+1)/(K+2), linearly extrapolated in 1/K to K->inf (Jensen debias)",
+  "K_levels": [
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "KMAX": 5000,
+  "b_op": 1.15,
+  "seed_base": 1000,
+  "n_test_windows": 26,
+  "n_cellwindows": 31694,
+  "n_pos": 592,
+  "hybrid_construction": "top-up (rate-exact) -- the Table 4/5 construction of record",
+  "cascade_vs_sv_etas": {
+    "label": "cascade vs sv-ETAS (both native MC)",
+    "per_K": {
+      "K500": {
+        "ig": -0.0049,
+        "ci": [
+          -0.0258,
+          0.0142
+        ]
+      },
+      "K1000": {
+        "ig": -0.0084,
+        "ci": [
+          -0.03,
+          0.0086
+        ]
+      },
+      "K2000": {
+        "ig": -0.0044,
+        "ci": [
+          -0.0212,
+          0.009
+        ]
+      },
+      "K5000": {
+        "ig": -0.0113,
+        "ci": [
+          -0.017,
+          -0.0062
+        ]
+      }
+    },
+    "debiased_Kinf": -0.0093,
+    "slope_per_unit_inv_K": 2.23,
+    "inv_K_fit_r2": 0.2961,
+    "monotone_in_invK": false,
+    "ci95_K5000_raw_table4_convention": [
+      -0.017,
+      -0.0062
+    ],
+    "debiased_ci95_K5000_shifted": [
+      -0.015,
+      -0.0042
+    ]
+  },
+  "hybrid_vs_sv_etas": {
+    "label": "hybrid (top-up) vs sv-ETAS (both native MC)",
+    "per_K": {
+      "K500": {
+        "ig": 0.1144,
+        "ci": [
+          0.0787,
+          0.1529
+        ]
+      },
+      "K1000": {
+        "ig": 0.1002,
+        "ci": [
+          0.0603,
+          0.1411
+        ]
+      },
+      "K2000": {
+        "ig": 0.0966,
+        "ci": [
+          0.0555,
+          0.1392
+        ]
+      },
+      "K5000": {
+        "ig": 0.0859,
+        "ci": [
+          0.0394,
+          0.1339
+        ]
+      }
+    },
+    "debiased_Kinf": 0.0858,
+    "slope_per_unit_inv_K": 14.545,
+    "inv_K_fit_r2": 0.9505,
+    "monotone_in_invK": true,
+    "ci95_K5000_raw_table4_convention": [
+      0.0394,
+      0.1339
+    ],
+    "debiased_ci95_K5000_shifted": [
+      0.0393,
+      0.1338
+    ]
+  },
+  "hybrid_vs_cascade_topup_reference": {
+    "label": "hybrid (top-up) vs cascade [t6 reference]",
+    "per_K": {
+      "K500": {
+        "ig": 0.1193,
+        "ci": [
+          0.0719,
+          0.1707
+        ]
+      },
+      "K1000": {
+        "ig": 0.1086,
+        "ci": [
+          0.0598,
+          0.1603
+        ]
+      },
+      "K2000": {
+        "ig": 0.101,
+        "ci": [
+          0.0532,
+          0.1518
+        ]
+      },
+      "K5000": {
+        "ig": 0.0972,
+        "ci": [
+          0.0506,
+          0.1472
+        ]
+      }
+    },
+    "debiased_Kinf": 0.0951,
+    "slope_per_unit_inv_K": 12.315,
+    "inv_K_fit_r2": 0.9937,
+    "monotone_in_invK": true,
+    "ci95_K5000_raw_table4_convention": [
+      0.0506,
+      0.1472
+    ],
+    "debiased_ci95_K5000_shifted": [
+      0.0485,
+      0.1451
+    ]
+  },
+  "table5_raw_occupancy_totals_K5000": {
+    "sv_etas": 895.9,
+    "cascade": 906.7,
+    "hybrid_topup": 748.3,
+    "n_pos": 592,
+    "ratio_sv_etas": 1.513,
+    "ratio_cascade": 1.532,
+    "ratio_hybrid_topup": 1.264,
+    "paper_cascade_907_ratio_1.53": true
+  },
+  "registered_ranking_axis_from_claims": {
+    "cascade_vs_sv_etas": {
+      "point": 0.002168,
+      "ci95": [
+        -0.005107,
+        0.009192
+      ]
+    },
+    "hybrid_vs_sv_etas": {
+      "point": -0.004572,
+      "ci95": [
+        -0.016567,
+        0.007788
+      ]
+    }
+  },
+  "gate": {
+    "cascade_vs_sv_etas_native_IG_excludes_0": true,
+    "cascade_vs_sv_etas_dPR_straddles_0": true,
+    "cascade_vs_sv_etas_conjunctive_verdict": "inseparable",
+    "hybrid_vs_sv_etas_native_IG_excludes_0": true,
+    "hybrid_vs_sv_etas_conjunctive_verdict": "inseparable",
+    "sv_occupancy_close_to_cascade": true,
+    "sv_ratio": 1.513,
+    "cascade_ratio": 1.532
+  },
+  "runtime_s": 14.3
+}

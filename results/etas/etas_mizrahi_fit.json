@@ -1,0 +1,32 @@
+{
+  "source": "lmizrahi/etas 3.0.0 inversion (independent third-party fit)",
+  "fit_end": "2021-12-31",
+  "mc": 3.0,
+  "n_events_fit": 14031,
+  "coppersmith_multiplier": 100,
+  "n_iterations": 6,
+  "param_dict": {
+    "log10_mu": -5.864465076925843,
+    "log10_iota": null,
+    "log10_k0": -1.4294678358206603,
+    "a": 1.1849006563611333,
+    "log10_c": -2.921565338032327,
+    "omega": -0.192670864786229,
+    "log10_tau": 3.089393306076728,
+    "log10_d": 0.7221432423795286,
+    "gamma": 0.09347882812909485,
+    "rho": 0.8901601382682576
+  },
+  "beta": 4.056872205425441,
+  "b_value_implied": 1.7618772126029445,
+  "derived": {
+    "mu_per_day_per_km2": 1.3662649372137135e-06,
+    "c_days": 0.0011979388840645511,
+    "p_effective_1_plus_omega": 0.807329135213771,
+    "tau_days": 1228.5513290389279,
+    "d_spatial": 5.274037851519878,
+    "rho_spatial_q": 0.8901601382682576,
+    "gamma": 0.09347882812909485
+  },
+  "note": "Best fit is a TAPERED Omori with p=1+omega<1 and finite tau; structurally incompatible with our pure-Omori cascade. modern_etas is therefore evaluated via first-generation INTENSITY INTEGRATION of these kernels (marmara.etas_modern), comparable to firstgen_etas."
+}

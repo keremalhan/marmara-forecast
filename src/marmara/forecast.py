@@ -63,10 +63,10 @@ def hybrid_P(feats19, lam_sim, ycol):
 
 def main():
     FC.mkdir(parents=True, exist_ok=True)
-    params = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    rep = json.load(open(OUT / "etas_fit_report.json"))
+    params = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    rep = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     b_op = rep["operational_b_for_cascade"]; b_aki, b_pos = rep["b_aki"], rep["b_positive"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
     EV = G.build_event_bundle(cat, 3.0)
     ctx = G.build_static_context()

@@ -114,10 +114,10 @@ def horizon_forecast(params, hist, t0d, H, b_op, b_aki, b_pos, scale, K):
 
 def main():
     FC.mkdir(parents=True, exist_ok=True)
-    params = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    rep = json.load(open(OUT / "etas_fit_report.json"))
+    params = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    rep = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     b_op, b_aki, b_pos = rep["operational_b_for_cascade"], rep["b_aki"], rep["b_positive"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     t0d = float(G._to_days(T0))
     hist = cat[cat["datetime_utc"] < T0][["datetime_utc", "longitude", "latitude", "mag_w"]]
     yrs = (cat["datetime_utc"].max() - cat["datetime_utc"].min()).days / 365.25
@@ -146,7 +146,7 @@ def main():
         _pmap(scale_p(cop["P5.0"], s), f"P(M>=5 in {int(H)}d) from {T0.date()} (scaled)",
               FC / f"P_M5_{int(H)}d.png")
 
-    json.dump(report, open(FC / "multi_horizon.json", "w"), indent=2)
+    json.dump(report, open(FC / "forecast" / "multi_horizon.json", "w"), indent=2)
 
     def sl(H):
         pp = [p for p in bt["points"] if p["horizon_d"] == H]
@@ -162,7 +162,7 @@ def main():
         L.append(f"| {int(p['horizon_d'])}d | {p['epoch']} | {p['predicted']:.2f} | "
                  f"{p['realized']} | {p['realized']/max(p['predicted'],0.01):.2f} |")
     L += ["",
-          "**Honest read of the backtest:** 90d is well-calibrated. On the 365d QUIET epochs "
+          "**Backtest read:** 90d is well-calibrated. On the 365d QUIET epochs "
           "(2022, 2023) the near-critical cascade mildly OVER-predicts (ratio ~0.7-0.8, the "
           "expected long-horizon inflation), but the 2025 epoch's realized count is huge (the "
           "unforecastable Apr-2025 M6.2 sequence, ratio 2.4) and pulls the aggregate to 1.23, "

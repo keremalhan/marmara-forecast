@@ -5,7 +5,7 @@ COUNTS (Poisson-regression targets). Same 261 windows / 1219 cells as the baseli
 Cascade columns are computed at the operational b (b_op) for the y35/y45 hybrid;
 the M5/M6 b-ensemble product is produced separately in forecast / synthetic.
 
-Output: results/grid_hybrid.parquet (+ grid_hybrid_report.json)
+Output: results/grid/grid_hybrid.parquet (+ grid_hybrid_report.json)
 Run:  "<venv>/bin/python3" -m marmara.grid_hybrid
 """
 from __future__ import annotations
@@ -29,7 +29,7 @@ CASCADE_COLS = ["lam35_sim", "lam45_sim", "Psim3.5", "Psim5.0", "Psim5.5", "Psim
 
 
 def load_b_op() -> float:
-    r = json.load(open(OUT / "etas_fit_report.json"))
+    r = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     return float(r["operational_b_for_cascade"])
 
 
@@ -45,9 +45,9 @@ def count_grid(EV, t0d, spec, thr):
 
 def build(b_op: float):
     OUT.mkdir(exist_ok=True)
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         params = pickle.load(f)
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
 
@@ -61,6 +61,8 @@ def build(b_op: float):
     ir_flat = np.repeat(np.arange(G.NLAT), G.NLON)
     ic_flat = np.tile(np.arange(G.NLON), G.NLAT)
 
+    import os
+    _pb = os.environ.get("V2_SUPERCRITICAL") != "1"   # diagnostic: old supercritical-k when set to 1
     rows = []
     t_all = time.time()
     for k, t0_dt in enumerate(starts):
@@ -68,7 +70,7 @@ def build(b_op: float):
         feats = G.features_at_window(EV, t0d, t0_dt, ctx, params)   # 19 features (Mc=3.0)
         casc = cascade_forecast(params, hist_all[cat["datetime_utc"] < t0_dt],
                                 t0d, G.HORIZON_D, spec.lon_c, spec.lat_c,
-                                K=K_BACKTEST, seed=1000 + k, b=b_op)
+                                K=K_BACKTEST, seed=1000 + k, b=b_op, preserve_branching=_pb)
         y35, y45 = G.targets_at_window(EV, t0d)
         block = {"window": np.full(G.NCELLS, k),
                  "t0": np.full(G.NCELLS, np.datetime64(t0_dt), dtype="datetime64[ns]"),
@@ -92,7 +94,7 @@ def build(b_op: float):
             print(f"  window {k+1}/{len(starts)} {t0_dt.date()} ({time.time()-t_all:.0f}s)")
 
     grid = pd.concat(rows, ignore_index=True)
-    grid.to_parquet(OUT / "grid_hybrid.parquet", index=False)
+    grid.to_parquet(OUT / "grid" / "grid_hybrid.parquet", index=False)
     report = {
         "base_mc": BASE_MC, "b_op": b_op, "K_backtest": K_BACKTEST,
         "n_rows": int(len(grid)), "n_windows": len(starts),
@@ -102,7 +104,7 @@ def build(b_op: float):
         "lam35_sim_mean": float(grid["lam35_sim"].mean()),
         "runtime_s": round(time.time() - t_all, 1),
     }
-    json.dump(report, open(OUT / "grid_hybrid_report.json", "w"), indent=2)
+    json.dump(report, open(OUT / "grid" / "grid_hybrid_report.json", "w"), indent=2)
     print("hybrid grid built:", json.dumps(report, indent=2)[:400])
     return grid
 

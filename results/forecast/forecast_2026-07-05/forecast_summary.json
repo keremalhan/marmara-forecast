@@ -9,17 +9,17 @@
   "regional_30d": {
     "P_M5_range": [
       0.03738735515169289,
-      0.3859113341014737
+      0.32460741831883644
     ],
     "P_M5.5_range": [
       0.006578734804763564,
-      0.14200283521992718
+      0.11717986714016237
     ],
     "P_M6_range": [
       0.0012992202859282154,
-      0.04563244823219337
+      0.0373873550360424
     ],
-    "P_M6_central_b_op": 0.016070765043008306
+    "P_M6_central_b_op": 0.015381748828067976
   },
   "segment_renewal_30d_M7": {
     "Izmit": 4.1219236520254966e-09,
@@ -29,9 +29,9 @@
   },
   "combined_note": "combined_M6plus per cell = 1-(1-P_cascade_M6)(1-P_renewal); independence approximation, large-event layer only.",
   "top_cell": {
-    "place": "ARMUTLU A\u00c7IKLARI-YALOVA (MARMARA DENIZI)",
-    "lon": 28.75,
-    "lat": 40.55,
-    "P35": 0.2
+    "place": "MARMARA DENIZI",
+    "lon": 28.35,
+    "lat": 40.85,
+    "P35": 0.3618249109415768
   }
 }

@@ -1,0 +1,251 @@
+{
+  "hypothesis_tested": "reviewed zeqdb catalogue is true UTC year-round (no DST/local-time offset)",
+  "reject_if": "winter residuals ~ +7200 s (UTC+2 civil) or summer ~ +10800 s (UTC+3 civil)",
+  "reference": "USGS/NEIC FDSN authoritative origin times (UTC)",
+  "match_window": "0.3 deg, +/-4 h (wide, so any offset stays visible as residual)",
+  "n_anchors": 21,
+  "winter": {
+    "n": 4,
+    "median_residual_s": -1.0,
+    "max_abs_residual_s": 2.0
+  },
+  "summer": {
+    "n": 17,
+    "median_residual_s": -1.0,
+    "max_abs_residual_s": 2.7
+  },
+  "verdict": "TRUE UTC in both DST seasons: all residuals within a few seconds (inter-agency origin-time scatter); the +2 h / +3 h civil-local signatures are absent. No DST correction is warranted.",
+  "anchors": [
+    {
+      "usgs_utc": "2015-07-24 02:39:43.740000",
+      "season": "summer",
+      "lat": 40.284,
+      "lon": 26.266,
+      "usgs_mag": 4.8,
+      "koeri_stored": "2015-07-24 02:39:42",
+      "residual_s": -1.7,
+      "koeri_mag": 4.9,
+      "place": "13 km NW of Eceabat, Turkey"
+    },
+    {
+      "usgs_utc": "2014-05-25 11:38:38",
+      "season": "summer",
+      "lat": 40.423,
+      "lon": 26.144,
+      "usgs_mag": 4.9,
+      "koeri_stored": "2014-05-25 11:38:38",
+      "residual_s": 0.0,
+      "koeri_mag": 4.9,
+      "place": "Western Turkey"
+    },
+    {
+      "usgs_utc": "2014-05-24 09:25:02.440000",
+      "season": "summer",
+      "lat": 40.289,
+      "lon": 25.389,
+      "usgs_mag": 6.9,
+      "koeri_stored": "2014-05-24 09:25:01",
+      "residual_s": -1.4,
+      "koeri_mag": 6.8,
+      "place": "21 km SSW of Kamari\u00f3tissa, Gre"
+    },
+    {
+      "usgs_utc": "2013-01-08 14:16:08.980000",
+      "season": "winter",
+      "lat": 39.656,
+      "lon": 25.54,
+      "usgs_mag": 5.7,
+      "koeri_stored": "2013-01-08 14:16:07",
+      "residual_s": -2.0,
+      "koeri_mag": 6.2,
+      "place": "47 km ESE of M\u00fdrina, Greece"
+    },
+    {
+      "usgs_utc": "2012-06-07 20:54:25.840000",
+      "season": "summer",
+      "lat": 40.848,
+      "lon": 27.921,
+      "usgs_mag": 4.9,
+      "koeri_stored": "2012-06-07 20:54:25",
+      "residual_s": -0.8,
+      "koeri_mag": 5.1,
+      "place": "13 km SSW of Marmara Ere?lisi,"
+    },
+    {
+      "usgs_utc": "2012-05-03 15:20:25.670000",
+      "season": "summer",
+      "lat": 39.175,
+      "lon": 29.092,
+      "usgs_mag": 5.2,
+      "koeri_stored": "2012-05-03 15:20:26",
+      "residual_s": 0.3,
+      "koeri_mag": 5.1,
+      "place": "13 km NE of Simav, Turkey"
+    },
+    {
+      "usgs_utc": "2011-07-25 17:57:20.610000",
+      "season": "summer",
+      "lat": 40.802,
+      "lon": 27.752,
+      "usgs_mag": 5.1,
+      "koeri_stored": "2011-07-25 17:57:20",
+      "residual_s": -0.6,
+      "koeri_mag": 5.2,
+      "place": "25 km SW of Marmara Ere?lisi, "
+    },
+    {
+      "usgs_utc": "2011-06-27 21:13:58.830000",
+      "season": "summer",
+      "lat": 39.114,
+      "lon": 29.031,
+      "usgs_mag": 4.7,
+      "koeri_stored": "2011-06-27 21:13:58",
+      "residual_s": -0.8,
+      "koeri_mag": 4.9,
+      "place": "5 km ENE of Simav, Turkey"
+    },
+    {
+      "usgs_utc": "2011-05-28 05:47:17",
+      "season": "summer",
+      "lat": 39.119,
+      "lon": 29.049,
+      "usgs_mag": 4.8,
+      "koeri_stored": "2011-05-28 05:47:16",
+      "residual_s": -1.0,
+      "koeri_mag": 5.0,
+      "place": "7 km ENE of Simav, Turkey"
+    },
+    {
+      "usgs_utc": "2011-05-19 20:15:22.940000",
+      "season": "summer",
+      "lat": 39.149,
+      "lon": 29.103,
+      "usgs_mag": 5.8,
+      "koeri_stored": "2011-05-19 20:15:22",
+      "residual_s": -0.9,
+      "koeri_mag": 5.9,
+      "place": "12 km ENE of Simav, Turkey"
+    },
+    {
+      "usgs_utc": "2010-11-03 02:51:27",
+      "season": "winter",
+      "lat": 40.423,
+      "lon": 26.333,
+      "usgs_mag": 5.3,
+      "koeri_stored": "2010-11-03 02:51:26",
+      "residual_s": -1.0,
+      "koeri_mag": 5.4,
+      "place": "26 km N of Eceabat, Turkey"
+    },
+    {
+      "usgs_utc": "2009-02-17 05:28:19",
+      "season": "winter",
+      "lat": 39.107,
+      "lon": 29.039,
+      "usgs_mag": 5.2,
+      "koeri_stored": "2009-02-17 05:28:19",
+      "residual_s": 0.0,
+      "koeri_mag": 5.0,
+      "place": "5 km ENE of Simav, Turkey"
+    },
+    {
+      "usgs_utc": "2008-12-28 22:58:59",
+      "season": "winter",
+      "lat": 40.39,
+      "lon": 25.78,
+      "usgs_mag": 5.2,
+      "koeri_stored": "2008-12-28 22:58:58",
+      "residual_s": -1.0,
+      "koeri_mag": 5.2,
+      "place": "23 km NNW of G\u00f6k\u00e7eada, Turkey"
+    },
+    {
+      "usgs_utc": "2007-08-28 12:44:51.660000",
+      "season": "summer",
+      "lat": 40.376,
+      "lon": 25.952,
+      "usgs_mag": 4.8,
+      "koeri_stored": "2007-08-28 12:44:49",
+      "residual_s": -2.7,
+      "koeri_mag": 4.6,
+      "place": "19 km N of G\u00f6k\u00e7eada, Turkey"
+    },
+    {
+      "usgs_utc": "2006-10-24 14:00:21.670000",
+      "season": "summer",
+      "lat": 40.424,
+      "lon": 29.107,
+      "usgs_mag": 5.0,
+      "koeri_stored": "2006-10-24 14:00:20",
+      "residual_s": -1.7,
+      "koeri_mag": 5.2,
+      "place": "4 km W of Gemlik, Turkey"
+    },
+    {
+      "usgs_utc": "2006-10-20 18:15:26.140000",
+      "season": "summer",
+      "lat": 40.236,
+      "lon": 28.059,
+      "usgs_mag": 4.8,
+      "koeri_stored": "2006-10-20 18:15:24",
+      "residual_s": -2.1,
+      "koeri_mag": 5.2,
+      "place": "14 km SSE of Band?rma, Turkey"
+    },
+    {
+      "usgs_utc": "2005-08-24 03:06:19.900000",
+      "season": "summer",
+      "lat": 39.68,
+      "lon": 25.56,
+      "usgs_mag": 4.7,
+      "koeri_stored": "2005-08-24 03:06:20",
+      "residual_s": 0.1,
+      "koeri_mag": 4.9,
+      "place": "46 km WSW of Bozcaada, Turkey"
+    },
+    {
+      "usgs_utc": "2004-06-15 12:02:37.760000",
+      "season": "summer",
+      "lat": 40.439,
+      "lon": 25.871,
+      "usgs_mag": 5.2,
+      "koeri_stored": "2004-06-15 12:02:36",
+      "residual_s": -1.8,
+      "koeri_mag": 5.2,
+      "place": "26 km N of G\u00f6k\u00e7eada, Turkey"
+    },
+    {
+      "usgs_utc": "2003-07-09 22:31:41.220000",
+      "season": "summer",
+      "lat": 40.354,
+      "lon": 25.93,
+      "usgs_mag": 4.8,
+      "koeri_stored": "2003-07-09 22:31:40",
+      "residual_s": -1.2,
+      "koeri_mag": 4.7,
+      "place": "17 km N of G\u00f6k\u00e7eada, Turkey"
+    },
+    {
+      "usgs_utc": "2003-07-06 20:10:16.450000",
+      "season": "summer",
+      "lat": 40.421,
+      "lon": 26.128,
+      "usgs_mag": 5.3,
+      "koeri_stored": "2003-07-06 20:10:14",
+      "residual_s": -2.5,
+      "koeri_mag": 5.0,
+      "place": "30 km NE of G\u00f6k\u00e7eada, Turkey"
+    },
+    {
+      "usgs_utc": "2003-07-06 19:10:28.160000",
+      "season": "summer",
+      "lat": 40.445,
+      "lon": 26.024,
+      "usgs_mag": 5.7,
+      "koeri_stored": "2003-07-06 19:10:28",
+      "residual_s": -0.2,
+      "koeri_mag": 5.7,
+      "place": "28 km NNE of G\u00f6k\u00e7eada, Turkey"
+    }
+  ]
+}

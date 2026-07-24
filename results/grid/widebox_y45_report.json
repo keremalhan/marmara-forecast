@@ -1,0 +1,26 @@
+{
+  "chosen_w": 0.1,
+  "w_argmax_naive": 0.1,
+  "n_widebox_rows": 596050,
+  "widebox_train_positives": 201,
+  "modelbox_test_cells": 31694,
+  "modelbox_test_positives": 22,
+  "hybrid_widebox_trained": {
+    "pr_auc": 0.021776793786534007,
+    "roc_auc": 0.8614958150588992,
+    "brier": 0.000795441050462528,
+    "molchan": 0.7370250750070275
+  },
+  "cascade": {
+    "pr_auc": 0.008156663212431595,
+    "roc_auc": 0.8213183712599601,
+    "brier": 0.0009342662184707838,
+    "molchan": 0.672478874693805
+  },
+  "ig_hybrid_vs_cascade": 0.8562,
+  "modelbox_only_y45": {
+    "hybrid_pr_auc": 0.007810478758317164,
+    "hybrid_brier": 0.0014497980615730999,
+    "ig_hybrid_vs_cascade": -0.08567537995250518
+  }
+}

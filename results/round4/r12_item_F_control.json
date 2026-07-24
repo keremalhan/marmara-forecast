@@ -1,0 +1,193 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "F-control"
+  },
+  "design": "shipped tree count, early_stopping=False, 100% of training -> isolates the tree-count effect from the internal-holdout effect",
+  "targets": {
+    "y30": {
+      "trees": 147,
+      "early_stopping": false,
+      "train_frac": 1.0,
+      "selected_w": 0.8,
+      "shipped_w": 0.8,
+      "w_argmax": 0.8,
+      "verdicts": {
+        "hybrid_vs_cascade": {
+          "d_ig": {
+            "point": 0.084044,
+            "ci95": [
+              -0.047811,
+              0.273094
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.04655,
+            "ci95": [
+              -0.065355,
+              -0.024173
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_sv_etas": {
+          "d_ig": {
+            "point": 0.149301,
+            "ci95": [
+              -0.005658,
+              0.330891
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.044382,
+            "ci95": [
+              -0.060636,
+              -0.023942
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_firstgen_etas": {
+          "d_ig": {
+            "point": -0.328136,
+            "ci95": [
+              -0.469305,
+              -0.201974
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.037006,
+            "ci95": [
+              -0.053118,
+              -0.015373
+            ]
+          },
+          "verdict": "firstgen_etas beats hybrid"
+        }
+      },
+      "max_abs_dev_vs_shipped_hybrid": 0.6758893936351579
+    },
+    "y35": {
+      "trees": 10,
+      "early_stopping": false,
+      "train_frac": 1.0,
+      "selected_w": 0.4,
+      "shipped_w": 0.4,
+      "w_argmax": 0.6,
+      "verdicts": {
+        "hybrid_vs_cascade": {
+          "d_ig": {
+            "point": 0.099227,
+            "ci95": [
+              -0.018564,
+              0.214683
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.012048,
+            "ci95": [
+              -0.023178,
+              0.001102
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_sv_etas": {
+          "d_ig": {
+            "point": 0.100744,
+            "ci95": [
+              -0.2382,
+              0.490129
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.011951,
+            "ci95": [
+              -0.023439,
+              0.000769
+            ]
+          },
+          "verdict": "inseparable"
+        },
+        "hybrid_vs_firstgen_etas": {
+          "d_ig": {
+            "point": -0.454156,
+            "ci95": [
+              -0.687428,
+              -0.245489
+            ]
+          },
+          "d_pr_auc": {
+            "point": -0.007331,
+            "ci95": [
+              -0.016894,
+              0.00754
+            ]
+          },
+          "verdict": "inseparable"
+        }
+      },
+      "max_abs_dev_vs_shipped_hybrid": 0.4903214752420735
+    }
+  },
+  "three_arm_comparison": {
+    "y30": {
+      "hybrid_vs_cascade": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "inseparable",
+        "F_temporal_stop": "inseparable",
+        "shipped_dPR": null,
+        "control_dPR": -0.04655,
+        "F_dPR": -0.038361
+      },
+      "hybrid_vs_sv_etas": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "inseparable",
+        "F_temporal_stop": "inseparable",
+        "shipped_dPR": null,
+        "control_dPR": -0.044382,
+        "F_dPR": -0.036193
+      },
+      "hybrid_vs_firstgen_etas": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "firstgen_etas beats hybrid",
+        "F_temporal_stop": "firstgen_etas beats hybrid",
+        "shipped_dPR": null,
+        "control_dPR": -0.037006,
+        "F_dPR": -0.028817
+      }
+    },
+    "y35": {
+      "hybrid_vs_cascade": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "inseparable",
+        "F_temporal_stop": "inseparable",
+        "shipped_dPR": null,
+        "control_dPR": -0.012048,
+        "F_dPR": -0.059427
+      },
+      "hybrid_vs_sv_etas": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "inseparable",
+        "F_temporal_stop": "inseparable",
+        "shipped_dPR": null,
+        "control_dPR": -0.011951,
+        "F_dPR": -0.05933
+      },
+      "hybrid_vs_firstgen_etas": {
+        "shipped": "inseparable",
+        "control_shipped_trees_no_stop": "inseparable",
+        "F_temporal_stop": "firstgen_etas beats hybrid",
+        "shipped_dPR": null,
+        "control_dPR": -0.007331,
+        "F_dPR": -0.05471
+      }
+    }
+  },
+  "control_flips_vs_shipped": [
+    "y30/hybrid_vs_firstgen_etas"
+  ],
+  "attribution": "the flip is NOT specific to temporal stopping: removing the internal hold-out alone (control, at the shipped tree count) already moves the verdict, so tree count and training-set size are entangled and F cannot isolate temporality",
+  "runtime_s": 105.7
+}

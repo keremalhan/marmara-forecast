@@ -1,0 +1,32 @@
+{
+  "s_bg": 0.4648,
+  "s_trig": 0.4014,
+  "bg_frac_of_cascade_rate": 0.416,
+  "two_scalar_ig_vs_cascade_proxy_bernoulli": 0.0455,
+  "ci": [
+    -0.0047,
+    0.1418
+  ],
+  "ml_hybrid_edge_for_reference": 0.099,
+  "reading": "if ~+0.10, the ML's surviving edge = re-fit of two ETAS calibration constants (s_bg, s_trig); deployable without ML. If << +0.10, dynamic feature-rich stands.",
+  "proper_score_regime_split_hybrid_vs_cascade": {
+    "active": {
+      "n_cells": 4328,
+      "n_pos": 280,
+      "ig": 0.0786,
+      "ci": [
+        0.0395,
+        0.1242
+      ]
+    },
+    "quiet": {
+      "n_cells": 27366,
+      "n_pos": 312,
+      "ig": 0.1169,
+      "ci": [
+        -0.0036,
+        0.3245
+      ]
+    }
+  }
+}

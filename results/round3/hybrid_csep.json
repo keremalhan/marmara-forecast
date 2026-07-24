@@ -1,0 +1,71 @@
+{
+  "n_observed": 1383,
+  "test_period": [
+    "2024-01-22",
+    "2026-03-12"
+  ],
+  "models": {
+    "hybrid": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": false,
+        "delta1": 0.0,
+        "delta2": 1.0,
+        "test_dist_mean": 1041.074,
+        "n_cat_used": 500
+      },
+      "Magnitude": {
+        "observed_statistic": 0.8484,
+        "pass": true,
+        "gamma": 0.61,
+        "test_dist_mean": 0.9835,
+        "n_cat_used": 500
+      },
+      "Spatial": {
+        "observed_statistic": -4.7929,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -5.8337,
+        "n_cat_used": 500
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1939.4369,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 119.674,
+        "n_cat_used": 500
+      }
+    },
+    "cascade": {
+      "Number": {
+        "observed_statistic": 1383.0,
+        "pass": true,
+        "delta1": 0.094,
+        "delta2": 0.908,
+        "test_dist_mean": 1305.772,
+        "n_cat_used": 500
+      },
+      "Magnitude": {
+        "observed_statistic": 0.8503,
+        "pass": true,
+        "gamma": 0.252,
+        "test_dist_mean": 0.7149,
+        "n_cat_used": 500
+      },
+      "Spatial": {
+        "observed_statistic": -4.9762,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": -6.1643,
+        "n_cat_used": 500
+      },
+      "Pseudolikelihood": {
+        "observed_statistic": 1734.4947,
+        "pass": false,
+        "gamma": 0.0,
+        "test_dist_mean": 13.3384,
+        "n_cat_used": 500
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "scoring": "Bernoulli log-score on NATIVE occurrence (add-one shrinkage), b_op 1.15, TEST",
+  "totals": {
+    "sum_P_casc_native": 963.9,
+    "sum_P_hyb_native": 713.1,
+    "sum_P_firstgen": 682.0,
+    "sum_P_inversion": 523.3,
+    "n_pos_test": 592,
+    "note": "test totals vs 592 occurrences"
+  },
+  "native_bernoulli": {
+    "hybrid_vs_cascade": {
+      "ig": 0.2199,
+      "ig_ci": [
+        0.1815,
+        0.2747
+      ],
+      "dpr": 0.0106,
+      "dpr_ci": [
+        0.0048,
+        0.0161
+      ],
+      "verdict": "separable"
+    },
+    "cascade_vs_inversion": {
+      "ig": -0.0625,
+      "ig_ci": [
+        -0.1916,
+        0.0744
+      ],
+      "dpr": 0.0264,
+      "dpr_ci": [
+        0.0096,
+        0.0421
+      ],
+      "verdict": "inseparable"
+    },
+    "firstgen_vs_inversion": {
+      "ig": 0.0726,
+      "ig_ci": [
+        -0.0427,
+        0.1991
+      ],
+      "dpr": 0.0165,
+      "dpr_ci": [
+        0.005,
+        0.0285
+      ],
+      "verdict": "inseparable"
+    },
+    "hybrid_vs_firstgen": {
+      "ig": 0.0848,
+      "ig_ci": [
+        0.0463,
+        0.1241
+      ],
+      "dpr": 0.0205,
+      "dpr_ci": [
+        0.008,
+        0.0366
+      ],
+      "verdict": "separable"
+    },
+    "cascade_vs_firstgen": {
+      "ig": -0.1352,
+      "ig_ci": [
+        -0.1774,
+        -0.1001
+      ],
+      "dpr": 0.0099,
+      "dpr_ci": [
+        -0.0053,
+        0.0279
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "shrinkage_sensitivity_hybrid_vs_cascade": {
+    "add_one": {
+      "ig": 0.2199,
+      "ig_ci": [
+        0.1815,
+        0.2747
+      ],
+      "dpr": 0.0106,
+      "dpr_ci": [
+        0.0048,
+        0.0161
+      ],
+      "verdict": "separable"
+    },
+    "lambda_blend_cascade": {
+      "ig": 0.262,
+      "ig_ci": [
+        0.2184,
+        0.3227
+      ],
+      "dpr": 0.0095,
+      "dpr_ci": [
+        0.0038,
+        0.0145
+      ],
+      "verdict": "separable"
+    }
+  },
+  "SUPERSEDED": {
+    "status": "SUPERSEDED for the clustered simulators (cascade, hybrid) -- do not cite",
+    "superseded_by": "results/round3/t6_debias.json (K=5000, top-up construction), reproduced independently by results/round4/r3_sv_etas_native.json",
+    "why": "this file computes native occupancy at K=500 with capped thinning; t6 re-simulates at K=5000 with the pre-registered top-up construction (Amendment 3 addendum item 2) and applies the 1/K Jensen debias. The cascade/hybrid totals here (963.9 / 713.1) are the K=500 capped values and are NOT the Table 5 numbers.",
+    "table5_values_of_record": {
+      "cascade": 906.7,
+      "hybrid_topup": 748.3,
+      "sv_etas": 895.9,
+      "firstgen_etas": 682.0,
+      "inversion": 523.3,
+      "n_pos": 592
+    },
+    "still_valid_here": "sum_P_firstgen (682.0) and sum_P_inversion (523.3): these are exact analytic 1-exp(-lambda) occupancies for first-generation intensities, carry no Monte-Carlo construction, and are unchanged in Table 5 (independently reproduced from the frozen predictions in round 4).",
+    "annotated": "2026-07-15 (round 4)"
+  }
+}

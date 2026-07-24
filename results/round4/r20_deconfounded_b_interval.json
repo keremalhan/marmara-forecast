@@ -1,0 +1,298 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "framing": "The crossing formula b=log10(N1/N2)/dM is the classical Utsu two-threshold count estimator, cited as classical. The FINDING is the reduction: the corrected b_op objective / (b-independent M>=3.0 slope) cancels the cascade and equals it, so the sweep carries no information beyond the catalogue's own counts.",
+ "B_bootstrap": 2000,
+ "seed": 42,
+ "A_headline": {
+  "whole": {
+   "n_events_ge4.0": 719,
+   "binned_mle": {
+    "b": 1.0667,
+    "ci95": [
+     1.0053,
+     1.1354
+    ]
+   },
+   "b_positive_delta_sweep": {
+    "0.1": {
+     "b": 1.231,
+     "ci95": [
+      1.1062,
+      1.3695
+     ],
+     "n_pos_diffs": 260
+    },
+    "0.2": {
+     "b": 1.3265,
+     "ci95": [
+      1.1751,
+      1.527
+     ],
+     "n_pos_diffs": 207
+    },
+    "0.3": {
+     "b": 1.4185,
+     "ci95": [
+      1.2264,
+      1.6709
+     ],
+     "n_pos_diffs": 162
+    },
+    "0.4": {
+     "b": 1.5612,
+     "ci95": [
+      1.3074,
+      1.9096
+     ],
+     "n_pos_diffs": 129
+    },
+    "0.5": {
+     "b": 1.2654,
+     "ci95": [
+      1.0506,
+      1.5851
+     ],
+     "n_pos_diffs": 75
+    }
+   }
+  },
+  "modern_2013": {
+   "n_events_ge4.0": 428,
+   "binned_mle": {
+    "b": 1.0236,
+    "ci95": [
+     0.9495,
+     1.1009
+    ]
+   },
+   "b_positive_delta_sweep": {
+    "0.1": {
+     "b": 1.2766,
+     "ci95": [
+      1.1136,
+      1.4753
+     ],
+     "n_pos_diffs": 158
+    },
+    "0.2": {
+     "b": 1.3948,
+     "ci95": [
+      1.1851,
+      1.6463
+     ],
+     "n_pos_diffs": 126
+    },
+    "0.3": {
+     "b": 1.4914,
+     "ci95": [
+      1.2146,
+      1.8684
+     ],
+     "n_pos_diffs": 97
+    },
+    "0.4": {
+     "b": 1.6399,
+     "ci95": [
+      1.2968,
+      2.1951
+     ],
+     "n_pos_diffs": 76
+    },
+    "0.5": {
+     "b": 1.2466,
+     "ci95": [
+      0.9772,
+      1.6714
+     ],
+     "n_pos_diffs": 42
+    }
+   }
+  }
+ },
+ "A_estimator_agreement": {
+  "whole_binned_mle": 1.0667,
+  "whole_bpositive_0.1": 1.231,
+  "abs_gap": 0.1643,
+  "materially_disagree_gt_0.10": true,
+  "note": "if True this is reported as a finding; no tuning of delta or threshold is applied"
+ },
+ "B_deconfounded_triple": {
+  "modern_3.0_to_3.5": {
+   "N1": 5515,
+   "N2": 1145,
+   "dM": 0.5,
+   "b": 1.3655,
+   "binomial_95": [
+    1.3207,
+    1.4103
+   ],
+   "binomial_halfwidth": 0.0448,
+   "block_bootstrap_95": [
+    1.2715,
+    1.468
+   ],
+   "reported_95_wider": [
+    1.2715,
+    1.468
+   ],
+   "reported_is": "block_bootstrap"
+  },
+  "all_pretest_3.0_to_4.0": {
+   "N1": 12866,
+   "N2": 506,
+   "dM": 1.0,
+   "b": 1.4053,
+   "binomial_95": [
+    1.3682,
+    1.4424
+   ],
+   "binomial_halfwidth": 0.0371,
+   "block_bootstrap_95": [
+    1.3296,
+    1.4947
+   ],
+   "reported_95_wider": [
+    1.3296,
+    1.4947
+   ],
+   "reported_is": "block_bootstrap"
+  },
+  "whole_catalogue_3.5_to_4.5": {
+   "N1": 5024,
+   "N2": 192,
+   "dM": 1.0,
+   "b": 1.4177,
+   "binomial_95": [
+    1.3575,
+    1.478
+   ],
+   "binomial_halfwidth": 0.0602,
+   "block_bootstrap_95": [
+    1.3606,
+    1.4862
+   ],
+   "reported_95_wider": [
+    1.3606,
+    1.4862
+   ],
+   "reported_is": "block_bootstrap"
+  }
+ },
+ "B_not_averaged": "nested samples; quoted as mutually consistent, not averaged. pairwise gaps within ~1-2 binomial sigma.",
+ "C_reference_band": {
+  "headline_estimator": "whole-catalogue binned MLE on mag_w>=4.0",
+  "headline_b": 1.0667,
+  "headline_ci95": [
+   1.0053,
+   1.1354
+  ],
+  "P_M6_band_pct": [
+   1.89,
+   2.84,
+   4.23
+  ],
+  "detail": {
+   "lo_b_hi_end": {
+    "b": 1.1354,
+    "P_M6": 0.0189
+   },
+   "central_b": {
+    "b": 1.0667,
+    "P_M6": 0.0284
+   },
+   "hi_b_lo_end": {
+    "b": 1.0053,
+    "P_M6": 0.0423
+   }
+  },
+  "note": "a labelled reference band inside the b-ensemble range [0.13%, 3.74%]; NOT a second central"
+ },
+ "runtime_s": 17.7,
+ "FINDING_above_pile": {
+  "CORRECTED": "This supersedes an earlier draft of this block that overclaimed a clean b=1.20 and b_op vindication. Full verification (r20 battery, TEST 1-8) gives the nuanced truth below.",
+  "pile_is_a_conversion_comb": "non-cumulative density (TEST7) shows magnitudes quantized onto a grid, alternating ~2000/0 per 0.05 bin, densest 3.3-3.65, thinning above 3.7. mag_w[3.5,4.0) is 68% Md; mag_w[4.0,4.5) is 78% ML. 3.5 is inside the comb.",
+  "above_pile_FMD": "log-linear above M4.0 (GR-fit residual 0.069)",
+  "above_pile_b_estimates": {
+   "GR_regression_4.0_5.3": "1.242 [1.113,1.395] (bootstrap B2000 seed42)",
+   "count_4.0->5.0": "1.204 \u00b1 0.063",
+   "count_4.0->5.5": "1.185 \u00b1 0.083",
+   "ML_only_4.0->5.0": "1.177",
+   "modern_4.0->5.0": "1.200-1.224"
+  },
+  "above_pile_b": 1.24,
+  "above_pile_ci95": [
+   1.11,
+   1.4
+  ],
+  "wide_interval_reason": "only 12 events M>=5.5 and 1 at M>=6; the large-event count cannot pin b above the pile tighter than ~\u00b10.15",
+  "b_op_1.15_inside_ci": true,
+  "deconfounded_1.40_position": "at the UPPER EDGE of the above-pile CI (1.40 vs CI top 1.40); not decisively separated",
+  "anchor_sweep_causation": "the count estimate peaks at 3.4->4.5 (1.51, comb edge) and falls to 1.15-1.22 above 4.0; the deconfounded triple anchored at 3.0/3.5 is mildly inflated by the comb",
+  "CONCLUSION": "The magnitude law above the pile is b~1.2 but POORLY CONSTRAINED [1.11,1.40]. Both the operational b_op=1.15 and the deconfounded 1.40 lie within this interval; the data cannot choose. This corrects Amendment 7 (which called 1.40 \"the magnitude law above the artifact\" -- overconfident; it is the upper edge) AND corrects the first draft of this finding (which called b_op vindicated at a clean 1.20 -- also overconfident). P(M>=6) is correspondingly uncertain: b=1.11->~2.5%, b=1.24->~1.1%, b=1.40->0.30%. No single central (neither 1.54%% nor 0.30%%) is defensible; the ensemble range IS the result.",
+  "P_M6_across_above_pile_ci": {
+   "b1.11": "~2.5%",
+   "b1.15_bop": "1.54-1.69%",
+   "b1.24_central": "~1.1%",
+   "b1.40_edge": "0.30%"
+  }
+ },
+ "SETTLED_b_story": {
+  "check1_provenance_forking_paths": {
+   "anchor_choice": "M>=4.0 was chosen on the COMB DIAGNOSTIC (magnitude-grid density collapses above 3.7; TEST7), NOT on the resulting b. This pre-empts the forking-paths objection.",
+   "all_8_tests_archived": [
+    "T1 type-composition vs mag_w",
+    "T2 anchor-sweep causation (peaks 3.4->4.5=1.51)",
+    "T3 modern-era above-pile",
+    "T4 ML-only b",
+    "T5 GR-linearity above 4.0 (resid 0.069)",
+    "T6 P(M6) across range",
+    "T7 non-cumulative comb density",
+    "T8 bootstrap CI on above-pile b"
+   ],
+   "two_overclaims_disclosed": [
+    "draft-1: clean b=1.20 + b_op vindicated (too low-confident-narrow)",
+    "Amendment 7: 1.40 = the magnitude law above the artifact (too high)"
+   ],
+   "note": "two consecutive overclaims caught and disclosed is a credibility asset; a clean final interval with hidden iterations is a liability."
+  },
+  "check2_mislabel_fixed": "1.40 is the DECONFOUNDED estimate, not the count-calibration value (the corrected count-calibration returned 1.00/1.05, unidentified). Correct phrasing: the interval spans the operational convention (1.15) and the deconfounded estimate (1.40).",
+  "check3_nonstationarity_caveat": "S10.4 pre/post-Kumburgaz slope change (1.30 pre -> 1.14 post) sits INSIDE [1.11,1.40]; the above-pile interval covers a moving target, not a stationary constant.",
+  "two_band_upgrade": {
+   "inner_above_pile_identified": {
+    "b_interval": [
+     1.11,
+     1.4
+    ],
+    "P_M6_pct": [
+     0.3,
+     2.24
+    ],
+    "meaning": "best-supported statement: the large-event law and its P(M6), directly identified above the comb.",
+    "product_is_the_band": true,
+    "do_not_quote_a_central": "the band [0.30%, 2.24%] IS the product; quoting ~1.1-1.3% as a central recreates the single-number problem one level up. b_op=1.15 gives 1.5-1.7% inside the band -- that is the continuity-arm value, not a central of the band."
+   },
+   "outer_b_ensemble_envelope": {
+    "b_interval": [
+     1.019,
+     1.542
+    ],
+    "P_M6_pct": [
+     0.13,
+     3.74
+    ],
+    "meaning": "sensitivity envelope covering tail non-GR behaviour and the n=1 M6; retained."
+   },
+   "ensemble_endpoints_outside_above_pile": {
+    "Aki_1.02": false,
+    "b_positive_1.54": false,
+    "why": "they measure the MIXED catalogue (comb-dominated below 4.0), not the large-event law."
+   },
+   "b_op_1.15_inside_inner_band": true
+  },
+  "item8_cancelled": "Switching the prospective reference to b=1.40 would move to the UPPER EDGE of the CI -- worse than staying. Keep b_op=1.15, which sits inside the above-pile interval. GPT critique #4 (\"retaining 1.15 looks arbitrary\") dissolves: 1.15 is now retrospectively ADMISSIBLE on an identified interval -- admissible, NOT validated (it was not selected by this interval; it happens to fall inside it).",
+  "Mc35_arm_dropped": "the existing 1.05/1.15/1.47 arms already bracket [1.11,1.40]; a 1.38 arm buys nothing."
+ }
+}

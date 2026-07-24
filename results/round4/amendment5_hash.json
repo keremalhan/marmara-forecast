@@ -1,0 +1,19 @@
+{
+ "amendment": "docs/v2_analysis_amendment_5.md",
+ "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+ "dated": "2026-07-15",
+ "kind": "prospectively timestamped post-review analysis amendment",
+ "claim": "questions, procedures and the unconditional-reporting commitment were fixed before the answers were known",
+ "explicitly_not": "a strong pre-registration; does NOT restore an untouched test set; the exploratory exposure disclosed in section 3 and section 6 stands",
+ "items": {
+  "A": "Mc=3.5 full-pipeline arm (y35 only)",
+  "B": "test-only calibration table",
+  "C": "branching-ratio profile",
+  "D": "alarm-duration ladder over the correct 217-trigger denominator",
+  "E": "Clopper-Pearson precision intervals",
+  "F": "grouped-temporal early-stopping sensitivity (y30, y35)"
+ },
+ "gates": "NONE. No item carries a pass/fail gate. All outcomes reported unconditionally.",
+ "workflow_rule": "if any verdict in A or F differs from the shipped tables, stop before the text pass and interpret first",
+ "hashed_before_execution": true
+}

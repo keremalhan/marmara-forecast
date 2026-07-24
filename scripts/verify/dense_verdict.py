@@ -20,7 +20,7 @@ BASE = FEATURES + ["ln_lam_sim"]; B = 2000; SEED = 42
 
 def main():
     src = DenseCatalogSource(); ok, why = src.available()
-    g = pd.read_parquet(OUT / "grid_hybrid.parquet")
+    g = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
     g["ln_lam_sim"] = np.log(g["lam35_sim"].to_numpy() + EPS)
     m = split_masks(g)
     cells = g[["window", "t0", "cell_lon", "cell_lat", "ir", "ic"]].copy()

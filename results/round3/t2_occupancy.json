@@ -1,0 +1,176 @@
+{
+  "s_val": {
+    "hybrid": 0.5818,
+    "cascade": 0.4227,
+    "sv_etas": 0.4277,
+    "firstgen_etas": 0.7171,
+    "modern_etas": 1.0039,
+    "poisson": 0.4809,
+    "smoothed": 0.3123
+  },
+  "count_scored": {
+    "hybrid_vs_cascade": {
+      "ig": 0.2886,
+      "ig_ci": [
+        0.2025,
+        0.4333
+      ],
+      "dpr": -0.0067,
+      "dpr_ci": [
+        -0.0203,
+        0.0069
+      ],
+      "verdict": "inseparable"
+    },
+    "cascade_vs_firstgen_etas": {
+      "ig": -0.4122,
+      "ig_ci": [
+        -0.5602,
+        -0.3031
+      ],
+      "dpr": 0.0095,
+      "dpr_ci": [
+        -0.0052,
+        0.0266
+      ],
+      "verdict": "inseparable"
+    },
+    "cascade_vs_sv_etas": {
+      "ig": 0.0653,
+      "ig_ci": [
+        -0.0333,
+        0.1923
+      ],
+      "dpr": 0.0022,
+      "dpr_ci": [
+        -0.0051,
+        0.0092
+      ],
+      "verdict": "inseparable"
+    },
+    "firstgen_etas_vs_modern_etas": {
+      "ig": 0.2819,
+      "ig_ci": [
+        0.0515,
+        0.4985
+      ],
+      "dpr": 0.0165,
+      "dpr_ci": [
+        0.005,
+        0.0285
+      ],
+      "verdict": "separable"
+    },
+    "hybrid_vs_firstgen_etas": {
+      "ig": -0.1235,
+      "ig_ci": [
+        -0.2098,
+        -0.0516
+      ],
+      "dpr": 0.0028,
+      "dpr_ci": [
+        -0.0121,
+        0.0194
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "occurrence_scored": {
+    "hybrid_vs_cascade": {
+      "ig": 0.0691,
+      "ig_ci": [
+        -0.0011,
+        0.181
+      ],
+      "dpr": -0.0067,
+      "dpr_ci": [
+        -0.0203,
+        0.0069
+      ],
+      "verdict": "inseparable"
+    },
+    "cascade_vs_firstgen_etas": {
+      "ig": -0.0238,
+      "ig_ci": [
+        -0.1275,
+        0.049
+      ],
+      "dpr": 0.0095,
+      "dpr_ci": [
+        -0.0052,
+        0.0266
+      ],
+      "verdict": "inseparable"
+    },
+    "cascade_vs_sv_etas": {
+      "ig": 0.0736,
+      "ig_ci": [
+        -0.027,
+        0.2011
+      ],
+      "dpr": 0.0022,
+      "dpr_ci": [
+        -0.0051,
+        0.0092
+      ],
+      "verdict": "inseparable"
+    },
+    "firstgen_etas_vs_modern_etas": {
+      "ig": 0.3073,
+      "ig_ci": [
+        0.0809,
+        0.5327
+      ],
+      "dpr": 0.0165,
+      "dpr_ci": [
+        0.005,
+        0.0285
+      ],
+      "verdict": "separable"
+    },
+    "hybrid_vs_firstgen_etas": {
+      "ig": 0.0453,
+      "ig_ci": [
+        -0.0054,
+        0.097
+      ],
+      "dpr": 0.0028,
+      "dpr_ci": [
+        -0.0121,
+        0.0194
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "paired_scalar_vs_hybrid": {
+    "ig": 0.1239,
+    "ig_ci": [
+      -0.02,
+      0.2449
+    ],
+    "dpr": 0.0067,
+    "dpr_ci": [
+      -0.0069,
+      0.0203
+    ],
+    "verdict": "inseparable"
+  },
+  "isotonic": {
+    "val_in_sample_ig_vs_cascade": 0.6489,
+    "test_ig_vs_cascade": 0.1622,
+    "test_vs_hybrid": {
+      "ig": -0.1264,
+      "ig_ci": [
+        -0.4534,
+        0.1442
+      ],
+      "dpr": -0.0164,
+      "dpr_ci": [
+        -0.0284,
+        -0.0051
+      ],
+      "verdict": "inseparable"
+    },
+    "note": "if val>>test, the monotone map overfits and the single scalar (robust) is the honest framing"
+  }
+}

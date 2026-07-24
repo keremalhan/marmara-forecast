@@ -1,0 +1,80 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "K": 5000,
+ "exclusion_rule": "target intersects 2025-04-23..2025-07-23",
+ "excluded_t0": [
+  "2025-04-16",
+  "2025-05-16",
+  "2025-06-15",
+  "2025-07-15"
+ ],
+ "n_windows_full": 26,
+ "n_windows_retained": 22,
+ "bernoulli_dig": {
+  "full_26w": {
+   "ig": 0.0972,
+   "ci95": [
+    0.0506,
+    0.1472
+   ],
+   "n_pos": 592
+  },
+  "leave_kumburgaz_out_22w": {
+   "ig": 0.1128,
+   "ci95": [
+    0.076,
+    0.1586
+   ],
+   "n_pos": 483
+  },
+  "kumburgaz_only_4w": {
+   "ig": 0.0279,
+   "ci95": [
+    -0.0564,
+    0.1081
+   ],
+   "n_pos": 109
+  }
+ },
+ "remaining_positives": {
+  "retained_22w": {
+   "positives_total": 483,
+   "positives_active_cnt30>0": 90,
+   "positives_quiet": 393
+  },
+  "kumburgaz_4w": {
+   "positives_total": 109,
+   "positives_active_cnt30>0": 25,
+   "positives_quiet": 84
+  },
+  "full_26w": {
+   "positives_total": 592,
+   "positives_active_cnt30>0": 115,
+   "positives_quiet": 477
+  }
+ },
+ "per_window_sign_count_retained": {
+  "n_windows": 22,
+  "positive": 19,
+  "negative": 3,
+  "zero": 0,
+  "note": "per-window Bernoulli \u0394IG sign on the 22 retained windows; the count-scored 25/26 is NOT used here."
+ },
+ "runtime_s": 6.9,
+ "adversarial_checks": {
+  "a_exclusion_before_scoring": "the 4 excluded t0s were listed from the calendar rule before any occupancy was scored",
+  "b_power_not_vanished": "90 active-cell (cnt30>0) positives remain in the 22 retained windows (vs 25 in Kumburgaz); the active stratum is not emptied, so this is edge-survives, not power-vanishes",
+  "c_sign_count_retained_only": "19/22 retained windows positive; the count-scored 25/26 is not quoted here",
+  "d_complement_run": "Kumburgaz-only \u0394IG +0.028 [-0.056,0.108] straddles zero -- the edge does NOT live in the sequence",
+  "internal_consistency": "483+109=592 positives; 90+25=115 active; verified"
+ },
+ "CONCLUSION": "The one positive ML result SURVIVES removing the Kumburgaz sequence: leave-out \u0394IG +0.113 [0.076,0.159] excludes zero and is if anything larger than the full-sample +0.097 [0.051,0.147]. The complement (Kumburgaz-only) is +0.028 and straddles zero, so the edge is not a sequence artifact. 90 active-cell positives remain after leave-out, so the active-cell resolution is a genuine edge, not residual power. This strengthens the small-n defense entirely within the proper Bernoulli score.",
+ "interpretation_cautions_for_wording": {
+  "1_complement_underpowered": "Kumburgaz-only is 4 windows/109 positives: +0.028 [-0.056,+0.108] is UNDERPOWERED, not absent. Licensed statement: \"the edge is not driven by the sequence\", NOT \"smaller inside it\". Do not read the point estimates as a within/without contrast.",
+  "2_reconcile_active_cells": "apparent tension (edge in active cells, yet survives dropping the biggest sequence) is compatible and jointly STRENGTHENS: active cells exist throughout the test period (smaller sequences, background clusters), not only in Kumburgaz -> dynamic, activity-linked, not one-sequence-dependent. One \u00a75 sentence must make this connection.",
+  "3_bookkeeping": "full-26w here is +0.097 [0.051,0.147] at K=5000; the frozen paper lineage is +0.095 [+0.051,+0.147]. Label the estimator (K=5000 re-run) in the table note or quote the frozen +0.095 lineage. Add all three strata to reproduce_all."
+ }
+}

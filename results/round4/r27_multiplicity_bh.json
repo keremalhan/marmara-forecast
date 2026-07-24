@@ -1,0 +1,313 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "block": 3,
+ "q": 0.05,
+ "rule": "BH per axis within family; separation survives iff BOTH axes survive",
+ "families": {
+  "F1_hybrid_vs_physics_y30": {
+   "n_pairs": 8,
+   "rows": [
+    {
+     "pair": "hybrid_vs_hybrid_naive",
+     "p_ig": 0.065,
+     "p_pr": 0.0,
+     "ig_survives_BH": false,
+     "pr_survives_BH": true,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_hybrid_gnss",
+     "p_ig": 0.045,
+     "p_pr": 0.525,
+     "ig_survives_BH": false,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_cascade",
+     "p_ig": 0.0,
+     "p_pr": 0.339,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_sv_etas",
+     "p_ig": 0.0,
+     "p_pr": 0.492,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_modern_etas",
+     "p_ig": 0.111,
+     "p_pr": 0.002,
+     "ig_survives_BH": false,
+     "pr_survives_BH": true,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_firstgen_etas",
+     "p_ig": 0.0,
+     "p_pr": 0.679,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_smoothed",
+     "p_ig": 0.0,
+     "p_pr": 0.0,
+     "ig_survives_BH": true,
+     "pr_survives_BH": true,
+     "two_axis_survives": true,
+     "was_registered_separation": true,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_poisson",
+     "p_ig": 0.0,
+     "p_pr": 0.0,
+     "ig_survives_BH": true,
+     "pr_survives_BH": true,
+     "two_axis_survives": true,
+     "was_registered_separation": true,
+     "flip": false
+    }
+   ],
+   "registered_separations": 2,
+   "survive_BH_two_axis": 2,
+   "flips": []
+  },
+  "F2_hybrid_vs_physics_y35": {
+   "n_pairs": 8,
+   "rows": [
+    {
+     "pair": "hybrid_vs_hybrid_naive",
+     "p_ig": 0.605,
+     "p_pr": 0.229,
+     "ig_survives_BH": false,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_hybrid_gnss",
+     "p_ig": 0.001,
+     "p_pr": 0.062,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_cascade",
+     "p_ig": 0.001,
+     "p_pr": 0.784,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_sv_etas",
+     "p_ig": 0.382,
+     "p_pr": 0.758,
+     "ig_survives_BH": false,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_modern_etas",
+     "p_ig": 0.103,
+     "p_pr": 0.006,
+     "ig_survives_BH": false,
+     "pr_survives_BH": true,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_firstgen_etas",
+     "p_ig": 0.0,
+     "p_pr": 0.578,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_smoothed",
+     "p_ig": 0.0,
+     "p_pr": 0.0,
+     "ig_survives_BH": true,
+     "pr_survives_BH": true,
+     "two_axis_survives": true,
+     "was_registered_separation": true,
+     "flip": false
+    },
+    {
+     "pair": "hybrid_vs_poisson",
+     "p_ig": 0.0,
+     "p_pr": 0.0,
+     "ig_survives_BH": true,
+     "pr_survives_BH": true,
+     "two_axis_survives": true,
+     "was_registered_separation": true,
+     "flip": false
+    }
+   ],
+   "registered_separations": 2,
+   "survive_BH_two_axis": 2,
+   "flips": []
+  },
+  "F3_physics_vs_physics": {
+   "n_pairs": 6,
+   "rows": [
+    {
+     "pair": "cascade_vs_sv_etas",
+     "p_ig": 0.285,
+     "p_pr": 0.569,
+     "ig_survives_BH": false,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "cascade_vs_modern_etas",
+     "p_ig": 0.31,
+     "p_pr": 0.002,
+     "ig_survives_BH": false,
+     "pr_survives_BH": true,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "cascade_vs_firstgen_etas",
+     "p_ig": 0.0,
+     "p_pr": 0.187,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "sv_etas_vs_modern_etas",
+     "p_ig": 0.117,
+     "p_pr": 0.0,
+     "ig_survives_BH": false,
+     "pr_survives_BH": true,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "sv_etas_vs_firstgen_etas",
+     "p_ig": 0.0,
+     "p_pr": 0.121,
+     "ig_survives_BH": true,
+     "pr_survives_BH": false,
+     "two_axis_survives": false,
+     "was_registered_separation": false,
+     "flip": false
+    },
+    {
+     "pair": "modern_etas_vs_firstgen_etas",
+     "p_ig": 0.008,
+     "p_pr": 0.003,
+     "ig_survives_BH": true,
+     "pr_survives_BH": true,
+     "two_axis_survives": true,
+     "was_registered_separation": true,
+     "flip": false
+    }
+   ],
+   "registered_separations": 1,
+   "survive_BH_two_axis": 1,
+   "flips": []
+  },
+  "F4_recalibration_challengers": {
+   "note": "proper-score (proxy-Bernoulli); p bounded from frozen 95% CIs",
+   "rows": [
+    {
+     "finding": "two_scalar_remainder_+0.053",
+     "ci95": [
+      0.018,
+      0.085
+     ],
+     "p_bound": "<0.05",
+     "single_axis": "occurrence IG",
+     "survives_BH_at_q0.05": true,
+     "note": "CI excludes 0; sole family member with a positive claim -> BH keeps it at q=0.05"
+    }
+   ],
+   "n_hypotheses": 1,
+   "n_survive": 1,
+   "caption": "F4: 1 hypothesis (two-scalar remainder), 1 survives BH q=0.05"
+  },
+  "F5_occurrence_axis": {
+   "note": "proper Bernoulli score; hybrid-vs-cascade win_rate recomputed exactly, others CI-bounded",
+   "rows": [
+    {
+     "finding": "hybrid_vs_cascade_Bernoulli_remainder_+0.095",
+     "ci95": [
+      0.051,
+      0.147
+     ],
+     "p": "< 5e-4",
+     "single_axis": "occurrence IG",
+     "survives_BH_at_q0.05": true,
+     "p_exact_note": "win_rate 1.0 (0/2000 replicates non-favoured); one-sided floor (1+0)/(1+2000)=5.0e-4; report < 5e-4, not 0"
+    },
+    {
+     "finding": "active_cell_resolution",
+     "ci95_excludes_0": true,
+     "p_bound": "<0.05",
+     "single_axis": "occurrence IG (active-cell stratum)",
+     "survives_BH_at_q0.05": true
+    }
+   ],
+   "n_hypotheses": 2,
+   "n_survive": 2,
+   "caption": "F5: 2 hypotheses (hybrid-vs-cascade Bernoulli, active-cell), 2 survive BH q=0.05"
+  }
+ },
+ "SUMMARY": {
+  "registered_two_axis_separations_tested": 5,
+  "registered_separations_that_FLIP_under_BH": [],
+  "exposed_single_axis_findings": [
+   "two_scalar +0.053",
+   "hybrid-vs-cascade Bernoulli +0.095",
+   "active-cell resolution"
+  ],
+  "exposed_findings_surviving": 3,
+  "reading": "Every registered two-axis separation survives BH (flips: none). The three exposed single-axis occurrence findings survive at q=0.05 (all CIs exclude 0, on the calibration-clean Bernoulli axis). No sentence gets 'does not survive multiplicity adjustment' appended."
+ },
+ "designation": "POST-REVIEW multiplicity SENSITIVITY under Amendment 8; adjudicates nothing; the registered two-axis rule remains the adjudicator of record.",
+ "caption_designation": "Table caption must carry: multiplicity sensitivity under Amendment 8, adjudicating nothing."
+}

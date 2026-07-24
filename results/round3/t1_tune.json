@@ -1,0 +1,93 @@
+{
+  "n_configs": 24,
+  "canonical_val_ll": -2003.98,
+  "best_config": {
+    "max_depth": 10,
+    "max_iter": 800,
+    "learning_rate": 0.05,
+    "l2_regularization": 1.0,
+    "w": 0.9,
+    "val_ll": -1976.32
+  },
+  "best_on_test": {
+    "ig_vs_cascade": 0.3187,
+    "ig_ci": [
+      0.1908,
+      0.4803
+    ],
+    "hybrid_pr": 0.2147,
+    "cascade_pr": 0.2325,
+    "dpr": -0.0178,
+    "dpr_ci": [
+      -0.0357,
+      -0.0012
+    ],
+    "separable_two_axis": true
+  },
+  "all_trials": [
+    {
+      "max_depth": 10,
+      "max_iter": 400,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 0.9,
+      "val_ll": -1976.32
+    },
+    {
+      "max_depth": 10,
+      "max_iter": 800,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 0.9,
+      "val_ll": -1976.32
+    },
+    {
+      "max_depth": 10,
+      "max_iter": 400,
+      "learning_rate": 0.05,
+      "l2_regularization": 0.0,
+      "w": 0.9,
+      "val_ll": -1977.58
+    },
+    {
+      "max_depth": 10,
+      "max_iter": 800,
+      "learning_rate": 0.05,
+      "l2_regularization": 0.0,
+      "w": 0.9,
+      "val_ll": -1977.58
+    },
+    {
+      "max_depth": 3,
+      "max_iter": 400,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 1.0,
+      "val_ll": -1985.25
+    },
+    {
+      "max_depth": 3,
+      "max_iter": 800,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 1.0,
+      "val_ll": -1985.25
+    },
+    {
+      "max_depth": 6,
+      "max_iter": 400,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 0.9,
+      "val_ll": -1988.06
+    },
+    {
+      "max_depth": 6,
+      "max_iter": 800,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "w": 0.9,
+      "val_ll": -1988.06
+    }
+  ]
+}

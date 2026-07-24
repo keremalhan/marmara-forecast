@@ -1,0 +1,189 @@
+{
+  "why": "Amendments 6 and 7 assert argmin 1.05 ([::3]) and 1.00 (all windows) at the corrected simulator. No archived artifact supported either: r13 swept only {1.10,1.12,1.15,1.18} and its argmin sat on that list's lower boundary. This measures the argmin on the registered candidate grid.",
+  "procedure": "calibrate_b.py unchanged: K=300, seed 5000+i, origin regression, pb=True",
+  "candidates": [
+    0.9,
+    1.0,
+    1.05,
+    1.1,
+    1.12,
+    1.15,
+    1.18,
+    1.2,
+    1.542
+  ],
+  "claim_under_test": {
+    "subsample_[::3]": 1.05,
+    "all_windows": 1.0
+  },
+  "subsample_[::3]": {
+    "per_b": {
+      "0.9": {
+        "slope": 0.8653,
+        "abs_slope_minus_1": 0.1347,
+        "pred_total": 1425.4,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.0": {
+        "slope": 0.9698,
+        "abs_slope_minus_1": 0.0302,
+        "pred_total": 1272.3,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.05": {
+        "slope": 1.0268,
+        "abs_slope_minus_1": 0.0268,
+        "pred_total": 1200.8,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.1": {
+        "slope": 1.0886,
+        "abs_slope_minus_1": 0.0886,
+        "pred_total": 1134.1,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.12": {
+        "slope": 1.115,
+        "abs_slope_minus_1": 0.115,
+        "pred_total": 1106.6,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.15": {
+        "slope": 1.1524,
+        "abs_slope_minus_1": 0.1524,
+        "pred_total": 1070.4,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.18": {
+        "slope": 1.1954,
+        "abs_slope_minus_1": 0.1954,
+        "pred_total": 1032.9,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.2": {
+        "slope": 1.2228,
+        "abs_slope_minus_1": 0.2228,
+        "pred_total": 1009.2,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": false
+      },
+      "1.542": {
+        "slope": 1.8136,
+        "abs_slope_minus_1": 0.8136,
+        "pred_total": 678.8,
+        "real_total": 1199.0,
+        "in_band_0.8_1.2": false
+      }
+    },
+    "argmin_plain": 1.05,
+    "argmin_plain_slope": 1.0268,
+    "argmin_banded": 1.05,
+    "argmin_banded_slope": 1.0268,
+    "candidates_in_band": [
+      "0.9",
+      "1.0",
+      "1.05",
+      "1.1",
+      "1.12",
+      "1.15",
+      "1.18"
+    ],
+    "argmin_at_list_boundary": false,
+    "n_windows": 77
+  },
+  "all_windows": {
+    "per_b": {
+      "0.9": {
+        "slope": 0.8977,
+        "abs_slope_minus_1": 0.1023,
+        "pred_total": 4285.5,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.0": {
+        "slope": 1.0084,
+        "abs_slope_minus_1": 0.0084,
+        "pred_total": 3819.5,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.05": {
+        "slope": 1.0676,
+        "abs_slope_minus_1": 0.0676,
+        "pred_total": 3606.6,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.1": {
+        "slope": 1.1311,
+        "abs_slope_minus_1": 0.1311,
+        "pred_total": 3402.8,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.12": {
+        "slope": 1.157,
+        "abs_slope_minus_1": 0.157,
+        "pred_total": 3327.7,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.15": {
+        "slope": 1.1995,
+        "abs_slope_minus_1": 0.1995,
+        "pred_total": 3212.6,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": true
+      },
+      "1.18": {
+        "slope": 1.2411,
+        "abs_slope_minus_1": 0.2411,
+        "pred_total": 3103.9,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": false
+      },
+      "1.2": {
+        "slope": 1.2708,
+        "abs_slope_minus_1": 0.2708,
+        "pred_total": 3032.0,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": false
+      },
+      "1.542": {
+        "slope": 1.8828,
+        "abs_slope_minus_1": 0.8828,
+        "pred_total": 2047.6,
+        "real_total": 3728.0,
+        "in_band_0.8_1.2": false
+      }
+    },
+    "argmin_plain": 1.0,
+    "argmin_plain_slope": 1.0084,
+    "argmin_banded": 1.0,
+    "argmin_banded_slope": 1.0084,
+    "candidates_in_band": [
+      "0.9",
+      "1.0",
+      "1.05",
+      "1.1",
+      "1.12",
+      "1.15"
+    ],
+    "argmin_at_list_boundary": false,
+    "n_windows": 231
+  },
+  "shipped_b_op": 1.15,
+  "argmin_moves_with_window_set": true,
+  "amendment_claim_reproduced": {
+    "subsample_1.05": true,
+    "all_windows_1.00": true
+  },
+  "runtime_s": 156.4
+}

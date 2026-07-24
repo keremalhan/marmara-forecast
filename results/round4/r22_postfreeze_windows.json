@@ -1,0 +1,42 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "REVIEWED_END": "2026-03-31",
+ "latest_reviewed_event": "2026-03-31 17:00:34",
+ "gate_correction": "the review-lag gate is is_preliminary/REVIEWED_END, NOT typing: the preliminary feed IS typed (ML/Md), so an untyped-rows gate would pass preliminary windows. Corrected to the is_preliminary flag.",
+ "windows": {
+  "2026-03-12": {
+   "target_end": "2026-04-11",
+   "n_events": 154,
+   "n_preliminary": 65,
+   "target_fully_reviewed": false,
+   "eligible": false
+  },
+  "2026-04-11": {
+   "target_end": "2026-05-11",
+   "n_events": 145,
+   "n_preliminary": 145,
+   "target_fully_reviewed": false,
+   "eligible": false
+  },
+  "2026-05-11": {
+   "target_end": "2026-06-10",
+   "n_events": 121,
+   "n_preliminary": 121,
+   "target_fully_reviewed": false,
+   "eligible": false
+  },
+  "2026-06-10": {
+   "target_end": "2026-07-10",
+   "n_events": 137,
+   "n_preliminary": 137,
+   "target_fully_reviewed": false,
+   "eligible": false
+  }
+ },
+ "n_eligible": 0,
+ "outcome_independent": "exclusion is by target-period is_preliminary, computed without reference to what occurred in the window; unconditional per Amendment 8.",
+ "CONCLUSION": "ZERO eligible post-freeze confirmation windows. The reviewed KOERI bulletin ends 2026-03-31, which does not extend beyond the frozen test set (last test window t0 2026-02-10, target closes 2026-03-12). All four candidate windows (t0 2026-03-12..06-10) have target periods past REVIEWED_END and rest on preliminary data, which the paper promises never touches a metric. Confirmation must wait for the reviewed catalogue to advance."
+}

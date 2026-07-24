@@ -8,7 +8,7 @@
 #   .venv       pinned core (requirements.txt), everything except the Mizrahi fit
 #   .venv-etas  isolated (requirements-etas.txt): lmizrahi/etas inversion only
 #   (optional)  a separate environment for the pyCSEP toolkit (requirements-csep.txt),
-#               used by scripts/csep_run.py
+#               used by scripts/csep/csep_run.py
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
@@ -21,13 +21,13 @@ run(){ echo; echo ">>> $*"; time "$@"; }
 echo "### sv-ETAS (converged EM declustering)"
 run "$PY" -m marmara.etas_fit_sv
 echo "### independent Mizrahi inversion (isolated .venv-etas; skipped if absent)"
-if [ -x "$PY_ETAS" ]; then run "$PY_ETAS" -m marmara.etas_mizrahi_invert; else echo "  (.venv-etas absent, keeping committed results/etas_mizrahi_fit.json)"; fi
+if [ -x "$PY_ETAS" ]; then run "$PY_ETAS" -m marmara.etas_mizrahi_invert; else echo "  (.venv-etas absent, keeping committed results/etas/etas_mizrahi_fit.json)"; fi
 echo "### modern-ETAS gridded rates: sv cascade + Mizrahi first-gen intensity"
-run "$PY" -m marmara.etas_rates results/etas_sv_params.pkl sv_etas
+run "$PY" -m marmara.etas_rates results/etas/etas_sv_params.pkl sv_etas
 run "$PY" -m marmara.etas_modern
 
 echo "### GNSS trajectory fetch (network) + source IG gate"
-"$PY" -m marmara.sources.fetch_data gnss_traj || echo "  (fetch skipped/offline; source is honest-absent)"
+"$PY" -m marmara.sources.fetch_data gnss_traj || echo "  (fetch skipped/offline; source is declared-absent)"
 run "$PY" -m marmara.source_ig_test gnss_traj || true    # gate is informational; decision in gnss_traj_decision.json
 
 echo "### grid_hybrid rebuild (adds y30/count30/lam30_sim), then train y30/y35/y45"

@@ -5,9 +5,9 @@ Hybrid (cascade x ML) probability maps + cascade-simulation M5/M6 with a b-ensem
 ## Regional 30-day probabilities (cascade Monte-Carlo, b-ensemble range)
 | magnitude | P (region, 30d) |
 |---|---|
-| M>=5   | 3.7% - 38.6% |
-| M>=5.5 | 0.66% - 14.20% |
-| M>=6   | 0.13% - 4.56% (central 1.61%) |
+| M>=5   | 3.7% - 32.5% |
+| M>=5.5 | 0.66% - 11.72% |
+| M>=6   | 0.13% - 3.74% (central 1.54%) |
 
 (range = b_pos 1.54 low end to b_aki 1.02 high end; central b_op 1.15)
 
@@ -19,6 +19,6 @@ Hybrid (cascade x ML) probability maps + cascade-simulation M5/M6 with a b-ensem
 | CentralMarmara | 260 | 0.0658% |
 | Ganos | 115 | 0.0170% |
 
-Highest 30-day M>=3.5 cell: **ARMUTLU AÇIKLARI-YALOVA (MARMARA DENIZI)** (lon 28.75, lat 40.55), P(M>=3.5)=20.0%.
+Highest 30-day M>=3.5 cell: **MARMARA DENIZI** (lon 28.35, lat 40.85), P(M>=3.5)=36.2%.
 
 See top20_cells.csv for per-cell M5/M6 and combined large-event numbers, and sequence/kumburgaz_2025.md for the FTLS sequence report.

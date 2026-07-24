@@ -1,0 +1,50 @@
+{
+ "note": "FREEZE MANIFEST: new prose-bound numbers -> source artifact -> value.",
+ "n_entries": 25,
+ "manifest": {
+  "above_pile_b": 1.24,
+  "above_pile_ci": [
+   1.11,
+   1.4
+  ],
+  "inner_band_PM6_pct": [
+   0.3,
+   2.24
+  ],
+  "outer_band_PM6_pct": [
+   0.13,
+   3.74
+  ],
+  "deconfounded_triple": [
+   1.3655,
+   1.4053,
+   1.4177
+  ],
+  "b_op_inside_ci": true,
+  "live_PM6_b1.40_pct": 0.3,
+  "rare_obs_exp_M5": 0.855,
+  "rare_obs_exp_M55": 0.958,
+  "n_triggers": 673,
+  "n_episodes_primary": 337,
+  "episode_precision": 0.00297,
+  "union_footprint": 0.03322,
+  "episode_range": [
+   313,
+   405
+  ],
+  "n_eligible_windows": 0,
+  "reviewed_end": "2026-03-31",
+  "bern_full": 0.0972,
+  "bern_leaveout": 0.1128,
+  "bern_kumburgaz_only": 0.0279,
+  "retained_active_pos": 90,
+  "per_window_signs": [
+   19,
+   3
+  ],
+  "control_two_axis_flags": 0,
+  "bh_flips": [],
+  "hvc_bernoulli_ig": 0.107,
+  "hvc_bernoulli_p_floor_1sided": 0.0005
+ }
+}

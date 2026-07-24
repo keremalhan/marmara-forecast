@@ -5,7 +5,7 @@ WIDE box (25.0-31.5 / 39.0-42.5, 2275 cells) captures ~2-3x more M>=4.5 events; 
 EVALUATE on the Marmara model-box cells only, for a like-for-like comparison with the
 model-box y45. Features: the full 19 on WIDE_SPEC (features_full_spec) + cascade lam45.
 
-Output: results/widebox_y45_grid.parquet , results/widebox_y45_report.json
+Output: results/grid/widebox_y45_grid.parquet , results/grid/widebox_y45_report.json
 Run:  "<venv>/bin/python3" -m marmara.widebox_y45 build   (then) ... eval
       "<venv>/bin/python3" -m marmara.widebox_y45          (build+eval)
 """
@@ -27,7 +27,7 @@ from marmara.metrics import information_gain, lambda_to_p, score_predictor
 from marmara.train import TRAIN_END, VAL_END, TEST_TARGET_END
 
 OUT = RESULTS
-GRIDF = OUT / "widebox_y45_grid.parquet"
+GRIDF = OUT / "grid" / "widebox_y45_grid.parquet"
 BASE_MC = 3.0
 K = 500
 EPS = 1e-9
@@ -35,10 +35,10 @@ SPEC = G.WIDE_SPEC
 
 
 def build():
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         import pickle; params = pickle.load(f)
-    b_op = json.load(open(OUT / "etas_fit_report.json"))["operational_b_for_cascade"]
-    cat = pd.read_csv(OUT / "catalog_widebox.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    b_op = json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"]
+    cat = pd.read_csv(OUT / "catalog" / "catalog_widebox.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     td = ((cat["datetime_utc"] - G.REF) / pd.Timedelta(days=1)).to_numpy()
     EV = G.build_bundle(td, cat["longitude"].to_numpy(), cat["latitude"].to_numpy(),
                         cat["mag_w"].to_numpy(), cat["depth_km"].to_numpy(), SPEC, BASE_MC)
@@ -99,10 +99,12 @@ def evaluate(grid):
     reg.fit(X[m["train"]], n[m["train"]])
     lam_ml = np.clip(reg.predict(X), EPS, None)
 
-    # choose w on wide-box val by per-event Poisson LL
-    def ll(idx, lam): return float(np.sum(y[idx] * np.log(np.clip(lam[idx], EPS, None)) - lam[idx]))
-    best = max(np.round(np.arange(0, 1.01, 0.1), 2),
-               key=lambda w: ll(m["val"], lam_sim ** (1 - w) * lam_ml ** w))
+    # choose w by the pre-registered 1-SE parsimony gate (uniform with train.py): the
+    # smallest w within one block-bootstrap SE of the val-LL argmax. On the sparse
+    # wide-box y45 val this is expected to drive w->0, retroactively preventing the
+    # manually-diagnosed overfit.
+    from marmara.train import select_w_1se, WEIGHTS
+    best, wdiag = select_w_1se(lam_sim, lam_ml, y, m["val"], win, WEIGHTS)
     lam_h = lam_sim ** (1 - best) * lam_ml ** best
 
     # EVALUATE on MODEL-BOX cells only, TEST windows
@@ -112,7 +114,8 @@ def evaluate(grid):
     sc_h = score_predictor(P_hyb, ys, ws); sc_c = score_predictor(P_casc, ys, ws)
     ig = information_gain(P_hyb, P_casc, ys)
     rep = {
-        "chosen_w": float(best), "n_widebox_rows": int(len(grid)),
+        "chosen_w": float(best), "w_argmax_naive": float(wdiag["w_argmax"]),
+        "n_widebox_rows": int(len(grid)),
         "widebox_train_positives": int(y[m["train"]].sum()),
         "modelbox_test_cells": int(len(ti)), "modelbox_test_positives": int(ys.sum()),
         "hybrid_widebox_trained": {"pr_auc": sc_h["pr_auc"], "roc_auc": sc_h["roc_auc"],
@@ -123,13 +126,13 @@ def evaluate(grid):
     }
     # compare to the model-box-only y45 hybrid (from evaluation)
     try:
-        mb = json.load(open(OUT / "evaluation.json"))["targets"]["y45"]["splits"]["test"]
+        mb = json.load(open(OUT / "scoring" / "evaluation.json"))["targets"]["y45"]["splits"]["test"]
         rep["modelbox_only_y45"] = {"hybrid_pr_auc": mb["scores"]["hybrid"]["pr_auc"],
                                     "hybrid_brier": mb["scores"]["hybrid"]["brier"],
                                     "ig_hybrid_vs_cascade": mb["ig_hybrid_vs"]["cascade"]}
     except Exception:
         pass
-    json.dump(rep, open(OUT / "widebox_y45_report.json", "w"), indent=2)
+    json.dump(rep, open(OUT / "grid" / "widebox_y45_report.json", "w"), indent=2)
     print("\nwidebox-y45 (eval on model-box test cells):")
     print(f"  chosen w={best}; widebox train positives {rep['widebox_train_positives']} "
           f"(vs ~104 model-box); model-box test positives {rep['modelbox_test_positives']}")

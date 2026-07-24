@@ -1,0 +1,548 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_5.md",
+  "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+  "kind": "prospectively timestamped post-review analysis amendment",
+  "hashed_before_execution": true
+ },
+ "designation": "POST-REVIEW CONFIGURATION SENSITIVITIES. These are exploratory findings under the designation of section 3. They adjudicate no model and promote nothing. The verdicts of record remain those of the registered configuration in results/claims.json.",
+ "rule": "A beats B iff the 95% block-bootstrap CI of the paired difference excludes 0 in A's favour for BOTH information gain and PR-AUC; otherwise inseparable. Same rule as the registered file, applied to a non-registered configuration.",
+ "anchor_pairs_unmoved": {
+  "statement": "hybrid-vs-cascade and hybrid-vs-sv-ETAS are two-axis inseparable at both powered targets in every ML variant examined",
+  "verified": true
+ },
+ "a_arm_caveat": {
+  "statement": "the Mc=3.5 arm's hybrid-vs-first-gen verdict tracks the imposed b and is therefore not a completeness result; hybrid-vs-cascade and cascade-vs-first-gen are inseparable at every b",
+  "b_op_sweep_slope_spread_at_mc35": 0.0037
+ },
+ "n_claims": 21,
+ "claims": [
+  {
+   "arm": "F_temporal_early_stopping (trees=200, w=0.7)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.148547,
+    "ci95": [
+     0.043169,
+     0.304973
+    ]
+   },
+   "pr_auc": {
+    "point": -0.038361,
+    "ci95": [
+     -0.056011,
+     -0.019145
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_temporal_early_stopping (trees=200, w=0.7)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_sv_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.213804,
+    "ci95": [
+     0.093589,
+     0.361947
+    ]
+   },
+   "pr_auc": {
+    "point": -0.036193,
+    "ci95": [
+     -0.050443,
+     -0.019128
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_temporal_early_stopping (trees=200, w=0.7)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "firstgen_etas beats hybrid",
+   "ig": {
+    "point": -0.263633,
+    "ci95": [
+     -0.372604,
+     -0.168107
+    ]
+   },
+   "pr_auc": {
+    "point": -0.028817,
+    "ci95": [
+     -0.042098,
+     -0.011358
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_temporal_early_stopping (trees=100, w=0.9)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.214961,
+    "ci95": [
+     -0.006966,
+     0.435526
+    ]
+   },
+   "pr_auc": {
+    "point": -0.059427,
+    "ci95": [
+     -0.093715,
+     -0.021385
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_temporal_early_stopping (trees=100, w=0.9)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_sv_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.216479,
+    "ci95": [
+     -0.070771,
+     0.56343
+    ]
+   },
+   "pr_auc": {
+    "point": -0.05933,
+    "ci95": [
+     -0.093085,
+     -0.022122
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_temporal_early_stopping (trees=100, w=0.9)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "firstgen_etas beats hybrid",
+   "ig": {
+    "point": -0.338422,
+    "ci95": [
+     -0.628918,
+     -0.089542
+    ]
+   },
+   "pr_auc": {
+    "point": -0.05471,
+    "ci95": [
+     -0.086433,
+     -0.018551
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "tree count selected on the 2021 temporal tail; refit on 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=147, w=0.8)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.084044,
+    "ci95": [
+     -0.047811,
+     0.273094
+    ]
+   },
+   "pr_auc": {
+    "point": -0.04655,
+    "ci95": [
+     -0.065355,
+     -0.024173
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=147, w=0.8)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_sv_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.149301,
+    "ci95": [
+     -0.005658,
+     0.330891
+    ]
+   },
+   "pr_auc": {
+    "point": -0.044382,
+    "ci95": [
+     -0.060636,
+     -0.023942
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=147, w=0.8)",
+   "target": "y30",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "firstgen_etas beats hybrid",
+   "ig": {
+    "point": -0.328136,
+    "ci95": [
+     -0.469305,
+     -0.201974
+    ]
+   },
+   "pr_auc": {
+    "point": -0.037006,
+    "ci95": [
+     -0.053118,
+     -0.015373
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=10, w=0.4)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.099227,
+    "ci95": [
+     -0.018564,
+     0.214683
+    ]
+   },
+   "pr_auc": {
+    "point": -0.012048,
+    "ci95": [
+     -0.023178,
+     0.001102
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=10, w=0.4)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_sv_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": 0.100744,
+    "ci95": [
+     -0.2382,
+     0.490129
+    ]
+   },
+   "pr_auc": {
+    "point": -0.011951,
+    "ci95": [
+     -0.023439,
+     0.000769
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "F_control_shipped_trees_no_stop (trees=10, w=0.4)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.454156,
+    "ci95": [
+     -0.687428,
+     -0.245489
+    ]
+   },
+   "pr_auc": {
+    "point": -0.007331,
+    "ci95": [
+     -0.016894,
+     0.00754
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "shipped tree count, internal hold-out removed, 100% of training"
+  },
+  {
+   "arm": "A_mc35_degenerate_sweep_pick (b=1.05, w=0.6)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.138647,
+    "ci95": [
+     -1.033421,
+     0.662732
+    ]
+   },
+   "pr_auc": {
+    "point": -0.033916,
+    "ci95": [
+     -0.054425,
+     -0.001323
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_degenerate_sweep_pick (b=1.05, w=0.6)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "firstgen_etas beats hybrid",
+   "ig": {
+    "point": -1.023594,
+    "ci95": [
+     -2.103463,
+     -0.080988
+    ]
+   },
+   "pr_auc": {
+    "point": -0.032661,
+    "ci95": [
+     -0.055143,
+     -0.000325
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_degenerate_sweep_pick (b=1.05, w=0.6)",
+   "target": "y35",
+   "split": "test",
+   "pair": "cascade_vs_firstgen_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.884947,
+    "ci95": [
+     -1.183791,
+     -0.612434
+    ]
+   },
+   "pr_auc": {
+    "point": 0.001254,
+    "ci95": [
+     -0.004809,
+     0.010528
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_transferred_shipped_b_op (b=1.15, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -1.845057,
+    "ci95": [
+     -4.064709,
+     0.257926
+    ]
+   },
+   "pr_auc": {
+    "point": -0.052956,
+    "ci95": [
+     -0.09297,
+     -0.009066
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_transferred_shipped_b_op (b=1.15, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "firstgen_etas beats hybrid",
+   "ig": {
+    "point": -2.801003,
+    "ci95": [
+     -5.3151,
+     -0.424039
+    ]
+   },
+   "pr_auc": {
+    "point": -0.047,
+    "ci95": [
+     -0.084313,
+     -0.00568
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_transferred_shipped_b_op (b=1.15, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "cascade_vs_firstgen_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.955945,
+    "ci95": [
+     -1.398933,
+     -0.594186
+    ]
+   },
+   "pr_auc": {
+    "point": 0.005956,
+    "ci95": [
+     -0.00235,
+     0.019076
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_mc35_own_b_positive (b=1.4698, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_cascade",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.940023,
+    "ci95": [
+     -2.405346,
+     0.424486
+    ]
+   },
+   "pr_auc": {
+    "point": -0.043057,
+    "ci95": [
+     -0.082754,
+     -0.00125
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_mc35_own_b_positive (b=1.4698, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "hybrid_vs_firstgen_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -1.829576,
+    "ci95": [
+     -3.534101,
+     -0.287439
+    ]
+   },
+   "pr_auc": {
+    "point": -0.0412,
+    "ci95": [
+     -0.079432,
+     0.00021
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  },
+  {
+   "arm": "A_mc35_mc35_own_b_positive (b=1.4698, w=1.0)",
+   "target": "y35",
+   "split": "test",
+   "pair": "cascade_vs_firstgen_etas",
+   "verdict": "inseparable",
+   "ig": {
+    "point": -0.889553,
+    "ci95": [
+     -1.307961,
+     -0.561626
+    ]
+   },
+   "pr_auc": {
+    "point": 0.001857,
+    "ci95": [
+     -0.005243,
+     0.013987
+    ]
+   },
+   "designation": "post-review configuration sensitivity (exploratory; adjudicates nothing)",
+   "note": "Mc=3.5 full-pipeline arm; b imposed because the count-calibration is degenerate at base Mc = target threshold"
+  }
+ ],
+ "b_arm_lineage": {
+  "statement": "The b arms are NEW artifacts outside the 18-checksum frozen set, so they carry their own lineage stamp. The stamp is a reproduction proof, not an asserted flag: the convention arm (1.15) rebuilds the shipped grid_hybrid.parquet BIT-IDENTICALLY, which establishes that the b-arm path is the shipped preserve_branching=True lineage; the 1.00 and 1.40 arms differ from it, as a change of b must.",
+  "shipped_grid_hybrid_sha256": "c2985c25c5dbd5a7f2da1e02d3128f1404700adf92eab65d39d6fc431ede73be",
+  "simulator": "preserve_branching=True (cascade.py default; no arm overrides it)",
+  "governed_by": {
+   "amendment": "docs/v2_analysis_amendment_7.md",
+   "sha256": "8e0ec88d9d32893e35d94b809daa39f00cb9335976e51d7a084c604e1246a955"
+  },
+  "produced_by": [
+   "scripts/round4/r15_table3_arms.py",
+   "scripts/round4/r16_arm_diagnostics.py"
+  ],
+  "frozen_set_restored_and_verified": true,
+  "arms": {
+   "1.00": {
+    "grid_hybrid.parquet_sha256": "8a09de2f89509251b8ac710cf25a7d10ce7c7f93c3a2fb8f477b33292f948889",
+    "bit_identical_to_shipped": false,
+    "artifacts_retained_at": "results/round4/arm_1.00/"
+   },
+   "1.15": {
+    "grid_hybrid.parquet_sha256": "c2985c25c5dbd5a7f2da1e02d3128f1404700adf92eab65d39d6fc431ede73be",
+    "bit_identical_to_shipped": true,
+    "artifacts_retained_at": "results/round4/arm_1.15/"
+   },
+   "1.40": {
+    "grid_hybrid.parquet_sha256": "534f719aa89325cf9c117685c09ae2352f92d9d262e27797d8af471d4b32fd95",
+    "bit_identical_to_shipped": false,
+    "artifacts_retained_at": "results/round4/arm_1.40/"
+   }
+  }
+ },
+ "bop_forensics_lineage": {
+  "statement": "Amendments 6 and 7 asserted the corrected argmins (1.05/1.00), the deconfounded triple and the test-era split as established results with no archived artifact behind any of them. r18 and r19 measured all six. The argmins and the deconfounded triple reproduced to <0.001; the amendment's test-era triple did NOT reproduce and the measured values supersede it in Section S10.4/S10.6.",
+  "produced_by": [
+   "scripts/round4/r18_bop_argmin_measured.py",
+   "scripts/round4/r19_deconfounded_b.py"
+  ],
+  "artifacts": {
+   "r18_bop_argmin_measured.json": "539984145861f9f35a801895451996e8bd92db3a088082320bac513702b6e816",
+   "r19_deconfounded_b.json": "d413c05201e5345d9b6b25881207b2ffa810ee5ab4f668c3fe4843a238458359",
+   "r16_arm_diagnostics.json": "b37abde5100a66158fdf4a615adcc3804eba36b147cf023d7f682d49000985e2",
+   "r17_live_b140.json": "2cb0714d95f567e49d0c886d068bb1d617efa084701fa00347414c6d06937111"
+  }
+ }
+}

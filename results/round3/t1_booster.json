@@ -1,0 +1,116 @@
+{
+  "target": "y30",
+  "n_test_pos": 592,
+  "canonical_hybrid": {
+    "w_sel": 0.8,
+    "w_argmax": 0.9,
+    "val_poisson_ll": -2003.98,
+    "test_ig_vs_cascade": 0.2886,
+    "test_ig_ci": [
+      0.2025,
+      0.4333
+    ],
+    "test_pr_auc": 0.2258,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.0067
+  },
+  "T1_3_argmax_w": {
+    "w": 0.9,
+    "val_poisson_ll": -2000.81,
+    "test_ig_vs_cascade": 0.2699,
+    "test_ig_ci": [
+      0.1729,
+      0.4335
+    ],
+    "test_pr_auc": 0.2196,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.0129
+  },
+  "T1_7_pureML_w1_with_lnsim": {
+    "val_poisson_ll": -2004.66,
+    "test_ig_vs_cascade": 0.2318,
+    "test_ig_ci": [
+      0.1218,
+      0.4143
+    ],
+    "test_pr_auc": 0.2115,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.021
+  },
+  "T1_7_pureML_w1_no_lnsim": {
+    "val_poisson_ll": -2038.44,
+    "test_ig_vs_cascade": -0.6054,
+    "test_ig_ci": [
+      -0.8233,
+      -0.3586
+    ],
+    "test_pr_auc": 0.1648,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.0677
+  },
+  "T1_4_drop_monotone": {
+    "w_sel": 0.7,
+    "w_argmax": 0.8,
+    "val_poisson_ll": -2022.98,
+    "test_ig_vs_cascade": 0.1966,
+    "test_ig_ci": [
+      0.0959,
+      0.3425
+    ],
+    "test_pr_auc": 0.2059,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.0266
+  },
+  "T1_6_offset": {
+    "val_poisson_ll": -1970.72,
+    "test_ig_vs_cascade": 0.3327,
+    "test_ig_ci": [
+      0.2483,
+      0.4475
+    ],
+    "test_pr_auc": 0.2065,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": -0.026
+  },
+  "T1_8_rank_proxy": {
+    "val_poisson_ll": -1906.08,
+    "test_ig_vs_cascade": 0.5269,
+    "test_ig_ci": [
+      0.3864,
+      0.7119
+    ],
+    "test_pr_auc": 0.2407,
+    "cascade_pr_auc": 0.2325,
+    "test_dpr": 0.0082,
+    "test_dpr_ci": [
+      -0.0029,
+      0.0217
+    ],
+    "separable_two_axis": false
+  },
+  "T1_9_regime_split": {
+    "active_cells": {
+      "n_cells": 4328,
+      "n_pos": 280,
+      "ig": 0.1745,
+      "ig_ci": [
+        0.1186,
+        0.2301
+      ],
+      "hybrid_pr": 0.355,
+      "cascade_pr": 0.3477
+    },
+    "quiet_cells": {
+      "n_cells": 27366,
+      "n_pos": 312,
+      "ig": 0.3911,
+      "ig_ci": [
+        0.2239,
+        0.7087
+      ],
+      "hybrid_pr": 0.1077,
+      "cascade_pr": 0.1216
+    },
+    "active_def": "days_since_m45_25km < 365"
+  }
+}

@@ -1,0 +1,514 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "construction": "p = 2*min(win_rate, 1-win_rate) = smallest alpha at which the FROZEN percentile CI excludes 0. Uses bootstrap_ci.json win_rates directly (the frozen seed-42 arrays) -- no regeneration, faithful by construction.",
+ "part": "A (p-values for real pairs). Part B = negative-control calibration (needs regeneration) + BH.",
+ "pairs": {
+  "y30.test.hybrid_vs_hybrid_naive": {
+   "p_ig": 0.065,
+   "p_pr": 0.0,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_hybrid_gnss": {
+   "p_ig": 0.045,
+   "p_pr": 0.525,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_cascade": {
+   "p_ig": 0.0,
+   "p_pr": 0.339,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_sv_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.492,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_modern_etas": {
+   "p_ig": 0.111,
+   "p_pr": 0.002,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.679,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_naive_vs_hybrid_gnss": {
+   "p_ig": 0.008,
+   "p_pr": 0.405,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_naive_vs_cascade": {
+   "p_ig": 0.0,
+   "p_pr": 0.106,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_naive_vs_sv_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.122,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_naive_vs_modern_etas": {
+   "p_ig": 0.145,
+   "p_pr": 0.04,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_naive_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.73,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_naive_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_naive_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_gnss_vs_cascade": {
+   "p_ig": 0.0,
+   "p_pr": 0.266,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_gnss_vs_sv_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.353,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_gnss_vs_modern_etas": {
+   "p_ig": 0.027,
+   "p_pr": 0.013,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_gnss_vs_firstgen_etas": {
+   "p_ig": 0.035,
+   "p_pr": 0.95,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.hybrid_gnss_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.hybrid_gnss_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.cascade_vs_sv_etas": {
+   "p_ig": 0.285,
+   "p_pr": 0.569,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.cascade_vs_modern_etas": {
+   "p_ig": 0.31,
+   "p_pr": 0.002,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.cascade_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.187,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.cascade_vs_smoothed": {
+   "p_ig": 0.003,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.cascade_vs_poisson": {
+   "p_ig": 0.016,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.sv_etas_vs_modern_etas": {
+   "p_ig": 0.117,
+   "p_pr": 0.0,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.sv_etas_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.121,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.sv_etas_vs_smoothed": {
+   "p_ig": 0.027,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.sv_etas_vs_poisson": {
+   "p_ig": 0.066,
+   "p_pr": 0.0,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y30.test.modern_etas_vs_firstgen_etas": {
+   "p_ig": 0.008,
+   "p_pr": 0.003,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.modern_etas_vs_smoothed": {
+   "p_ig": 0.032,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.modern_etas_vs_poisson": {
+   "p_ig": 0.022,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.firstgen_etas_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.firstgen_etas_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y30.test.smoothed_vs_poisson": {
+   "p_ig": 0.699,
+   "p_pr": 0.968,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_hybrid_naive": {
+   "p_ig": 0.605,
+   "p_pr": 0.229,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_hybrid_gnss": {
+   "p_ig": 0.001,
+   "p_pr": 0.062,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_cascade": {
+   "p_ig": 0.001,
+   "p_pr": 0.784,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_sv_etas": {
+   "p_ig": 0.382,
+   "p_pr": 0.758,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_modern_etas": {
+   "p_ig": 0.103,
+   "p_pr": 0.006,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.578,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_naive_vs_hybrid_gnss": {
+   "p_ig": 0.087,
+   "p_pr": 0.346,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_naive_vs_cascade": {
+   "p_ig": 0.04,
+   "p_pr": 0.358,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_naive_vs_sv_etas": {
+   "p_ig": 0.305,
+   "p_pr": 0.344,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_naive_vs_modern_etas": {
+   "p_ig": 0.121,
+   "p_pr": 0.049,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_naive_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.974,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_naive_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_naive_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_gnss_vs_cascade": {
+   "p_ig": 0.033,
+   "p_pr": 0.034,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_gnss_vs_sv_etas": {
+   "p_ig": 0.545,
+   "p_pr": 0.044,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_gnss_vs_modern_etas": {
+   "p_ig": 0.032,
+   "p_pr": 0.056,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_gnss_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.199,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.hybrid_gnss_vs_smoothed": {
+   "p_ig": 0.001,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.hybrid_gnss_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.cascade_vs_sv_etas": {
+   "p_ig": 0.983,
+   "p_pr": 0.884,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.cascade_vs_modern_etas": {
+   "p_ig": 0.008,
+   "p_pr": 0.009,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.cascade_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.437,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.cascade_vs_smoothed": {
+   "p_ig": 0.099,
+   "p_pr": 0.0,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.cascade_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.sv_etas_vs_modern_etas": {
+   "p_ig": 0.046,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.sv_etas_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.331,
+   "ig_excludes_0": true,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.sv_etas_vs_smoothed": {
+   "p_ig": 0.102,
+   "p_pr": 0.0,
+   "ig_excludes_0": false,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": false
+  },
+  "y35.test.sv_etas_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.modern_etas_vs_firstgen_etas": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.modern_etas_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.modern_etas_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.firstgen_etas_vs_smoothed": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.firstgen_etas_vs_poisson": {
+   "p_ig": 0.0,
+   "p_pr": 0.0,
+   "ig_excludes_0": true,
+   "pr_excludes_0": true,
+   "both_axes_exclude_0": true
+  },
+  "y35.test.smoothed_vs_poisson": {
+   "p_ig": 0.095,
+   "p_pr": 0.052,
+   "ig_excludes_0": false,
+   "pr_excludes_0": false,
+   "both_axes_exclude_0": false
+  }
+ }
+}

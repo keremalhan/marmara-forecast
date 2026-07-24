@@ -1,0 +1,25 @@
+{
+  "canonical_cascade_modelbox_test": {
+    "pr_auc": 0.0622,
+    "n_cells": 31694,
+    "n_pos": 22,
+    "spec": "MODEL_SPEC (1219 cells)",
+    "manuscript_states": 0.069,
+    "evaluation_md_states": 0.0622
+  },
+  "widebox_cascade_modelbox_test": {
+    "pr_auc": 0.0082,
+    "n_cells": 31694,
+    "n_pos": 22,
+    "spec": "WIDE_SPEC subset to in_box",
+    "widebox_report_states": 0.0082
+  },
+  "same_eval_set": true,
+  "cascade_rate_field_agreement": {
+    "pearson": 0.08,
+    "spearman_rank": 0.348,
+    "widebox/canonical_total_rate": 2.386,
+    "n_joined_cells": 31694
+  },
+  "verdict": "Same test cells and positives; the two 'cascade' PR-AUCs come from DIFFERENT cascade simulations (MODEL_SPEC vs WIDE_SPEC subset). The Spearman rank correlation quantifies how differently they order the model-box cells \u2014 which is why 0.069 and 0.008 are not the same estimator and must not be juxtaposed."
+}

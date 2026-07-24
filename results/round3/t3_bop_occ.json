@@ -1,0 +1,33 @@
+{
+  "note": "cascade vs inversion, occurrence-scored (global-s), per b_op; 1.15=separable (t3_lock)",
+  "b_op": {
+    "1.10": {
+      "s_cascade_val": 0.4232,
+      "ig": 0.2526,
+      "ig_ci": [
+        -0.024,
+        0.4961
+      ],
+      "dpr": 0.0246,
+      "dpr_ci": [
+        0.0074,
+        0.04
+      ],
+      "verdict": "inseparable"
+    },
+    "1.20": {
+      "s_cascade_val": 0.4225,
+      "ig": 0.2706,
+      "ig_ci": [
+        0.0189,
+        0.4991
+      ],
+      "dpr": 0.0246,
+      "dpr_ci": [
+        0.0082,
+        0.0392
+      ],
+      "verdict": "separable"
+    }
+  }
+}

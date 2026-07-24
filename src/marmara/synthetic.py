@@ -15,7 +15,7 @@
 
 Tractability (documented): N_SIMS sims for feature-building (RAM-bounded, foreground).
 
-Output: results/synthetic_report.json (+ models/bigger_ahead.pkl)
+Output: results/models/synthetic_report.json (+ models/bigger_ahead.pkl)
 Run:  "<venv>/bin/python3" -m marmara.synthetic
 """
 from __future__ import annotations
@@ -56,11 +56,21 @@ def aftershocks(params, t0, lon0, lat0, m0, t_end, rng, b, max_ev=200_000):
     reg = params.region
     ref_lon = params.background_xy.ref_lon; ref_lat = params.background_xy.ref_lat
     c, p, q, d, k, alpha, mc = params.c, params.p, params.q, params.d, params.k, params.alpha, params.mc
+    # surgical branching fix (matches cascade.py): offspring magnitudes are drawn at b (=b_op) which
+    # differs from params.b, so the SIMULATED sub-cascade is supercritical with the fitted k (the
+    # pre-fix synthetic-training-data bug). The seed mainshock's magnitude is known, so its DIRECT
+    # offspring keep the fitted k; deeper simulated generations use k_sim, holding the mmax-truncated
+    # branching ratio at the fitted 0.95.
+    k_sim = k
+    if abs(b - params.b) > 1e-12:
+        from dataclasses import replace as _replace
+        from marmara.etas_model import branching_ratio as _br
+        k_sim = k * _br(params, mmax=MMAX) / _br(_replace(params, b=b), mmax=MMAX)
     T = [np.array([t0])]; LO = [np.array([lon0])]; LA = [np.array([lat0])]; MA = [np.array([m0])]
     f_t, f_lon, f_lat, f_mag = T[0], LO[0], LA[0], MA[0]
-    total = 0
+    total = 0; gen = 0
     while f_t.size and total < max_ev:
-        kap = k * np.exp(alpha * (f_mag - mc))
+        kap = (k if gen == 0 else k_sim) * np.exp(alpha * (f_mag - mc))
         noff = rng.poisson(kap)
         if noff.sum() == 0:
             break
@@ -82,6 +92,7 @@ def aftershocks(params, t0, lon0, lat0, m0, t_end, rng, b, max_ev=200_000):
         T.append(ct); LO.append(clon); LA.append(clat); MA.append(cmag)
         total += ct.size
         f_t, f_lon, f_lat, f_mag = ct, clon, clat, cmag
+        gen += 1
     return (np.concatenate(T), np.concatenate(LO), np.concatenate(LA), np.concatenate(MA))
 
 
@@ -186,11 +197,11 @@ def score_real_sequence(cat, t_snap, lon0, lat0, ref_b, base_mc=3.0, window_days
 def main():
     t0 = time.time()
     MODELS.mkdir(parents=True, exist_ok=True)
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         params = pickle.load(f)
-    rep = json.load(open(OUT / "etas_fit_report.json"))
+    rep = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     b = rep["operational_b_for_cascade"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     ref_b = b_positive(cat[cat["datetime_utc"] < pd.Timestamp("2022-01-01")]["mag_w"].to_numpy())
     ref_b = float(ref_b) if ref_b else 1.0
 
@@ -254,7 +265,7 @@ def main():
         "real_sequences": reals,
         "runtime_s": round(time.time() - t0, 1),
     }
-    json.dump(report, open(OUT / "synthetic_report.json", "w"), indent=2)
+    json.dump(report, open(OUT / "models" / "synthetic_report.json", "w"), indent=2)
     print(f"\nbigger-one-ahead classifier: test PR-AUC {pr}, ROC {roc}")
     for nm, r in reals.items():
         if r.get("scored"):

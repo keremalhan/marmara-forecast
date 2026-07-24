@@ -1,0 +1,91 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "n_null_pairs": 28,
+ "seeds": [
+  1000,
+  4000,
+  7000,
+  10000,
+  13000,
+  16000,
+  19000,
+  22000
+ ],
+ "calibration_count_K500": {
+  "count_block3": {
+   "scoring": "count",
+   "mean_block": 3.0,
+   "n": 28,
+   "k_p<0.01": 3,
+   "binom_tail_P(>=k|0.01)": 0.0027,
+   "k_p<0.05": 4,
+   "median_p": 0.387,
+   "calibrated": false
+  },
+  "count_block5": {
+   "scoring": "count",
+   "mean_block": 5.0,
+   "n": 28,
+   "k_p<0.01": 3,
+   "binom_tail_P(>=k|0.01)": 0.0027,
+   "k_p<0.05": 6,
+   "median_p": 0.339,
+   "calibrated": false
+  },
+  "count_block8": {
+   "scoring": "count",
+   "mean_block": 8.0,
+   "n": 28,
+   "k_p<0.01": 4,
+   "binom_tail_P(>=k|0.01)": 0.0002,
+   "k_p<0.05": 6,
+   "median_p": 0.285,
+   "calibrated": false
+  }
+ },
+ "calibration_bernoulli_K2000": {
+  "bernoulli_block3": {
+   "scoring": "bernoulli",
+   "mean_block": 3.0,
+   "n": 28,
+   "k_p<0.01": 0,
+   "binom_tail_P(>=k|0.01)": 1.0,
+   "k_p<0.05": 1,
+   "median_p": 0.488,
+   "calibrated": true
+  },
+  "bernoulli_block5": {
+   "scoring": "bernoulli",
+   "mean_block": 5.0,
+   "n": 28,
+   "k_p<0.01": 1,
+   "binom_tail_P(>=k|0.01)": 0.2453,
+   "k_p<0.05": 2,
+   "median_p": 0.398,
+   "calibrated": true
+  },
+  "bernoulli_block8": {
+   "scoring": "bernoulli",
+   "mean_block": 8.0,
+   "n": 28,
+   "k_p<0.01": 1,
+   "binom_tail_P(>=k|0.01)": 0.2453,
+   "k_p<0.05": 4,
+   "median_p": 0.336,
+   "calibrated": false
+  }
+ },
+ "block_length_hypothesis": "FALSIFIED. At the real count K=500 all blocks 3/5/8 are anticonservative and LONGER blocks are WORSE (26 windows -> ~3 effective blocks at mean-block 8, so win_rate hits extremes more often). The block-length lever fails on this window count.",
+ "true_cause": "cascade Monte-Carlo noise. The window-block bootstrap does not capture within-forecast MC noise, so two INDEPENDENT K=500 cascade realizations look separated ~11%% of the time at p<0.01. At K=2000 the MC noise is small enough that both axes calibrate clean at block 3.",
+ "STRUCTURAL_RESOLUTION": {
+  "claim": "the independent-MC anticonservatism cannot manufacture ANY registered separation",
+  "affected_pairs": "only comparisons between two independent MC sims: cascade_vs_sv_etas, cascade_vs_modern_etas, sv_etas_vs_modern_etas",
+  "their_verdicts": "ALL THREE inseparable -> zero false separations",
+  "the_15_registered_separations": "13 involve a deterministic model (smoothed/poisson/firstgen, no MC noise); the rest share the cascade realization (hybrid family). None is an independent-MC pair.",
+  "exposed_findings": "+0.095 hybrid-vs-cascade, +0.053 two-scalar, active-cell all SHARE the cascade sim (hybrid/challengers built on it) and live on the Bernoulli axis, which calibrates CLEAN at block 3 at its real K=2000 (verified on worst-case independent-seed controls)."
+ },
+ "DISPOSITION": "BH proceeds at block 3. The construction is calibrated where it matters (Bernoulli K=2000, and all deterministic/shared-sim pairs). The one anticonservative regime (independent-MC pairs at K=500) contains only inseparable verdicts, so it is structurally incapable of affecting a registered claim. This is a STRONGER result than a block-length tweak: it is an argument, not a knob."
+}

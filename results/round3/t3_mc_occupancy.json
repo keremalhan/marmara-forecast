@@ -1,0 +1,16 @@
+{
+  "n_val_cells": 30475,
+  "n_active_cells": 25190,
+  "s_val": 0.4227,
+  "mean_abs_diff_MC_vs_scalar_occ": 0.01429,
+  "mean_abs_diff_MC_vs_naive_occ": 0.00869,
+  "corr_MC_vs_scalar": 0.9902,
+  "sum_P_MC": 806.9,
+  "sum_P_scalar": 448.5,
+  "sum_P_naive": 1025.1,
+  "n_pos_val": 461,
+  "ig_MC_occ_vs_naive": 0.2929,
+  "ig_scalar_vs_naive": 0.5122,
+  "ig_MC_occ_vs_scalar": -0.2193,
+  "note": "MC occupancy = simulator's native P(N>=1); if ig_MC~ig_scalar and diff small, the global scalar is a validated proxy (one sentence); else MC occupancy is the headline."
+}

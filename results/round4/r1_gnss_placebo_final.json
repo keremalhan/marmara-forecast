@@ -1,0 +1,291 @@
+{
+  "config": {
+    "b_op": 1.15,
+    "n_rows": 319378,
+    "n_windows": 262,
+    "K_backtest": 500
+  },
+  "bootstrap": {
+    "B": 2000,
+    "seed": 42,
+    "mean_block": 3.0,
+    "block": "Politis-Romano stationary bootstrap over window-ids"
+  },
+  "protocol_note": "N_PERM held at the original per-target values (y30=25, y35=30) so the re-run is apples-to-apples with the stale battery; only the CONFIGURATION changes.",
+  "targets": {
+    "y30": {
+      "target": "y30",
+      "n_test_pos": 592,
+      "n_test_rows": 31694,
+      "n_perm": 25,
+      "w_base": 0.8,
+      "w_aug": 0.8,
+      "w_base_argmax": 0.9,
+      "w_aug_argmax": 0.9,
+      "real": {
+        "d_ig": {
+          "point": 0.045236,
+          "ci95": [
+            0.001402,
+            0.09046
+          ],
+          "excludes_0": true
+        },
+        "d_pr_auc": {
+          "point": -0.002641,
+          "ci95": [
+            -0.010745,
+            0.005405
+          ],
+          "excludes_0": false
+        },
+        "n_windows": 26,
+        "n_pos": 592
+      },
+      "single_window": {
+        "total_ll_gain": 26.779718,
+        "total_ig_nats_per_pos": 0.045236,
+        "top_window": 248,
+        "top_window_ll_gain": 7.937933,
+        "top_window_share_of_total": 0.296416,
+        "top3_windows": [
+          {
+            "window": 248,
+            "ll_gain": 7.937933,
+            "share": 0.296416
+          },
+          {
+            "window": 241,
+            "ll_gain": 4.874332,
+            "share": 0.182016
+          },
+          {
+            "window": 244,
+            "ll_gain": -4.712862,
+            "share": -0.175986
+          }
+        ]
+      },
+      "table1_row_hybrid_gnss": {
+        "pr_auc": 0.223126,
+        "roc_auc": 0.884161,
+        "brier": 0.016551
+      },
+      "table1_row_hybrid": {
+        "pr_auc": 0.225767,
+        "roc_auc": 0.881193,
+        "brier": 0.016602
+      },
+      "time_shuffle": {
+        "d_ig": {
+          "mean": -0.014065,
+          "null_band_95": [
+            -0.151016,
+            0.035687
+          ],
+          "min": -0.297382,
+          "max": 0.041418
+        },
+        "d_pr_auc": {
+          "mean": -0.006364,
+          "null_band_95": [
+            -0.037398,
+            0.004649
+          ],
+          "min": -0.058713,
+          "max": 0.004726
+        },
+        "real_dig_exceeds_null_p95": true,
+        "real_dpr_exceeds_null_p95": false,
+        "real_dig_exceeds_all": true,
+        "runtime_s": 85.7
+      },
+      "circular_shift": {
+        "d_ig": {
+          "mean": -0.001579,
+          "null_band_95": [
+            -0.058755,
+            0.038998
+          ],
+          "min": -0.062003,
+          "max": 0.050943
+        },
+        "d_pr_auc": {
+          "mean": -0.003553,
+          "null_band_95": [
+            -0.013668,
+            0.004558
+          ],
+          "min": -0.015258,
+          "max": 0.007221
+        },
+        "real_dig_exceeds_null_p95": true,
+        "real_dpr_exceeds_null_p95": false,
+        "real_dig_exceeds_all": false,
+        "runtime_s": 111.3
+      },
+      "coverage_only": {
+        "d_ig": 0.043242,
+        "d_pr_auc": 0.005504,
+        "w": 0.8,
+        "n_stations_min": 0,
+        "n_stations_max": 7,
+        "reproduces_gain": true
+      },
+      "verdict": "NULL: the real effect does not clear the surrogate nulls on both axes -> GNSS channel remains VOID"
+    },
+    "y35": {
+      "target": "y35",
+      "n_test_pos": 167,
+      "n_test_rows": 31694,
+      "n_perm": 30,
+      "w_base": 0.4,
+      "w_aug": 0.4,
+      "w_base_argmax": 0.6,
+      "w_aug_argmax": 0.6,
+      "real": {
+        "d_ig": {
+          "point": -0.052595,
+          "ci95": [
+            -0.087609,
+            -0.021921
+          ],
+          "excludes_0": true
+        },
+        "d_pr_auc": {
+          "point": -0.011008,
+          "ci95": [
+            -0.024544,
+            0.000392
+          ],
+          "excludes_0": false
+        },
+        "n_windows": 26,
+        "n_pos": 167
+      },
+      "single_window": {
+        "total_ll_gain": -8.783334,
+        "total_ig_nats_per_pos": -0.052595,
+        "top_window": 250,
+        "top_window_ll_gain": -2.321028,
+        "top_window_share_of_total": 0.264254,
+        "top3_windows": [
+          {
+            "window": 250,
+            "ll_gain": -2.321028,
+            "share": 0.264254
+          },
+          {
+            "window": 257,
+            "ll_gain": -1.437601,
+            "share": 0.163674
+          },
+          {
+            "window": 234,
+            "ll_gain": -1.06334,
+            "share": 0.121063
+          }
+        ]
+      },
+      "table1_row_hybrid_gnss": {
+        "pr_auc": 0.118926,
+        "roc_auc": 0.884962,
+        "brier": 0.005012
+      },
+      "table1_row_hybrid": {
+        "pr_auc": 0.129934,
+        "roc_auc": 0.884208,
+        "brier": 0.004921
+      },
+      "time_shuffle": {
+        "d_ig": {
+          "mean": -0.001099,
+          "null_band_95": [
+            -0.012221,
+            0.009176
+          ],
+          "min": -0.014471,
+          "max": 0.017248
+        },
+        "d_pr_auc": {
+          "mean": 0.000414,
+          "null_band_95": [
+            -0.003645,
+            0.003679
+          ],
+          "min": -0.004378,
+          "max": 0.004268
+        },
+        "real_dig_exceeds_null_p95": false,
+        "real_dpr_exceeds_null_p95": false,
+        "real_dig_exceeds_all": false,
+        "runtime_s": 29.6
+      },
+      "circular_shift": {
+        "d_ig": {
+          "mean": 0.013107,
+          "null_band_95": [
+            -0.010592,
+            0.203664
+          ],
+          "min": -0.012405,
+          "max": 0.210811
+        },
+        "d_pr_auc": {
+          "mean": -0.000867,
+          "null_band_95": [
+            -0.016326,
+            0.00267
+          ],
+          "min": -0.035168,
+          "max": 0.002678
+        },
+        "real_dig_exceeds_null_p95": false,
+        "real_dpr_exceeds_null_p95": false,
+        "real_dig_exceeds_all": false,
+        "runtime_s": 29.9
+      },
+      "coverage_only": {
+        "d_ig": -0.008543,
+        "d_pr_auc": -0.000555,
+        "w": 0.4,
+        "n_stations_min": 0,
+        "n_stations_max": 7,
+        "reproduces_gain": true
+      },
+      "verdict": "NULL: the real effect does not clear the surrogate nulls on both axes -> GNSS channel remains VOID"
+    }
+  },
+  "identity_gate": {
+    "y30": {
+      "hybrid": {
+        "present_in_frozen": true,
+        "w_replica": 0.8,
+        "max_abs_dev_vs_frozen": 0.0,
+        "identical": true
+      },
+      "hybrid_gnss": {
+        "present_in_frozen": true,
+        "w_replica": 0.8,
+        "max_abs_dev_vs_frozen": 0.0,
+        "identical": true
+      }
+    },
+    "y35": {
+      "hybrid": {
+        "present_in_frozen": true,
+        "w_replica": 0.4,
+        "max_abs_dev_vs_frozen": 0.0,
+        "identical": true
+      },
+      "hybrid_gnss": {
+        "present_in_frozen": true,
+        "w_replica": 0.4,
+        "max_abs_dev_vs_frozen": 0.0,
+        "identical": true
+      }
+    }
+  },
+  "identity_gate_status": "PASS: replica reproduces frozen predictions bit-for-bit",
+  "runtime_s": 314.7
+}

@@ -1,4 +1,4 @@
-"""Honest information-gain test for a multi-source feature extension.
+"""Information-gain test for a multi-source feature extension.
 
 For a FeatureSource, it: (1) adds the source's causal columns to the hybrid grid, (2) runs
 the leakage gate on the new columns (no column may correlate >0.999 with a target),
@@ -44,7 +44,7 @@ SOURCES = {s.name: s for s in (GnssTrajSource(), GnssCouplingSource(),
 
 
 def load_grid():
-    g = pd.read_parquet(OUT / "grid_hybrid.parquet")
+    g = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
     g["ln_lam_sim"] = np.log(g["lam35_sim"].to_numpy() + EPS)
     return g, split_masks(g)
 
@@ -123,7 +123,7 @@ def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else "validate"
     if arg == "validate":
         out = validate()
-        json.dump(out, open(OUT / "source_ig_validation.json", "w"), indent=2)
+        json.dump(out, open(OUT / "channels" / "source_ig_validation.json", "w"), indent=2)
         v = out["harness_validation"]
         print("HARNESS VALIDATION (controls):")
         print(f"  noise  -> test IG {out['noise']['ig_aug_vs_base']['test']:+.4f}, leak-pass {out['noise']['leakage']['passes']}  [{ 'OK' if v['noise_no_gain'] else 'FAIL'}]")

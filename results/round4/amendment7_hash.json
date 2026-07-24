@@ -1,0 +1,31 @@
+{
+ "amendment": "docs/v2_analysis_amendment_7.md",
+ "sha256": "8e0ec88d9d32893e35d94b809daa39f00cb9335976e51d7a084c604e1246a955",
+ "dated": "2026-07-16",
+ "release": "1.3.0",
+ "kind": "prospectively timestamped post-review analysis amendment",
+ "honesty_ledger": "the deconfounding arithmetic and the test-era split were computed BEFORE this was written and are reported as established, NOT lodged as predictions; only the Table 3 arms are genuinely prospective",
+ "amendment6_status": "both predictions falsified (D1 returned 1.542 not ~1.12-1.15; D2 returned 1.20 not ~1.3); its decision rule fired on a confounded value and was NOT executed",
+ "decision": "no product rebuild; b_op=1.15 retained as registered operational CONVENTION, the word calibrated struck",
+ "rationale": "the registered procedure is unidentified: output tracks era and threshold across [1.00,1.54] for reasons orthogonal to the magnitude law",
+ "deconfounded_law": {
+  "modern_3.0_3.5": 1.365,
+  "all_3.0_4.0": 1.405,
+  "catalogue_3.5_4.5": 1.418,
+  "converge": "~1.37-1.42"
+ },
+ "test_era_split": {
+  "full": 1.167,
+  "pre_mainshock": 1.28,
+  "post_mainshock": 1.108,
+  "reading": "post is shallow -> 1.167 partly STAI; the 1.15 match is to an artifacted number"
+ },
+ "prospective_prediction_blind": "every paired hybrid-vs-physics and physics-vs-physics verdict unchanged at the new b=1.00 and b=1.40 arms",
+ "forbidden": [
+  "redefine the b-ensemble around b_op",
+  "justify 1.15 by the test-era slope",
+  "full-rebuild to tidy the story"
+ ],
+ "gates": "NONE; unconditional reporting",
+ "hashed_before_arms_ran": true
+}

@@ -1,0 +1,65 @@
+{
+ "note": "native-Bernoulli, K=2000 add-one, raw totals; secondary to registered count-rule",
+ "b_op": {
+  "1.10": {
+   "raw_total_cascade": 905.5,
+   "raw_total_hybrid_topup": 748.8,
+   "hybrid_vs_cascade": {
+    "ig": 0.1086,
+    "ci": [
+     0.06,
+     0.1628
+    ]
+   },
+   "cascade_vs_inversion": {
+    "ig": -0.0051,
+    "ci": [
+     -0.1284,
+     0.1229
+    ]
+   },
+   "cascade_vs_firstgen": {
+    "ig": -0.0777,
+    "ci": [
+     -0.1139,
+     -0.0469
+    ]
+   }
+  },
+  "1.20": {
+   "raw_total_cascade": 906.4,
+   "raw_total_hybrid_topup": 750.2,
+   "hybrid_vs_cascade": {
+    "ig": 0.1051,
+    "ci": [
+     0.058,
+     0.1607
+    ]
+   },
+   "cascade_vs_inversion": {
+    "ig": -0.0047,
+    "ci": [
+     -0.1292,
+     0.1272
+    ]
+   },
+   "cascade_vs_firstgen": {
+    "ig": -0.0774,
+    "ci": [
+     -0.1144,
+     -0.046
+    ]
+   }
+  }
+ },
+ "y35_hybrid_vs_cascade_native_1.15": {
+  "ig": -0.035,
+  "ci": [
+   -0.0896,
+   0.028
+  ],
+  "note": "M>=3.5 events filtered (earlier +2.82 was a M>=3.0-occupancy-vs-M>=3.5-label bug, corrected)"
+ },
+ "y35_prediction": "pre-stated < +0.095 (y30 native edge)",
+ "y35_prediction_result": "PASS: -0.035 < +0.095 (predicted); native edge vanishes at y35"
+}

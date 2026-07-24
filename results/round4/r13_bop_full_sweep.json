@@ -1,0 +1,71 @@
+{
+  "why": "calibrate_b.py sweeps every third pre-test window (a speed choice in code, predating the sweep); this re-runs the bracketing candidates on all of them",
+  "n_windows": {
+    "all_pre_test": 231,
+    "shipped_subsample": 77
+  },
+  "candidates": [
+    1.1,
+    1.12,
+    1.15,
+    1.18
+  ],
+  "subsample_[::3]": {
+    "1.1": {
+      "slope": 1.0886,
+      "abs_slope_minus_1": 0.0886,
+      "pred_total": 1134.1,
+      "real_total": 1199.0
+    },
+    "1.12": {
+      "slope": 1.115,
+      "abs_slope_minus_1": 0.115,
+      "pred_total": 1106.6,
+      "real_total": 1199.0
+    },
+    "1.15": {
+      "slope": 1.1524,
+      "abs_slope_minus_1": 0.1524,
+      "pred_total": 1070.4,
+      "real_total": 1199.0
+    },
+    "1.18": {
+      "slope": 1.1954,
+      "abs_slope_minus_1": 0.1954,
+      "pred_total": 1032.9,
+      "real_total": 1199.0
+    }
+  },
+  "all_windows": {
+    "1.1": {
+      "slope": 1.1311,
+      "abs_slope_minus_1": 0.1311,
+      "pred_total": 3402.8,
+      "real_total": 3728.0
+    },
+    "1.12": {
+      "slope": 1.157,
+      "abs_slope_minus_1": 0.157,
+      "pred_total": 3327.7,
+      "real_total": 3728.0
+    },
+    "1.15": {
+      "slope": 1.1995,
+      "abs_slope_minus_1": 0.1995,
+      "pred_total": 3212.6,
+      "real_total": 3728.0
+    },
+    "1.18": {
+      "slope": 1.2411,
+      "abs_slope_minus_1": 0.2411,
+      "pred_total": 3103.9,
+      "real_total": 3728.0
+    }
+  },
+  "argmin_subsample": 1.1,
+  "argmin_all_windows": 1.1,
+  "argmin_moves": false,
+  "shipped_b_op": 1.15,
+  "verdict": "the argmin MOVES to 1.1 on all windows -- the subsample mattered",
+  "runtime_s": 67.9
+}

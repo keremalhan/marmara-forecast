@@ -1,0 +1,81 @@
+{
+ "files": {
+  "v2_preregistration_amendment_1.md": {
+   "sha256": "067a2c36f21656c09e8077bdc49b21e14676bc115a40cf8df59c821ced8482b9",
+   "record": "results/prospective/forecast_log.jsonl",
+   "recorded": "067a2c36f21656c09e8077bdc49b21e14676bc115a40cf8df59c821ced8482b9",
+   "verifies": true
+  },
+  "v2_preregistration.md": {
+   "sha256": "377ed43e3f63f175eed1928d0f4b69b28b3caafcf0307c9c01e16bbfd9f9105c",
+   "record": "results/audit/v2_preregistration.json",
+   "recorded": "377ed43e3f63f175eed1928d0f4b69b28b3caafcf0307c9c01e16bbfd9f9105c",
+   "verifies": true
+  },
+  "RUNPLAN_round3.md": {
+   "sha256": "979b0b310f0aad6b74a0af93e4fac6206a28f43a4df529605de093cc9164773d",
+   "record": "results/round3/RUNPLAN_hash.json",
+   "recorded": "76a21979e97027b78b27636ec3dc0694c0a45166bffd9b012a73faf3b99bf0f7",
+   "verifies": false
+  },
+  "v2_preregistration_amendment_3.md": {
+   "sha256": "0812a8dbdb7d9296b569325b7a98857245b8bf44604591c17b92a25760081314",
+   "record": "results/round3/amendment3_hash.json",
+   "recorded": "0812a8dbdb7d9296b569325b7a98857245b8bf44604591c17b92a25760081314",
+   "verifies": true
+  },
+  "v2_preregistration_amendment_4.md": {
+   "sha256": "e103f573e38d12d336e0c9871a0897ae50ee52339e536b20612a8c2d727519eb",
+   "record": "results/round4/amendment4_hash.json",
+   "recorded": "e103f573e38d12d336e0c9871a0897ae50ee52339e536b20612a8c2d727519eb",
+   "verifies": true
+  },
+  "v2_analysis_amendment_5.md": {
+   "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+   "record": "results/round4/amendment5_hash.json",
+   "recorded": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+   "verifies": true
+  },
+  "v2_analysis_amendment_6.md": {
+   "sha256": "d6dc9516a1554f816e855afafc9adcc91a12be6ee03e66fcb355148bce713af6",
+   "record": "results/round4/amendment6_hash.json",
+   "recorded": "d6dc9516a1554f816e855afafc9adcc91a12be6ee03e66fcb355148bce713af6",
+   "verifies": true
+  },
+  "v2_analysis_amendment_7.md": {
+   "sha256": "8e0ec88d9d32893e35d94b809daa39f00cb9335976e51d7a084c604e1246a955",
+   "record": "results/round4/amendment7_hash.json",
+   "recorded": "8e0ec88d9d32893e35d94b809daa39f00cb9335976e51d7a084c604e1246a955",
+   "verifies": true
+  },
+  "v2_analysis_amendment_8.md": {
+   "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690",
+   "record": "results/round4/amendment8_hash.json",
+   "recorded": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690",
+   "verifies": true
+  },
+  "v2_preregistration_amendment_2.md": {
+   "sha256": "b177b99b5cb79bcdc6f558761dc85483c823d9bc259ff70dcfd081e53f708039",
+   "record": null,
+   "recorded": null,
+   "note": "dated document; no pre-execution hash was recorded",
+   "verifies": null
+  },
+  "v2_preregistration_amendment_3_addendum.md": {
+   "sha256": "9c89c8135426785e5f81a180d50c66ec2c2e06f7c91a9b592b33e611522f159c",
+   "record": null,
+   "recorded": null,
+   "note": "dated document; no pre-execution hash was recorded",
+   "verifies": null
+  }
+ },
+ "n_with_record": 9,
+ "n_verified": 8,
+ "n_no_record": 2,
+ "runplan_discrepancy": {
+  "recorded": "76a21979e97027b78b27636ec3dc0694c0a45166bffd9b012a73faf3b99bf0f7",
+  "actual": "979b0b310f0aad6b74a0af93e4fac6206a28f43a4df529605de093cc9164773d",
+  "documented": true,
+  "note": "edited after hashing at an unreconstructable point before the first commit tracking the file; no unedited copy survives in the working repositories or the deposited 1.1.0 archive. Table S8 mirrors the pre-registered lines and is the operative registration record."
+ }
+}

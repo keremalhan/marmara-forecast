@@ -4,9 +4,9 @@ Reads the raw KOERI catalog, homogenizes magnitudes to a proxy-Mw (mag_w) with
 the Kadirioglu & Kartal (2016) relations, flags the preliminary tail, removes
 near-duplicate rows, estimates the completeness magnitude Mc, and writes:
 
-    results/catalog.csv          -- model box  (lon 25.6-30.9, lat 39.6-41.9)
-    results/catalog_widebox.csv  -- full fetch box (used in Task 9)
-    results/catalog_report.json     -- Mc + magnitude-count summary
+    results/catalog/catalog.csv          -- model box  (lon 25.6-30.9, lat 39.6-41.9)
+    results/catalog/catalog_widebox.csv  -- full fetch box (used in Task 9)
+    results/catalog/catalog_report.json     -- Mc + magnitude-count summary
 
 Run from project root:
     "<venv>/bin/python3" -m marmara.catalog
@@ -173,8 +173,8 @@ def build() -> dict:
     wide = _filter_box(ded, WIDE_BOX)
     model = _filter_box(ded, MODEL_BOX)
 
-    wide.to_csv(OUT_DIR / "catalog_widebox.csv", index=False)
-    model.to_csv(OUT_DIR / "catalog.csv", index=False)
+    wide.to_csv(OUT_DIR / "catalog" / "catalog_widebox.csv", index=False)
+    model.to_csv(OUT_DIR / "catalog" / "catalog.csv", index=False)
 
     # Mc on model-box events, 2003-2021 only.
     est = model[
@@ -228,7 +228,7 @@ def build() -> dict:
             f"ge_mc({mc})": counts_at(model, mc),
         },
     }
-    with open(OUT_DIR / "catalog_report.json", "w") as f:
+    with open(OUT_DIR / "catalog" / "catalog_report.json", "w") as f:
         json.dump(report, f, indent=2)
     return {"model": model, "wide": wide, "report": report}
 

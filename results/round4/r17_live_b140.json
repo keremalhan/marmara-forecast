@@ -1,0 +1,22 @@
+{
+ "b_op convention (1.15)": {
+  "P_M6": 0.0169,
+  "P_M5.5": 0.0574
+ },
+ "deconfounded law (1.40)": {
+  "P_M6": 0.003,
+  "P_M5.5": 0.016
+ },
+ "b_aki (1.019)": {
+  "P_M6": 0.0383,
+  "P_M5.5": 0.1219
+ },
+ "b_positive (1.542)": {
+  "P_M6": 0.001,
+  "P_M5.5": 0.0075
+ },
+ "t0": "2026-07-05",
+ "K": 10000,
+ "seed": 42,
+ "note": "b=1.40 is the deconfounded-law reference for the live-products sentence; it is NOT a second central"
+}

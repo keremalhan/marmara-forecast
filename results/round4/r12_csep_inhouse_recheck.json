@@ -1,0 +1,342 @@
+{
+  "period": [
+    "2024-01-22",
+    "2026-03-12"
+  ],
+  "n_observed": 1383,
+  "n_windows": 26,
+  "N_sim_inhouse": 1000,
+  "seed": 42,
+  "b_stale_hardcoded": {
+    "cascade": 1.2,
+    "sv_etas": 1.2,
+    "modern_etas": 1.762
+  },
+  "b_final": {
+    "cascade": 1.15,
+    "sv_etas": 1.15,
+    "modern_etas": 1.762
+  },
+  "inhouse_method": "Poisson-sample each cell's count from Lambda(cell) = sum of lam30 over the 26 test windows; magnitudes from GR(b, Mc=3.0, Mmax=7.6). Per its own docstring this tests the RATE forecast and does NOT carry the clustered count over-dispersion.",
+  "pycsep_method": "score the simulator's NATIVE clustered catalogues (500 per model)",
+  "runs": {
+    "stale_b_1.2": {
+      "cascade": {
+        "N_obs": 1383,
+        "N_forecast_mean": 1304.1,
+        "N_test": {
+          "delta1": 0.013,
+          "delta2": 0.988,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.002,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.2
+      },
+      "sv_etas": {
+        "N_obs": 1383,
+        "N_forecast_mean": 1294.9,
+        "N_test": {
+          "delta1": 0.008,
+          "delta2": 0.993,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.0,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.2
+      },
+      "modern_etas": {
+        "N_obs": 1383,
+        "N_forecast_mean": 784.3,
+        "N_test": {
+          "delta1": 0.0,
+          "delta2": 1.0,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 0.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.0,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.762
+      }
+    },
+    "final_b_1.15": {
+      "cascade": {
+        "N_obs": 1383,
+        "N_forecast_mean": 1304.1,
+        "N_test": {
+          "delta1": 0.013,
+          "delta2": 0.988,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.006,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.15
+      },
+      "sv_etas": {
+        "N_obs": 1383,
+        "N_forecast_mean": 1294.9,
+        "N_test": {
+          "delta1": 0.008,
+          "delta2": 0.993,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.003,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.15
+      },
+      "modern_etas": {
+        "N_obs": 1383,
+        "N_forecast_mean": 784.3,
+        "N_test": {
+          "delta1": 0.0,
+          "delta2": 1.0,
+          "pass": false
+        },
+        "S_test": {
+          "gamma": 0.0,
+          "pass": false
+        },
+        "M_test": {
+          "gamma": 0.0,
+          "pass": false
+        },
+        "PL_test": {
+          "gamma": 1.0,
+          "pass": false
+        },
+        "b_gr": 1.762
+      }
+    }
+  },
+  "pycsep_published": {
+    "meta": {
+      "pycsep_version": "0.8.0",
+      "target": "M>=3.0 (y30)",
+      "test_period": [
+        "2024-01-22",
+        "2026-03-12"
+      ],
+      "n_windows": 26,
+      "n_cat": 500,
+      "seed": 5000,
+      "n_observed": 1383,
+      "region_cells": 1219,
+      "environment": "pyCSEP toolkit",
+      "tests": "GENUINE pyCSEP catalog-based number/magnitude/spatial/pseudolikelihood (Savran et al. 2020)"
+    },
+    "models": {
+      "cascade": {
+        "Number": {
+          "observed_statistic": 1383.0,
+          "pass": true,
+          "delta1": 0.094,
+          "delta2": 0.908,
+          "test_dist_mean": 1305.772,
+          "n_cat_used": 500
+        },
+        "Magnitude": {
+          "observed_statistic": 0.8503,
+          "pass": true,
+          "gamma": 0.252,
+          "test_dist_mean": 0.7149,
+          "n_cat_used": 500
+        },
+        "Spatial": {
+          "observed_statistic": -4.9762,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": -6.1643,
+          "n_cat_used": 500
+        },
+        "Pseudolikelihood": {
+          "observed_statistic": 1734.4947,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": 13.3384,
+          "n_cat_used": 500
+        }
+      },
+      "sv_etas": {
+        "Number": {
+          "observed_statistic": 1383.0,
+          "pass": true,
+          "delta1": 0.08,
+          "delta2": 0.922,
+          "test_dist_mean": 1295.986,
+          "n_cat_used": 500
+        },
+        "Magnitude": {
+          "observed_statistic": 0.8428,
+          "pass": true,
+          "gamma": 0.256,
+          "test_dist_mean": 0.718,
+          "n_cat_used": 500
+        },
+        "Spatial": {
+          "observed_statistic": -4.9665,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": -6.1514,
+          "n_cat_used": 500
+        },
+        "Pseudolikelihood": {
+          "observed_statistic": 1747.4051,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": 20.3161,
+          "n_cat_used": 500
+        }
+      },
+      "modern_etas": {
+        "Number": {
+          "observed_statistic": 1383.0,
+          "pass": false,
+          "delta1": 0.0,
+          "delta2": 1.0,
+          "test_dist_mean": 782.403,
+          "n_cat_used": 1000
+        },
+        "Magnitude": {
+          "observed_statistic": 4.745,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": 0.7655,
+          "n_cat_used": 1000
+        },
+        "Spatial": {
+          "observed_statistic": -4.5509,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": -5.0709,
+          "n_cat_used": 1000
+        },
+        "Pseudolikelihood": {
+          "observed_statistic": 2137.8092,
+          "pass": false,
+          "gamma": 0.0,
+          "test_dist_mean": 462.7576,
+          "n_cat_used": 1000
+        }
+      }
+    },
+    "cross_check_vs_inhouse": {
+      "cascade": {
+        "N_pass_pycsep": true,
+        "N_pass_inhouse": false,
+        "M_pass_pycsep": true,
+        "M_pass_inhouse": false,
+        "agree_NM": false
+      },
+      "sv_etas": {
+        "N_pass_pycsep": true,
+        "N_pass_inhouse": false,
+        "M_pass_pycsep": true,
+        "M_pass_inhouse": false,
+        "agree_NM": false
+      },
+      "modern_etas": {
+        "N_pass_pycsep": false,
+        "N_pass_inhouse": false,
+        "M_pass_pycsep": false,
+        "M_pass_inhouse": false,
+        "agree_NM": true
+      }
+    }
+  },
+  "native_clustered_count_dispersion": {
+    "cascade": {
+      "n_sim": 500,
+      "mean": 1305.77,
+      "std": 57.06,
+      "poisson_std_sqrt_mean": 36.14,
+      "overdispersion_ratio": 1.58,
+      "delta1_P_X_ge_1383": 0.094
+    },
+    "sv_etas": {
+      "n_sim": 500,
+      "mean": 1295.99,
+      "std": 60.02,
+      "poisson_std_sqrt_mean": 36.0,
+      "overdispersion_ratio": 1.67,
+      "delta1_P_X_ge_1383": 0.08
+    },
+    "modern_etas": {
+      "n_sim": 1000,
+      "mean": 782.4,
+      "std": 27.61,
+      "poisson_std_sqrt_mean": 27.97,
+      "overdispersion_ratio": 0.99,
+      "delta1_P_X_ge_1383": 0.0
+    }
+  },
+  "verdict": {
+    "inhouse_cascade_delta1_stale_b": 0.013,
+    "inhouse_cascade_delta1_final_b": 0.013,
+    "pycsep_cascade_delta1": 0.094,
+    "b_refresh_reconciles_N": false,
+    "cause": "STRUCTURAL -- the in-house test Poisson-samples cell counts and cannot reproduce the clustered count over-dispersion that the native catalogues carry. The MEAN agrees (the rate forecast is the same); only the count DISPERSION differs, which is exactly what the N-test integrates over. b is also stale (1.2 vs 1.15), but refreshing it does not reconcile the N-test.",
+    "sec3_sentence_status": "FALSE as written -- '\u2026and the two agree for every model' must be corrected. \u00a74 already states the opposite ('the pass rests on the clustered N-test's dispersion'), so \u00a73 contradicts \u00a74, not just the artifact.",
+    "mean_agreement": {
+      "inhouse_final_b_mean": 1304.1,
+      "pycsep_native_mean": 1305.77,
+      "means_agree_within_1pct": true
+    },
+    "dispersion_gap": {
+      "n_sim": 500,
+      "mean": 1305.77,
+      "std": 57.06,
+      "poisson_std_sqrt_mean": 36.14,
+      "overdispersion_ratio": 1.58,
+      "delta1_P_X_ge_1383": 0.094
+    }
+  }
+}

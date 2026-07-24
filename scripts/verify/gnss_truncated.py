@@ -18,7 +18,7 @@ def main():
     if not ok:
         json.dump({"skipped": why}, open(VER / "gnss_truncated.json", "w"), indent=2)
         print("SKIPPED:", why); return
-    g = pd.read_parquet(OUT / "grid_hybrid.parquet",
+    g = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet",
                         columns=["window", "t0", "cell_lon", "cell_lat", "ir", "ic"])
     tw = g[pd.to_datetime(g["t0"]) >= pd.Timestamp("2024-01-01")]
     wins = sorted(tw["window"].unique())

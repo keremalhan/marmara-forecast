@@ -1,0 +1,289 @@
+{
+  "t0": "2026-07-05",
+  "b_op": 1.15,
+  "b_ensemble": [
+    1.0185696913880833,
+    1.542417674410537
+  ],
+  "per_sim_cap": 50000,
+  "parameter_table": {
+    "productivity_k": 0.5792057357944799,
+    "alpha": 1.3862037966163911,
+    "omori_c_days": 0.021883481418978924,
+    "omori_p": 1.0656371348150495,
+    "spatial_kernel_d_km2_at_mc": 3.3703749156568477,
+    "spatial_power_q": 1.8733128470612295,
+    "spatial_magnitude_scaling_gamma_log10": 0.058331847214809135,
+    "mc_fit": 3.0,
+    "b_fit_used_in_params": 1.542417674410537,
+    "mu_total_events_per_day_ge_mc": 0.7027303069616911,
+    "region": {
+      "min_lon": 25.6,
+      "max_lon": 30.9,
+      "min_lat": 39.6,
+      "max_lat": 41.9
+    },
+    "background_field": {
+      "class": "BackgroundField",
+      "kind": "kde",
+      "bandwidth_bw_km": 8.902337445279777,
+      "bandwidth_rule": "0.5 * Silverman on declustered epicentres, clipped to [1.5, 12.0] km; silverman = max(n_eff,2)^(-1/6) * 0.5 * (sx+sy)",
+      "uniform_floor_UNIFORM_MIX": 0.01,
+      "floor_note": "weighted Gaussian KDE of probabilistically-declustered epicentres, mixed with a 1% uniform floor for numerical robustness",
+      "n_kde_points": 14031,
+      "region_area_km2": 114170.8,
+      "ref_lon": 28.25,
+      "ref_lat": 40.75,
+      "normalization": "integrates to 1 over the region (1/km^2); mu_total scales it to events/day",
+      "em_iterations": 2
+    },
+    "branching_untruncated": 0.9499999999999998,
+    "branching_mmax7.6": 0.9499552123776772,
+    "branching_cap_operational": 0.95,
+    "diagnostic_fit_cap_0.999_branching": 0.999,
+    "re_pinned_at_raised_cap": true,
+    "n_events_fit": 14031,
+    "n_dropped_by_stai": 0,
+    "converged": true,
+    "b_positive": 1.542417674410537,
+    "b_aki": 1.0185696913880833,
+    "b_operational_for_cascade": 1.15,
+    "b_ensemble_for_cascade": [
+      1.542417674410537,
+      1.0185696913880833
+    ],
+    "optimizer": {
+      "method": "L-BFGS-B",
+      "jac": "analytic (_nll_grad, jac=True)",
+      "maxiter": 200,
+      "maxfun": 800,
+      "stages": "2 (refit from best.x, maxiter 150)",
+      "background_em_iterations": 2,
+      "parameterization": [
+        "ln mu",
+        "ln n (branching ratio)",
+        "alpha",
+        "ln c",
+        "ln (p-1)",
+        "ln d",
+        "ln (q-1)",
+        "gamma"
+      ],
+      "bounds": {
+        "ln_mu": [
+          "ln 1e-4",
+          "ln 200"
+        ],
+        "ln_n": [
+          "ln 1e-3",
+          "ln cap (0.95)"
+        ],
+        "alpha": [
+          0.05,
+          "min(3.2, beta - 0.02)"
+        ],
+        "ln_c": [
+          "ln 5e-4",
+          "ln 3.0"
+        ],
+        "ln_p_minus_1": [
+          "ln 0.02",
+          "ln 1.5  -> p in [1.02, 2.5]"
+        ],
+        "ln_d": [
+          "ln 1e-3",
+          "ln 400"
+        ],
+        "ln_q_minus_1": [
+          "ln 0.08",
+          "ln 2.5 -> q in (1.08, 3.5]"
+        ]
+      },
+      "key_constraint": "productivity parameterized through the untruncated branching ratio n = k*beta/(beta-alpha), bounded n <= 0.95 -> subcritical, stationary; blocks the degenerate p->1 / large-k MLE mode"
+    },
+    "uncertainties": {
+      "hessian_available": false,
+      "why": "the branching ratio is PINNED at the 0.95 active bound (n = 0.94999...), so the productivity scale has no interior curvature and a curvature-based sigma is undefined there; scipy L-BFGS-B's hess_inv is a limited-memory approximation and is not persisted in etas_params.pkl. Evidence of the pin: raising the cap to 0.999 re-pinned at the new cap (n = 0.9990), the documented degenerate near-critical mode.",
+      "substitute": "Mc-3.65 refit deltas -- an end-to-end empirical perturbation of the triggering parameters (k, alpha, p)",
+      "measured_refit_deltas_mc3.0_to_mc3.65": {
+        "k": -0.079287,
+        "alpha": -0.028068,
+        "p": 0.005133,
+        "c": -0.45551,
+        "mu_total": -0.82361
+      },
+      "applied_deltas": {
+        "k": -0.08,
+        "alpha": -0.03,
+        "p": 0.005
+      }
+    },
+    "perturbed_params": {
+      "k": 0.5328692769309215,
+      "alpha": 1.3446176827178993,
+      "p": 1.0709653204891247,
+      "branching_mmax7.6_perturbed": 0.8574974737408566,
+      "branching_mmax7.6_baseline": 0.9499552123776772
+    }
+  },
+  "horizons": {
+    "30d": {
+      "horizon_days": 30.0,
+      "K": 10000,
+      "conditions": {
+        "baseline_b_op": {
+          "P5.5": 0.0574,
+          "P6.0": 0.0169
+        },
+        "perturbed_b_op": {
+          "P5.5": 0.0555,
+          "P6.0": 0.0158
+        },
+        "baseline_b_aki": {
+          "P5.5": 0.1222,
+          "P6.0": 0.0387
+        },
+        "baseline_b_pos": {
+          "P5.5": 0.0075,
+          "P6.0": 0.001
+        }
+      },
+      "effect_P5.5": {
+        "baseline": 0.0574,
+        "perturbed": 0.0555,
+        "param_abs_change": 0.0019,
+        "param_frac_change": -0.0331,
+        "b_ensemble_lo_at_b_pos": 0.0075,
+        "b_ensemble_hi_at_b_aki": 0.1222,
+        "b_span_abs": 0.1147,
+        "b_span_ratio_hi_over_lo": 16.29,
+        "param_effect_as_frac_of_b_span": 0.01656,
+        "b_effect_over_param_effect": 60.4
+      },
+      "effect_P6.0": {
+        "baseline": 0.0169,
+        "perturbed": 0.0158,
+        "param_abs_change": 0.0011,
+        "param_frac_change": -0.06509,
+        "b_ensemble_lo_at_b_pos": 0.001,
+        "b_ensemble_hi_at_b_aki": 0.0387,
+        "b_span_abs": 0.0377,
+        "b_span_ratio_hi_over_lo": 38.7,
+        "param_effect_as_frac_of_b_span": 0.02918,
+        "b_effect_over_param_effect": 34.3
+      }
+    },
+    "90d": {
+      "horizon_days": 90.0,
+      "K": 10000,
+      "conditions": {
+        "baseline_b_op": {
+          "P5.5": 0.1682,
+          "P6.0": 0.0481
+        },
+        "perturbed_b_op": {
+          "P5.5": 0.1615,
+          "P6.0": 0.047
+        },
+        "baseline_b_aki": {
+          "P5.5": 0.3228,
+          "P6.0": 0.1145
+        },
+        "baseline_b_pos": {
+          "P5.5": 0.0237,
+          "P6.0": 0.0027
+        }
+      },
+      "effect_P5.5": {
+        "baseline": 0.1682,
+        "perturbed": 0.1615,
+        "param_abs_change": 0.0067,
+        "param_frac_change": -0.03983,
+        "b_ensemble_lo_at_b_pos": 0.0237,
+        "b_ensemble_hi_at_b_aki": 0.3228,
+        "b_span_abs": 0.2991,
+        "b_span_ratio_hi_over_lo": 13.62,
+        "param_effect_as_frac_of_b_span": 0.0224,
+        "b_effect_over_param_effect": 44.6
+      },
+      "effect_P6.0": {
+        "baseline": 0.0481,
+        "perturbed": 0.047,
+        "param_abs_change": 0.0011,
+        "param_frac_change": -0.02287,
+        "b_ensemble_lo_at_b_pos": 0.0027,
+        "b_ensemble_hi_at_b_aki": 0.1145,
+        "b_span_abs": 0.1118,
+        "b_span_ratio_hi_over_lo": 42.41,
+        "param_effect_as_frac_of_b_span": 0.00984,
+        "b_effect_over_param_effect": 101.6
+      }
+    },
+    "365d": {
+      "horizon_days": 365.0,
+      "K": 3000,
+      "conditions": {
+        "baseline_b_op": {
+          "P5.5": 0.5213333333333333,
+          "P6.0": 0.184
+        },
+        "perturbed_b_op": {
+          "P5.5": 0.5066666666666667,
+          "P6.0": 0.17066666666666666
+        },
+        "baseline_b_aki": {
+          "P5.5": 0.7763333333333333,
+          "P6.0": 0.382
+        },
+        "baseline_b_pos": {
+          "P5.5": 0.08766666666666667,
+          "P6.0": 0.012
+        }
+      },
+      "effect_P5.5": {
+        "baseline": 0.521333,
+        "perturbed": 0.506667,
+        "param_abs_change": 0.014667,
+        "param_frac_change": -0.02813,
+        "b_ensemble_lo_at_b_pos": 0.087667,
+        "b_ensemble_hi_at_b_aki": 0.776333,
+        "b_span_abs": 0.688667,
+        "b_span_ratio_hi_over_lo": 8.86,
+        "param_effect_as_frac_of_b_span": 0.0213,
+        "b_effect_over_param_effect": 47.0
+      },
+      "effect_P6.0": {
+        "baseline": 0.184,
+        "perturbed": 0.170667,
+        "param_abs_change": 0.013333,
+        "param_frac_change": -0.07246,
+        "b_ensemble_lo_at_b_pos": 0.012,
+        "b_ensemble_hi_at_b_aki": 0.382,
+        "b_span_abs": 0.37,
+        "b_span_ratio_hi_over_lo": 31.83,
+        "param_effect_as_frac_of_b_span": 0.03604,
+        "b_effect_over_param_effect": 27.7
+      }
+    }
+  },
+  "published_live_30d": {
+    "P_M6_central_b_op": 0.015381748828067976,
+    "P_M6_range": [
+      0.0012992202859282154,
+      0.0373873550360424
+    ],
+    "P_M5.5_range": [
+      0.006578734804763564,
+      0.11717986714016237
+    ],
+    "source": "results/forecast/forecast_2026-07-05/forecast_summary.json"
+  },
+  "runtime_s": 7.5,
+  "gate": {
+    "b_effect_dominates_30d_P6": true,
+    "30d_P6_param_frac_change": -0.06509,
+    "30d_P6_b_span_ratio": 38.7,
+    "30d_P6_param_effect_as_frac_of_b_span": 0.02918,
+    "baseline_reproduces_published_1.54pct": true
+  }
+}

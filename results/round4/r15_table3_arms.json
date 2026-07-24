@@ -1,0 +1,736 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_7.md",
+    "sha256": "8e0ec88d9d32893e35d94b809daa39f00cb9335976e51d7a084c604e1246a955"
+  },
+  "why": "b_op is unidentified; 1.15 is retained as convention. These arms show the paired verdicts do not move across the contested span [1.00, 1.40].",
+  "prediction_lodged_blind": "every paired verdict unchanged at both arms",
+  "shipped_b_op": 1.15,
+  "arms": {
+    "1.15_shipped": {
+      "y30": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.28864,
+          "ig_ci": [
+            0.202523,
+            0.433348
+          ],
+          "pr": -0.00674,
+          "pr_ci": [
+            -0.02034,
+            0.006909
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.353897,
+          "ig_ci": [
+            0.224812,
+            0.502916
+          ],
+          "pr": -0.004572,
+          "pr_ci": [
+            -0.016567,
+            0.007788
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": 0.158359,
+          "ig_ci": [
+            -0.032327,
+            0.325627
+          ],
+          "pr": 0.019316,
+          "pr_ci": [
+            0.00744,
+            0.032235
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.123541,
+          "ig_ci": [
+            -0.209809,
+            -0.051586
+          ],
+          "pr": 0.002804,
+          "pr_ci": [
+            -0.012108,
+            0.019363
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.065257,
+          "ig_ci": [
+            -0.033278,
+            0.192284
+          ],
+          "pr": 0.002168,
+          "pr_ci": [
+            -0.005107,
+            0.009192
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.130281,
+          "ig_ci": [
+            -0.419752,
+            0.092934
+          ],
+          "pr": 0.026056,
+          "pr_ci": [
+            0.009848,
+            0.040805
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.41218,
+          "ig_ci": [
+            -0.560206,
+            -0.303126
+          ],
+          "pr": 0.009544,
+          "pr_ci": [
+            -0.005158,
+            0.026564
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.477437,
+          "ig_ci": [
+            -0.604536,
+            -0.360351
+          ],
+          "pr": 0.007376,
+          "pr_ci": [
+            -0.001741,
+            0.020135
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.281899,
+          "ig_ci": [
+            -0.498513,
+            -0.051523
+          ],
+          "pr": -0.016513,
+          "pr_ci": [
+            -0.028512,
+            -0.005017
+          ]
+        }
+      },
+      "y35": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.173384,
+          "ig_ci": [
+            0.049687,
+            0.307373
+          ],
+          "pr": -0.000752,
+          "pr_ci": [
+            -0.006654,
+            0.005214
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.174902,
+          "ig_ci": [
+            -0.167631,
+            0.581773
+          ],
+          "pr": -0.000655,
+          "pr_ci": [
+            -0.008112,
+            0.007385
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.150847,
+          "ig_ci": [
+            -0.355195,
+            0.034147
+          ],
+          "pr": 0.0194,
+          "pr_ci": [
+            0.003959,
+            0.044123
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.379999,
+          "ig_ci": [
+            -0.573846,
+            -0.21592
+          ],
+          "pr": 0.003964,
+          "pr_ci": [
+            -0.006488,
+            0.02239
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.001517,
+          "ig_ci": [
+            -0.398853,
+            0.442874
+          ],
+          "pr": 9.7e-05,
+          "pr_ci": [
+            -0.005044,
+            0.006204
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.324232,
+          "ig_ci": [
+            -0.623411,
+            -0.07187
+          ],
+          "pr": 0.020152,
+          "pr_ci": [
+            0.004634,
+            0.042814
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.553383,
+          "ig_ci": [
+            -0.86641,
+            -0.306667
+          ],
+          "pr": 0.004717,
+          "pr_ci": [
+            -0.005604,
+            0.022985
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.554901,
+          "ig_ci": [
+            -0.989287,
+            -0.213761
+          ],
+          "pr": 0.004619,
+          "pr_ci": [
+            -0.003898,
+            0.021398
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.229152,
+          "ig_ci": [
+            -0.339446,
+            -0.109141
+          ],
+          "pr": -0.015436,
+          "pr_ci": [
+            -0.026447,
+            -0.00698
+          ]
+        }
+      }
+    },
+    "1.0": {
+      "y30": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.249001,
+          "ig_ci": [
+            0.167288,
+            0.365631
+          ],
+          "pr": -0.005579,
+          "pr_ci": [
+            -0.021681,
+            0.013694
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.318675,
+          "ig_ci": [
+            0.191821,
+            0.453226
+          ],
+          "pr": -0.002536,
+          "pr_ci": [
+            -0.021681,
+            0.01875
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": 0.139753,
+          "ig_ci": [
+            -0.00985,
+            0.278245
+          ],
+          "pr": 0.019952,
+          "pr_ci": [
+            -0.000344,
+            0.042983
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.142146,
+          "ig_ci": [
+            -0.247748,
+            -0.037472
+          ],
+          "pr": 0.00344,
+          "pr_ci": [
+            -0.021076,
+            0.032965
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.069674,
+          "ig_ci": [
+            -0.01917,
+            0.188018
+          ],
+          "pr": 0.003043,
+          "pr_ci": [
+            -0.00457,
+            0.010052
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.109248,
+          "ig_ci": [
+            -0.353974,
+            0.094754
+          ],
+          "pr": 0.025531,
+          "pr_ci": [
+            0.009016,
+            0.040939
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.391148,
+          "ig_ci": [
+            -0.493391,
+            -0.307505
+          ],
+          "pr": 0.009018,
+          "pr_ci": [
+            -0.00614,
+            0.026619
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.460821,
+          "ig_ci": [
+            -0.575901,
+            -0.350128
+          ],
+          "pr": 0.005976,
+          "pr_ci": [
+            -0.003852,
+            0.019885
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.281899,
+          "ig_ci": [
+            -0.498513,
+            -0.051523
+          ],
+          "pr": -0.016513,
+          "pr_ci": [
+            -0.028512,
+            -0.005017
+          ]
+        }
+      },
+      "y35": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.261656,
+          "ig_ci": [
+            0.113799,
+            0.417868
+          ],
+          "pr": -0.001473,
+          "pr_ci": [
+            -0.016694,
+            0.009863
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.371655,
+          "ig_ci": [
+            0.064846,
+            0.717754
+          ],
+          "pr": -0.002934,
+          "pr_ci": [
+            -0.021058,
+            0.008207
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.144783,
+          "ig_ci": [
+            -0.357066,
+            0.010059
+          ],
+          "pr": 0.017227,
+          "pr_ci": [
+            0.002848,
+            0.038484
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.373934,
+          "ig_ci": [
+            -0.541648,
+            -0.247523
+          ],
+          "pr": 0.001791,
+          "pr_ci": [
+            -0.010821,
+            0.018395
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.109998,
+          "ig_ci": [
+            -0.091112,
+            0.370971
+          ],
+          "pr": -0.001461,
+          "pr_ci": [
+            -0.008773,
+            0.003149
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.406439,
+          "ig_ci": [
+            -0.65699,
+            -0.205138
+          ],
+          "pr": 0.0187,
+          "pr_ci": [
+            0.003162,
+            0.04169
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.635591,
+          "ig_ci": [
+            -0.884719,
+            -0.426323
+          ],
+          "pr": 0.003264,
+          "pr_ci": [
+            -0.006553,
+            0.021529
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.745589,
+          "ig_ci": [
+            -1.207941,
+            -0.379233
+          ],
+          "pr": 0.004725,
+          "pr_ci": [
+            -0.004907,
+            0.026437
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.229152,
+          "ig_ci": [
+            -0.339446,
+            -0.109141
+          ],
+          "pr": -0.015436,
+          "pr_ci": [
+            -0.026447,
+            -0.00698
+          ]
+        }
+      }
+    },
+    "1.4": {
+      "y30": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.300785,
+          "ig_ci": [
+            0.217602,
+            0.41199
+          ],
+          "pr": -0.017494,
+          "pr_ci": [
+            -0.031969,
+            -0.001063
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.309117,
+          "ig_ci": [
+            0.202155,
+            0.435962
+          ],
+          "pr": -0.017124,
+          "pr_ci": [
+            -0.031652,
+            -0.001187
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": 0.16699,
+          "ig_ci": [
+            -0.011752,
+            0.331311
+          ],
+          "pr": 0.008523,
+          "pr_ci": [
+            -0.00245,
+            0.020562
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.11491,
+          "ig_ci": [
+            -0.200185,
+            -0.032408
+          ],
+          "pr": -0.007989,
+          "pr_ci": [
+            -0.022505,
+            0.008555
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.008333,
+          "ig_ci": [
+            -0.099981,
+            0.114916
+          ],
+          "pr": 0.00037,
+          "pr_ci": [
+            -0.006185,
+            0.008307
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.133795,
+          "ig_ci": [
+            -0.39115,
+            0.083896
+          ],
+          "pr": 0.026017,
+          "pr_ci": [
+            0.011272,
+            0.03963
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.415694,
+          "ig_ci": [
+            -0.519574,
+            -0.325892
+          ],
+          "pr": 0.009505,
+          "pr_ci": [
+            -0.004289,
+            0.026031
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.424027,
+          "ig_ci": [
+            -0.5167,
+            -0.333948
+          ],
+          "pr": 0.009134,
+          "pr_ci": [
+            -0.000705,
+            0.022404
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.281899,
+          "ig_ci": [
+            -0.498513,
+            -0.051523
+          ],
+          "pr": -0.016513,
+          "pr_ci": [
+            -0.028512,
+            -0.005017
+          ]
+        }
+      },
+      "y35": {
+        "hybrid_vs_cascade": {
+          "verdict": "inseparable",
+          "ig": 0.055157,
+          "ig_ci": [
+            -0.009637,
+            0.128425
+          ],
+          "pr": -0.00098,
+          "pr_ci": [
+            -0.009556,
+            0.002222
+          ]
+        },
+        "hybrid_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.05911,
+          "ig_ci": [
+            -0.244071,
+            0.389629
+          ],
+          "pr": -0.000739,
+          "pr_ci": [
+            -0.007827,
+            0.005447
+          ]
+        },
+        "hybrid_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.049281,
+          "ig_ci": [
+            -0.262107,
+            0.137143
+          ],
+          "pr": 0.017739,
+          "pr_ci": [
+            0.003008,
+            0.040192
+          ]
+        },
+        "hybrid_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.278432,
+          "ig_ci": [
+            -0.528086,
+            -0.073601
+          ],
+          "pr": 0.002303,
+          "pr_ci": [
+            -0.00616,
+            0.016936
+          ]
+        },
+        "cascade_vs_sv_etas": {
+          "verdict": "inseparable",
+          "ig": 0.003953,
+          "ig_ci": [
+            -0.341302,
+            0.358151
+          ],
+          "pr": 0.000242,
+          "pr_ci": [
+            -0.005952,
+            0.008028
+          ]
+        },
+        "cascade_vs_modern_etas": {
+          "verdict": "inseparable",
+          "ig": -0.104438,
+          "ig_ci": [
+            -0.370059,
+            0.120519
+          ],
+          "pr": 0.01872,
+          "pr_ci": [
+            0.002769,
+            0.044196
+          ]
+        },
+        "cascade_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.333589,
+          "ig_ci": [
+            -0.650289,
+            -0.080492
+          ],
+          "pr": 0.003284,
+          "pr_ci": [
+            -0.006983,
+            0.023099
+          ]
+        },
+        "sv_etas_vs_firstgen_etas": {
+          "verdict": "inseparable",
+          "ig": -0.337542,
+          "ig_ci": [
+            -0.737425,
+            -0.025116
+          ],
+          "pr": 0.003042,
+          "pr_ci": [
+            -0.0075,
+            0.020848
+          ]
+        },
+        "modern_etas_vs_firstgen_etas": {
+          "verdict": "B_beats_A",
+          "ig": -0.229152,
+          "ig_ci": [
+            -0.339446,
+            -0.109141
+          ],
+          "pr": -0.015436,
+          "pr_ci": [
+            -0.026447,
+            -0.00698
+          ]
+        }
+      }
+    }
+  },
+  "restore_verified": true,
+  "restore_mismatches": [],
+  "verdict_diffs_vs_shipped": [],
+  "prediction_held": true,
+  "runtime_s": 2232.1
+}

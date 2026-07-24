@@ -5,10 +5,18 @@ framework") using the standard catalog-based consistency tests of Savran et al.
 (2020): N-test (number), M-test (magnitude), S-test (spatial) and a
 pseudo-likelihood (PL) test.
 
-This module implements those published definitions in the core environment; the
-genuine pyCSEP toolkit is run separately by scripts/csep_run.py and its N/M results
-agree with these, so these provide an in-repo cross-check. The numbers are the
-community-standard statistics, not a bespoke metric.
+SCOPE: this is a RATE cross-check, not a substitute for the native-catalogue CSEP run.
+It implements the published definitions in the core environment, but builds its catalogues
+by Poisson-sampling per-cell counts (below), i.e. under FORCED cell-independence. It
+therefore cross-checks the RATE forecast: its forecast means agree with the native-catalogue
+means to ~0.1% (1,304.1 vs 1,305.8 for the cascade). Its N/M VERDICTS agree with the native
+pyCSEP run (scripts/csep_run.py) only for a genuinely Poissonian forecaster -- the independent
+inversion (native count overdispersion 0.99x). For the clustered simulators it under-disperses
+the count distribution (native sigma 57.1 vs Poisson 36.1 for the cascade) and spuriously
+rejects: cascade N delta1 = 0.013 here vs 0.094 native; M gamma = 0.006 here vs 0.252 native.
+That divergence is the documented approximation below, NOT an error, and the native run is
+authoritative for cascade/sv_etas. Verified at the final configuration by
+scripts/csep/inhouse_recheck.py (refreshing b_op 1.2 -> 1.15 moves delta1 by zero).
 
 Forecasts. Each model supplies a per-cell expected M>=3.0 count over the test
 period, Lambda(cell) = sum over the 26 test windows of its lam30 field
@@ -46,8 +54,24 @@ CSEP = OUT / "csep"
 MC, MMAX, DM = 3.0, 7.6, 0.1
 N_SIM = 1000
 SEED = 42
-MODELS_B = {"cascade": 1.2, "sv_etas": 1.2, "modern_etas": 1.762}  # GR b per model
 EPS = 1e-12
+
+
+def _models_b() -> dict:
+    """GR b per model, DERIVED from the frozen fit artifacts (never hardcoded).
+
+    The clustered simulators draw magnitudes at the operational b_op; the independent
+    inversion keeps its own fitted b. Previously these were literals {1.2, 1.2, 1.762},
+    which silently went off-config when b_op was refit 1.2 -> 1.15 (the stale value was
+    recorded as "b_gr": 1.2 in results/csep/csep_results.json). scripts/csep_prep.py
+    already reads b_op from the report; this now matches it.
+    """
+    b_op = float(json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"])
+    try:
+        b_inv = float(json.load(open(OUT / "etas" / "etas_mizrahi_fit.json"))["b_value_implied"])
+    except Exception:
+        b_inv = 1.762
+    return {"cascade": b_op, "sv_etas": b_op, "modern_etas": b_inv}
 
 
 def _test_windows(grid):
@@ -83,7 +107,7 @@ def model_lambda(grid, test_wins):
 
 def observed(grid, test_wins):
     """Observed per-cell M>=3.0 counts + magnitudes in the test period."""
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     tw = grid[grid["window"].isin(test_wins)].groupby("window")["t0"].first()
     t0s = pd.to_datetime(tw.values)
@@ -155,7 +179,8 @@ def run_model(lam, b, obs_counts, obs_mags, rng):
 
 def main():
     CSEP.mkdir(parents=True, exist_ok=True)
-    grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
+    models_b = _models_b()
+    grid = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
     test_wins = _test_windows(grid)
     lams = model_lambda(grid, test_wins)
     obs_counts, obs_mags, period = observed(grid, test_wins)
@@ -166,11 +191,18 @@ def main():
                         "n_windows": int(len(test_wins)), "N_sim": N_SIM, "seed": SEED,
                         "N_observed": int(obs_counts.sum()),
                         "tests": "catalog-based N / M / S / pseudo-likelihood "
-                        "(Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)"},
+                        "(Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)",
+                        "b_per_model": models_b,
+                        "scope": "RATE cross-check: cell counts are Poisson-sampled from Lambda(cell), "
+                                 "so this tests the RATE forecast under forced cell-independence. It "
+                                 "does NOT carry the clustered count over-dispersion; for the clustered "
+                                 "simulators its N/M verdicts are SUPERSEDED by the native-catalogue "
+                                 "pyCSEP run (results/csep/pycsep_results.json). Agreement is expected "
+                                 "only for a genuinely Poissonian forecaster (the inversion)."},
               "models": {}}
     for model, lam in lams.items():
         rng = np.random.default_rng(SEED)
-        results["models"][model] = run_model(lam, MODELS_B[model], obs_counts, obs_mags, rng)
+        results["models"][model] = run_model(lam, models_b[model], obs_counts, obs_mags, rng)
         r = results["models"][model]
         print(f"  {model:12s} N {r['N_obs']} vs {r['N_forecast_mean']:6} "
               f"N-pass {r['N_test']['pass']} S {r['S_test']['gamma']} "
@@ -218,14 +250,14 @@ def _write_md(res, path):
           f"**The number test is the decisive count check.** The cascade and sv_etas "
           f"forecasts {pair_dir} the observed count ({cas['N_forecast_mean']:.0f} and "
           f"{sv['N_forecast_mean']:.0f} vs {nobs} observed M>=3.0 events) and {pair_n} the "
-          f"N-test, but {pair_m1} (M-test, GR b={MODELS_B['cascade']})."]
+          f"N-test, but {pair_m1} (M-test, GR b={cas['b_gr']})."]
     if mod is not None:
         md = "over-predicts" if mod["N_forecast_mean"] > nobs else "under-predicts"
         mn = "fails" if not mod["N_test"]["pass"] else "passes"
         L.append(
             f"The modern_etas forecast {md} the count ({mod['N_forecast_mean']:.0f} vs "
             f"{nobs}) and {mn} the N-test: its first-generation intensity has no secondary "
-            f"triggering, and its steeper inverted b={MODELS_B['modern_etas']} over-weights "
+            f"triggering, and its steeper inverted b={mod['b_gr']} over-weights "
             f"small events in the M-test.")
     L += ["",
           "**S-test and PL-test reject every model (γ≈1): this is a limitation of the "

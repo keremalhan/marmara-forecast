@@ -52,10 +52,11 @@ EPS = 1e-9
 # baseline, not a claim comparator) is omitted from the pair matrix per the
 # design. sv_etas / modern_etas are picked up automatically once their columns
 # are added to predictions_*.parquet.
-CANON = ["hybrid", "hybrid_gnss", "cascade", "sv_etas", "modern_etas", "firstgen_etas",
-         "smoothed", "poisson"]
-TARGETS = ["y30", "y35", "y45"]   # y30 = primary powered comparison
-SPLITS = ["test", "val"]      # test is primary; val reported for completeness
+CANON = ["hybrid", "hybrid_naive", "hybrid_gnss", "cascade", "sv_etas", "modern_etas",
+         "firstgen_etas", "smoothed", "poisson"]
+import os
+TARGETS = os.environ.get("V2_BOOT_TARGETS", "y30,y35,y45").split(",")  # y30 = primary powered
+SPLITS = os.environ.get("V2_BOOT_SPLITS", "test,val").split(",")       # test primary; val for completeness
 
 
 # --------------------------------------------------------------------------- #
@@ -341,9 +342,9 @@ def write_claims(report: dict, path):
 def main():
     n_boot = int(sys.argv[1]) if len(sys.argv) > 1 else B_DEFAULT
     report = run(n_boot)
-    with open(OUT / "bootstrap_ci.json", "w") as f:
+    with open(OUT / "scoring" / "bootstrap_ci.json", "w") as f:
         json.dump(report, f, indent=2)
-    write_markdown(report, OUT / "bootstrap_ci.md")
+    write_markdown(report, OUT / "scoring" / "bootstrap_ci.md")
     write_claims(report, OUT / "claims.json")
 
     # headline: y30 (primary powered comparison) verdicts.

@@ -12,7 +12,7 @@ OUT = RESULTS; VER = OUT / "verify"; VER.mkdir(exist_ok=True)
 
 
 def main():
-    p = pd.read_parquet(OUT / "predictions_y30.parquet")   # has hybrid, hybrid_gnss per row+window
+    p = pd.read_parquet(OUT / "grid" / "predictions_y30.parquet")   # has hybrid, hybrid_gnss per row+window
     if "hybrid_gnss" not in p.columns:
         (VER / "gnss_top_windows.md").write_text("hybrid_gnss column absent. GNSS not promoted.")
         return
@@ -25,7 +25,7 @@ def main():
     top = perwin.head(20)
 
     # observed M>=3.0 events per window (for context)
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     L = ["# top-20 windows where gnss_traj most raised the predicted rate (y30 test)",
          "", "Per-window mean increase in predicted P (hybrid_gnss − hybrid) on the M≥3.0 test "
          "windows, with the observed M≥3.0 count and the largest event in each 30-day window.",

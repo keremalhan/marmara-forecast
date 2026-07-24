@@ -1,0 +1,33 @@
+{
+  "w_selected_POISSON_objective": 0.8,
+  "w_argmax_poisson": 0.9,
+  "w_selected_BERNOULLI_occurrence_objective": 0.6,
+  "w_argmax_bernoulli": 0.8,
+  "poisson_val_ll_curve": {
+    "0.0": -2216.845,
+    "0.1": -2169.373,
+    "0.2": -2128.986,
+    "0.3": -2094.941,
+    "0.4": -2066.648,
+    "0.5": -2043.653,
+    "0.6": -2025.632,
+    "0.7": -2012.403,
+    "0.8": -2003.983,
+    "0.9": -2000.814,
+    "1.0": -2004.656
+  },
+  "bernoulli_val_ll_curve": {
+    "0.0": -1965.32,
+    "0.1": -1953.4,
+    "0.2": -1939.9,
+    "0.3": -1928.27,
+    "0.4": -1918.52,
+    "0.5": -1910.74,
+    "0.6": -1905.0,
+    "0.7": -1901.45,
+    "0.8": -1900.32,
+    "0.9": -1902.09,
+    "1.0": -1908.02
+  },
+  "interpretation": "if w_bernoulli << w_poisson (esp. -> 0), the parsimony rule abandons the ML stage once the occurrence artifact is removed from the objective."
+}

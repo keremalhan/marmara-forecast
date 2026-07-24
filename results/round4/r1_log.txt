@@ -1,0 +1,52 @@
+grid_hybrid: 319378 rows, 262 windows
+config: b_op=1.15 n_rows=319378 n_windows=262
+=== identity gate: replica vs frozen predictions ===
+  y30/hybrid: {'present_in_frozen': True, 'w_replica': 0.8, 'max_abs_dev_vs_frozen': 0.0, 'identical': True}
+  y30/hybrid_gnss: {'present_in_frozen': True, 'w_replica': 0.8, 'max_abs_dev_vs_frozen': 0.0, 'identical': True}
+  y35/hybrid: {'present_in_frozen': True, 'w_replica': 0.4, 'max_abs_dev_vs_frozen': 0.0, 'identical': True}
+  y35/hybrid_gnss: {'present_in_frozen': True, 'w_replica': 0.4, 'max_abs_dev_vs_frozen': 0.0, 'identical': True}
+identity gate PASS
+[y30] base hybrid ...
+[y30] base hybrid w=0.8 (2.6s)
+[y30] augmented hybrid ...
+[y30] aug hybrid w=0.8
+[y30] REAL dIG=+0.0452 [0.001402, 0.09046]  dPR=-0.0026 [-0.010745, 0.005405]
+[y30] surrogate time_shuffle x25 ...
+[y30/time_shuffle] 5/25 (17s)
+[y30/time_shuffle] 10/25 (35s)
+[y30/time_shuffle] 15/25 (52s)
+[y30/time_shuffle] 20/25 (66s)
+[y30/time_shuffle] 25/25 (86s)
+[y30/time_shuffle] dIG null [-0.151016, 0.035687] mean -0.0141
+[y30] surrogate circular_shift x25 ...
+[y30/circular_shift] 5/25 (19s)
+[y30/circular_shift] 10/25 (35s)
+[y30/circular_shift] 15/25 (51s)
+[y30/circular_shift] 20/25 (76s)
+[y30/circular_shift] 25/25 (111s)
+[y30/circular_shift] dIG null [-0.058755, 0.038998] mean -0.0016
+[y30] surrogate coverage_only ...
+[y30/coverage_only] dIG=+0.0432 dPR=+0.0055
+[y35] base hybrid ...
+[y35] base hybrid w=0.4 (0.8s)
+[y35] augmented hybrid ...
+[y35] aug hybrid w=0.4
+[y35] REAL dIG=-0.0526 [-0.087609, -0.021921]  dPR=-0.0110 [-0.024544, 0.000392]
+[y35] surrogate time_shuffle x30 ...
+[y35/time_shuffle] 5/30 (6s)
+[y35/time_shuffle] 10/30 (10s)
+[y35/time_shuffle] 15/30 (14s)
+[y35/time_shuffle] 20/30 (19s)
+[y35/time_shuffle] 25/30 (26s)
+[y35/time_shuffle] 30/30 (30s)
+[y35/time_shuffle] dIG null [-0.012221, 0.009176] mean -0.0011
+[y35] surrogate circular_shift x30 ...
+[y35/circular_shift] 5/30 (4s)
+[y35/circular_shift] 10/30 (7s)
+[y35/circular_shift] 15/30 (11s)
+[y35/circular_shift] 20/30 (19s)
+[y35/circular_shift] 25/30 (26s)
+[y35/circular_shift] 30/30 (30s)
+[y35/circular_shift] dIG null [-0.010592, 0.203664] mean +0.0131
+[y35] surrogate coverage_only ...
+[y35/coverage_only] dIG=-0.0085 dPR=-0.0006

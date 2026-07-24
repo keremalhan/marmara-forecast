@@ -1,0 +1,157 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "B"
+  },
+  "arms": {
+    "val_plus_test_2022_2026_shipped_scope": {
+      "arm": "val+test",
+      "products": {
+        "y35 30d (hybrid)": {
+          "hybrid_w": 0.4,
+          "observed_pos": 277,
+          "expected_pos": 271.76,
+          "obs_over_exp": 1.019,
+          "n_cellwindows": 62169,
+          "shape_testable": true,
+          "slope": 0.951,
+          "intercept": 0.0003,
+          "verdict": "calibrated"
+        },
+        "y45 30d (hybrid)": {
+          "hybrid_w": 0.9,
+          "observed_pos": 35,
+          "expected_pos": 27.85,
+          "obs_over_exp": 1.257,
+          "n_cellwindows": 62169,
+          "shape_testable": true,
+          "slope": 0.91,
+          "intercept": 0.0002,
+          "verdict": "calibrated"
+        },
+        "P(M>=5.0) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 10,
+          "expected_pos": 11.69,
+          "obs_over_exp": 0.855,
+          "n_cellwindows": 62169,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        },
+        "P(M>=5.5) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 3,
+          "expected_pos": 3.13,
+          "obs_over_exp": 0.958,
+          "n_cellwindows": 62169,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        },
+        "P(M>=6.0) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 1,
+          "expected_pos": 0.83,
+          "obs_over_exp": 1.208,
+          "n_cellwindows": 62169,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        }
+      }
+    },
+    "test_only_2024_onward": {
+      "arm": "test only",
+      "products": {
+        "y35 30d (hybrid)": {
+          "hybrid_w": 0.4,
+          "observed_pos": 167,
+          "expected_pos": 161.76,
+          "obs_over_exp": 1.032,
+          "n_cellwindows": 31694,
+          "shape_testable": true,
+          "slope": 0.921,
+          "intercept": 0.0006,
+          "verdict": "calibrated"
+        },
+        "y45 30d (hybrid)": {
+          "hybrid_w": 0.9,
+          "observed_pos": 22,
+          "expected_pos": 14.85,
+          "obs_over_exp": 1.482,
+          "n_cellwindows": 31694,
+          "shape_testable": true,
+          "slope": 0.85,
+          "intercept": 0.0003,
+          "verdict": "calibrated"
+        },
+        "P(M>=5.0) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 7,
+          "expected_pos": 6.4,
+          "obs_over_exp": 1.094,
+          "n_cellwindows": 31694,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        },
+        "P(M>=5.5) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 3,
+          "expected_pos": 1.68,
+          "obs_over_exp": 1.788,
+          "n_cellwindows": 31694,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        },
+        "P(M>=6.0) 30d (cascade)": {
+          "hybrid_w": null,
+          "observed_pos": 1,
+          "expected_pos": 0.47,
+          "obs_over_exp": 2.119,
+          "n_cellwindows": 31694,
+          "shape_testable": false,
+          "slope": null,
+          "intercept": null,
+          "verdict": "too rare to bin"
+        }
+      }
+    }
+  },
+  "test_window_span": [
+    "2024-01-22",
+    "2026-02-10"
+  ],
+  "n_test_windows": 26,
+  "rationale": "b_op was calibrated on pre-test windows, which include the validation years; the val+test battery is therefore partly in-sample with respect to the operational magnitude law. The test-only arm is not.",
+  "table_s4_reconciliation": {
+    "recomputed_val_plus_test": {
+      "obs": 277,
+      "exp": 271.76,
+      "obs_over_exp": 1.019,
+      "slope": 0.951
+    },
+    "stored_validation_final_json": {
+      "obs": 277,
+      "exp": 271.76,
+      "obs_over_exp": 1.019,
+      "slope": 0.951
+    },
+    "printed_in_table_s4_and_section4": {
+      "obs": 277,
+      "exp": 258.0,
+      "obs_over_exp": 1.07,
+      "slope": 1.026
+    },
+    "recompute_matches_stored_json": true,
+    "recompute_matches_printed": false
+  }
+}

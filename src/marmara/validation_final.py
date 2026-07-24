@@ -100,8 +100,8 @@ def apply_isotonic_val(pred, obs, val_mask):
 
 
 def battery():
-    grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    grid = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     m = split_masks(grid)
     evalmask = m["val"] | m["test"]                    # 2022 -> 2026-03
     val_rel = m["val"][evalmask]                        # val within the eval subset
@@ -142,9 +142,9 @@ def _cell(lon, lat):
 
 
 def m62_gate():
-    params = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    b_op = json.load(open(OUT / "etas_fit_report.json"))["operational_b_for_cascade"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    params = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    b_op = json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"]
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
     ir, ic = _cell(EPI_LON, EPI_LAT)
     yrs = (cat["datetime_utc"].max() - cat["datetime_utc"].min()).days / 365.25
@@ -218,7 +218,7 @@ def m62_gate():
                                   ("Sindirgi_Aug10", "2025-08-10 16:53:46", 28.05, 39.26, True)):
         t = pd.Timestamp(ts)
         if wide:
-            wc = pd.read_csv(OUT / "catalog_widebox.csv"); wc["datetime_utc"] = pd.to_datetime(wc["datetime_utc"])
+            wc = pd.read_csv(OUT / "catalog" / "catalog_widebox.csv"); wc["datetime_utc"] = pd.to_datetime(wc["datetime_utc"])
             src = wc; sp = G.WIDE_SPEC
         else:
             src = cat; sp = spec
@@ -252,8 +252,8 @@ def underfit_check():
     from marmara import baselines as B
     from marmara.metrics import information_gain
     from marmara.evaluate import train_b_value
-    grid = pd.read_parquet(OUT / "grid_hybrid.parquet")
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    grid = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     m = split_masks(grid); ti = np.where(m["test"])[0]
     y = grid["y35"].to_numpy()[ti]
     P_casc = lambda_to_p(grid["lam35_sim"].to_numpy())[ti]
@@ -319,7 +319,7 @@ def _write_docs(bat, m62, uf):
           "all within Poisson noise of 1). Shape: "
           f"y35 {y35_verdict} (slope {y35_slope}); y45 {y45_verdict} (slope {y45_slope}). The wide-box "
           "y45 variant (w=0.1, `widebox_y45_report.json`) is the better-calibrated production version. "
-          "P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives); reported honestly via the "
+          "P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives); reported via the "
           "aggregate, not calibrated away."]
     (VF / "calibration_battery.md").write_text("\n".join(L))
 
@@ -381,7 +381,7 @@ def _write_docs(bat, m62, uf):
          "9. Supported claims: 30-day spatial hazard + sequence-response (FTLS/cascade) are calibrated "
          "and skillful; M≥6 short-term is an ELEVATION signal, not a probability of certainty.",
          "10. NOT supported: sharp deterministic prediction of a specific large event ahead of its "
-         "immediate foreshock; reported honestly, not tuned."]
+         "immediate foreshock; reported as measured, not tuned."]
     (VF / "verdict.md").write_text("\n".join(V))
 
 

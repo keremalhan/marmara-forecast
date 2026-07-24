@@ -1,9 +1,8 @@
 # Prospective monthly forecasting: track record
 
-Every month of **true out-of-sample** operation is the cheapest credibility there is.
-Each run logs a 30-day forecast (hashed, timestamped) *before* the outcome is known,
-then scores past forecasts whose window has closed. Pseudo-prospective backtests can be
-gamed by hindsight; this cannot.
+Each run logs a 30-day forecast (hashed, timestamped) *before* the outcome is known, then
+scores past forecasts whose window has closed. This gives true out-of-sample operation at
+low cost, and it is not open to the hindsight that a pseudo-prospective backtest allows.
 
 ## What runs
 `python -m marmara.prospective run` (wrapped by `scripts/prospective_monthly.sh`):

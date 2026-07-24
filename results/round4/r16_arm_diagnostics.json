@@ -1,0 +1,244 @@
+{
+  "arms": {
+    "1.00": {
+      "b_op": 1.0,
+      "lineage": {
+        "preserve_branching": true,
+        "grid_report_b_op": 1.0,
+        "b_op_stamped_matches_arm": true,
+        "realized_branching_mmax7.6": 0.949955,
+        "note": "grid_hybrid._pb defaults True (V2_SUPERCRITICAL unset)"
+      },
+      "ml": {
+        "y30": {
+          "n_pos_test": 592,
+          "w": 0.7,
+          "w_argmax": 0.8,
+          "n_trees": 189
+        },
+        "y35": {
+          "n_pos_test": 167,
+          "w": 0.6,
+          "w_argmax": 0.7,
+          "n_trees": 10
+        }
+      },
+      "h": {
+        "y30": {
+          "hybrid": 1.7889,
+          "cascade": 2.2037,
+          "sv_etas": 2.1921,
+          "firstgen_etas": 1.2607,
+          "modern_etas": 1.3186
+        },
+        "y35": {
+          "hybrid": 1.963,
+          "cascade": 2.4724,
+          "sv_etas": 2.4539,
+          "firstgen_etas": 0.7568,
+          "modern_etas": 0.6183
+        }
+      },
+      "identity": {
+        "y30": {
+          "a_h": {
+            "hybrid": 0.2073,
+            "cascade": 0.4136,
+            "sv_etas": 0.4072,
+            "firstgen_etas": 0.029,
+            "modern_etas": 0.042
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.2063
+        },
+        "y35": {
+          "a_h": {
+            "hybrid": 0.2885,
+            "cascade": 0.5672,
+            "sv_etas": 0.5562,
+            "firstgen_etas": 0.0354,
+            "modern_etas": 0.0991
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.2787
+        }
+      },
+      "bernoulli_companion_K2000": {
+        "hybrid_vs_cascade_ig": 0.1102,
+        "ci95": [
+          0.0293,
+          0.1948
+        ],
+        "excludes_zero": true,
+        "intensity_dpr": -0.0056,
+        "occupancy_totals": {
+          "cascade": 904.6,
+          "hybrid_topup": 754.0,
+          "n_pos": 592
+        }
+      }
+    },
+    "1.15": {
+      "b_op": 1.15,
+      "lineage": {
+        "preserve_branching": true,
+        "grid_report_b_op": 1.15,
+        "b_op_stamped_matches_arm": true,
+        "realized_branching_mmax7.6": 0.949955,
+        "note": "grid_hybrid._pb defaults True (V2_SUPERCRITICAL unset)"
+      },
+      "ml": {
+        "y30": {
+          "n_pos_test": 592,
+          "w": 0.8,
+          "w_argmax": 0.9,
+          "n_trees": 147
+        },
+        "y35": {
+          "n_pos_test": 167,
+          "w": 0.4,
+          "w_argmax": 0.6,
+          "n_trees": 10
+        }
+      },
+      "h": {
+        "y30": {
+          "hybrid": 1.7566,
+          "cascade": 2.2062,
+          "sv_etas": 2.1904,
+          "firstgen_etas": 1.2607,
+          "modern_etas": 1.3186
+        },
+        "y35": {
+          "hybrid": 1.8573,
+          "cascade": 2.0851,
+          "sv_etas": 2.0682,
+          "firstgen_etas": 0.7568,
+          "modern_etas": 0.6183
+        }
+      },
+      "identity": {
+        "y30": {
+          "a_h": {
+            "hybrid": 0.1932,
+            "cascade": 0.4149,
+            "sv_etas": 0.4063,
+            "firstgen_etas": 0.029,
+            "modern_etas": 0.042
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.2217
+        },
+        "y35": {
+          "a_h": {
+            "hybrid": 0.2382,
+            "cascade": 0.3503,
+            "sv_etas": 0.3415,
+            "firstgen_etas": 0.0354,
+            "modern_etas": 0.0991
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.1121
+        }
+      },
+      "bernoulli_companion_K2000": {
+        "hybrid_vs_cascade_ig": 0.1074,
+        "ci95": [
+          0.0595,
+          0.1599
+        ],
+        "excludes_zero": true,
+        "intensity_dpr": -0.0067,
+        "occupancy_totals": {
+          "cascade": 905.9,
+          "hybrid_topup": 749.7,
+          "n_pos": 592
+        }
+      }
+    },
+    "1.40": {
+      "b_op": 1.4,
+      "lineage": {
+        "preserve_branching": true,
+        "grid_report_b_op": 1.4,
+        "b_op_stamped_matches_arm": true,
+        "realized_branching_mmax7.6": 0.949955,
+        "note": "grid_hybrid._pb defaults True (V2_SUPERCRITICAL unset)"
+      },
+      "ml": {
+        "y30": {
+          "n_pos_test": 592,
+          "w": 0.8,
+          "w_argmax": 0.8,
+          "n_trees": 149
+        },
+        "y35": {
+          "n_pos_test": 167,
+          "w": 0.2,
+          "w_argmax": 0.6,
+          "n_trees": 11
+        }
+      },
+      "h": {
+        "y30": {
+          "hybrid": 1.6874,
+          "cascade": 2.2057,
+          "sv_etas": 2.1921,
+          "firstgen_etas": 1.2607,
+          "modern_etas": 1.3186
+        },
+        "y35": {
+          "hybrid": 1.5498,
+          "cascade": 1.5651,
+          "sv_etas": 1.5491,
+          "firstgen_etas": 0.7568,
+          "modern_etas": 0.6183
+        }
+      },
+      "identity": {
+        "y30": {
+          "a_h": {
+            "hybrid": 0.1642,
+            "cascade": 0.4147,
+            "sv_etas": 0.4072,
+            "firstgen_etas": 0.029,
+            "modern_etas": 0.042
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.2504
+        },
+        "y35": {
+          "a_h": {
+            "hybrid": 0.1117,
+            "cascade": 0.1172,
+            "sv_etas": 0.1114,
+            "firstgen_etas": 0.0354,
+            "modern_etas": 0.0991
+          },
+          "predicted_shift_hybrid_vs_cascade": -0.0055
+        }
+      },
+      "bernoulli_companion_K2000": {
+        "hybrid_vs_cascade_ig": 0.1019,
+        "ci95": [
+          0.0469,
+          0.1711
+        ],
+        "excludes_zero": true,
+        "intensity_dpr": -0.0175,
+        "occupancy_totals": {
+          "cascade": 907.0,
+          "hybrid_topup": 724.3,
+          "n_pos": 592
+        }
+      }
+    }
+  },
+  "note": "arm artifacts are KEPT under results/round4/arm_<b>/ rather than restored away; every arm is preserve_branching=True",
+  "item2_h_flatness": {
+    "h_cascade_y30_per_arm": {
+      "1.00": 2.2037,
+      "1.15": 2.2062,
+      "1.40": 2.2057
+    },
+    "spread": 0.0025,
+    "h_is_flat": true,
+    "reading": "h(y30) is b-invariant as S1's pinned-total implies, so the dIG drift is NOT the artifact growing with h -- that gloss is withdrawn"
+  },
+  "runtime_s": 489.3
+}

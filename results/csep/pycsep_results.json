@@ -7,8 +7,8 @@
       "2026-03-12"
     ],
     "n_windows": 26,
-    "n_cat": 1000,
-    "seed": 42,
+    "n_cat": 500,
+    "seed": 5000,
     "n_observed": 1383,
     "region_cells": 1219,
     "environment": "pyCSEP toolkit",
@@ -18,63 +18,63 @@
     "cascade": {
       "Number": {
         "observed_statistic": 1383.0,
-        "pass": false,
-        "delta1": 1.0,
-        "delta2": 0.0,
-        "test_dist_mean": 1498.081,
-        "n_cat_used": 1000
+        "pass": true,
+        "delta1": 0.094,
+        "delta2": 0.908,
+        "test_dist_mean": 1305.772,
+        "n_cat_used": 500
       },
       "Magnitude": {
-        "observed_statistic": 0.9386,
+        "observed_statistic": 0.8503,
         "pass": true,
-        "gamma": 0.062,
-        "test_dist_mean": 0.6092,
-        "n_cat_used": 1000
+        "gamma": 0.252,
+        "test_dist_mean": 0.7149,
+        "n_cat_used": 500
       },
       "Spatial": {
-        "observed_statistic": -4.9886,
+        "observed_statistic": -4.9762,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": -6.1703,
-        "n_cat_used": 1000
+        "test_dist_mean": -6.1643,
+        "n_cat_used": 500
       },
       "Pseudolikelihood": {
-        "observed_statistic": 1715.1093,
+        "observed_statistic": 1734.4947,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": 212.1111,
-        "n_cat_used": 1000
+        "test_dist_mean": 13.3384,
+        "n_cat_used": 500
       }
     },
     "sv_etas": {
       "Number": {
         "observed_statistic": 1383.0,
-        "pass": false,
-        "delta1": 0.997,
-        "delta2": 0.003,
-        "test_dist_mean": 1488.823,
-        "n_cat_used": 1000
+        "pass": true,
+        "delta1": 0.08,
+        "delta2": 0.922,
+        "test_dist_mean": 1295.986,
+        "n_cat_used": 500
       },
       "Magnitude": {
-        "observed_statistic": 0.9545,
+        "observed_statistic": 0.8428,
         "pass": true,
-        "gamma": 0.055,
-        "test_dist_mean": 0.6021,
-        "n_cat_used": 1000
+        "gamma": 0.256,
+        "test_dist_mean": 0.718,
+        "n_cat_used": 500
       },
       "Spatial": {
-        "observed_statistic": -4.9773,
+        "observed_statistic": -4.9665,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": -6.1612,
-        "n_cat_used": 1000
+        "test_dist_mean": -6.1514,
+        "n_cat_used": 500
       },
       "Pseudolikelihood": {
-        "observed_statistic": 1731.4336,
+        "observed_statistic": 1747.4051,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": 215.251,
-        "n_cat_used": 1000
+        "test_dist_mean": 20.3161,
+        "n_cat_used": 500
       }
     },
     "modern_etas": {
@@ -83,46 +83,46 @@
         "pass": false,
         "delta1": 0.0,
         "delta2": 1.0,
-        "test_dist_mean": 782.898,
+        "test_dist_mean": 782.403,
         "n_cat_used": 1000
       },
       "Magnitude": {
-        "observed_statistic": 4.7099,
+        "observed_statistic": 4.745,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": 0.7636,
+        "test_dist_mean": 0.7655,
         "n_cat_used": 1000
       },
       "Spatial": {
-        "observed_statistic": -4.5528,
+        "observed_statistic": -4.5509,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": -5.0673,
+        "test_dist_mean": -5.0709,
         "n_cat_used": 1000
       },
       "Pseudolikelihood": {
-        "observed_statistic": 2135.4881,
+        "observed_statistic": 2137.8092,
         "pass": false,
         "gamma": 0.0,
-        "test_dist_mean": 466.4585,
+        "test_dist_mean": 462.7576,
         "n_cat_used": 1000
       }
     }
   },
   "cross_check_vs_inhouse": {
     "cascade": {
-      "N_pass_pycsep": false,
+      "N_pass_pycsep": true,
       "N_pass_inhouse": false,
       "M_pass_pycsep": true,
-      "M_pass_inhouse": true,
-      "agree_NM": true
+      "M_pass_inhouse": false,
+      "agree_NM": false
     },
     "sv_etas": {
-      "N_pass_pycsep": false,
+      "N_pass_pycsep": true,
       "N_pass_inhouse": false,
       "M_pass_pycsep": true,
-      "M_pass_inhouse": true,
-      "agree_NM": true
+      "M_pass_inhouse": false,
+      "agree_NM": false
     },
     "modern_etas": {
       "N_pass_pycsep": false,

@@ -31,8 +31,8 @@ B = 2000; SEED = 42
 
 
 def load():
-    g = pd.read_parquet(OUT / "grid_hybrid.parquet")
-    gc = pd.read_parquet(OUT / "gnss_traj_columns.parquet").set_index(["window", "ir", "ic"])
+    g = pd.read_parquet(OUT / "grid" / "grid_hybrid.parquet")
+    gc = pd.read_parquet(OUT / "channels" / "gnss_traj_columns.parquet").set_index(["window", "ir", "ic"])
     idx = pd.MultiIndex.from_frame(g[["window", "ir", "ic"]])
     for c in GNSS5:
         g[c] = gc[c].reindex(idx).to_numpy()

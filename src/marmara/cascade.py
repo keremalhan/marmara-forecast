@@ -14,13 +14,15 @@ Reuses the protected etas_model helpers unmodified.
 """
 from __future__ import annotations
 
+from dataclasses import replace
+
 import numpy as np
 from marmara.paths import ROOT, RESULTS, DATA, MODELS, SEG_PATH, STRAIN_NPZ, KOERI_CSV  # noqa: E402,F401
 
 from pathlib import Path
 
 from marmara.etas_model import (BackgroundField, EtasParams, _project_km,
-                           _sample_gr, _unproject_km)
+                           _sample_gr, _unproject_km, branching_ratio)
 from marmara.stress import nearest_segment_receivers
 
 MMAX = 7.6
@@ -102,7 +104,8 @@ def _place_offspring(px, py, pm, params, rng, orient=None):
 def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
                     t0d: float, horizon: float, K: int, rng, b: float,
                     max_events: int = 4_000_000, anisotropy: bool = True,
-                    per_sim_cap: int | None = None, stats: dict | None = None):
+                    per_sim_cap: int | None = None, stats: dict | None = None,
+                    preserve_branching: bool = True, sim_n_target: float | None = None):
     """One batched cascade over K sims. Returns (sim_id, lon, lat, mag) of all
     events that occur in [t0d, t0d+horizon), pooled across sims. t0d in float days.
 
@@ -114,6 +117,23 @@ def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
     bg: BackgroundField = params.background_xy
     reg = params.region
     c, p, mc, k, alpha = params.c, params.p, params.mc, params.k, params.alpha
+    # --- branching-ratio-preserving rescale (SIMULATED parents only) ------------
+    # Offspring magnitudes are DRAWN at the operational b (`b`), usually != params.b.
+    # Averaged over that GR(b) draw the productivity gives branching ratio
+    # n(b_op) = k*beta/(beta-alpha) = 1.21 > 1 (supercritical) with the fitted k, so a
+    # cascade of SIMULATED events explodes and is bounded only by per_sim_cap/max_events.
+    # We therefore damp productivity to k_sim for SIMULATED parents, holding the
+    # simulated sub-cascade at the fitted mmax-truncated branching ratio 0.95 (or an
+    # explicit sim_n_target, for the cap-sensitivity sweep).
+    # A REAL history parent has an OBSERVED magnitude (e.g. Kumburgaz Mw6.2): its
+    # expected direct-offspring count kappa(m)=k*exp(alpha*(m-mc)) is the MLE-estimated
+    # productivity and does NOT depend on b, so real parents KEEP the fitted k. (Damping
+    # them would wrongly suppress observed aftershock sequences by ~22%.)
+    k_sim = k
+    if preserve_branching and abs(b - params.b) > 1e-12:
+        target = branching_ratio(params, mmax=MMAX) if sim_n_target is None else float(sim_n_target)
+        per_unit = branching_ratio(replace(params, b=b, k=1.0), mmax=MMAX)
+        k_sim = target / per_unit
     end = t0d + horizon
 
     # --- new background over the window, across K sims (total-Poisson trick:
@@ -132,7 +152,7 @@ def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
     horient = (_history_orientations(hist_t[good], hlon, hlat, hmag)
                if (anisotropy and np.any(hmag >= BIG_M)) else np.full(hmag.size, np.nan))
     Hn = _omori_H(a + horizon, c, p) - _omori_H(a, c, p)     # Omori mass in window
-    kap = k * np.exp(alpha * (hmag - mc))
+    kap = k * np.exp(alpha * (hmag - mc))             # REAL history parents: fitted k (obs mag)
     lam_j = np.clip(kap * Hn, 0.0, None)              # expected offspring per sim
     tot_j = rng.poisson(lam_j * K)                    # total offspring across K sims
     nz = int(tot_j.sum())
@@ -163,7 +183,7 @@ def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
     sim_count = np.bincount(f_sim, minlength=K) if per_sim_cap else None
     # --- recursive cascade within the window (vectorized across sims) ---
     while f_sim.size and total < max_events:
-        kap = k * np.exp(alpha * (f_mag - mc))
+        kap = k_sim * np.exp(alpha * (f_mag - mc))    # simulated parents: damped k_sim
         noff = rng.poisson(kap)
         if noff.sum() == 0:
             break
@@ -203,13 +223,18 @@ def simulate_window(params: EtasParams, hist_t, hist_lon, hist_lat, hist_mag,
     if stats is not None:
         stats["n_capped"] = int((sim_count >= per_sim_cap).sum()) if per_sim_cap else 0
         stats["K"] = K
+        stats["k_eff"] = float(k_sim)
+        stats["k_hist"] = float(k)
+        stats["n_branching"] = float(branching_ratio(replace(params, b=b, k=k_sim), mmax=MMAX))
     return (np.concatenate(A_sim), np.concatenate(A_lon),
             np.concatenate(A_lat), np.concatenate(A_mag))
 
 
 def cascade_forecast(params: EtasParams, history_df, t0d: float, horizon: float,
                      lon_c, lat_c, K: int, seed: int, b: float | None = None,
-                     anisotropy: bool = True, per_sim_cap: int | None = None):
+                     anisotropy: bool = True, per_sim_cap: int | None = None,
+                     preserve_branching: bool = True, sim_n_target: float | None = None,
+                     return_events: bool = False):
     """Per-cell cascade forecast on the grid (lon_c, lat_c centers).
     history_df: columns datetime/lat/lon/mag OR arrays already; must be causal.
     Returns dict of (nlat, nlon) arrays: lam35, lam45, P{level}; plus scalars
@@ -239,16 +264,23 @@ def cascade_forecast(params: EtasParams, history_df, t0d: float, horizon: float,
     meta = {}
     sim, lon, lat, mag = simulate_window(params, td, hlon, hlat, hmag, t0d, horizon, K,
                                          rng, b, anisotropy=anisotropy,
-                                         per_sim_cap=per_sim_cap, stats=meta)
+                                         per_sim_cap=per_sim_cap, stats=meta,
+                                         preserve_branching=preserve_branching,
+                                         sim_n_target=sim_n_target)
 
     # map to cells
     ic = np.floor((lon - lon_edge0) / 0.1).astype(int)
     ir = np.floor((lat - lat_edge0) / 0.1).astype(int)
     on = (ic >= 0) & (ic < nlon) & (ir >= 0) & (ir < nlat)
+    if return_events:   # native per-sim on-grid events, for clustered-catalogue CSEP (task #6)
+        return {"sim": sim[on], "lon": lon[on], "lat": lat[on], "mag": mag[on],
+                "K": K, "b": float(b), "n_branching": meta.get("n_branching")}
     sim, mag, cflat = sim[on], mag[on], (ir[on] * nlon + ic[on])
     ncells = nlon * nlat
 
-    out = {"K": K, "capped_fraction": (meta.get("n_capped", 0) / K) if per_sim_cap else 0.0}
+    out = {"K": K, "capped_fraction": (meta.get("n_capped", 0) / K) if per_sim_cap else 0.0,
+           "b": float(b), "k_eff": meta.get("k_eff"), "k_hist": meta.get("k_hist"),
+           "n_branching": meta.get("n_branching")}
     # M>=3.0 (=mc) total rate for the Phase-3 y30 target (all simulated events are >=mc)
     out["lam30"] = (np.bincount(cflat, minlength=ncells) / K).reshape(nlat, nlon)
     for lvl, name in ((3.5, "lam35"), (4.5, "lam45")):

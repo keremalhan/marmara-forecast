@@ -1,0 +1,186 @@
+{
+  "hybrid_vs_cascade": {
+    "block_2": {
+      "ig_ci": [
+        0.198,
+        0.418
+      ],
+      "dpr_ci": [
+        -0.0213,
+        0.0079
+      ],
+      "verdict": "inseparable"
+    },
+    "block_3": {
+      "ig_ci": [
+        0.203,
+        0.433
+      ],
+      "dpr_ci": [
+        -0.0203,
+        0.0069
+      ],
+      "verdict": "inseparable"
+    },
+    "block_5": {
+      "ig_ci": [
+        0.206,
+        0.422
+      ],
+      "dpr_ci": [
+        -0.0175,
+        0.0061
+      ],
+      "verdict": "inseparable"
+    },
+    "block_8": {
+      "ig_ci": [
+        0.207,
+        0.402
+      ],
+      "dpr_ci": [
+        -0.016,
+        0.0048
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "hybrid_vs_sv_etas": {
+    "block_2": {
+      "ig_ci": [
+        0.223,
+        0.493
+      ],
+      "dpr_ci": [
+        -0.0185,
+        0.0084
+      ],
+      "verdict": "inseparable"
+    },
+    "block_3": {
+      "ig_ci": [
+        0.225,
+        0.503
+      ],
+      "dpr_ci": [
+        -0.0166,
+        0.0078
+      ],
+      "verdict": "inseparable"
+    },
+    "block_5": {
+      "ig_ci": [
+        0.219,
+        0.488
+      ],
+      "dpr_ci": [
+        -0.0152,
+        0.0061
+      ],
+      "verdict": "inseparable"
+    },
+    "block_8": {
+      "ig_ci": [
+        0.226,
+        0.486
+      ],
+      "dpr_ci": [
+        -0.0136,
+        0.0055
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "hybrid_vs_firstgen_etas": {
+    "block_2": {
+      "ig_ci": [
+        -0.219,
+        -0.049
+      ],
+      "dpr_ci": [
+        -0.0132,
+        0.0192
+      ],
+      "verdict": "inseparable"
+    },
+    "block_3": {
+      "ig_ci": [
+        -0.21,
+        -0.052
+      ],
+      "dpr_ci": [
+        -0.0121,
+        0.0194
+      ],
+      "verdict": "inseparable"
+    },
+    "block_5": {
+      "ig_ci": [
+        -0.203,
+        -0.058
+      ],
+      "dpr_ci": [
+        -0.0111,
+        0.0184
+      ],
+      "verdict": "inseparable"
+    },
+    "block_8": {
+      "ig_ci": [
+        -0.193,
+        -0.06
+      ],
+      "dpr_ci": [
+        -0.0096,
+        0.0181
+      ],
+      "verdict": "inseparable"
+    }
+  },
+  "firstgen_etas_vs_modern_etas": {
+    "block_2": {
+      "ig_ci": [
+        0.081,
+        0.492
+      ],
+      "dpr_ci": [
+        0.0047,
+        0.0291
+      ],
+      "verdict": "separable"
+    },
+    "block_3": {
+      "ig_ci": [
+        0.052,
+        0.499
+      ],
+      "dpr_ci": [
+        0.005,
+        0.0285
+      ],
+      "verdict": "separable"
+    },
+    "block_5": {
+      "ig_ci": [
+        0.034,
+        0.504
+      ],
+      "dpr_ci": [
+        0.005,
+        0.0278
+      ],
+      "verdict": "separable"
+    },
+    "block_8": {
+      "ig_ci": [
+        0.042,
+        0.499
+      ],
+      "dpr_ci": [
+        0.0054,
+        0.0269
+      ],
+      "verdict": "separable"
+    }
+  }
+}

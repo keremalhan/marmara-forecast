@@ -1,0 +1,51 @@
+{
+  "period": [
+    "2024-01-22",
+    "2026-03-12"
+  ],
+  "n_sim": 500,
+  "npz_mean_total_per_catalog": 1041.074,
+  "npz_mean_total_cascade": 1305.772,
+  "paper_reported_hybrid_N_mean": 1041.074,
+  "paper_reported_cascade_N_mean": 1305.772,
+  "expected_totals_from_frozen_predictions": {
+    "sum_lam_hybrid_topup_rate_exact": 1039.92,
+    "sum_min_lam_hybrid_lam_cascade_capped": 882.879,
+    "sum_lam_cascade": 1306.056,
+    "n_pos": 592,
+    "h_hybrid_sum_over_npos": 1.7566,
+    "h_cascade_sum_over_npos": 2.2062
+  },
+  "cascade_column_matches_lam30_sim_max_dev": 9.942269230123202e-12,
+  "excess_cells_where_lam_hyb_gt_lam_casc": {
+    "n_cellwindows": 9290,
+    "frac_of_cellwindows": 0.293115,
+    "n_distinct_cells": 1014,
+    "excess_rate_mass": 157.041
+  },
+  "total_discriminant": {
+    "npz_minus_topup": 1.154,
+    "npz_minus_capped": 158.195,
+    "closer_to": "top-up (rate-exact)"
+  },
+  "per_cell_fit": {
+    "rms_npz_vs_topup_all_cells": 0.0778,
+    "rms_npz_vs_capped_all_cells": 0.7615,
+    "rms_npz_vs_topup_excess_cells": 0.08,
+    "rms_npz_vs_capped_excess_cells": 0.8344,
+    "sum_npz_excess_cells": 878.316,
+    "sum_topup_excess_cells": 876.03,
+    "sum_capped_excess_cells": 718.989
+  },
+  "cascade_sanity": {
+    "rms_npz_cascade_vs_expected": 0.0895,
+    "npz_cascade_total_minus_expected": -0.284
+  },
+  "verdict": {
+    "by_total": "top-up (rate-exact)",
+    "by_excess_cells": "top-up (rate-exact)",
+    "agree": true,
+    "construction_used": "top-up (rate-exact)",
+    "mean_total_reproduces_1041": true
+  }
+}

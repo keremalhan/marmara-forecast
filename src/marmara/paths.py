@@ -13,7 +13,11 @@ DATA_EXTERNAL = DATA / "external"
 SEG_PATH = str(DATA / "segment_properties.json")
 STRAIN_NPZ = DATA / "marmara_strain_grid.npz"
 KOERI_CSV = DATA / "koeri_events.csv"
-CATALOG = RESULTS / "catalog.csv"
-CATALOG_WIDE = RESULTS / "catalog_widebox.csv"
+CATALOG = RESULTS / "catalog" / "catalog.csv"
+CATALOG_WIDE = RESULTS / "catalog" / "catalog_widebox.csv"
 RESULTS.mkdir(parents=True, exist_ok=True)
 MODELS.mkdir(parents=True, exist_ok=True)
+# category dirs (results/ is organized by pipeline stage; see results/README.md)
+for _d in ("catalog", "etas", "grid", "scoring", "channels", "audit"):
+    (RESULTS / _d).mkdir(exist_ok=True)
+del _d

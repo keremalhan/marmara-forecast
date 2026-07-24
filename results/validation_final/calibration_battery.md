@@ -4,10 +4,10 @@ Two calibrations: **aggregate** (expected vs observed positives; obs/exp≈1 = c
 
 | product | obs/exp (aggregate) | shape testable | slope / int | verdict | fix |
 |---|---|---|---|---|---|
-| y35 30d (hybrid) | 1.074 (277/257.99) | yes | 1.026 / 0.0002 | calibrated | none |
-| y45 30d (hybrid) | 1.327 (35/26.38) | yes | 1.323 / 0.0 | underfit(slope>1.25) | isotonic_on_val |
-| P(M>=5.0) 30d (cascade) | 0.75 (10/13.33) | no (npos=10) | — / — | — | none |
-| P(M>=5.5) 30d (cascade) | 0.836 (3/3.59) | no (npos=3) | — / — | — | none |
-| P(M>=6.0) 30d (cascade) | 1.0 (1/1.0) | no (npos=1) | — / — | — | none |
+| y35 30d (hybrid) | 1.019 (277/271.76) | yes | 0.951 / 0.0003 | calibrated | none |
+| y45 30d (hybrid) | 1.257 (35/27.85) | yes | 0.91 / 0.0002 | calibrated | none |
+| P(M>=5.0) 30d (cascade) | 0.855 (10/11.69) | no (npos=10) | — / — | — | none |
+| P(M>=5.5) 30d (cascade) | 0.958 (3/3.13) | no (npos=3) | — / — | — | none |
+| P(M>=6.0) 30d (cascade) | 1.208 (1/0.83) | no (npos=1) | — / — | — | none |
 
-**Reading:** every product is calibrated in the MEAN (obs/exp 0.75–1.33, all within Poisson noise of 1). Shape: y35 calibrated (slope 1.026); y45 underfit(slope>1.25) (slope 1.323). The wide-box y45 variant (w=0.1, `widebox_y45_report.json`) is the better-calibrated production version. P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives); reported honestly via the aggregate, not calibrated away.
+**Reading:** every product is calibrated in the MEAN (obs/exp 0.85–1.26, all within Poisson noise of 1). Shape: y35 calibrated (slope 0.951); y45 calibrated (slope 0.91). The wide-box y45 variant (w=0.1, `widebox_y45_report.json`) is the better-calibrated production version. P(M≥5/5.5/6) per-cell are too rare to bin (1–10 positives); reported via the aggregate, not calibrated away.

@@ -1,0 +1,178 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "A"
+  },
+  "scope": "tests the M>=3.5 conclusion under strict completeness; does NOT and CANNOT validate the M>=3.0 primary target, which has no existence at this floor",
+  "omitted_and_disclosed": "sv-ETAS and the independent inversion are not refit at Mc=3.5; this arm compares hybrid, cascade and first-generation ETAS only",
+  "base_mc": 3.5,
+  "etas_fit_mc35": {
+    "base_mc": 3.5,
+    "n_events_fit": 4486,
+    "n_dropped_stai": 0,
+    "mu_total": 0.2530709319704063,
+    "k": 0.6180246182062564,
+    "alpha": 1.1826896860876452,
+    "c": 0.02236407025880181,
+    "p": 1.0814475551966347,
+    "d": 4.061238775748182,
+    "q": 1.8210571528511437,
+    "gamma": 0.0,
+    "b_positive": 1.4698494256159382,
+    "b_aki": 1.697802089775056,
+    "branching_untrunc": 0.9499999999999998,
+    "branching_mmax7.6": 0.9498868040690919,
+    "converged": true
+  },
+  "b_op_sweep_mc35": {
+    "candidates": {
+      "0.9": {
+        "slope": 0.9004,
+        "pred_total": 1392.8,
+        "real_total": 1199.0
+      },
+      "1.0": {
+        "slope": 0.8987,
+        "pred_total": 1395.2,
+        "real_total": 1199.0
+      },
+      "1.05": {
+        "slope": 0.902,
+        "pred_total": 1393.2,
+        "real_total": 1199.0
+      },
+      "1.1": {
+        "slope": 0.8997,
+        "pred_total": 1394.3,
+        "real_total": 1199.0
+      },
+      "1.12": {
+        "slope": 0.8992,
+        "pred_total": 1394.4,
+        "real_total": 1199.0
+      },
+      "1.15": {
+        "slope": 0.8988,
+        "pred_total": 1395.7,
+        "real_total": 1199.0
+      },
+      "1.18": {
+        "slope": 0.8983,
+        "pred_total": 1397.2,
+        "real_total": 1199.0
+      },
+      "1.2": {
+        "slope": 0.901,
+        "pred_total": 1394.6,
+        "real_total": 1199.0
+      },
+      "1.542": {
+        "slope": 0.9004,
+        "pred_total": 1396.1,
+        "real_total": 1199.0
+      }
+    },
+    "selected_b_op": 1.05,
+    "shipped_b_op_at_mc3.0": 1.15,
+    "n_calibration_windows": 77
+  },
+  "grid_mc35": {
+    "n_rows": 319378,
+    "n_windows": 262,
+    "count35_total": 4111,
+    "test_positives": 167,
+    "test_windows": 26,
+    "shipped_test_positives_at_mc3.0": 167
+  },
+  "leakage_self_test_mc35": {
+    "n_windows": 258,
+    "total_checks": 5975538,
+    "n_failures": 0,
+    "max_integer_deviation": 0.0,
+    "max_real_deviation": 0.0,
+    "passes": true
+  },
+  "ml_mc35": {
+    "selected_w": 0.6,
+    "w_argmax": 0.8,
+    "n_trees_fit": 118,
+    "shipped_w_at_mc3.0": 0.4,
+    "shipped_trees_at_mc3.0": 10
+  },
+  "table1_style_rows": {
+    "hybrid": {
+      "pr_auc": 0.078939,
+      "roc_auc": 0.881432,
+      "brier": 0.005483
+    },
+    "cascade": {
+      "pr_auc": 0.112855,
+      "roc_auc": 0.87264,
+      "brier": 0.005162
+    },
+    "firstgen_etas": {
+      "pr_auc": 0.1116,
+      "roc_auc": 0.887843,
+      "brier": 0.004966
+    }
+  },
+  "verdicts_mc35": {
+    "hybrid_vs_cascade": {
+      "d_ig": {
+        "point": -0.138647,
+        "ci95": [
+          -1.033421,
+          0.662732
+        ]
+      },
+      "d_pr_auc": {
+        "point": -0.033916,
+        "ci95": [
+          -0.054425,
+          -0.001323
+        ]
+      },
+      "verdict": "inseparable"
+    },
+    "hybrid_vs_firstgen_etas": {
+      "d_ig": {
+        "point": -1.023594,
+        "ci95": [
+          -2.103463,
+          -0.080988
+        ]
+      },
+      "d_pr_auc": {
+        "point": -0.032661,
+        "ci95": [
+          -0.055143,
+          -0.000325
+        ]
+      },
+      "verdict": "firstgen_etas beats hybrid"
+    },
+    "cascade_vs_firstgen_etas": {
+      "d_ig": {
+        "point": -0.884947,
+        "ci95": [
+          -1.183791,
+          -0.612434
+        ]
+      },
+      "d_pr_auc": {
+        "point": 0.001254,
+        "ci95": [
+          -0.004809,
+          0.010528
+        ]
+      },
+      "verdict": "inseparable"
+    }
+  },
+  "verdict_diff_vs_shipped_table2": [
+    "hybrid_vs_firstgen_etas: inseparable -> firstgen_etas beats hybrid"
+  ],
+  "any_verdict_changed": true,
+  "runtime_s": 271.3
+}

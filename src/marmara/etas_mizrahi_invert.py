@@ -1,5 +1,5 @@
 """Invert the independent third-party lmizrahi/etas model on the Marmara catalogue and
-write results/etas_mizrahi_fit.json.
+write results/etas/etas_mizrahi_fit.json.
 
 Runs in an isolated environment with the third-party `etas` package (see
 requirements-etas.txt); it imports `etas` (which needs numpy>=2.5 / pandas>=3.0) and
@@ -32,7 +32,7 @@ SHAPE_LATLON = [[39.6, 25.6], [39.6, 30.9], [41.9, 30.9], [41.9, 25.6], [39.6, 2
 def main():
     from etas.inversion import (ETASParameterCalculation, estimate_beta_positive)
 
-    cat = pd.read_csv(f"{REPO}/results/catalog.csv")
+    cat = pd.read_csv(f"{REPO}/results/catalog/catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     cat = cat[(cat["datetime_utc"] < FIT_END) & (cat["mag_w"] >= MC - 1e-9)].copy()
     df = pd.DataFrame({"latitude": cat["latitude"].to_numpy(),
@@ -50,6 +50,24 @@ def main():
     calc.invert()
     theta = dict(calc.theta)          # {log10_mu, log10_k0, a, log10_c, omega, log10_tau, log10_d, gamma, rho, ...}
     print("theta:", theta, flush=True)
+
+    # B(1): extract the package's NATIVE per-event background weights (EM independence
+    # probability = 1 - sum_sources Pij) so its spatially-variable background can be
+    # restored via KDE instead of the uniform-floor substitute in etas_modern.
+    try:
+        pij = calc.pij
+        trig = pij["Pij"].groupby(level="target_id").sum()      # triggered prob per target
+        cc = calc.catalog
+        latc = "latitude" if "latitude" in cc else ("lat" if "lat" in cc else cc.columns[1])
+        lonc = "longitude" if "longitude" in cc else ("lon" if "lon" in cc else cc.columns[2])
+        trig_full = trig.reindex(cc.index).fillna(0.0).clip(0.0, 1.0)
+        bgw = pd.DataFrame({"latitude": cc[latc].to_numpy(), "longitude": cc[lonc].to_numpy(),
+                            "bg_weight": (1.0 - trig_full).to_numpy()})
+        bgw.to_csv(f"{REPO}/results/etas/mizrahi_background_weights.csv", index=False)
+        print(f"WROTE mizrahi_background_weights.csv: {len(bgw)} events, sum(bg)={bgw['bg_weight'].sum():.1f}, "
+              f"n_hat={getattr(calc, 'n_hat', None)}; cat_cols={list(cc.columns)[:8]}", flush=True)
+    except Exception as e:
+        print(f"BACKGROUND-WEIGHT EXTRACTION FAILED: {type(e).__name__}: {e}", flush=True)
 
     beta = float(estimate_beta_positive(df["magnitude"].to_numpy(), delta_m=0.1))
 
@@ -78,9 +96,9 @@ def main():
                  "is therefore evaluated via first-generation INTENSITY INTEGRATION of "
                  "these kernels (marmara.etas_modern), comparable to firstgen_etas."),
     }
-    with open(f"{REPO}/results/etas_mizrahi_fit.json", "w") as f:
+    with open(f"{REPO}/results/etas/etas_mizrahi_fit.json", "w") as f:
         json.dump(out, f, indent=2)
-    print("WROTE results/etas_mizrahi_fit.json", flush=True)
+    print("WROTE results/etas/etas_mizrahi_fit.json", flush=True)
     print(json.dumps(out["derived"], indent=2))
 
 

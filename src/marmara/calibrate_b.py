@@ -25,9 +25,9 @@ B_CANDIDATES = [0.9, 1.0, 1.05, 1.1, 1.12, 1.15, 1.18, 1.2, 1.542]
 
 
 def main():
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         params = pickle.load(f)
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     spec = G.MODEL_SPEC
     EV = G.build_event_bundle(cat, 3.0)
     hist = cat[["datetime_utc", "longitude", "latitude", "mag_w"]]
@@ -53,10 +53,10 @@ def main():
 
     # choose b_op minimizing |slope-1| within [0.8,1.2]; else closest to 1
     best = min(B_CANDIDATES, key=lambda b: abs(results[b]["slope"] - 1.0))
-    r = json.load(open(OUT / "etas_fit_report.json"))
+    r = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     r["operational_b_for_cascade"] = float(best)
     r["b_calibration"] = {str(b): results[b] for b in B_CANDIDATES}
-    json.dump(r, open(OUT / "etas_fit_report.json", "w"), indent=2)
+    json.dump(r, open(OUT / "etas" / "etas_fit_report.json", "w"), indent=2)
     print(f"\nchosen operational b_op = {best} (slope {results[best]['slope']:.3f})")
 
 

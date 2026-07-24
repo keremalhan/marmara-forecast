@@ -106,12 +106,12 @@ def run_countdown(case, cat, T, epi_lon, epi_lat, spec, freezes, fore=None):
 
 def main():
     VF.mkdir(parents=True, exist_ok=True)
-    params = pickle.load(open(OUT / "etas_params.pkl", "rb"))
-    rep = json.load(open(OUT / "etas_fit_report.json"))
+    params = pickle.load(open(OUT / "etas" / "etas_params.pkl", "rb"))
+    rep = json.load(open(OUT / "etas" / "etas_fit_report.json"))
     case = Case(params, rep["operational_b_for_cascade"], rep["b_aki"], rep["b_positive"],
                 pickle.load(open(OUT / "models" / "bigger_ahead.pkl", "rb")))
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
-    wide = pd.read_csv(OUT / "catalog_widebox.csv"); wide["datetime_utc"] = pd.to_datetime(wide["datetime_utc"])
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    wide = pd.read_csv(OUT / "catalog" / "catalog_widebox.csv"); wide["datetime_utc"] = pd.to_datetime(wide["datetime_utc"])
     spec = G.MODEL_SPEC
 
     # ---- M6.2 primary countdown ----
@@ -244,7 +244,7 @@ def _docs(rep):
           f"M6.2. FTLS needs a developed sequence (≥~60 events) and only reaches ORANGE/RED once one exists.",
           "- The modest 24-hour regional foreshock elevation is **consistent with published foreshock "
           "statistics**: an ML 4.0 does not meaningfully forecast an M6.2 under any calibrated model. "
-          "What the system genuinely resolves is the **99th-percentile spatial ranking** of the "
+          "What the system resolves is the **99th-percentile spatial ranking** of the "
           "eventual epicenter and a noisy short-term sequence-response, not a deterministic prediction."]
     for name, key, epi in (("2025-10-02 M5.0 (model box)", "oct2_countdown", "27.94,40.79"),
                            ("Sındırgı Aug-10→Oct-27 doublet (widebox)", "sindirgi_countdown", "28.20,39.19")):
@@ -278,7 +278,7 @@ def _docs(rep):
            "driven by spatial ranking + the immediate foreshock, not by any earlier precursor; the cell "
            "was quiescent all year until the ML 4.0.",
            f"- **M5.0 2025-10-02**: top-decile from ≥{_fnum(e2,0)} days; max gain {_fnum(g2)}× (at +1 h); "
-           f"the bigger-ahead classifier was elevated ({_fnum(_o_lo,2)}–{_fnum(_o_hi,2)}) in the weeks before, a genuine active "
+           f"the bigger-ahead classifier was elevated ({_fnum(_o_lo,2)}–{_fnum(_o_hi,2)}) in the weeks before, an active "
            "sequence.",
            f"- **Sındırgı Oct-27**: NOT spatially covered (epicenter south of the model box → percentile 0, "
            f"a coverage limit); FTLS reached RED and the bigger-ahead score for Oct-27 was a weak {_fnum(_s_hi,2)} "

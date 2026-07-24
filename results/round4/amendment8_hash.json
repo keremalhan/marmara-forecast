@@ -1,0 +1,18 @@
+{
+ "amendment": "docs/v2_analysis_amendment_8.md",
+ "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690",
+ "hashed_utc": "2026-07-16T11:25:21Z",
+ "release": "1.4.0",
+ "kind": "prospectively timestamped post-review analysis amendment (umbrella)",
+ "hashed_before_execution": true,
+ "governs_items": [
+  "1 deconfounded-b interval + reduction",
+  "3 foreshock episodes",
+  "4 prospective log",
+  "5 post-freeze windows",
+  "6 leave-Kumburgaz-out Bernoulli",
+  "7 multiplicity",
+  "9 Mc=3.5 arm"
+ ],
+ "honesty_ledger": "deconfounded triple point estimates + reduction + binomial formula are ESTABLISHED; binned-MLE/b-positive headline estimators, all bootstraps, P(M>=6) band, items 3-7,9 are PROSPECTIVE"
+}

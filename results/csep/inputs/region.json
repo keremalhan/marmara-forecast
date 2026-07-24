@@ -4939,11 +4939,12 @@
     "2026-03-12"
   ],
   "n_windows": 26,
-  "n_sim": 1000,
-  "seed": 42,
-  "models_b": {
-    "cascade": 1.2,
-    "sv_etas": 1.2,
-    "modern_etas": 1.762
+  "n_sim": 500,
+  "seed": 5000,
+  "b_op": 1.15,
+  "catalogue_kind": {
+    "cascade": "native-clustered",
+    "sv_etas": "native-clustered",
+    "modern_etas": "poisson-first-gen"
   }
 }

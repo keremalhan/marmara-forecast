@@ -1,8 +1,8 @@
-# Repeating-earthquake catalogue, fetch instructions
+# Repeating-earthquake catalog, fetch instructions
 
 **Status: STILL-ABSENT.** `results/source_ig_repeating_eq.json` reports
 `available: false`. The `repeating_eq` source was designed but never fed data; it is
-**skipped, not tested**. The manuscript must not imply otherwise. The catalogue is
+**skipped, not tested**. The manuscript must not imply otherwise. The catalog is
 NOT auto-fetchable in this sandbox (the source tables are journal supplements behind
 publisher paywalls / captchas). A human should obtain one of the following and drop it
 in as `data/external/marmara_repeaters.csv` with columns
@@ -17,7 +17,7 @@ in as `data/external/marmara_repeaters.csv` with columns
 
 2. **Bohnhoff, Wollin, Domigall et al. (2017)**, repeating-earthquake / aseismic-creep
    study of the Main Marmara Fault (GFZ Potsdam). Check GFZ DataServices / the paper's
-   supplement for the repeater catalogue. Bohnhoff et al. 2013 (*Nature Comm.*) and
+   supplement for the repeater catalog. Bohnhoff et al. 2013 (*Nature Comm.*) and
    the GONAF borehole array (gfz-potsdam) are related sources.
 
 3. **Uchida & Bürgmann (2019)** global repeater compilation (*Ann. Rev. EPS*), filter
@@ -34,6 +34,6 @@ Pre-registered promotion rule (same as every source): promote its 2 columns into
 FEATURES iff val IG > +0.02 AND test IG > 0.
 
 ## Why it matters (do not overstate until fed)
-Repeater recurrence ∝ 1/creep-rate, so a repeater catalogue is a direct aseismic-creep
+Repeater recurrence ∝ 1/creep-rate, so a repeater catalog is a direct aseismic-creep
 observable no seismicity-rate statistic captures, potentially the most interpretable
 channel. But until the data is present it is **absent, not null**; report it as such.

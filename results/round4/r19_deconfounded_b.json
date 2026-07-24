@@ -1,0 +1,119 @@
+{
+  "why": "Amendment 7 reports the deconfounded estimates and the test-era split as established results, but no script or artifact in the repo produced them. This measures them.",
+  "formula": "b = log10(real_3.0 / real_M) / (M - 3.0)  [Amendment 7 section 2]",
+  "claims_under_test": {
+    "modern_3.0_to_3.5": 1.365,
+    "all_pretest_3.0_to_4.0": 1.405,
+    "catalogue_3.5_to_4.5": 1.418,
+    "test_era_pre": 1.28,
+    "test_era_post": 1.108,
+    "test_era_full": 1.167
+  },
+  "deconfounded_estimates": {
+    "modern_3.0_to_3.5": {
+      "n_windows": 133,
+      "counts": {
+        "3.0": 5515,
+        "3.5": 1145
+      },
+      "b": 1.3654800602006052
+    },
+    "all_pretest_3.0_to_4.0": {
+      "n_windows": 231,
+      "counts": {
+        "3.0": 12866,
+        "4.0": 506
+      },
+      "b": 1.40529303022455
+    },
+    "catalogue_3.5_to_4.5": {
+      "scope": "whole catalogue, raw",
+      "counts": {
+        "3.5": 5024,
+        "4.5": 192
+      },
+      "b": 1.4177484020255902
+    }
+  },
+  "deconfounded_range": [
+    1.365,
+    1.418
+  ],
+  "test_era_split": {
+    "pre_mainshock": {
+      "n3.0": 517,
+      "n3.5": 116,
+      "b_eff_3.0_to_3.5": 1.2980651077340482
+    },
+    "post_mainshock": {
+      "n3.0": 989,
+      "n3.5": 267,
+      "b_eff_3.0_to_3.5": 1.1373700604652084
+    },
+    "full_test_era": {
+      "n3.0": 1506,
+      "n3.5": 383,
+      "b_eff_3.0_to_3.5": 1.189252395792118
+    }
+  },
+  "era_effective_slopes": {
+    "md_conversion_era_2003_2012": {
+      "n3.0": 9069,
+      "n3.5": 3447,
+      "b_eff_3.0_to_3.5": 0.8402362369790639,
+      "rate35_per_yr": 344.7
+    },
+    "modern_ml_era_2013_2021": {
+      "n3.0": 4962,
+      "n3.5": 1039,
+      "b_eff_3.0_to_3.5": 1.3580824247580259,
+      "rate35_per_yr": 115.5
+    },
+    "test_era_2024_on": {
+      "n3.0": 1505,
+      "n3.5": 383,
+      "b_eff_3.0_to_3.5": 1.188675451922479,
+      "rate35_per_yr": 151.6
+    }
+  },
+  "claim_check": {
+    "modern_3.0_to_3.5": {
+      "claimed": 1.365,
+      "measured": 1.3655,
+      "abs_diff": 0.0005,
+      "reproduces_to_0.01": true
+    },
+    "all_pretest_3.0_to_4.0": {
+      "claimed": 1.405,
+      "measured": 1.4053,
+      "abs_diff": 0.0003,
+      "reproduces_to_0.01": true
+    },
+    "catalogue_3.5_to_4.5": {
+      "claimed": 1.418,
+      "measured": 1.4177,
+      "abs_diff": 0.0003,
+      "reproduces_to_0.01": true
+    },
+    "test_era_pre": {
+      "claimed": 1.28,
+      "measured": 1.2981,
+      "abs_diff": 0.0181,
+      "reproduces_to_0.01": false
+    },
+    "test_era_post": {
+      "claimed": 1.108,
+      "measured": 1.1374,
+      "abs_diff": 0.0294,
+      "reproduces_to_0.01": false
+    },
+    "test_era_full": {
+      "claimed": 1.167,
+      "measured": 1.1893,
+      "abs_diff": 0.0223,
+      "reproduces_to_0.01": false
+    }
+  },
+  "all_claims_reproduce": false,
+  "runtime_s": 0.1
+}

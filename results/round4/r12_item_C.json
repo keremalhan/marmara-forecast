@@ -1,0 +1,126 @@
+{
+  "governed_by": {
+    "amendment": "docs/v2_analysis_amendment_5.md",
+    "sha256": "c97db8f54374ac4ff1b5fbfafc1a1e76c63d68077144b338319603170ce846c2",
+    "item": "C"
+  },
+  "design": "constrained refits: cap = n fixes the branching ratio at n (the likelihood is monotone in n and pins at the cap), with every nuisance parameter re-optimized",
+  "no_interior_mle": "the fit pins at whatever cap it is given (0.95 -> 0.95; 0.999 -> 0.9990, the documented degenerate near-critical mode), so there is no interior MLE and only a one-sided statement could ever be meaningful",
+  "profile": [
+    {
+      "n": 0.8,
+      "loglik": -131801.1171,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.8,
+      "LR_vs_0.95": 204.4785,
+      "LR_vs_0.999": 254.5861,
+      "k": 0.4772,
+      "alpha": 1.433,
+      "p": 1.0792,
+      "mu_total": 0.7355
+    },
+    {
+      "n": 0.85,
+      "loglik": -131761.8852,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.85,
+      "LR_vs_0.95": 126.0147,
+      "LR_vs_0.999": 176.1223,
+      "k": 0.5113,
+      "alpha": 1.4152,
+      "p": 1.0742,
+      "mu_total": 0.7232
+    },
+    {
+      "n": 0.88,
+      "loglik": -131741.0421,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.88,
+      "LR_vs_0.95": 84.3285,
+      "LR_vs_0.999": 134.4361,
+      "k": 0.5316,
+      "alpha": 1.4063,
+      "p": 1.0714,
+      "mu_total": 0.7167
+    },
+    {
+      "n": 0.9,
+      "loglik": -131728.1441,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.9,
+      "LR_vs_0.95": 58.5325,
+      "LR_vs_0.999": 108.6401,
+      "k": 0.5452,
+      "alpha": 1.4,
+      "p": 1.0697,
+      "mu_total": 0.7124
+    },
+    {
+      "n": 0.92,
+      "loglik": -131715.9586,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.92,
+      "LR_vs_0.95": 34.1615,
+      "LR_vs_0.999": 84.2691,
+      "k": 0.5588,
+      "alpha": 1.3945,
+      "p": 1.068,
+      "mu_total": 0.7084
+    },
+    {
+      "n": 0.94,
+      "loglik": -131704.4223,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.94,
+      "LR_vs_0.95": 11.0888,
+      "LR_vs_0.999": 61.1964,
+      "k": 0.5724,
+      "alpha": 1.3887,
+      "p": 1.0664,
+      "mu_total": 0.7045
+    },
+    {
+      "n": 0.95,
+      "loglik": -131698.8779,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.95,
+      "LR_vs_0.95": 0.0,
+      "LR_vs_0.999": 50.1076,
+      "k": 0.5792,
+      "alpha": 1.3862,
+      "p": 1.0656,
+      "mu_total": 0.7027
+    },
+    {
+      "n": 0.999,
+      "loglik": -131673.8241,
+      "converged": true,
+      "pinned_at_cap": true,
+      "realized_n": 0.999,
+      "LR_vs_0.95": -50.1076,
+      "LR_vs_0.999": 0.0,
+      "k": 0.6123,
+      "alpha": 1.3748,
+      "p": 1.062,
+      "mu_total": 0.6944
+    }
+  ],
+  "all_converged": true,
+  "all_pinned_at_cap": true,
+  "profile_monotone_in_n": true,
+  "criterion_one_sided_95": 2.706,
+  "crossed_between": [
+    0.94,
+    0.95
+  ],
+  "NAMING": "constrained branching-ratio sensitivity",
+  "naming_reason": "the criterion is crossed BETWEEN coarse grid points (0.94 and 0.95), not at one; the amendment forbids interpolating a bound out of a six-point grid",
+  "interval": null
+}

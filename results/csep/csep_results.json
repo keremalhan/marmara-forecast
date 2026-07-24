@@ -9,15 +9,21 @@
     "N_sim": 1000,
     "seed": 42,
     "N_observed": 1383,
-    "tests": "catalog-based N / M / S / pseudo-likelihood (Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)"
+    "tests": "catalog-based N / M / S / pseudo-likelihood (Savran et al. 2020 / pyCSEP definitions; in-house, see module docstring)",
+    "b_per_model": {
+      "cascade": 1.15,
+      "sv_etas": 1.15,
+      "modern_etas": 1.7618772126029445
+    },
+    "scope": "RATE cross-check: cell counts are Poisson-sampled from Lambda(cell), so this tests the RATE forecast under forced cell-independence. It does NOT carry the clustered count over-dispersion; for the clustered simulators its N/M verdicts are SUPERSEDED by the native-catalogue pyCSEP run (results/csep/pycsep_results.json). Agreement is expected only for a genuinely Poissonian forecaster (the inversion)."
   },
   "models": {
     "cascade": {
       "N_obs": 1383,
-      "N_forecast_mean": 1498.1,
+      "N_forecast_mean": 1304.1,
       "N_test": {
-        "delta1": 1.0,
-        "delta2": 0.0,
+        "delta1": 0.013,
+        "delta2": 0.988,
         "pass": false
       },
       "S_test": {
@@ -25,21 +31,21 @@
         "pass": false
       },
       "M_test": {
-        "gamma": 0.955,
-        "pass": true
+        "gamma": 0.006,
+        "pass": false
       },
       "PL_test": {
         "gamma": 1.0,
         "pass": false
       },
-      "b_gr": 1.2
+      "b_gr": 1.15
     },
     "sv_etas": {
       "N_obs": 1383,
-      "N_forecast_mean": 1488.8,
+      "N_forecast_mean": 1294.9,
       "N_test": {
-        "delta1": 0.997,
-        "delta2": 0.003,
+        "delta1": 0.008,
+        "delta2": 0.993,
         "pass": false
       },
       "S_test": {
@@ -47,18 +53,18 @@
         "pass": false
       },
       "M_test": {
-        "gamma": 0.915,
-        "pass": true
+        "gamma": 0.003,
+        "pass": false
       },
       "PL_test": {
         "gamma": 1.0,
         "pass": false
       },
-      "b_gr": 1.2
+      "b_gr": 1.15
     },
     "modern_etas": {
       "N_obs": 1383,
-      "N_forecast_mean": 782.4,
+      "N_forecast_mean": 784.3,
       "N_test": {
         "delta1": 0.0,
         "delta2": 1.0,
@@ -76,7 +82,7 @@
         "gamma": 1.0,
         "pass": false
       },
-      "b_gr": 1.762
+      "b_gr": 1.7618772126029445
     }
   }
 }

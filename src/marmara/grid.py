@@ -9,7 +9,7 @@ each row exactly.
 Grid: lon centers 25.65..30.85 step 0.1 (53), lat 39.65..41.85 (23) -> 1219 cells.
 Windows: t0 = 2005-01-01 + k*30d while t0+30d <= catalog end.
 
-Output: results/grid.parquet  (+ results/grid_report.json)
+Output: results/grid/grid.parquet  (+ results/grid/grid_report.json)
 
 Run:  "<venv>/bin/python3" -m marmara.grid
 """
@@ -484,12 +484,12 @@ def window_starts(cat_end: pd.Timestamp) -> list[pd.Timestamp]:
 
 
 def load_mc() -> float:
-    with open(OUT / "catalog_report.json") as f:
+    with open(OUT / "catalog" / "catalog_report.json") as f:
         return float(json.load(f)["mc"])
 
 
 def load_params():
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         return pickle.load(f)
 
 
@@ -497,7 +497,7 @@ def build() -> dict:
     OUT.mkdir(exist_ok=True)
     mc = load_mc()
     params = load_params()
-    cat = pd.read_csv(OUT / "catalog.csv")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
 
     EV = build_event_bundle(cat, mc)
@@ -530,7 +530,7 @@ def build() -> dict:
             print(f"  window {k+1}/{len(starts)}  {t0_dt.date()}")
 
     grid = pd.concat(rows, ignore_index=True)
-    grid.to_parquet(OUT / "grid.parquet", index=False)
+    grid.to_parquet(OUT / "grid" / "grid.parquet", index=False)
 
     report = {
         "n_cells": NCELLS, "n_windows": len(starts),
@@ -542,7 +542,7 @@ def build() -> dict:
         "features": FEATURES,
         "seismicity_features": SEISMICITY_FEATURES,
     }
-    with open(OUT / "grid_report.json", "w") as f:
+    with open(OUT / "grid" / "grid_report.json", "w") as f:
         json.dump(report, f, indent=2)
     print("grid built:", json.dumps(report, indent=2))
     return {"grid": grid, "report": report}

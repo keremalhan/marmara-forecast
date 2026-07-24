@@ -3,40 +3,55 @@
     "products": [
       {
         "product": "y35 30d (hybrid)",
-        "hybrid_w": 0.6,
+        "hybrid_w": 0.4,
         "before": {
           "testable": true,
           "npos": 277,
           "n": 62169,
-          "slope": 1.026,
-          "intercept": 0.0002,
+          "slope": 0.951,
+          "intercept": 0.0003,
           "calibrated": true,
           "verdict": "calibrated",
           "aggregate": {
-            "expected_pos": 257.99,
+            "expected_pos": 271.76,
             "observed_pos": 277,
-            "obs_over_exp": 1.074
+            "obs_over_exp": 1.019
           },
           "bins": [
             [
               0.0,
-              0.0002,
-              19425
+              0.0001,
+              16764
             ],
             [
-              0.0009,
-              0.001,
-              21522
+              0.0004,
+              0.0004,
+              10303
             ],
             [
-              0.0037,
-              0.0042,
-              13733
+              0.0012,
+              0.0015,
+              8771
             ],
             [
-              0.0252,
-              0.026,
-              7489
+              0.0019,
+              0.0014,
+              2188
+            ],
+            [
+              0.0026,
+              0.0031,
+              7186
+            ],
+            [
+              0.0046,
+              0.0053,
+              10111
+            ],
+            [
+              0.0275,
+              0.0263,
+              6846
             ]
           ]
         },
@@ -45,81 +60,40 @@
       },
       {
         "product": "y45 30d (hybrid)",
-        "hybrid_w": 0.5,
+        "hybrid_w": 0.9,
         "before": {
           "testable": true,
           "npos": 35,
           "n": 62169,
-          "slope": 1.323,
-          "intercept": 0.0,
-          "calibrated": false,
-          "verdict": "underfit(slope>1.25)",
+          "slope": 0.91,
+          "intercept": 0.0002,
+          "calibrated": true,
+          "verdict": "calibrated",
           "aggregate": {
-            "expected_pos": 26.38,
+            "expected_pos": 27.85,
             "observed_pos": 35,
-            "obs_over_exp": 1.327
+            "obs_over_exp": 1.257
           },
           "bins": [
             [
               0.0,
               0.0,
-              19601
+              367
             ],
             [
-              0.0001,
+              0.0,
               0.0002,
-              24939
+              45190
             ],
             [
-              0.0009,
-              0.0008,
-              11000
-            ],
-            [
-              0.0022,
-              0.0032,
-              6629
+              0.0015,
+              0.0016,
+              16612
             ]
           ]
         },
-        "fix": "isotonic_on_val",
-        "after": {
-          "testable": true,
-          "npos": 35,
-          "n": 62169,
-          "slope": 1.323,
-          "intercept": 0.0,
-          "calibrated": false,
-          "verdict": "underfit(slope>1.25)",
-          "aggregate": {
-            "expected_pos": 26.38,
-            "observed_pos": 35,
-            "obs_over_exp": 1.327
-          },
-          "bins": [
-            [
-              0.0,
-              0.0,
-              19601
-            ],
-            [
-              0.0001,
-              0.0002,
-              24939
-            ],
-            [
-              0.0009,
-              0.0008,
-              11000
-            ],
-            [
-              0.0022,
-              0.0032,
-              6629
-            ]
-          ]
-        },
-        "note": "isotonic did not fully calibrate; next levers (global scale / shrink w) would apply. This is reported, not silently tuned."
+        "fix": "none",
+        "after": null
       },
       {
         "product": "P(M>=5.0) 30d (cascade)",
@@ -130,9 +104,9 @@
           "n": 62169,
           "reason": "pred too sparse for 10-bin reliability",
           "aggregate": {
-            "expected_pos": 13.33,
+            "expected_pos": 11.69,
             "observed_pos": 10,
-            "obs_over_exp": 0.75
+            "obs_over_exp": 0.855
           }
         },
         "fix": "none",
@@ -147,9 +121,9 @@
           "n": 62169,
           "reason": "pred too sparse for 10-bin reliability",
           "aggregate": {
-            "expected_pos": 3.59,
+            "expected_pos": 3.13,
             "observed_pos": 3,
-            "obs_over_exp": 0.836
+            "obs_over_exp": 0.958
           }
         },
         "fix": "none",
@@ -164,9 +138,9 @@
           "n": 62169,
           "reason": "pred too sparse for 10-bin reliability",
           "aggregate": {
-            "expected_pos": 1.0,
+            "expected_pos": 0.83,
             "observed_pos": 1,
-            "obs_over_exp": 1.0
+            "obs_over_exp": 1.208
           }
         },
         "fix": "none",
@@ -181,25 +155,25 @@
       12,
       26
     ],
-    "base_M6_30d": 0.0034887742200184757,
+    "base_M6_30d": 0.0034867468100171495,
     "a_30d_forecasts": {
       "2025-04-01": {
         "epicenter_P6_cell": 0.0,
-        "regional_P6": 0.01575100218765957,
+        "regional_P6": 0.016120049423243854,
         "epicenter_lam6": 0.0,
         "pct_by_lam6": 0.0,
-        "pct_by_lam45_seismicity": 99.01558654634947,
+        "pct_by_lam45_seismicity": 98.93355209187858,
         "gain6_vs_uniform": 0.0,
-        "gain45_vs_uniform": 6.90879135363121
+        "gain45_vs_uniform": 6.9804098854731755
       },
       "2025-04-22": {
-        "epicenter_P6_cell": 0.000125,
-        "regional_P6": 0.01747211594115472,
-        "epicenter_lam6": 0.000125,
-        "pct_by_lam6": 90.23789991796555,
-        "pct_by_lam45_seismicity": 98.93355209187858,
-        "gain6_vs_uniform": 8.645390070921986,
-        "gain45_vs_uniform": 6.805529708892729
+        "epicenter_P6_cell": 0.0,
+        "regional_P6": 0.014519767656872018,
+        "epicenter_lam6": 0.0,
+        "pct_by_lam6": 0.0,
+        "pct_by_lam45_seismicity": 99.2616899097621,
+        "gain6_vs_uniform": 0.0,
+        "gain45_vs_uniform": 7.860893597420544
       }
     },
     "b_sequence_replay": {
@@ -207,19 +181,19 @@
       "n_events_in_sequence": 3,
       "ftls_color": "UNKNOWN",
       "ftls_reason": "only 3 events, need >=~60 for b-value",
-      "bigger_one_ahead": 0.00013089809749100304,
+      "bigger_one_ahead": 0.02787141764562967,
       "bigger_ahead_reason": null,
       "cascade_24h_lam6_cell": 0.000125,
-      "cascade_24h_exp6_regional": 0.00075,
+      "cascade_24h_exp6_regional": 0.001,
       "quiet_24h_lam6_cell": 0.0,
       "quiet_24h_exp6_regional": 0.00075,
       "elevation_cell": null,
-      "elevation_regional": 1.0
+      "elevation_regional": 1.3333333333333333
     },
     "c_pass": {
-      "epicenter_top_decile_by_lam6": true,
+      "epicenter_top_decile_by_lam6": false,
       "epicenter_top_decile_by_seismicity": true,
-      "gain6_gt_2x_uniform": true,
+      "gain6_gt_2x_uniform": false,
       "post_foreshock_24h_ge_10x_quiet": false,
       "all_pass": false
     },
@@ -228,30 +202,30 @@
         "snapshot": "2025-10-02 12:05:03",
         "ftls_color": "UNKNOWN",
         "b_ratio": null,
-        "cascade_24h_P5.5_cell": 0.00625,
-        "cascade_24h_P6_regional": 0.001999562499999996
+        "cascade_24h_P5.5_cell": 0.00575,
+        "cascade_24h_P6_regional": 0.0027483752499999348
       },
       "Sindirgi_Aug10": {
         "snapshot": "2025-08-10 17:03:46",
         "ftls_color": "UNKNOWN",
         "b_ratio": null,
         "cascade_24h_P5.5_cell": 0.0,
-        "cascade_24h_P6_regional": 0.009474654075600442
+        "cascade_24h_P6_regional": 0.00873195397619364
       }
     }
   },
   "underfit": {
     "cascade": {
-      "vs_poisson": 0.7893,
-      "vs_fault_prox": 0.5995,
-      "vs_smoothed": 0.3519,
+      "vs_poisson": 0.9636,
+      "vs_fault_prox": 0.7738,
+      "vs_smoothed": 0.5262,
       "all_positive": true
     },
     "hybrid": {
-      "vs_poisson": 1.2745,
-      "vs_fault_prox": 1.0846,
-      "vs_smoothed": 0.8371,
-      "all_positive": true
+      "vs_poisson": 0.052,
+      "vs_fault_prox": -0.1378,
+      "vs_smoothed": -0.3854,
+      "all_positive": false
     }
   }
 }

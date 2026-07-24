@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "seeds": [
+      1000,
+      7000,
+      13000,
+      19000
+    ],
+    "n_negative_control_pairs": 6,
+    "B": 2000,
+    "runtime_s": 73.9
+  },
+  "false_separations": 0,
+  "empirical_false_positive_rate": 0.0,
+  "naive_independence_expectation_of_216": 10.8,
+  "pairs": [
+    {
+      "pair": "cascade_s1000_vs_cascade_s7000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.144623,
+        0.069818
+      ],
+      "pr_ci": [
+        -0.004536,
+        0.005819
+      ]
+    },
+    {
+      "pair": "cascade_s1000_vs_cascade_s13000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.116259,
+        0.146506
+      ],
+      "pr_ci": [
+        -0.003325,
+        0.004356
+      ]
+    },
+    {
+      "pair": "cascade_s1000_vs_cascade_s19000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.159923,
+        0.077411
+      ],
+      "pr_ci": [
+        -0.002635,
+        0.006558
+      ]
+    },
+    {
+      "pair": "cascade_s7000_vs_cascade_s13000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.004727,
+        0.130435
+      ],
+      "pr_ci": [
+        -0.004562,
+        0.004434
+      ]
+    },
+    {
+      "pair": "cascade_s7000_vs_cascade_s19000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.081384,
+        0.080832
+      ],
+      "pr_ci": [
+        -0.002832,
+        0.004646
+      ]
+    },
+    {
+      "pair": "cascade_s13000_vs_cascade_s19000",
+      "verdict": "inseparable",
+      "ig_ci": [
+        -0.139971,
+        -0.003289
+      ],
+      "pr_ci": [
+        -0.003015,
+        0.005192
+      ]
+    }
+  ],
+  "context": {
+    "y30_test_separations_in_claims": 15,
+    "total_y30_test_pairs": 36,
+    "note": "claimed separations (physics cluster + first-gen>Mizrahi) replicate across y30/y35 -- independent chance at the empirical false-positive rate does not reproduce a separation at both powered targets."
+  }
+}

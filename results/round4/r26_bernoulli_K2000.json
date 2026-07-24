@@ -1,0 +1,90 @@
+{
+ "governed_by": {
+  "amendment": "docs/v2_analysis_amendment_8.md",
+  "sha256": "c5684700aa656949908640faa326c6b6f15b3a699052f627272bc26a1186e690"
+ },
+ "n_null_pairs": 28,
+ "seeds": [
+  1000,
+  4000,
+  7000,
+  10000,
+  13000,
+  16000,
+  19000,
+  22000
+ ],
+ "blocks": [
+  3.0,
+  5.0,
+  8.0
+ ],
+ "calibration": {
+  "count_block3": {
+   "scoring": "count",
+   "mean_block": 3.0,
+   "n": 28,
+   "k_p<0.01": 0,
+   "binom_tail_P(>=k|0.01)": 1.0,
+   "k_p<0.05": 0,
+   "median_p": 0.571,
+   "calibrated": true
+  },
+  "count_block5": {
+   "scoring": "count",
+   "mean_block": 5.0,
+   "n": 28,
+   "k_p<0.01": 0,
+   "binom_tail_P(>=k|0.01)": 1.0,
+   "k_p<0.05": 0,
+   "median_p": 0.494,
+   "calibrated": true
+  },
+  "count_block8": {
+   "scoring": "count",
+   "mean_block": 8.0,
+   "n": 28,
+   "k_p<0.01": 0,
+   "binom_tail_P(>=k|0.01)": 1.0,
+   "k_p<0.05": 2,
+   "median_p": 0.452,
+   "calibrated": true
+  },
+  "bernoulli_block3": {
+   "scoring": "bernoulli",
+   "mean_block": 3.0,
+   "n": 28,
+   "k_p<0.01": 0,
+   "binom_tail_P(>=k|0.01)": 1.0,
+   "k_p<0.05": 1,
+   "median_p": 0.488,
+   "calibrated": true
+  },
+  "bernoulli_block5": {
+   "scoring": "bernoulli",
+   "mean_block": 5.0,
+   "n": 28,
+   "k_p<0.01": 1,
+   "binom_tail_P(>=k|0.01)": 0.2453,
+   "k_p<0.05": 2,
+   "median_p": 0.398,
+   "calibrated": true
+  },
+  "bernoulli_block8": {
+   "scoring": "bernoulli",
+   "mean_block": 8.0,
+   "n": 28,
+   "k_p<0.01": 1,
+   "binom_tail_P(>=k|0.01)": 0.2453,
+   "k_p<0.05": 4,
+   "median_p": 0.336,
+   "calibrated": false
+  }
+ },
+ "adopted_mean_block": {
+  "count": 3.0,
+  "bernoulli": 3.0
+ },
+ "note": "T0-4 established every registered verdict is unchanged at blocks 2/3/5/8, so adopting a longer block for calibration cannot destabilize the adjudication of record.",
+ "runtime_s": 34.3
+}

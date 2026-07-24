@@ -79,8 +79,8 @@ def _brute_counts(cat, mc, t0_dt, ir, ic):
 
 
 def main():
-    grid = pd.read_parquet(OUT / "grid.parquet")
-    cat = pd.read_csv(OUT / "catalog.csv")
+    grid = pd.read_parquet(OUT / "grid" / "grid.parquet")
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv")
     cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     mc = load_mc()
     params = load_params()
@@ -161,12 +161,12 @@ def main():
     total_fail = n_fail + corr_fail
     if total_fail == 0:
         import json
-        with open(OUT / "leakage_ok.json", "w") as f:
+        with open(OUT / "audit" / "leakage_ok.json", "w") as f:
             json.dump({"passed": True, "n_rows_checked": int(len(rows))}, f, indent=2)
         print(f"\nPASS leakage self-test ({len(rows)} rows, exact counts, "
               f"no feature corr>0.999)")
         return 0
-    (OUT / "leakage_ok.json").unlink(missing_ok=True)
+    (OUT / "audit" / "leakage_ok.json").unlink(missing_ok=True)
     print(f"\nFAIL leakage self-test: {total_fail} problems")
     return 1
 

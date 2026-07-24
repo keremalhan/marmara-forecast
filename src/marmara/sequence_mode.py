@@ -87,10 +87,10 @@ def ftls(cat, trig_time, lon, lat, seg_name):
 def sequence_report(label, trig_time, lon, lat, K=3000):
     SEQ_DIR.mkdir(parents=True, exist_ok=True)
     trig_time = pd.Timestamp(trig_time)
-    with open(OUT / "etas_params.pkl", "rb") as f:
+    with open(OUT / "etas" / "etas_params.pkl", "rb") as f:
         params = pickle.load(f)
-    b_op = json.load(open(OUT / "etas_fit_report.json"))["operational_b_for_cascade"]
-    cat = pd.read_csv(OUT / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
+    b_op = json.load(open(OUT / "etas" / "etas_fit_report.json"))["operational_b_for_cascade"]
+    cat = pd.read_csv(OUT / "catalog" / "catalog.csv"); cat["datetime_utc"] = pd.to_datetime(cat["datetime_utc"])
     hist = cat[cat["datetime_utc"] < trig_time]
     spec = G.MODEL_SPEC
     seg = _nearest_segment(lon, lat)

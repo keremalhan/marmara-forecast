@@ -241,7 +241,12 @@ def main():
         if not ok:
             failures.append(f"{label}: {art}:{key} = {got!r}, manuscript says {exp!r}")
 
-    for path, needle, want, why in PROSE:
+    manuscript_present = PAPER.exists() and SUPP.exists()
+    if not manuscript_present:
+        print("note: manuscript not present in this distribution (paper/ is kept out of the "
+              "public tree); prose assertions and the freeze manifest run in the author tree "
+              "and are skipped here. Artifact assertions below are complete.")
+    for path, needle, want, why in (PROSE if manuscript_present else []):
         if not path.exists():
             failures.append(f"prose: {path.name} missing"); rows.append(("MISSING-FILE", why, path.name, None, want)); continue
         # Whitespace-insensitive: needles that span a line break ("the sweep works\nonly because")
@@ -263,18 +268,21 @@ def main():
         print(f"{st:<13} {label:<{w}} {str(art):<38} {g:>12}  {exp}")
     print("-" * (13 + w + 38 + 26))
     n_ok = sum(1 for r in rows if r[0] in ("OK", "PRESENT"))
-    print(f"{n_ok}/{len(rows)} checks pass  |  {len(CHECKS)} artifact assertions, {len(PROSE)} prose assertions")
+    print(f"{n_ok}/{len(rows)} checks pass  |  {len(CHECKS)} artifact assertions, "
+          f"{len(PROSE) if manuscript_present else 0} prose assertions"
+          + ("" if manuscript_present else " (prose skipped: no manuscript in this tree)"))
 
     # freeze-manifest check: every Amendment-8 prose-bound number still matches its source artifact
     import subprocess
-    mf = subprocess.run([sys.executable, str(ROOT / "scripts/release/freeze_manifest.py"), "--check"],
-                        capture_output=True, text=True,
-                        env={"PYTHONPATH": "src", "MARMARA_ROOT": ".", "PATH": "/usr/bin:/bin"},
-                        cwd=str(ROOT))
-    mf_ok = mf.returncode == 0
-    print(f"freeze-manifest: {mf.stdout.strip().splitlines()[-1] if mf.stdout.strip() else 'no output'}")
-    if not mf_ok:
-        failures.append("freeze-manifest drift: " + mf.stdout.strip().replace("\n", "; "))
+    if manuscript_present:
+        mf = subprocess.run([sys.executable, str(ROOT / "scripts/release/freeze_manifest.py"), "--check"],
+                            capture_output=True, text=True,
+                            env={"PYTHONPATH": "src", "MARMARA_ROOT": ".", "PATH": "/usr/bin:/bin"},
+                            cwd=str(ROOT))
+        mf_ok = mf.returncode == 0
+        print(f"freeze-manifest: {mf.stdout.strip().splitlines()[-1] if mf.stdout.strip() else 'no output'}")
+        if not mf_ok:
+            failures.append("freeze-manifest drift: " + mf.stdout.strip().replace("\n", "; "))
 
     if manifest_only:
         return 0
